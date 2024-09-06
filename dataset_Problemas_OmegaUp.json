@@ -2653,7 +2653,7 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    char z;\n    for(auto i=0; i<5; i++){\n        cin>>z;\n        a=z;\n        cout<<a<<\" \";\n    }\n    \n    return 0;\n}"
     },
     {
-        "titulo": "",
+        "titulo": "ejempl1",
         "url": "",
         "descripcion": "",
         "entrada": "",
