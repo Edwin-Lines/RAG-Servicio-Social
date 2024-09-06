@@ -2653,36 +2653,6 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    char z;\n    for(auto i=0; i<5; i++){\n        cin>>z;\n        a=z;\n        cout<<a<<\" \";\n    }\n    \n    return 0;\n}"
     },
     {
-        "titulo": "template1",
-        "url": "template1",
-        "descripcion": "template1",
-        "entrada": "template1",
-        "salida": "template1",
-        "nivel": "template1",
-        "categorias": [
-            "template1"
-        ],
-        "estructuras": [
-            "template1"
-        ],
-        "codigo": "template1"
-    },
-    {
-        "titulo": "template2",
-        "url": "template2",
-        "descripcion": "template2",
-        "entrada": "template2",
-        "salida": "template2",
-        "nivel": "template2",
-        "categorias": [
-            "template2"
-        ],
-        "estructuras": [
-            "template2"
-        ],
-        "codigo": "template2"
-    },
-    {
         "titulo": "",
         "url": "",
         "descripcion": "",
@@ -2697,20 +2667,20 @@
         ],
         "codigo": ""
     },
-    "Problemas totales: 165",
-    "Avanzado (difícil) - Programación competitiva: 5",
-    "Avanzado (medio) - Temas especializados: 3",
-    "Avanzado (medio) - Programación competitiva: 4",
-    "Avanzado (fácil) - Programación competitiva: 5",
-    "Intermedio (difícil) - Estructuras de datos y Algoritmos: 6",
-    "Intermedio (difícil) - Análisis y diseño de algoritmos: 15",
-    "Intermedio (difícil) - Matemáticas en la programación: 8",
-    "Intermedio (medio) - Estructuras de datos y Algoritmos: 8",
-    "Intermedio (medio) - Análisis y diseño de algoritmos: 16",
-    "Intermedio (medio) - Matemáticas en la programación: 6",
-    "Intermedio (fácil) - Estructuras de datos y Algoritmos: 5",
-    "Intermedio (fácil) - Análisis y diseño de algoritmos: 8",
-    "Básico (difícil) - Introducción a la programación: 15",
-    "Básico (medio) - Introducción a la programación: 36",
-    "Básico (fácil) - Introducción a la programación: 48"
+    "Problemas totales: 161",
+    "Avanzado (difícil) - Programación competitiva: 4",
+    "Avanzado (medio) - Temas especializados: 1",
+    "Avanzado (medio) - Programación competitiva: 3",
+    "Avanzado (fácil) - Programación competitiva: 7",
+    "Intermedio (difícil) - Estructuras de datos y Algoritmos: 5",
+    "Intermedio (difícil) - Análisis y diseño de algoritmos: 14",
+    "Intermedio (difícil) - Matemáticas en la programación: 7",
+    "Intermedio (medio) - Estructuras de datos y Algoritmos: 3",
+    "Intermedio (medio) - Análisis y diseño de algoritmos: 12",
+    "Intermedio (medio) - Matemáticas en la programación: 5",
+    "Intermedio (fácil) - Estructuras de datos y Algoritmos: 3",
+    "Intermedio (fácil) - Análisis y diseño de algoritmos: 5",
+    "Básico (difícil) - Introducción a la programación: 17",
+    "Básico (medio) - Introducción a la programación: 33",
+    "Básico (fácil) - Introducción a la programación: 41"
 ]
