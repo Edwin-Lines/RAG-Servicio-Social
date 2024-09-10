@@ -2653,19 +2653,68 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    char z;\n    for(auto i=0; i<5; i++){\n        cin>>z;\n        a=z;\n        cout<<a<<\" \";\n    }\n    \n    return 0;\n}"
     },
     {
-        "titulo": "",
-        "url": "",
-        "descripcion": "",
-        "entrada": "",
-        "salida": "",
+        "titulo": "5018. Divisible 7",
+        "url": "https://omegaup.com/arena/problem/Divisible-7/",
+        "descripcion": "El comité Quinatanarroense se siente bondadoso este año, y en tu primer problema de lenguaje te pedirá que hagas algo muy fácil. Tu tarea consiste en identificar si un numero es divisible entre 7, es decir, si un numero al dividirlo entre 7 nos da algún otro numero entero. Sin embargo eso no es todo, tienes que identificar cuantos números son divisibles entre 7 de entre toda una lista de N números. Dada una lista de N números identificar cuántos de ellos son divisibles entre 7 y arrojarlo como resultado.",
+        "entrada": "En la primera línea un numero N que representa la cantidad de números a analizar. En la segunda línea tendrás N números aleatorios sin ningún orden. (0<=N<=100,000) Los N números estarán entre 0 y 65,000. Tu programa deberá ejecutarse en menos de 0.5 segundos.",
+        "salida": "Una única línea con un numero que representa la cantidad de números divisibles entre 7.",
+        "nivel": "",
+        "categorias": [
+            "Loops",
+            "Teoría de números"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0;\n    cin>>a;\n    while(a--){\n        cin>>b;\n        if(b%7==0){\n            c++;\n        }\n    }\n    cout<<c;\n        \n    return 0;\n}"
+    },
+    {
+        "titulo": "5831. Divisibles",
+        "url": "https://omegaup.com/arena/problem/Divisibles/",
+        "descripcion": "Hacer un programa que reciba dos número por el teclado, a y b. Si a es divisible entre b, el programa ha de mostrar el mensaje \"DIVISIBLES\".",
+        "entrada": "Dos enteros a y b.",
+        "salida": "Si a es divisible entre b imprimir DIVISIBLES, si no imprimir NO DIVISIBLES.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Condicionales"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    cin>>a>>b;\n    a%=b;\n    if(a){\n        cout<<\"NO DIVISIBLES\";\n    }\n    else{\n        cout<<\"DIVISIBLES\";\n    }\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "4991. Dungeon Lvl.1",
+        "url": "https://omegaup.com/arena/problem/Dungeon-Lvl1/",
+        "descripcion": "Acabas de adquirir un nuevo videojuego, se llama Dungeon. En la trama un hechicero te encerró en un calabozo por coquetear con su hija en la fiesta de la aldea. Ahora debes escapar para volver con tu amada (aunque sólo la hayas conocido por 10 minutos). Emocionado por comenzar tu nueva aventura, insertas el disquete en la computadora y te dispones a jugar. Como en todo juego, comienzas en el nivel uno (pues en los juegos para machos no hay tutoriales). Tu personaje aparece en el primer nivel de calabozo,una cuadrícula de N x M sobre la que puedes moverte solo hacia las casillas adyacentes (arriba,abajo,derecha,izquierda), para pasar al siguiente nivel debes encontrar la puerta que te llevará a la siguiente sala. Después de unos minutos de juego consigues encontrar la puerta, sólo para enterarte que necesitas una llave para abrirla. Dada la configuración del calabozo, la localización de la llave y la localización de la puerta. Debes imprimir el menor número de pasos que debes moverte para superar el nivel.",
+        "entrada": "La primera linea consiste en dos números N y M. Las siguientes N lineas contendrán M caracteres, cada uno correspondiente a una casilla del calabozo (3<=N,M<=100). Los caracteres pueden ser: Un punto ‘.’: Representa que la casilla está libre y puedes pasar. Un asterisco ‘*’: Representa que hay una pared bloqueando el camino. Una P minúscula ‘p’: Representa la puerta. Una L minúscula ‘l’: Representa la llave. Una C minúscula ‘c’: Representa la posición inicial de tu personaje.",
+        "salida": "Un número con la cantidad de movimientos mínimos necesarios para superar el nivel. En caso de no ser posible, imprimir -1.",
+        "nivel": "Intermedio (medio) - Análisis y diseño de algoritmos",
+        "categorias": [
+            "Búsqueda en amplitud"
+        ],
+        "estructuras": [
+            "long long",
+            "char",
+            "queue"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nlong long a, b;\nstruct sobra{\n    long aa, bb, cc;\n};\nqueue<sobra>falta;\nchar num[102][102];\nsobra z;\n\nvoid sub(){\n    while(falta.size()){\n        falta.pop();\n    }\n    falta.push(z);\n    num[z.aa][z.bb]='*';\n    while(falta.size()){\n        z=falta.front();\n        falta.pop();\n        z.cc++;\n        z.aa++;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n        z.aa-=2;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n        z.aa++;\n        z.bb++;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n        z.bb-=2;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n    }\n    cout<<\"-1\";\n}\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>a>>b;\n    for(int i=1; i<=a; i++){\n        for(int j=1; j<=b; j++){\n            cin>>num[i][j];\n            if(num[i][j]=='c'){\n                z.aa=i;\n                z.bb=j;\n                falta.push(z);\n                num[z.aa][z.bb]='0';\n            }\n        }\n    }\n    while(falta.size()){\n        z=falta.front();\n        falta.pop();\n        z.cc++;\n        z.aa++;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n        z.aa-=2;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n        z.aa++;\n        z.bb++;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n        z.bb-=2;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n    }\n    cout<<\"-1\";return 0;\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "7042. Déjà Vu en ESCOM",
+        "url": "https://omegaup.com/arena/problem/Deja-Vu-en-ESCOM/",
+        "descripcion": "Últimamente en el Club de Algoritmia ESCOM se han desarrollado nuevas técnicas que no tienen nada que ver con la programación competitiva. En este caso hablaremos de las habilidades que han desarrollado nuestros integrantes para poder controlar los sueños de las personas. Aún después de tanta preparación los estudiantes siguen siendo un poco novicios en estas técnicas obscuras y tenebrosas. Por lo que el especialista en esta técnica, el profesor Norman nos ha pedido ayuda para resolver el siguiente problema. El profesor Norman puede meterse en los sueños de las personas cuando están dormidos, para que dentro del mismo sueño haga dormir al individuo y pueda volver a meterse de nuevo en su sueño. Es decir, el profesor puede estar en un sueño dentro de otro sueño. Como sus habilidades son bastante sorprendentes, el puede repetir este proceso infinito número de veces. Al momento de meterse en un sueño, este es identificado con un número que representa el tipo de sueño en el que se encuentra actualmente (Solo existen tipos de sueños desde 1 a 10^9). Cuando el profesor Norman se mete en una serie de sueños, esto es representado con un arreglo A de números enteros. Por ejemplo: A = [1,2,3,4,5,6]. Esto nos dice que el profesor se fue metiendo en un sueño de tipo 1, después en uno de tipo 2, 3 y así consecutivamente. Si Norman comienza metiéndose a un sueño de tipo x y en alguno de los sueños posteriores vuelve a estar en otro sueño de tipo x, el siente que ya lo vivió antes, es decir, un Déjà Vu! De igual manera, si él se mete por primera vez a un sueño de tipo x y inmediatamente a uno de tipo y y se repite la secuencia x, y posteriormente, es un Déjà Vu doble. Como quiere estar preparado para lo peor que pueda suceder, Norman quiere saber cuál es la máxima secuencia de sueños para la que va a sentir un Déjà Vu. Cabe aclarar que el profesor sentirá un Déjà Vu solo con secuencias de sueños similares a las que inician en el primero en el que se adentró.",
+        "entrada": "La primera línea de entrada contendrá un numero N(1<=N<=10^6), indicando la cantidad de sueños a los que el profesor se adentró. En la siguiente línea habrán N números A_i(1<=A_i<=10^9) indicando cada tipo de sueño.",
+        "salida": "Un numero representando la máxima secuencia de sueños para los cuales el profesor sentirá un Déjà Vu.",
         "nivel": "",
         "categorias": [
             ""
         ],
         "estructuras": [
-            ""
+            "long long",
+            "int"
         ],
-        "codigo": ""
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0;\n    int num[1000002];\n    cin>>a;\n    for(int i=0; i<a; i++){\n        cin>>num[i];\n    }\n    for(int i=1; i<a; i++){\n        if(num[i]==num[0]){\n            b=0;\n            while((i+b)<a && num[i+b]==num[b]){\n                b++;\n            }\n            c=max(c,b);\n            if((i+b)==a){\n                cout<<c;return 0;\n            }\n        }\n    }\n    cout<<c;\n    \n    return 0;\n}"
     },
     "Problemas totales: 161",
     "Avanzado (difícil) - Programación competitiva: 4",
