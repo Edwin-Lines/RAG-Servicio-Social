@@ -2755,7 +2755,6 @@
             "long long",
             "pair<int,int>",
             "int"
-
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    ios_base::sync_with_stdio(0);\n    cin.tie(0);\n    cout.tie(0);\n    typedef pair < int, int > pii;\n    typedef long long int lld;\n    int n;\n    cin >> n;\n    int arr[n];\n    for (int i = 0; i < n; ++i)\n        cin >> arr[i];\n    if (n == 1) {\n        cout << \"0\\n\";\n        return 0;\n    }\n    int ans = -1;\n    for(int f = -1; f <= 1; ++f) for (int s = -1; s <= 1; ++s) {\n        arr[0] += f; arr[1] += s;\n        bool progresion = true;\n        int cnt = abs(f) + abs(s);\n        int k = arr[1] - arr[0];\n        int act = arr[0];\n        for (int i = 1; i < n; ++i) {\n            act += k;\n            if (abs(act - arr[i]) > 1) {\n                progresion = false;\n                break;\n            }\n            cnt += abs(act - arr[i]);\n        }\n        if (progresion) ans = ans == -1 ? cnt : min(ans, cnt);\n        arr[0] -= f; arr[1] -= s;\n    }\n    cout << ans << \"\\n\";\n\n    return 0;\n}"
     },
@@ -2833,7 +2832,6 @@
         "categorias": [
             "Árbol de busqueda binaria",
             "Hashing"
-
         ],
         "estructuras": [
             "queue<>",
@@ -2962,6 +2960,238 @@
             "int"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c=0, d=0;\n    int num[1001];\n    cin>>a;\n    for(int i=0; i<=a; i++){\n        cin>>num[i];\n        c+=(num[i]*i);\n    }\n    if(c==0){\n        cout<<\"0 0\";return 0;\n    }\n    while(d<a){\n        d++;\n        for(int i=d; i<=a; i++){\n            c-=num[i];\n        }\n        for(int i=d-1; i>=0; i--){\n            b+=num[i];\n        }\n        if(b==c){\n            cout<<d<<\" \"<<b;return 0;\n        }\n        if(b>c){\n            cout<<\"-1 0\";return 0;\n        }\n    }\n    cout<<\"-1 0\";\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "102. Cadenas de Potencias de 2",
+        "url": "https://omegaup.com/arena/problem/cadenasp2/",
+        "descripcion": "Si hicieras listas del 1 a una potencia de 2, las primeras cinco listas serían:1 12 1234 12345678 12345678910111213141516. Si solamente te quedaras con la cifra de las unidades y juntas todas esas cifras quedaría una cadena de este tipo: 1121234123456781234567890123456. Ahora imagina que se hace lo anterior para una infinidad de listas, ¿podrías decir qué cifra está en el lugar y a qué número corresponde dicha cifra?",
+        "entrada": "La primera línea tendrá un entero , la cantidad de números en la lista, 0<n<=2^62",
+        "salida": "Una línea con dos números separados por un espacio, la cifra y el número al que corresponde.",
+        "nivel": "Nivel Intermedio: Matemáticas en la programación",
+        "categorias": [
+            "Lenguaje",
+            "Cálculos aritméticos"
+        ],
+        "estructuras": [
+            "unsigned long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    unsigned long long a, b = 1, c = 0;\n    cin >> a;\n    while (c < a)\n    {\n        c += b;\n        b *= 2;\n    }\n    if (c == a)\n    {\n        cout << (b / 2) % 10 << \" \" << b / 2;\n        return 0;\n    }\n    c -= (b / 2);\n    cout << (a - c) % 10 << \" \" << a - c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "2274. Arte Vacuno",
+        "url": "https://omegaup.com/arena/problem/Arte-Vacuno/",
+        "descripcion": "Un hecho poco conocido acerca de las vacas es que ellas son ciegas para el color verde, para ellas los colores rojo y verde se ven iguales. Esto hace especialmente difícil diseñar arte que sea atractivo tanto para vacas como para humanos. Considere una pintura en un cuadrado que está descrito como una cuadrícula NxN de caracteres (1 <= N <= 100), cada uno o R (rojo), G (verde) o B (azul). Una pintura es interesante si tiene muchas regiones coloreadas que puedan distinguirse unas de otras. Dos caracteres pertenecen a la misma región si están adyacentes directamente (este, oeste, norte o sur) y si ellas son indistinguibles por color. Por ejemplo, la pintura RRRBB GGBBB BBBRR BBRRR RRRRR tiene 4 regiones (2 rojas,1 azul y 2 verdes) si es vista por un humano y únicamente 3 regiones (2 rojo-verde, 1 azul) si es vista por una vaca. Dada una pintura como entrada, por favor, ayude a calcular el número de regiones en la pintura cuando es vista por un humano y cuando es vista por una vaca.",
+        "entrada": "Línea 1: El entero N. Líneas 2..1+N: Cada línea contiene una cadena con N caracteres, describiendo una fila de pintura.",
+        "salida": "Línea 1: Dos enteros separados por espacio, diciendo el número de regiones en la pintura cuando es vista por un humano y por una vaca.",
+        "nivel": "",
+        "categorias": [
+            "Lenguaje"
+        ],
+        "estructuras": [
+            "struct",
+            "long",
+            "char",
+            "num[][]",
+            "queue<long, char>",
+            "int"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nlong long a, c = 0;\nstruct sobra\n{\n    long aa, bb;\n    char cc;\n};\nchar num[102][102];\nqueue<sobra> falta;\nsobra z;\n\nvoid sub(sobra x, char y)\n{\n    c++;\n    if (y == 'B')\n    {\n        num[x.aa][x.bb] = '2';\n        x.cc = '2';\n    }\n    else\n    {\n        num[x.aa][x.bb] = '1';\n        x.cc = '1';\n    }\n    falta.push(x);\n    while (falta.size())\n    {\n        x = falta.front();\n        falta.pop();\n        x.aa++;\n        if (num[x.aa][x.bb] == y)\n        {\n            num[x.aa][x.bb] = x.cc;\n            falta.push(x);\n        }\n        x.aa -= 2;\n        if (num[x.aa][x.bb] == y)\n        {\n            num[x.aa][x.bb] = x.cc;\n            falta.push(x);\n        }\n        x.aa++;\n        x.bb++;\n        if (num[x.aa][x.bb] == y)\n        {\n            num[x.aa][x.bb] = x.cc;\n            falta.push(x);\n        }\n        x.bb -= 2;\n        if (num[x.aa][x.bb] == y)\n        {\n            num[x.aa][x.bb] = x.cc;\n            falta.push(x);\n        }\n    }\n}\n\nvoid sum(sobra x, char y)\n{\n    c++;\n    falta.push(x);\n    while (falta.size())\n    {\n        x = falta.front();\n        falta.pop();\n        x.aa++;\n        if (num[x.aa][x.bb] == y)\n        {\n            num[x.aa][x.bb] = '.';\n            falta.push(x);\n        }\n        x.aa -= 2;\n        if (num[x.aa][x.bb] == y)\n        {\n            num[x.aa][x.bb] = '.';\n            falta.push(x);\n        }\n        x.aa++;\n        x.bb++;\n        if (num[x.aa][x.bb] == y)\n        {\n            num[x.aa][x.bb] = '.';\n            falta.push(x);\n        }\n        x.bb -= 2;\n        if (num[x.aa][x.bb] == y)\n        {\n            num[x.aa][x.bb] = '.';\n            falta.push(x);\n        }\n    }\n}\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin >> a;\n    for (int i = 1; i <= a; i++)\n    {\n        for (int j = 1; j <= a; j++)\n        {\n            cin >> num[i][j];\n        }\n    }\n    for (int i = 1; i <= a; i++)\n    {\n        for (int j = 1; j <= a; j++)\n        {\n            if (num[i][j] == 'R')\n            {\n                z.aa = i;\n                z.bb = j;\n                sub(z, 'R');\n            }\n            else if (num[i][j] == 'G')\n            {\n                z.aa = i;\n                z.bb = j;\n                sub(z, 'G');\n            }\n            else if (num[i][j] == 'B')\n            {\n                z.aa = i;\n                z.bb = j;\n                sub(z, 'B');\n            }\n        }\n    }\n    cout << c << \" \";\n    c = 0;\n    for (int i = 1; i <= a; i++)\n    {\n        for (int j = 1; j <= a; j++)\n        {\n            if (num[i][j] == '1')\n            {\n                z.aa = i;\n                z.bb = j;\n                sum(z, '1');\n            }\n            else if (num[i][j] == '2')\n            {\n                z.aa = i;\n                z.bb = j;\n                sum(z, '2');\n            }\n        }\n    }\n    cout << c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "3696. Bienevales",
+        "url": "https://omegaup.com/arena/problem/Bienevales/",
+        "descripcion": "Como todo inicio de semestre y como todo buen \"estudihambre\". Karel debe ir a recoger sus bienevales a la temible fila. Como todos los años, la fila es enorme, le da 2 vueltas a toda la escuela y hace un calor tremendo. Por si fuera poco, el que está entregando los bienevales tiene una familia enorme y a todos sus primos los esta dejando formarse en el décimo lugar de la fila, sin importar que hayan mas primos detrás de el. Karel está muy molesto y para no perder la costumbre, ha decidido escribir un programa que simule lo que le pasa para perder el tiempo. Ayúdalo creando un programa que soporte 2 tipos de operaciones: La operación uno consiste en que llega una persona identificada con el número X. La operación 2 indica que han sido atendidas X personas de la fila.",
+        "entrada": "En la primer linea, un número 1<=n<=500000 con la cantidad de consultas. En las siguientes n lineas 2 números separados por un espacio, O y X, donde O representa el tipo de operación y X el argumento de la operación.",
+        "salida": "Una única línea con todos los números que fueron procesados y el orden en que estos fueron atendidos separados por un espacio.",
+        "nivel": "",
+        "categorias": [
+            "OMI Jalisco",
+            "Lenguaje",
+            "OMI"
+        ],
+        "estructuras": [
+            "long long",
+            "queue<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d;\n    queue<int> falta;\n    cin >> a;\n    while (a--)\n    {\n        cin >> b >> c;\n        if (b == 2)\n        {\n            while (c-- && falta.size())\n            {\n                cout << falta.front() << \" \";\n                falta.pop();\n            }\n            continue;\n        }\n        if (c == 1 || (c % 2 == 0 && c != 2) || falta.size() < 10)\n        {\n            falta.push(c);\n            continue;\n        }\n        b = sqrt(c);\n        if ((b * b) == c)\n        {\n            falta.push(c);\n            continue;\n        }\n        b = 3;\n        while (b < sqrt(c))\n        {\n            if (c % b == 0)\n            {\n                falta.push(c);\n                b = 0;\n                break;\n            }\n            b += 2;\n        }\n        if (b == 0)\n        {\n            continue;\n        }\n        d = falta.size() - 9;\n        b = 9;\n        while (b--)\n        {\n            falta.push(falta.front());\n            falta.pop();\n        }\n        falta.push(c);\n        while (d--)\n        {\n            falta.push(falta.front());\n            falta.pop();\n        }\n    }\n    while (falta.size())\n    {\n        cout << falta.front() << \" \";\n        falta.pop();\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "6483. Bolsa de valores",
+        "url": "https://omegaup.com/arena/problem/Bolsa-de-valores/",
+        "descripcion": "Se compra una acción del mercado de valores de cierta compañía y se analiza su comportamiento a lo largo de una hora. Al inicio, la acción se mantiene estable, pero en determinado momento, el comportamiento de la acción comienza a variar. Compara el precio de la acción al principio y al final del tiempo para decidir si hubo ganancia o pérdida de valor y de cuánto fué ese cambio.",
+        "entrada": "La primer línea contiene el valor inicial de la acción. La segunda línea recibe un número que decidirá cuántas veces cambió el comportamiento de la acción. Después, por cada vez que cambie el comportamiento, se reciben dos líneas, cada una conteniendo un número, la primera que indica en qué minuto cambió de comportamiento y la segunda, que indica el porcentaje de cambio de valor por minuto de la acción. Cada minuto a partir del tiempo asignado, hasta el siguiente cambio, la acción cambiará el porcentaje referido. Los cambios pueden iniciar en cualquier momento entre el minuto 0 y el 59. El cambio en el minuto 60, ya no se considera como parte de la hora indicada.",
+        "salida": "Si la acción ganó valor, la frase \"LA ACCION GANA n%\", donde n, es el porcentaje de cambio con respecto al valor inicial, redondeado a dos decimales. Si la acción perdió valor, la frase \"LA ACCION PIERDE n%\", donde n, es el porcentaje de cambio en positivo con respecto al valor inicial, redondeado a dos decimales.",
+        "nivel": "",
+        "categorias": [
+            "Lenguaje"
+        ],
+        "estructuras": [
+            "long double",
+            "pair<long,long>[]",
+            "long long",
+            "long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b, c;\n    pair<long, long> num[100];\n    long long z, zz;\n    cin >> a >> zz;\n    c = a;\n    while (zz--)\n    {\n        cin >> z >> b;\n        if (z >= 0 && z <= 59)\n        {\n            num[z].first = b;\n            num[z].second = 1;\n        }\n    }\n    b = 0;\n    for (long i = 0; i <= 59; i++)\n    {\n        if (num[i].second)\n        {\n            b = num[i].first;\n        }\n        if (b == 0)\n        {\n            continue;\n        }\n        if (b > 0)\n        {\n            a += ((a / 100) * b);\n        }\n        else\n        {\n            a -= ((a / 100) * fabs(b));\n        }\n    }\n    if (a >= c)\n    {\n        b = c / 10000;\n        a /= b;\n        a -= 10000;\n        a /= 100;\n        cout << fixed << setprecision(2) << \"LA ACCION GANA \" << a << \"%\";\n    }\n    else\n    {\n        b = c / 10000;\n        a /= b;\n        a /= 100;\n        a = 100 - a;\n        cout << fixed << setprecision(2) << \"LA ACCION PIERDE \" << a << \"%\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "7955. Busca la Clave",
+        "url": "https://omegaup.com/arena/problem/Busca-la-Clave-/",
+        "descripcion": "María y Cristina necesitan comunicarse una clave numérica (un PIN), desde luego no desean que nadie se entere de la clave que se comunican. Desafortunadamente para ellas, es muy posible que alguien esté interceptando sus mensajes. Como ellas saben que esto es posible, idean un esquema de oclusión. Es decir, el que él número que desean comunicarse se esconde en una secuencia grande de números. Ellas codifican la información necesaria para encontrar el número en la misma secuencia de números. Esto es lo que hacen; primero se envían M números enteros, en desorden, después envían un número mas (N). La clave se esconde en la secuencia y es uno de los M números. Se trata del número que es el inmediato mayor a N. Su tarea consiste en escribir un programa para encontrar la clave oculta en el mensaje. Su programa recibe primero un número (M), después recibe M números enteros. Al final recibe otro número (N). Su programa debe imprimir la clave oculta. Por ejemplo suponga que María y Cristina se envían el siguiente mensaje 5 3 8 4 10 9 7. En este caso, la clave es 8 pues es el número (en la serie de cinco números) que es el inmediato mayor a 7.",
+        "entrada": "Primera Entrada: Un numero 0<M que indique el numero de enteros a recibir. Segunda Entrada: El mensaje indicado por M numeros separados por espacios. Tercer Entrada: Numero 0<N que indique la condicion de la clave oculta.",
+        "salida": "Aquellos numeros del mensaje que cumplan con la condicion",
+        "nivel": "...",
+        "categorias": [
+            "Lenguaje"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<long>",
+            "long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    vector<long> falta;\n    cin >> a;\n    while (a--)\n    {\n        cin >> b;\n        falta.push_back(b);\n    }\n    cin >> a;\n    sort(falta.begin(), falta.end());\n    for (long i = 0; i < falta.size(); i++)\n    {\n        if (falta[i] > a)\n        {\n            cout << falta[i];\n            return 0;\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "969. Intersecciones",
+        "url": "https://omegaup.com/arena/problem/Intersecciones/",
+        "descripcion": "Existe cierta ciudad donde el flujo del tránsito es muy controlado, sobre todo en las intersecciones de calles y avenidas. Algunas intersecciones están prohibidas, otras solo te permiten moverte de norte o sur, otras al este u oeste y algunas te permiten ir en cualquier dirección (N,S,E,O). Afortunadamente, cuentas con un mapa que indica a través de símbolos, como puedes moverte. Específicamente existen 4 símbolos: + indica que te puedes mover en cualquier dirección, - indica que te puedes mover únicamente al este u oeste a partir de tu ubicación, | indica que solo puedes moverte al norte o sur. '*' indica que está prohibido pasar por esa intersección.",
+        "entrada": "En las primeras dos líneas los números R, C que denotan el numero de filas y columnas del mapa, respectivamente.En las siguientes R líneas, C caracteres que describen las intersecciones de la ciudad.",
+        "salida": "Una línea con un número que denota el mínimo número de intersecciones por las que tienes que pasar para llegar a la esquina inferior derecha de la ciudad desde la esquina superior izquierda. Imprime -1 en caso de que no sea posible.",
+        "nivel": "Nivel Intermedio: Análisis y diseño de algoritmos",
+        "categorias": [
+            "Lenguaje",
+            "Búsqueda en amplitud"
+        ],
+        "estructuras": [
+            "long long",
+            "struct",
+            "int",
+            "queue<int>",
+            "char[][]"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    struct sobra\n    {\n        int aa, bb, cc;\n    };\n    queue<sobra> falta;\n    char num[102][102];\n    sobra z;\n    cin >> a >> b;\n    for (int i = 1; i <= a; i++)\n    {\n        for (int j = 1; j <= b; j++)\n        {\n            cin >> num[i][j];\n        }\n    }\n    if (num[1][1] == '*')\n    {\n        cout << \"-1\";\n        return 0;\n    }\n    z.aa = 1;\n    z.bb = 1;\n    z.cc = 1;\n    falta.push(z);\n    while (falta.size())\n    {\n        z = falta.front();\n        falta.pop();\n        z.cc++;\n        if (num[z.aa][z.bb] == '+')\n        {\n            z.aa++;\n            if (z.aa == a && z.bb == b)\n            {\n                cout << z.cc;\n                return 0;\n            }\n            if (num[z.aa][z.bb] != '*')\n            {\n                falta.push(z);\n            }\n            z.aa -= 2;\n            if (z.aa == a && z.bb == b)\n            {\n                cout << z.cc;\n                return 0;\n            }\n            if (num[z.aa][z.bb] != '*')\n            {\n                falta.push(z);\n            }\n            z.aa++;\n            z.bb++;\n            if (z.aa == a && z.bb == b)\n            {\n                cout << z.cc;\n                return 0;\n            }\n            if (num[z.aa][z.bb] != '*')\n            {\n                falta.push(z);\n            }\n            z.bb -= 2;\n            if (z.aa == a && z.bb == b)\n            {\n                cout << z.cc;\n                return 0;\n            }\n            if (num[z.aa][z.bb] != '*')\n            {\n                falta.push(z);\n            }\n            z.bb++;\n        }\n        else if (num[z.aa][z.bb] == '-')\n        {\n            z.bb++;\n            if (z.aa == a && z.bb == b)\n            {\n                cout << z.cc;\n                return 0;\n            }\n            if (num[z.aa][z.bb] != '*')\n            {\n                falta.push(z);\n            }\n            z.bb -= 2;\n            if (z.aa == a && z.bb == b)\n            {\n                cout << z.cc;\n                return 0;\n            }\n            if (num[z.aa][z.bb] != '*')\n            {\n                falta.push(z);\n            }\n            z.bb++;\n        }\n        else if (num[z.aa][z.bb] == '|')\n        {\n            z.aa++;\n            if (z.aa == a && z.bb == b)\n            {\n                cout << z.cc;\n                return 0;\n            }\n            if (num[z.aa][z.bb] != '*')\n            {\n                falta.push(z);\n            }\n            z.aa -= 2;\n            if (z.aa == a && z.bb == b)\n            {\n                cout << z.cc;\n                return 0;\n            }\n            if (num[z.aa][z.bb] != '*')\n            {\n                falta.push(z);\n            }\n            z.aa++;\n        }\n        num[z.aa][z.bb] = '*';\n    }\n    cout << \"-1\";\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "8546. Coeficiente binomial recursivo",
+        "url": "https://omegaup.com/arena/problem/Coeficiente-binomial-recursivo/",
+        "descripcion": "El coeficiente binomial binom{N}{K} puede definirse de forma recursiva como binom{N}{K} = binom{N - 1}{K} + binom{N - 1}{K - 1} y binom{N}{0} = binom{N}{N} = 1. Escribe un programa que calcule el valor de y cuántas llamadas a función hace la implementación recursiva (incluyendo la llamada original).",
+        "entrada": "Dos enteros N y K. Puedes suponer que 0<=K<=N<=30.",
+        "salida": "Dos enteros que sean el valor de binom{N}{K} y el número de llamadas a función que realiza la implementación recursiva, respectivamente.",
+        "nivel": "Nivel Intermedio: Análisis y diseño de algoritmos",
+        "categorias": [
+            "Lenguaje",
+            "Recursión",
+            "Análisis de recurrencias"
+        ],
+        "estructuras": [
+            "unsigned long long",
+            "int",
+            "long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nunsigned long long a, b, c = 0, d;\n\nint num(long x, long y)\n{\n    c++;\n    if (x == y || y == 0)\n    {\n        return 1;\n    }\n    return num(x - 1, y) + num(x - 1, y - 1);\n}\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin >> a >> b;\n    d = num(a, b);\n    cout << d << \" \" << c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4183. Contando Ovejas",
+        "url": "https://omegaup.com/arena/problem/Contando-Ovejas/",
+        "descripcion": "Bleatrix Trotter la oveja ha ideado una estrategia que le ayude a conciliar el sueño más rápido. En primer lugar, elige un número N. Entonces empieza nombrando N, 2N, 3N, , y así sucesivamente. Cada vez que nombra un número, piensa en todos sus dígitos y guarda un registro de los dígitos (0, 1, 2, 3, 4, 5, 6, 7, 8, y 9) que ha visto al menos una vez desde que inicio a nombrar. Una vez que ha visto cada uno de los diez dígitos al menos una vez, se quedará dormida. Bleatrix debe comenzar con N  y continuara siempre con (i+1)*N directamente después de i*N Por ejemplo, supongamos que Bleatrix elige N = 1692. ella contaría como sigue: N = 1692. Ahora ha visto a los dígitos 1, 2, 6, y 9; 2N =  3384. Ahora ya ha visto los dígitos 1, 2, 3, 4, 6, 8, y 9; 3N = = 5076. Ahora que ha visto los diez dígitos, se queda dormida. ¿Cuál es el último número que va a nombrar antes de dormirse? Si contará para siempre, mostrar INSOMNIA en su lugar.",
+        "entrada": "La primera línea de la entrada da el número de casos de prueba T.T (1<=T<=100) lineas siguen cada una consta de un único entero N (0<=N<=106), el número que Bleatrix ha elegido.",
+        "salida": "Para cada caso de prueba, la salida en una línea que contiene Case #x:y, donde x es el número del caso de prueba (comenzando en 1) y y  es el último número que Bleatrix nombrará antes de dormirse, de acuerdo con las reglas descritas en la descripción.",
+        "nivel": "...",
+        "categorias": [
+            "Lenguaje"
+        ],
+        "estructuras": [
+            "long long",
+            "int[]",
+            "int"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e;\n    int num[10];\n    cin >> a;\n    for (int i = 1; i <= a; i++)\n    {\n        cin >> b;\n        if (b == 0)\n        {\n            cout << \"Case #\" << i << \": INSOMNIA\\n\";\n            continue;\n        }\n        cout << \"Case #\" << i << \": \";\n        c = 0;\n        d = 10;\n        while (d)\n        {\n            c += b;\n            e = c;\n            while (e)\n            {\n                if (num[e % 10] == 0)\n                {\n                    num[e % 10]++;\n                    d--;\n                }\n                e /= 10;\n            }\n        }\n        cout << c << \"\\n\";\n        for (int i = 0; i < 10; i++)\n        {\n            num[i] = 0;\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "7785. Contenedores Nueva Jersey",
+        "url": "https://omegaup.com/arena/problem/Contenedores-Nueva-Jersey/",
+        "descripcion": "Luis trabaja en la terminal de carga de contenedores en Nueva Jersey (Estados Unidos) y se encarga de almacenar diferente objetos voluminosos pesados para su transporte por vía marítima. Luis tiene objetos que tiene que almacenar en  m contenedores, cada contenedor tiene un tamaño exactamente de k. Luis enumera los objetos del 1 al n en orden de izquierda a derecha, el tamaño del i-ésimo objeto es a_i Para almacenar los objetos Luis tiene una forma particular para acomodarlos dentro de los contenedores la cual se explica a continuación: Luis empieza con un contenedor vacío y para acomodar cada objeto los recorre de izquierda a derecha y si el i-ésimo objeto encaja en el contenedor actual (el tamaño restante del contenedor es mayor o igual que a_i) lo acomoda dentro del contenedor y el espacio restante disminuye en a_i De lo contrario, abre un nuevo contenedor vacío y continúa el proceso anterior. Si llega el momento en que Luis ya no tiene contenedores vacíos y hay al menos un objeto que no fue almacenado en ningún contenedor, entonces Luis no puede almacenar el conjunto de objetos elegido. Luis quiere saber el número máximo de objetos que puede almacenar en los contenedores con el proceso anterior. Para alcanzar esta meta, Luis descarta el objeto situado más a la izquierda del conjunto hasta que el conjunto restante de objetos pueda ser almacenado en los contenedores disponibles. La meta es decir el número máximo de objetos que Luis puede almacenar en los contenedores vacíos que tiene a su disposición. Cada vez que Luis intenta almacenar objetos en los contenedores, vaciará todos los contenedores que tiene antes de hacerlo (y el orden relativo del conjunto restante de objetos no cambiará).",
+        "entrada": "La primera línea de entrada contiene 3 enteros n, m, k (1<=n, m<=2x10^5, 1<=k<=10^9) - el número de objetos, el número de contenedores y el tamaño de cada contenedor.  La segunda línea de la entrada contiene n enteros a_1,a_2,…,a_n (1<=a_i<=k), donde a_i es el tamaño del i-ésimo objeto.",
+        "salida": "Imprimir el número máximo de los objetos que Luis puede almacenar usando el proceso descrito anteriormente.",
+        "nivel": "...",
+        "categorias": [
+            "Lenguaje"
+        ],
+        "estructuras": [
+            "long long",
+            "int[]",
+            "int"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f = 0;\n    int num[200001];\n    cin >> a >> b >> c;\n    for (int i = 0; i < a; i++)\n    {\n        cin >> num[i];\n    }\n    d = b - 1;\n    e = c;\n    for (int i = a - 1; i >= 0; i--)\n    {\n        e -= num[i];\n        if (e < 0)\n        {\n            if (num[i] > c)\n            {\n                cout << (a - i) - 1;\n                return 0;\n            }\n            d--;\n            if (d < 0)\n            {\n                f = i;\n                break;\n            }\n            e = c;\n            e -= num[i];\n        }\n    }\n    e = c;\n    b--;\n    for (int i = f; i < a; i++)\n    {\n        e -= num[i];\n        if (e < 0)\n        {\n            b--;\n            if (b < 0)\n            {\n                cout << a - (f + 1);\n                return 0;\n            }\n            e = c;\n            e -= num[i];\n        }\n    }\n    cout << a - f;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "2257. Conversión de Números Romanos",
+        "url": "https://omegaup.com/arena/problem/Conversion-de-Nemeros-Romanos/",
+        "descripcion": "Se te da un numero 1<=N<=3999, y deberás realiza la converción equivalente en números romanos. Aunque existen los limites, es necesarios que realices la validación correspondiente y en caso de no cumplir la validación deberás imprimir un mensaje idéntico al siguiente: LIMITE EXCEDIDO",
+        "entrada": "Para este ejercicio, como entrada recibe únicamente un número entero.",
+        "salida": "La salida deberá imprimir a consola el equivalente en romano de número proporcionado.",
+        "nivel": "Nivel Básico: Introducción a la programación",
+        "categorias": [
+            "Lenguaje",
+            "Cálculos aritméticos",
+            "Toma de decisiones",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "unsigned long long",
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    unsigned long long a;\n    string z = \"\", zz;\n    cin >> a;\n    if (a < 1 || a > 3999)\n    {\n        cout << \"LIMITE EXCEDIDO\";\n        return 0;\n    }\n    if (a % 10)\n    {\n        switch (a % 10)\n        {\n        case 1:\n            zz = \"I\";\n            break;\n        case 2:\n            zz = \"II\";\n            break;\n        case 3:\n            zz = \"III\";\n            break;\n        case 4:\n            zz = \"IV\";\n            break;\n        case 5:\n            zz = \"V\";\n            break;\n        case 6:\n            zz = \"VI\";\n            break;\n        case 7:\n            zz = \"VII\";\n            break;\n        case 8:\n            zz = \"VIII\";\n            break;\n        case 9:\n            zz = \"IX\";\n            break;\n        }\n        z = zz + z;\n    }\n    a /= 10;\n    if (a % 10)\n    {\n        switch (a % 10)\n        {\n        case 1:\n            zz = \"X\";\n            break;\n        case 2:\n            zz = \"XX\";\n            break;\n        case 3:\n            zz = \"XXX\";\n            break;\n        case 4:\n            zz = \"XL\";\n            break;\n        case 5:\n            zz = \"L\";\n            break;\n        case 6:\n            zz = \"LX\";\n            break;\n        case 7:\n            zz = \"LXX\";\n            break;\n        case 8:\n            zz = \"LXXX\";\n            break;\n        case 9:\n            zz = \"XC\";\n            break;\n        }\n        z = zz + z;\n    }\n    a /= 10;\n    if (a % 10)\n    {\n        switch (a % 10)\n        {\n        case 1:\n            zz = \"C\";\n            break;\n        case 2:\n            zz = \"CC\";\n            break;\n        case 3:\n            zz = \"CCC\";\n            break;\n        case 4:\n            zz = \"CD\";\n            break;\n        case 5:\n            zz = \"D\";\n            break;\n        case 6:\n            zz = \"DC\";\n            break;\n        case 7:\n            zz = \"DCC\";\n            break;\n        case 8:\n            zz = \"DCCC\";\n            break;\n        case 9:\n            zz = \"CM\";\n            break;\n        }\n        z = zz + z;\n    }\n    a /= 10;\n    if (a % 10)\n    {\n        switch (a % 10)\n        {\n        case 1:\n            zz = \"M\";\n            break;\n        case 2:\n            zz = \"MM\";\n            break;\n        case 3:\n            zz = \"MMM\";\n            break;\n        }\n        z = zz + z;\n    }\n    cout << z;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4532. Cuadrados Pintados al reves",
+        "url": "https://omegaup.com/arena/problem/Cuadrados-Pintados-al-reves/",
+        "descripcion": "Escriba un programa que pida n números y los guarde en un arreglo. Luego debe escribir el cuadrado de cada número en orden inverso al que fueron introducidos.",
+        "entrada": "La primera linea contiene un entero n que esta entre 1 y 100, le siguen n líneas con lo números del arreglo. solo se aceptan 100 elementos, *--",
+        "salida": "El cuadrado de cada elemento del arreglo, desplegado en orden inverso al que fueron introducidos.",
+        "nivel": "Nivel Básico: Introducción a la programación",
+        "categorias": [
+            "Lenguaje",
+            "Arreglos",
+            "Cálculos aritméticos",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "stack<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    stack<int> falta;\n    cin >> a;\n    while (a--)\n    {\n        cin >> b;\n        b *= b;\n        falta.push(b);\n    }\n    while (falta.size())\n    {\n        cout << falta.top() << \"\\n\";\n        falta.pop();\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4662. Cómo enviar Problemas",
+        "url": "https://omegaup.com/arena/problem/Como-enviar-Problemas/",
+        "descripcion": "Natalia es una estudiante entusiasta que le encanta asumir retos nuevos. Por ello ha decidido participar del Concurso Escolar de Programación. Pero nunca antes ha participado en nada similar, así que no sabe cómo sus respuestas son calificadas. Ella cree que habrá una persona que reciba su código, lo compile y lo ejecute manualmente para decidir si es correcto o no. Pero lo cierto es que todo eso lo realiza un sistema automático. Para ello, Natalia debe hacer que su programa lee datos de la entrada estándar y escriba datos en la salida estándar. Clarifiquemos con un ejemplo. Sea el siguiente problema: Dados 2 enteros a y b (1<=a,b<=1000000). Los enteros son presentados en una única línea, separados por un espacio. Imprime un único entero, la suma de a y b. Tu primera tarea es similar: calcula la suma de todos los números desde a hasta b.",
+        "entrada": "La entrada consiste de una única línea que contiene 2 enteros a y b (a<=b), separados por un espacio. Para el grupo 1 (30 pts): 1<=a, b<=1000000, b=a+1. Para el grupo 2 (30 pts): 1<=a, b<=1000000. Para el grupo 3 (40 pts): 1<=a, b<=1000000000.",
+        "salida": "Un único entero, la suma de todos los números desde a hasta b.",
+        "nivel": "Nivel Básico: Introducción a la programación",
+        "categorias": [
+            "Lenguaje",
+            "Entrada y salida"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c;\n    cin >> a >> b;\n    a--;\n    c = (((b + 1) * b) / 2) - (((a + 1) * a) / 2);\n    cout << c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "...",
+        "url": "...",
+        "descripcion": "...",
+        "entrada": "...",
+        "salida": "...",
+        "nivel": "...",
+        "categorias": [
+            "...",
+            "..."
+        ],
+        "estructuras": [
+            "..."
+        ],
+        "codigo": ".."
     },
     "Problemas totales: 161",
     "Avanzado (difícil) - Programación competitiva: 4",
