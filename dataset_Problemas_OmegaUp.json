@@ -2896,6 +2896,12 @@
         "descripcion": "Un arreglo en cierto lenguaje de programación está definido de la siguiente manera: El inicio y el final de un arreglo está denotado por una llave abierta y cerrada, respectivamente. Dentro de las llaves, hay (posiblemente 0) valores separados por comas (no hay una coma después del último elemento del arreglo). Cada valor puede ser una palabra (un arreglo de letras minúsculas del alfabeto inglés) u otro arreglo. Ejemplos de arreglos correctamente definidos son: {}, {a,b,c}, {abc,znj,{novi,niz},pozz}. Recientemente, has notado que el lenguaje de programación no arroja un error si no colocas la cantidad apropiada de espacios y líneas nuevas antes o después de las llaves o las comas. Dado el hecho de que te molesta que los valores estén muy apretados, has decidido ponerte a trabajar y modificar la forma de los arreglos de la siguiente manera: Cada valor que no es un arreglo o denota el inicio o el final de un arreglo (llaves) estará en su propia línea. Las comas están 'conectadas' con el valor ubicado directamente antes de ellas y hay una línea nueva después de cada coma. Después de la llave que denota el inicio de un arreglo, la indentación aumenta (moviendo el contenido a la derecha) dos espacios. Antes de la llave que denota el final de un arreglo '}', la indentación del contenido disminuye (moviendo el contenido a la izquierda) dos espacios.",
         "entrada": "La primera línea de entrada contiene un arreglo de caracteres S (1<=|S|<=1500) representando el arreglo de la tarea.",
         "salida": "La salida debe consistir de la versión modificada del arreglo de la tarea.",
+        "nivel": "",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "long long",
             "string"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a=0, b, c;\n    string z, zz=\"\";\n    getline(cin,z);\n    for(int i=0; i<z.size()-1; i++){\n        if(z[i]==' ' || z[i]==','){\n            continue;\n        }\n        if(z[i]=='{'){\n            b=a;\n            while(b--){\n                cout<<\" \";\n            }\n            cout<<z[i]<<\"\\n\";\n            a+=2;continue;\n        }\n        if(z[i]=='}'){\n            b=1;\n            for(int j=i+1; j<z.size(); j++){\n                if(z[j]=='}'){\n                    b--;break;\n                }\n                if(z[j]!=' ' && z[j]!=','){\n                    break;\n                }\n            }\n            a-=2;\n            c=a;\n            while(c--){\n                cout<<\" \";\n            }\n            cout<<\"}\";\n            if(b){\n                cout<<\",\";\n            }\n            cout<<\"\\n\";continue;\n        }\n        zz=zz+z[i];\n        i++;\n        while(z[i]!=' ' && z[i]!=',' && z[i]!='{' && z[i]!='}'){\n            zz=zz+z[i];\n            i++;\n        }\n        i--;\n        b=a;\n        while(b--){\n            cout<<\" \";\n        }\n        cout<<zz;\n        zz=\"\";\n        b=1;\n        for(int j=i+1; j<z.size(); j++){\n            if(z[j]=='}'){\n                b--;break;\n            }\n            if(z[j]!=' ' && z[j]!=','){\n                break;\n            }\n        }\n        if(b){\n            cout<<\",\";\n        }\n        cout<<\"\\n\";\n    }\n    cout<<\"}\";\n    \n    return 0;\n}"
@@ -2924,13 +2930,15 @@
         "descripcion": "Las votaciones en Nlognoria están a punto de llevarse a cabo, sin embargo, los ciudadanos no saben con certeza en dónde se encuentra su casilla para votar. Debido a este problema, el CEN (Consejo Nacional Electoral) de Nlognoria, ha decidido intervenir y te ha contratado para que les ayudes en esta importante labor. Lo interesante en esto, es que desde su fundación, Nlognoria siempre ha sido un país bastante regular, en primer lugar, se conforma de un territorio rectangular de anchura N y altura M, el cual se encuentra dividido en N x M regiones cuadradas, en donde en cada una puede haber una montaña, un pastizal, un tramo de agua o una casa. A su vez, los habitantes se organizaron en pueblos, construyendo nuevas casas en forma ortogonal a las ya existentes, o aislándose para crear un nuevo pueblo. Debido a esto, dos casas se encuentran en el mismo pueblo solo si existe un camino de movimientos ortogonales compuesto únicamente por casas que las interconecta. Cada habitante conoce las coordenadas donde se encuentra su casa. Para este año el CEN ha decidido poner una casilla en cada pueblo y lo hará primero buscando la casa que se encuentra más abajo y después la más a la derecha de cada uno. Así que el programa que te han encomendado tiene como objetivo que los ciudadanos puedan ingresar las coordenadas de su casa y éste imprima las coordenadas de la casilla en donde le toca votar.",
         "entrada": "La entrada comienza con dos números enteros N y M separados por un espacio con 1<=N,M<=10^2, que indica la anchura y longitud que tiene Nlognoria, posteriormente le siguen N líneas, cada una con M enteros 0<=m_i<=3 separados entre si por un espacio, en donde el valor 0 indica una porción de agua, el 1 una montaña, el 2 un pastizal y el 3 una casa. Seguido a esto se tiene un entero Q con 1<=Q<=10^4 que indica el número de peticiones que se harán al programa, seguido de Q coordenadas enteras en formato x y con 1<=x<=N y 1<=y<=M separadas por un espacio.",
         "salida": "Para cada petición, se deberá imprimir una línea en formato (x,y) la cual representa las coordenadas de la casilla en la que le toca votar al ciudadano, o la palabra montana, pastizal o agua indicando del tipo de terreno si es que no existe una casa en ese lugar.",
-        "nivel": "",
+        "nivel": "Avanzado (difícil) - Programación competitiva",
         "categorias": [
-            ""
+            "Matrices",
+            "Colas",
+            "Búsqueda en amplitud"
         ],
         "estructuras": [
             "long long",
-            "pair<int,pair<int,int>>",
+            "pair<int,pair<int,int>>[][]",
             "queue<pair<int,int>>",
             "pair<int,int>"
         ],
