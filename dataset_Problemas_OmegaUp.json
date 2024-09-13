@@ -3178,6 +3178,109 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c;\n    cin >> a >> b;\n    a--;\n    c = (((b + 1) * b) / 2) - (((a + 1) * a) / 2);\n    cout << c;\n\n    return 0;\n}"
     },
     {
+        "titulo": "2320. Desfile vacuno facil",
+        "url": "https://omegaup.com/arena/problem/Desfile-vacuno/",
+        "descripcion": "Habiendo oído que la última tendencia de moda vacuna era vacas con dos manchas en sus pieles, el Granjero Juan ha comprado un rebaño enero de vacas con dos manchas. Desafortunadamente, las tendencias de moda cambian muy rápidamente, y la moda más popular en estos días son las vacas con una sola mancha. GJ quiere hacer que sus vacas estén más a la moda pintando cada una de sus vacas de tal manera que sus dos manchas se junten en una sola. La piel de una vaca se representa por una cuadrícula N por M (1 <= N,M <= 50) de caracteres. Aquí, cada 'X' denota parte de una mancha. Dos 'X's pertenecen a la misma mancha si se puede ir de una a la otra a través de Xs adyacentes vertical u horizontalmente (la adyacencia en diagonal no se tiene en cuenta). De tal manera que la figura anterior tiene exactamente dos manchas. Todas las vacas en el rebaño de GJ tienen exactamente dos manchas. GJ quiere usar tan poca pintura como sea posible para juntar las dos manchas en una. En el ejemplo anterior, él puede hacer esto pintando únicamente tres caracteres adicionales con 'X's. Ayude a GJ a determinar el mínimo número de nuevas 'X's que él debe pintar con el propósito de juntar las dos manchas en una sola mancha grande.",
+        "entrada": "Línea 1: Dos enteros separados por espacio, N y M. Líneas 2..1+N: Cada línea contiene una cadena de longitud M de 'X's y '.'s especificando una fila en el diseño de la piel de la vaca.",
+        "salida": "Línea 1: El mínimo número de nuevas 'X's que deben ser añadidas al diseño de la entrada con el propósito de obtener una sola mancha.",
+        "nivel": "",
+        "categorias": [
+            "Colas",
+            "Matrices"
+        ],
+        "estructuras": [
+            "long long",
+            "char[][]",
+            "queue<pair<int,int>>",
+            "vector<pair<int,int>>",
+            "pair<int,int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n	cin.tie(0);\n	ios_base::sync_with_stdio(0);\n	cout.tie(0);\n	long long a, b, c=0, d=1000000;\n	char num[52][52];\n	queue<pair<int,int>>falta;\n	vector<pair<int,int>>sub;\n	pair<int,int> z;\n	cin>>a>>b;\n	for(int i=1; i<=a; i++){\n		for(int j=1; j<=b; j++){\n			cin>>num[i][j];\n		}\n	}\n	for(int i=1; i<=a; i++){\n		for(int j=1; j<=b; j++){\n			if(num[i][j]=='X' && c==0){\n				z.first=i;\n				z.second=j;\n				sub.push_back(z);\n				num[i][j]='.';\n				falta.push(z);\n				while(falta.size()){\n					z=falta.front();\n					falta.pop();\n					z.first++;\n					if(num[z.first][z.second]=='X'){\n						sub.push_back(z);\n						num[z.first][z.second]='.';\n						falta.push(z);\n					}\n					z.first-=2;\n					if(num[z.first][z.second]=='X'){\n						sub.push_back(z);\n						num[z.first][z.second]='.';\n						falta.push(z);\n					}\n					z.first++;\n					z.second++;\n					if(num[z.first][z.second]=='X'){\n						sub.push_back(z);\n						num[z.first][z.second]='.';\n						falta.push(z);\n					}\n					z.second-=2;\n					if(num[z.first][z.second]=='X'){\n						sub.push_back(z);\n						num[z.first][z.second]='.';\n						falta.push(z);\n					}\n				}\n				c=1;\n			}\n			else if(num[i][j]=='X'){\n				z.first=i;\n				z.second=j;\n				for(long k=0; k<sub.size(); k++){\n					d=min(d,(long long)(fabs(i-sub[k].aa)+fabs(j-sub[k].second))-1);\n				}\n				num[i][j]='.';\n				falta.push(z);\n				while(falta.size()){\n					z=falta.front();\n					falta.pop();\n					z.first++;\n					if(num[z.first][z.second]=='X'){\n						for(long k=0; k<sub.size(); k++){\n					       d=min(d,(long long)(fabs(z.first-sub[k].aa)+fabs(z.second-sub[k].second))-1);\n				        }\n						num[z.first][z.second]='.';\n						falta.push(z);\n					}\n					z.first-=2;\n					if(num[z.first][z.second]=='X'){\n						for(long k=0; k<sub.size(); k++){\n					       d=min(d,(long long)(fabs(z.first-sub[k].aa)+fabs(z.second-sub[k].second))-1);\n				        }\n						num[z.first][z.second]='.';\n						falta.push(z);\n					}\n					z.first++;\n					z.second++;\n					if(num[z.first][z.second]=='X'){\n						for(long k=0; k<sub.size(); k++){\n					       d=min(d,(long long)(fabs(z.first-sub[k].aa)+fabs(z.second-sub[k].second))-1);\n				        }\n						num[z.first][z.second]='.';\n						falta.push(z);\n					}\n					z.second-=2;\n					if(num[z.first][z.second]=='X'){\n						for(long k=0; k<sub.size(); k++){\n					       d=min(d,(long long)(fabs(z.first-sub[k].aa)+fabs(z.second-sub[k].second))-1);\n				        }\n						num[z.first][z.second]='.';\n						falta.push(z);\n					}\n				}\n				c=1;\n			}\n		}\n	}\n	cout<<d;\n	\n	return 0;\n}"
+    },
+    {
+        "titulo": "8315. Desv.Est",
+        "url": "https://omegaup.com/arena/problem/DesvEst/",
+        "descripcion": "Calcular la desviación estandar de un conjunto de datos.",
+        "entrada": "La entrada tendrá el número de elementos de la lista de datos y posteriormente dicha lista de datos de enteros positivos.",
+        "salida": "La salida será el valor de la desviación estandar del conjunto de datos de entrada, redondeado a dos decimales.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Probabilidad",
+            "Ciclos",
+            "Cálculo matemático",
+            "Arreglos"
+        ],
+        "estructuras": [
+            "long double",
+            "long double[]"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n	cin.tie(0);\n	ios_base::sync_with_stdio(0);\n	cout.tie(0);\n	long double a, b, c;\n	long double num[101];\n	cin>>a;\n	for(long i=0; i<a; i++){\n		cin>>num[i];\n		b+=num[i];\n	}\n	b/=a;\n	for(long i=0; i<a; i++){\n		c+=pow((num[i]-b),2);\n	}\n	c/=a;\n	c=sqrt(c);\n	cout<<fixed<<setprecision(2)<<c;\n	\n	return 0;\n}"
+    },
+    {
+        "titulo": "4720. Divertidas Cadenas",
+        "url": "https://omegaup.com/arena/problem/Divertidas-Cadenas/#problems",
+        "descripcion": "A Ricardo no le gusta mucho leer, pero cuando lo hace disfruta leer cadenas donde no hay caracteres consecutivos iguales. Como no quiere aburrirse durante los sábados donde no hay Coding Rush ha decidido revisar cadenas de texto que se conforman únicamente de las letras A y B. Para Ricardo una cadena es aburrida cuando tiene caracteres consecutivos iguales y divertida en caso contrario. Para convertir todas las cadenas aburridas en divertidas sólo puede borrar letras. Tu tarea es determinar el número mínimo de letras a borrar para convertir una cadena en divertida.",
+        "entrada": "Un número N indicando el número de cadenas que Ricardo va a leer. Después leerás N líneas.",
+        "salida": "Para cada línea debes determinar el número mínimo de letras que Ricardo debe borrar para convertirla en una cadena divertida.",
+        "nivel": "",
+        "categorias": [
+            "Caracteres y cadenas"
+        ],
+        "estructuras": [
+            "long long",
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n	cin.tie(0);\n	ios_base::sync_with_stdio(0);\n	cout.tie(0);\n	long long a, b;\n	string z;\n	cin>>a;\n	while(a--){\n		cin>>z;\n		b=0;\n		for(int i=1; i<z.size(); i++){\n			if(z[i]==z[i-1]){\n				b++;\n			}\n		}\n		cout<<b<<\"\\n\";\n	}\n	\n	return 0;\n}"
+    },
+    {
+        "titulo": "3007. Divide Tres",
+        "url": "https://omegaup.com/arena/problem/Divide-Tres/",
+        "descripcion": "Un dato curioso sobre los números es que un número que es divisible entre tres, por ejemplo, 13707. Tiene la propiedad de que la suma de sus dígitos también es divisible entre tres, para éste caso en particular la suma es: 1+3+7+0+7=18, la cual es divisible entre tres. La UP (Unidad de Programadores) te pide que escribas un programa que indentifique si un número es divisible entre tres.",
+        "entrada": "Un número n (1<=n<=10^1000)",
+        "salida": "Imprimir \"SI es divisible\" en caso de que n sea divisible entre tres, en caso contrario imprimir \"NO es divisible\".",
+        "nivel": "Básico (medio) - Introducción a la programación",
+        "categorias": [
+            "Caracteres y cadenas"
+        ],
+        "estructuras": [
+            "long long",
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n	cin.tie(0);\n	ios_base::sync_with_stdio(0);\n	cout.tie(0);\n	long long b;\n	string z;\n	cin>>z;\n	b=0;\n	for(long i=0; i<z.size(); i++){\n		b+=(z[i]-48);\n	}\n	b%=3;\n	if(b){\n		cout<<\"NO es divisible\";\n	}\n	else{\n		cout<<\"SI es divisible\";\n	}\n	\n	return 0;\n}"
+    },
+    {
+        "titulo": "5525. Divide y sumarás",
+        "url": "https://omegaup.com/arena/problem/Divide-y-sumaras/",
+        "descripcion": "Dado un entero N, evalúa el valor de la suma [sum_{i=0}^{inf}floor(N/(2^i))]=floor(N/1)+floor(N/2)+floor(N/3)+floor(N/4)+... donde floor(N/(2^i)) es la parte entera de la división.",
+        "entrada": "El entero N. Puedes suponer que 1<=N<=1000000",
+        "salida": "Un entero que sea el valor de la suma.",
+        "nivel": "Básico (medio) - Introducción a la programación",
+        "categorias": [
+            "Cálculos aritméticos",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "int"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n	int a, b=1, c=0;\n	cin>>a;\n	while(b<=a){\n		c=c+(a/b);\n		b=b*2;\n	}\n	cout<<c;\n	\n	return 0;\n}"
+    },
+    {
+        "titulo": "174. Divisibilidad",
+        "url": "https://omegaup.com/arena/problem/divisibilidad/",
+        "descripcion": "Es bien sabido que un número es divisible por 2 si y sólo si su último dígito (el menos significativo) es par. Un número es divisible por 3 si y sólo si la suma de sus dígitos es un múltiplo de 3. El criterio de divisibilidad por 7 es un poco más complicado: empezando por el último dígito, multiplicamos cada dígito de derecha a izquierda por 1,3,2,6,4,5,1,3,2,6,4,5,1,3,... y así sucesivamente hasta llegar al primer dígito, luego sumamos todos los productos y el número original es divisible por 7 si y sólo si la suma que obtuvimos es divisible por 7. En este problema, te daremos un entero positivo N que representa el número de dígitos que tiene el número, y te daremos también un número primo P. Tu trabajo es encontrar un criterio de divisibilidad por P para un número de N dígitos. Mas específicamente, debes asignar un factor a cada dígito tal que la suma de los productos de los dígitos por sus respectivos factores sea divisible por P si y sólo si el número de N dígitos es divisible por P. Para asegurarnos de que la solución sea única, vamos a agregar las siguientes condiciones: Todos los factores deben estar entre 0 Y P-1, inclusive. El factor para el último dígito debe ser siempre 1. El criterio de divisibilidad debe funcionar incluso si el número de N dígitos empieza con ceros. Escribe un programa que dados N y P, imprima los N factores asignados a los N dígitos, comenzando por el primer dígito (el de más a la izquierda).",
+        "entrada": "En la primera linea los números N y P separados por un espacio.",
+        "salida": "En la primera linea imprime los N factores asignados a los dígitos, de izquierda a derecha, separados por espacios.",
+        "nivel": "",
+        "categorias": [
+            "Cálculo matemático"
+        ],
+        "estructuras": [
+            "long long",
+            "pow()"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n	cin.tie(0);\n	ios_base::sync_with_stdio(0);\n	cout.tie(0);\n	long long a, b, c;\n	cin>>a>>b;\n	a--;\n	while(a){\n		c=pow(10,a);\n		c%=b;\n		cout<<c<<\" \";\n		a--;\n	}\n	cout<<1;\n		\n	return 0;\n}"
+    },
+    {
         "titulo": "...",
         "url": "...",
         "descripcion": "...",
