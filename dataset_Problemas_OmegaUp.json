@@ -3282,6 +3282,102 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n	cin.tie(0);\n	ios_base::sync_with_stdio(0);\n	cout.tie(0);\n	long long a, b, c;\n	cin>>a>>b;\n	a--;\n	while(a){\n		c=pow(10,a);\n		c%=b;\n		cout<<c<<\" \";\n		a--;\n	}\n	cout<<1;\n		\n	return 0;\n}"
     },
     {
+        "titulo": "5221. La baraja de Andy",
+        "url": "https://omegaup.com/arena/problem/La-baraja-de-Andy-c/",
+        "descripcion": "Hace unos días, Andy estaba jugando cartas, al finalizar el juego le tocaba recogerlas, sin embargo se dio cuenta de que tiene N cartas en su baraja. Entonces ella se puso a pensar en cuántas formas distintas de ordenar la baraja había.",
+        "entrada": "La primera linea con un número N indicando la cantidad de cartas que tiene su baraja.",
+        "salida": "Un único número que exprese cuántas formas distintas de ordenar la baraja tiene.",
+        "nivel": "",
+        "categorias": [
+            "Ciclos"
+        ],
+        "estructuras": [
+            "unsigned long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    unsigned long long a, b=1;\n    cin>>a;\n    for(long i=1; i<=a; i++){\n        b*=i;\n    }\n    cout<<b;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "5584. Ahorrando Agua",
+        "url": "https://omegaup.com/arena/problem/Ahorrando-Agua-ASINUS/",
+        "descripcion": "Don Sabiniano se encuentra muy contento gracias a toda el agua que ha logrado ahorrar con su nuevo dispositivo que han creado los estudiantes del IPN. Ahora tiene que pensar en donde almacenará tanta agua que ha logrado ahorrar; por lo que decidió excavar unos ojos de agua. Don Sabiniano estuvo presente en la creación de cada ojo de agua y por lo tanto conoce como quedó cada uno, el terreno que los conforman y las irregularidades que tienen. Sin embargo, se le presenta una nueva problemática; el proceso de excavación ha sido muy rudimentario y la cantidad de agua que almacena cada ojo de agua es aparentemente incierta. Ayuda a Don Teodomiro a calcular la cantidad de agua que puede almacenar uno de estos ojos de agua. El agua ocupará aquel espacio disponible dentro del ojo de agua sin contar las secciones donde se encuentre alguna irregularidad.",
+        "entrada": "El primer valor N que representa las secciones del ojo de agua, donde 3<=N<=10000. Los valores enteros subsecuentes k_1, k_2, ..., k_n representan las irregularidades de estas secciones, donde k>0 y (k_1=k_n)>0. Considera que un valor igual a 0 significa que en esa sección no existen irregularidades.",
+        "salida": "La cantidad total de agua representada por cada unidad o espacio en la imagen con fondo azul.",
+        "nivel": "",
+        "categorias": [
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0, d;\n    cin>>a>>b;\n    for(long i=1; i<a; i++){\n        cin>>d;\n        c+=b-d;\n    }\n    cout<<c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "5611. Lenguaje de la efe",
+        "url": "https://omegaup.com/arena/problem/Lenguaje-de-la-efe-ASINUS/",
+        "descripcion": "En uno de los episodios de los Simpsons, Bart y Lisa se encuentran peleado por el control de la televisión, al caer al piso la televisión sintoniza un programa para niños el cual parece agradar a la pequeña Maggie. Bart y Lisa intentan evitar que Marge deje a Maggie ver el show. Para conspirar entre ellos utilizan un lenguaje especial con el cual pretenden dejar a Marge fuera de la conversación. A pesar de sus esfuerzos Marge es muy lista y ya conoce cómo utilizar ese lenguaje. Sin embargo, no todos saben o conocen cómo hablar en ese misterioso lenguaje, por lo que te toca a ti; programador experto, ayudar al mundo a hablar como los hermanos Simpsons. En realidad, es bastantes sencillo, a cada palabra se le agrega una sílaba adicional dependiendo de las vocales que tenga: Si tiene 'a' se reemplaza por 'afa'. Si tiene 'e' se reemplaza por 'efe'. Si tiene 'i' se reemplaza por 'ifi'. Si tiene 'o' se reemplaza por 'ofo'. Si tiene 'u' se reemplaza por 'ufu'. Por ejemplo: La palabra Hola tiene dos vocales 'o' y 'a', se remplazará 'o' por 'ofo' y 'a' por 'afa', y el resultado es 'Hofolafa'.",
+        "entrada": "Una línea de texto que será transformada al lenguaje misterioso de los hermanos Simpsons.",
+        "salida": "La misma línea de texto de la entrada transformada.",
+        "nivel": "",
+        "categorias": [
+            "Caracteres y cadenas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "string",
+            "getline()"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    string z;\n    getline(cin,z);\n    for(auto i=0; i<z.size(); i++){\n        if(z[i]=='a'){\n            cout<<\"afa\";\n        }\n        else if(z[i]=='e'){\n            cout<<\"efe\";\n        }\n        else if(z[i]=='i'){\n            cout<<\"ifi\";\n        }\n        else if(z[i]=='o'){\n            cout<<\"ofo\";\n        }\n        else if(z[i]=='u'){\n            cout<<\"ufu\";\n        }\n        else{\n            cout<<z[i];\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "5515. Valles",
+        "url": "https://omegaup.com/arena/problem/Valles/",
+        "descripcion": "Los valles son pedazos de terreno rodeados por montañas. Dado el mapa de una isla escribe un programa que determine la cantidad de valles que existen en la isla. La isla se puede ver como una matriz de números enteros, donde las montañas son representadas con \"1\" y los terrenos planos con \"0\". Por lo que un valle es un 0 rodeado por 1's.",
+        "entrada": "La primera línea contiene dos números n y m (1<=n,m<=20) indicando las dimensiones de la isla. Le siguen n líneas, cada una con m números separados por un espacio, indicando el mapa de la isla.",
+        "salida": "La cantidad de valles en la isla.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Matrices",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "int[][]"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0;\n    int num[22][22];\n    cin>>a>>b;\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<b; j++){\n            cin>>num[i][j];\n        }\n    }\n    a--;\n    b--;\n    for(auto i=1; i<a; i++){\n        for(auto j=1; j<b; j++){\n            if(num[i][j]==0 && num[i+1][j]==1 && num[i-1][j]==1 && num[i][j+1]==1 && num[i][j-1]==1){\n                c++;\n            }\n        }\n    }\n    cout<<c;\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "7663. Picos y Valles",
+        "url": "https://omegaup.com/arena/problem/Picos-y-Valles/",
+        "descripcion": "El profesor MC se dió cuenta que en el paisaje de NLogonia hay un pico cada cien metros, y que siempre hay un valle en la mitad de la distancia entre dos picos. Esto significa que cada 50 metros hay un valle o un pico, a lo largo del paisaje, no puede haber un pico seguido de otro pico o dos valles consecutivos.",
+        "entrada": "La entrada viene en dos líneas. La primera tiene el número N de mediciones del paisaje (1 < N <= 100). La segunda línea tiene N enteros: la altura Hi de cada medición (-10000 <= Hi <= 10000, para todo Hi, tal que 1 <= i <= N). Una medida se considera un pico si es más alto que la medida previa, y una medida se considera un valle si es más bajo que la medida previa.",
+        "salida": "La salida consiste de una única línea. Si el paisaje tiene el mismo patrón que el paisaje de NLogonia se debe mostrar el número 1, en otro caso se debe mostrar el número 0.",
+        "nivel": "(medio)",
+        "categorias": [
+            "Arreglos",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e;\n    cin>>a;\n    if(a==1){\n        cin>>a;\n        cout<<1;return 0;\n    }\n    if(a==2){\n        cin>>a>>a;\n        cout<<1;return 0;\n    }\n    cin>>b>>c;\n    if(c==b){\n        d=0;\n    }\n    if(c>b){\n        e=1;\n    }\n    else{\n        e=0;\n    }\n    for(auto i=3; i<=a; i++){\n        b=c;\n        cin>>c;\n        e++;\n        e%=2;\n        if(c>b && e==0){\n            d=0;\n        }\n        if(b>c && e){\n            d=0;\n        }\n    }\n    cout<<d;\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "4674. Reverse String",
+        "url": "https://omegaup.com/arena/problem/Reverse-String/",
+        "descripcion": "Uno de los voluntarios del CodingRush, Gildardo, le gusta ir a fiestas locas, sin embargo sus papás lo han regañado ya que constantemente termina muy mal. A pesar de lo que dijeron sus padres, Gildardo ha ido a una fiesta el último fin de semana y sus amigos, para ver que tan mal estaba le han dicho que dijera una palabra al revés. Ayuda a Gildardo a voltear la palabra que le digan sus amigos.",
+        "entrada": "Primera y Única Linea: S, La cadena de texto que Gildardo tiene que invertir",
+        "salida": "El String invertido",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Ciclos",
+            "Caracteres y cadenas"
+        ],
+        "estructuras": [
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);;\n    string z;\n    cin>>z;\n    for(auto i=z.size()-1; i>=0; i--){\n        cout<<z[i];\n    }\n    \n    return 0;\n}"
+    },
+    {
         "titulo": "...",
         "url": "...",
         "descripcion": "...",
