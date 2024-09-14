@@ -2658,7 +2658,7 @@
         "descripcion": "El comité Quinatanarroense se siente bondadoso este año, y en tu primer problema de lenguaje te pedirá que hagas algo muy fácil. Tu tarea consiste en identificar si un numero es divisible entre 7, es decir, si un numero al dividirlo entre 7 nos da algún otro numero entero. Sin embargo eso no es todo, tienes que identificar cuantos números son divisibles entre 7 de entre toda una lista de N números. Dada una lista de N números identificar cuántos de ellos son divisibles entre 7 y arrojarlo como resultado.",
         "entrada": "En la primera línea un numero N que representa la cantidad de números a analizar. En la segunda línea tendrás N números aleatorios sin ningún orden. (0<=N<=100,000) Los N números estarán entre 0 y 65,000. Tu programa deberá ejecutarse en menos de 0.5 segundos.",
         "salida": "Una única línea con un numero que representa la cantidad de números divisibles entre 7.",
-        "nivel": "",
+        "nivel": "Básico (fácil) - Introducción a la programación",
         "categorias": [
             "Loops",
             "Teoría de números"
@@ -2691,12 +2691,15 @@
         "salida": "Un número con la cantidad de movimientos mínimos necesarios para superar el nivel. En caso de no ser posible, imprimir -1.",
         "nivel": "Intermedio (medio) - Análisis y diseño de algoritmos",
         "categorias": [
-            "Búsqueda en amplitud"
+            "Búsqueda en amplitud",
+            "Colas",
+            "Matrices"
         ],
         "estructuras": [
             "long long",
-            "char",
-            "queue"
+            "vector<vector<char>>",
+            "queue<>",
+            "int"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nlong long a, b;\nstruct sobra{\n    long aa, bb, cc;\n};\nqueue<sobra>falta;\nchar num[102][102];\nsobra z;\n\nvoid sub(){\n    while(falta.size()){\n        falta.pop();\n    }\n    falta.push(z);\n    num[z.aa][z.bb]='*';\n    while(falta.size()){\n        z=falta.front();\n        falta.pop();\n        z.cc++;\n        z.aa++;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n        z.aa-=2;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n        z.aa++;\n        z.bb++;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n        z.bb-=2;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n    }\n    cout<<\"-1\";\n}\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>a>>b;\n    for(int i=1; i<=a; i++){\n        for(int j=1; j<=b; j++){\n            cin>>num[i][j];\n            if(num[i][j]=='c'){\n                z.aa=i;\n                z.bb=j;\n                falta.push(z);\n                num[z.aa][z.bb]='0';\n            }\n        }\n    }\n    while(falta.size()){\n        z=falta.front();\n        falta.pop();\n        z.cc++;\n        z.aa++;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n        z.aa-=2;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n        z.aa++;\n        z.bb++;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n        z.bb-=2;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n    }\n    cout<<\"-1\";return 0;\n    \n    return 0;\n}"
     },
@@ -2706,11 +2709,12 @@
         "descripcion": "Últimamente en el Club de Algoritmia ESCOM se han desarrollado nuevas técnicas que no tienen nada que ver con la programación competitiva. En este caso hablaremos de las habilidades que han desarrollado nuestros integrantes para poder controlar los sueños de las personas. Aún después de tanta preparación los estudiantes siguen siendo un poco novicios en estas técnicas obscuras y tenebrosas. Por lo que el especialista en esta técnica, el profesor Norman nos ha pedido ayuda para resolver el siguiente problema. El profesor Norman puede meterse en los sueños de las personas cuando están dormidos, para que dentro del mismo sueño haga dormir al individuo y pueda volver a meterse de nuevo en su sueño. Es decir, el profesor puede estar en un sueño dentro de otro sueño. Como sus habilidades son bastante sorprendentes, el puede repetir este proceso infinito número de veces. Al momento de meterse en un sueño, este es identificado con un número que representa el tipo de sueño en el que se encuentra actualmente (Solo existen tipos de sueños desde 1 a 10^9). Cuando el profesor Norman se mete en una serie de sueños, esto es representado con un arreglo A de números enteros. Por ejemplo: A = [1,2,3,4,5,6]. Esto nos dice que el profesor se fue metiendo en un sueño de tipo 1, después en uno de tipo 2, 3 y así consecutivamente. Si Norman comienza metiéndose a un sueño de tipo x y en alguno de los sueños posteriores vuelve a estar en otro sueño de tipo x, el siente que ya lo vivió antes, es decir, un Déjà Vu! De igual manera, si él se mete por primera vez a un sueño de tipo x y inmediatamente a uno de tipo y y se repite la secuencia x, y posteriormente, es un Déjà Vu doble. Como quiere estar preparado para lo peor que pueda suceder, Norman quiere saber cuál es la máxima secuencia de sueños para la que va a sentir un Déjà Vu. Cabe aclarar que el profesor sentirá un Déjà Vu solo con secuencias de sueños similares a las que inician en el primero en el que se adentró.",
         "entrada": "La primera línea de entrada contendrá un numero N(1<=N<=10^6), indicando la cantidad de sueños a los que el profesor se adentró. En la siguiente línea habrán N números A_i(1<=A_i<=10^9) indicando cada tipo de sueño.",
         "salida": "Un numero representando la máxima secuencia de sueños para los cuales el profesor sentirá un Déjà Vu.",
-        "nivel": "",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
-            ""
+            "Arreglos"
         ],
         "estructuras": [
+            "vector<int>",
             "long long",
             "int"
         ],
@@ -2742,19 +2746,18 @@
         "salida": "Un entero que indica el menor número de operaciones necesarias para que el arreglo quede perfectamente balanceado, o -1 si no es posible balancearlo.",
         "nivel": "Avanzado (medio) - Programación competitiva",
         "categorias": [
-            "Entrada y salida",
-            "Loops",
+            "Ciclos",
             "Arreglos",
             "Recursión",
             "Condicionales",
-            "Programación dinámica",
-            "OMI",
-            "Entrada y salida"
+            "Programación dinámica"
         ],
         "estructuras": [
             "long long",
             "pair<int,int>",
-            "int"
+            "vector<int>",
+            "int",
+            "bool"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    ios_base::sync_with_stdio(0);\n    cin.tie(0);\n    cout.tie(0);\n    typedef pair < int, int > pii;\n    typedef long long int lld;\n    int n;\n    cin >> n;\n    int arr[n];\n    for (int i = 0; i < n; ++i)\n        cin >> arr[i];\n    if (n == 1) {\n        cout << \"0\\n\";\n        return 0;\n    }\n    int ans = -1;\n    for(int f = -1; f <= 1; ++f) for (int s = -1; s <= 1; ++s) {\n        arr[0] += f; arr[1] += s;\n        bool progresion = true;\n        int cnt = abs(f) + abs(s);\n        int k = arr[1] - arr[0];\n        int act = arr[0];\n        for (int i = 1; i < n; ++i) {\n            act += k;\n            if (abs(act - arr[i]) > 1) {\n                progresion = false;\n                break;\n            }\n            cnt += abs(act - arr[i]);\n        }\n        if (progresion) ans = ans == -1 ? cnt : min(ans, cnt);\n        arr[0] -= f; arr[1] -= s;\n    }\n    cout << ans << \"\\n\";\n\n    return 0;\n}"
     },
@@ -2764,13 +2767,13 @@
         "descripcion": "Hay una mesa (redonda) con N niños numerados de 1 a N, la maestra ha decidido hacer un nuevo juego para determinar quien sale primero a jugar en el recreo, en el cual, iniciando desde el primer niño, la maestra avanza K niños en el sentido de las manecillas del reloj. Donde termine la maestra, ese niño sale al recreo, luego la maestra se para en el siguiente niño y vuelve a repetir este proceso hasta que todos los niños salgan al recreo. Randy está impaciente por salir a comer y le interesa saber después de cuantos niños saldrá él al recreo. Randy siempre es el niño número 1.",
         "entrada": "Dos enteros, N y K, el número de niños y el salto de avance que se hace. (1<=N,K<=1000).",
         "salida": "Un entero que represente el número de niños que salieron antes de Randy.",
-        "nivel": "",
+        "nivel": "Intermedio (difícil) - Estructuras de datos y Algoritmos",
         "categorias": [
-            ""
+            "Punteros"
         ],
         "estructuras": [
             "int",
-            "reg"
+            "struct"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint localiza(int x);\nvoid alta(int x);\nvoid baja();\n\ntypedef struct reg{\n    reg *sig;\n    int  dat;       //número de alumno\n}reg;\n\nreg *p, *a, *aux;\nint  n, k, c;\n\nint main(){\n    p =(reg*)malloc(sizeof(reg));  //inicio d ela lista\n    p->sig=NULL;\n    a =(reg*)malloc(sizeof(reg));  //nodo actual\n    a->sig=NULL;\n    aux=(reg*)malloc(sizeof(reg));\n    aux->sig=NULL;\n    cin>>n>>k;\n    for(int i=1;i<=n;i++) alta(i);\n    a=p;\n    while(1){\n        a=a->sig;\n        for(int i=1;i<=k;i++) localiza(i);\n        if(a->dat==1) break;       //regresa con Randy\n        baja();\n    }\n    cout<<c;\n\n    return 0;\n}\n\nvoid alta(int x){\n    if (p->sig == NULL){       // Si Lista Vacia\n        p->sig = a;\n        a->dat = x;\n    }\n    else{\n        reg *n;\n        n=(reg*) malloc(sizeof(reg));\n        n->sig=p->sig;\n        n->dat=x;\n        a->sig=n;\n        a=n;\n    }\n}\n\nint localiza(int x){\n    if(a->sig!=NULL){       //Solo queda Randy\n        aux=a;\n        a=a->sig;\n    }\n}\n\nvoid baja(){\n    aux->sig=a->sig;\n    if (p==aux) p->sig=aux->sig;\n    c++;\n\n}"
     },
@@ -2780,13 +2783,15 @@
         "descripcion": "Karel el constructor ha decidido hacer una nueva casa en la metropolí de karelotitlan. Como sabras Karel no es muy bueno con las figuras geometricas irregulares, asi que ha decidido construir su casa en la primer calle y que su casa sera el espacio rectangular más grande que hay en la metropoli.",
         "entrada": "Se te dara n, el número de avenidas que hay en la metropoli, en la siguiente linea habra n enteros indicando cuanto espacio libre hay en esa avenida (partiendo de la primera calle). (1<=n<=10^6), (1<=n_i<=10^6).",
         "salida": "El área del rectángulo más grande.",
-        "nivel": "",
+        "nivel": "Intermedio (fácil) - Análisis y diseño de algoritmos",
         "categorias": [
-            ""
+            "Arreglos",
+            "Pilas"
         ],
         "estructuras": [
             "long long",
-            "stack<int>"
+            "stack<long long>",
+            "vector<long long>"
         ],
         "codigo": "#include<bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    long long int hist[1000100];\n    long long int n;\n    stack<long long int> s;\n    cin>>n;\n    for(int i=0;i<n;i++){\n        cin>>hist[i];\n    }\n    long long int area = 0;\n    long long int tp;\n    long long int areasuperior;\n    long long int i = 0;\n    while (i < n){\n        if (s.empty() || hist[s.top()] <= hist[i]){\n            s.push(i++);\n        }\n        else{\n            tp = s.top();\n            s.pop();\n            areasuperior = hist[tp] * (s.empty() ? i : i - s.top() - 1);\n            if (area < areasuperior)\n                area = areasuperior;\n        }\n    }\n    while (s.empty() == false){\n        tp = s.top();\n        s.pop();\n        areasuperior = hist[tp] * (s.empty() ? i : i - s.top() - 1);\n        if (area < areasuperior)\n            area = areasuperior;\n    }\n    cout<<area;\n}"
     },
@@ -2796,11 +2801,13 @@
         "descripcion": "La Organización Mundial Inter-oceánica (OMI) ha iniciado operaciones en el país y actualmente dispone de 4 cargueros para transportar mercancía de un puerto marítimo a otro. A pocos días de realizar su primer envío de 12 contenedores, el jefe de operaciones ha decidido que cada carguero lleve 3 contenedores, y que éstos, de acuerdo con su peso, estén distribuidos de manera uniforme. Ayuda al jefe de operaciones para minimizar T-t, donde T es el peso del carguero con mayor carga y, t el peso del carguero con la carga menor.",
         "entrada": "12 líneas que contienen la carga c_i, donde (1<=c<=1000000).",
         "salida": "Una sola línea indicando el valor mínimo de T-t.",
-        "nivel": "",
+        "nivel": "Intermedio (difícil) - Análisis y diseño de algoritmos",
         "categorias": [
-            ""
+            "Arreglos",
+            "Recursión"
         ],
         "estructuras": [
+            "vector<int>",
             "int"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint carga_peso[12];\nint carga_carguero[12];\nint carguero_count[4];\nint answer = -1;\n\nvoid recurse(int carga) {\n    if (carga == 12) {\n        int carguero_carga[4] = {0,0,0,0};\n        for (int i = 0; i < 12; i++) {\n            carguero_carga[carga_carguero[i]] += carga_peso[i];\n        }\n        int T = max(max(carguero_carga[0], carguero_carga[1]),\n                    max(carguero_carga[2], carguero_carga[3]));\n        int t = min(min(carguero_carga[0], carguero_carga[1]),\n                    min(carguero_carga[2], carguero_carga[3]));\n        if (answer == -1 || T - t < answer) {\n            answer = T - t;\n        }\n        return;\n    }\n    for (int carguero = 0; carguero < 4; carguero++) {\n        if (carguero_count[carguero] < 3) {\n            carga_carguero[carga] = carguero;\n            carguero_count[carguero]++;\n            recurse(carga+1);\n            carguero_count[carguero]--;\n        }\n    }\n}\n\nint main() {\n    for (int i = 0; i < 12; i++) {\n        cin >> carga_peso[i];\n    }\n    recurse(0);\n    cout << answer << '\\n';\n\n    return 0;\n}"
@@ -2831,11 +2838,14 @@
         "nivel": "Intermedio (medio) - Estructuras de datos y Algoritmos",
         "categorias": [
             "Árbol de busqueda binaria",
-            "Hashing"
+            "Hashing",
+            "Arreglos",
+            "Colas"
         ],
         "estructuras": [
-            "queue<>",
-            "long long"
+            "queue<long long>",
+            "long long",
+            "vector<pair<long long,long long>>"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    queue<long long>falta;\n    queue<long long>sobra;\n    long long a, b, c, d, e, f;\n    cin>>a>>b;\n    long long num[2][a];\n    for(int i=0; i<a; i++){\n        cin>>num[0][i]>>num[1][i];\n    }\n    for(int i=0; i<a; i++){\n        c=0;\n        for(int j=0; j<(a-i)-1; j++){\n            if(num[0][j+1]<num[0][j]){\n                swap(num[0][j],num[0][j+1]);\n                swap(num[1][j],num[1][j+1]);\n                c=1;\n            }\n        }\n        if(c==0){\n            break;\n        }\n        c=0;\n    }\n    while(b!=0){\n        b--;\n        cin>>c;\n        d=0; e=a-1;\n        while(d<=e){\n            f=(d+e)/2;\n            if(num[0][f]==c){\n                cout<<num[1][f]<<\"\\n\";break;\n            }\n            else if(num[0][f]>c){\n                e=f-1;\n            }\n            else{\n                d=f+1;\n            }\n        }\n        if(d>e){\n            cout<<\"C?\\n\";\n        }\n    }\n        \n    return 0;\n}"
     },
@@ -2848,17 +2858,17 @@
         "nivel": "Avanzado (medio) - Programación competitiva",
         "categorias": [
             "Programación dinámica",
-            "Colas",
             "Arreglos",
-            "Búsqueda binaria"
+            "Recursión"
         ],
         "estructuras": [
             "bool",
             "long long",
-            "queue<long long>",
+            "vector<vector<vector<long long>>>",
+            "vector<vector<vector<bool>>>",
             "vector<long long>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    queue<long long>falta;\n    queue<long long>sobra;\n    long long a, b, c, d, e, f;\n    cin>>a>>b;\n    long long num[2][a];\n    for(int i=0; i<a; i++){\n        cin>>num[0][i]>>num[1][i];\n    }\n    for(int i=0; i<a; i++){\n        c=0;\n        for(int j=0; j<(a-i)-1; j++){\n            if(num[0][j+1]<num[0][j]){\n                swap(num[0][j],num[0][j+1]);\n                swap(num[1][j],num[1][j+1]);\n                c=1;\n            }\n        }\n        if(c==0){\n            break;\n        }\n        c=0;\n    }\n    while(b!=0){\n        b--;\n        cin>>c;\n        d=0; e=a-1;\n        while(d<=e){\n            f=(d+e)/2;\n            if(num[0][f]==c){\n                cout<<num[1][f]<<\"\\n\";break;\n            }\n            else if(num[0][f]>c){\n                e=f-1;\n            }\n            else{\n                d=f+1;\n            }\n        }\n        if(d>e){\n            cout<<\"C?\\n\";\n        }\n    }\n        \n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n#define ll long long\nusing namespace std;\n\nll n,m,t,mdo[4][101][101],DP[101][101][501],ans;\nll dx[]= {0,1,1,0,-1,-1,-1,0,1};\nll dy[]= {0,0,-1,-1,-1,0,1,1,1};\nbool use[101][101][501];\n\nll fn(ll fila,ll columna, ll tiempo)\n{\n    if(tiempo>t) return 0LL;\n\n    if(use[fila][columna][tiempo]) return DP[fila][columna][tiempo];\n\n    use[fila][columna][tiempo] = true;\n\n    ll x=0,y;\n    bool useY=false;\n    if(tiempo>=mdo[1][fila][columna] && (tiempo-mdo[1][fila][columna])%mdo[2][fila][columna]==0) x=mdo[0][fila][columna];\n\n    for(ll k=0; k<9; k++)\n    {\n        ll f=fila+dy[k];\n        ll c=columna+dx[k];\n        if(f>=0 && f<n && c>=0 && c<m)\n        {\n            if(!useY)\n            {\n                useY=true;\n                y=fn(f,c,tiempo+1);\n            }\n            y=max(y,fn(f,c,tiempo+1));\n        }\n    }\n\n    return DP[fila][columna][tiempo]=x+y;\n}\n\nint main()\n{\n    ios::sync_with_stdio(false);\n    cin.tie(0);\n\n    cin >> n >> m >> t;\n    for(ll i=0; i<n; i++) for(ll j=0; j<m; j++) cin >> mdo[1][i][j];\n    for(ll i=0; i<n; i++) for(ll j=0; j<m; j++) cin >> mdo[2][i][j];\n    for(ll i=0; i<n; i++) for(ll j=0; j<m; j++) cin >> mdo[0][i][j];\n\n    ans=fn(0,0,1);\n    for(ll i=0; i<n; i++) for(ll j=0; j<m; j++) ans=max(ans,fn(i,j,1));\n\n    cout << ans;\n\n    return 0;\n"
     },
     {
         "titulo": "6378. COCI 20/01/2018 Olivander",
@@ -2997,7 +3007,7 @@
             "struct",
             "long long",
             "char",
-            "num[][]",
+            "vector<vector<char>>",
             "queue<>",
             "int"
         ],
