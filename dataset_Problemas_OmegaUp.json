@@ -3378,39 +3378,6 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);;\n    string z;\n    cin>>z;\n    for(auto i=z.size()-1; i>=0; i--){\n        cout<<z[i];\n    }\n    \n    return 0;\n}"
     },
     {
-        "titulo": "8375. Las cemitas programadoras",
-        "url": "https://omegaup.com/arena/problem/Las-cemitas-programadoras/",
-        "descripcion": "La crisis en el país esta fea y nuestro amigo Eduardo tiene que poner un negocio para poder vivir mas o menos bien. Como el vive en Puebla, puso un negocio de ricas cemitas caseras el cual empezó a recibir gente rápidamente. Lamentablemente se dio cuenta que los gastos eran bastantes entre las cemitas, las milanesas, el quesillo, el aguacate y el odioso papalo que nadie quiere y se cuestiono si el negocio iba a funcionar. Eduardo tiene anotado las ganancias y las perdidas pero no tiene tiempo para hacer las cuentas porque tiene que atender el changarro, asi que te pide tu ayuda para saber si el negocio es viable o no. Se te va a otorgar A y B donde A es el valor de las ganancias y B el valor de las perdidas y tu tendrás que determinar si el negocio va bien o mal.",
-        "entrada": "A seguida de B.",
-        "salida": "Si las ganancias superan las perdidas tendrás que imprimir sin comillas \"El negocio si va a jalar\" y después el valor de las ganancias. De lo contrario si las perdidas son mas grandes que las ganancias deberás imprimir sin comillas \"Dejalo ya esta muerto\" y después el valor de las perdidas.",
-        "nivel": "Básico (fácil) - Introducción a la programación",
-        "categorias": [
-            "Arboles",
-            "Cálculos aritméticos"
-        ],
-        "estructuras": [
-            "long long"
-        ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    cin>>a>>b;\n    if(a>b){\n        cout<<\"El negocio si va a jalar \"<<a-b;\n    }\n    else{\n        cout<<\"Dejalo ya esta muerto \"<<b-a;\n    }\n    \n    return 0;\n}"
-    },
-    {
-        "titulo": "2648. Gastos",
-        "url": "https://omegaup.com/arena/problem/Gastos/",
-        "descripcion": "Dada una lista de gastos, calcula e imprime el total gastado y cuantos gastos se totalizaron.",
-        "entrada": "Una línea con la lista de gastos, todos los enteros correspondientes a los gastos se separan con un espacio. Asume que la lista de gastos termina cunado se lee un cero.",
-        "salida": "Dos enteros M, N separados por un espacio que denotan el total gastado y el número de gastos totalizados, respectivamente.",
-        "nivel": "Básico (fácil) - Introducción a la programación",
-        "categorias": [
-            "Ciclos",
-            "Cálculos aritméticos"
-        ],
-        "estructuras": [
-            "long long",
-            "vector<vector<int>>"
-        ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c=0;\n    int num[1001][1001];\n    cin>>a;\n    while(a){\n        c+=a;\n        b++;\n        cin>>a;\n    }\n    cout<<c<<\" \"<<b;\n    \n    return 0;\n}"
-    },
-    {
         "titulo": "...",
         "url": "...",
         "descripcion": "...",
