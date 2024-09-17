@@ -3387,6 +3387,142 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);;\n    string z;\n    cin>>z;\n    for(auto i=z.size()-1; i>=0; i--){\n        cout<<z[i];\n    }\n    \n    return 0;\n}"
     },
     {
+        "titulo": "8422. COME GALLETAS",
+        "url": "https://omegaup.com/arena/problem/COME-GALLETAS/",
+        "descripcion": "A Pedro le gustan mucho las galletas y siempre va a comprar a la tienda de la esquina, cada paquete contiene 10 galletas, pero como el es un comprador frecuente, el vendedor le regala galletas cada numero par como lo muestra la siguiente secuencia: 10,11,10,12,10,13. son el ejemplo de galletas que contendría cada paquete si Pedro comprase 6. Ayuda a pedro a encontrar las galletas totales que compraría.",
+        "entrada": "En una linea escribe el numero de paquetes de galletas que Pedro comprara.",
+        "salida": "La salida contendrá la cantidad de galletas que pedro compro incluyendo las que le fueron regaladas.",
+        "nivel": "(Fácil)",
+        "categorias": [
+            "Lenguaje",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b=0;\n    cin>>a;\n    b+=(a*10);\n    a/=2;\n    b+=(((a+1)*a)/2);\n    cout<<b;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "8429. TROCAS",
+        "url": "https://omegaup.com/arena/problem/TROCAS/",
+        "descripcion": "En la preparatoria CBTIS 217, se organizo una excursión. pero para ello, los maestras decidieron contratar trocas en lugar de un autobús y formar grupos de alumnos de cantidades indefinidas. tu misión sera repartir a todos los alumnos a un autobús, la única condición es que no se puedan separar grupos.",
+        "entrada": "En una sola linea coloca el numero de integrantes de cada grupo, separados por un espacio.",
+        "salida": "El numero de trocas necesario para transportar a todos los alumnos. A cada troca le caben máximo 6 alumnos.",
+        "nivel": "...",
+        "categorias": [
+            "Lenguaje",
+            "Vectores",
+            "Ciclos",
+            "Ordenamiento"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c = 0, d = 0, e = 0, f = 0;\n    vector<int> falta;\n    while (cin >> a)\n    {\n        falta.push_back(a);\n    }\n    sort(falta.begin(), falta.end());\n    if (falta[0] == 6)\n    {\n        cout << falta.size();\n        return 0;\n    }\n    a = 0;\n    b = falta.size() - 1;\n    while (b != a && falta[b] == 6)\n    {\n        c++;\n        b--;\n    }\n    while (falta[a] == 1 && falta[b] == 5)\n    {\n        c++;\n        a++;\n        b--;\n    }\n    if (a > b)\n    {\n        cout << c;\n        return 0;\n    }\n    while (falta[a] == 1)\n    {\n        d++;\n        a++;\n    }\n    if (a > b)\n    {\n        c += (d / 6);\n        d %= 6;\n        if (d)\n        {\n            c++;\n        }\n        cout << c;\n        return 0;\n    }\n    while (falta[b] == 5)\n    {\n        c++;\n        b--;\n    }\n    if (a > b)\n    {\n        cout << c;\n        return 0;\n    }\n    while (falta[a] == 2 && falta[b] == 4)\n    {\n        c++;\n        a++;\n        b--;\n    }\n    if (a > b)\n    {\n        c += (d / 6);\n        d %= 6;\n        if (d)\n        {\n            c++;\n        }\n        cout << c;\n        return 0;\n    }\n    while (falta[b] == 4 && d >= 2)\n    {\n        d -= 2;\n        b--;\n        c++;\n    }\n    if (a > b)\n    {\n        c += (d / 6);\n        d %= 6;\n        if (d)\n        {\n            c++;\n        }\n        cout << c;\n        return 0;\n    }\n    while (falta[b] == 4)\n    {\n        b--;\n        c++;\n    }\n    if (a > b)\n    {\n        c += (d / 6);\n        d %= 6;\n        if (d)\n        {\n            c++;\n        }\n        cout << c;\n        return 0;\n    }\n    while (falta[a] == 2)\n    {\n        f++;\n        a++;\n    }\n    if (a > b)\n    {\n        c += (f / 3);\n        f %= 3;\n        if (f)\n        {\n            d += (f * 2);\n        }\n        c += (d / 6);\n        d %= 6;\n        if (d)\n        {\n            c++;\n        }\n        cout << c;\n        return 0;\n    }\n    while (falta[b] == 3)\n    {\n        b--;\n        e++;\n    }\n    c += (e / 2);\n    e %= 2;\n    if (e && f && d)\n    {\n        f--;\n        d--;\n        c++;\n        e--;\n    }\n    if (e && f)\n    {\n        f--;\n        e--;\n        c++;\n    }\n    if (e && d)\n    {\n        if (d <= 3)\n        {\n            d = 0;\n        }\n        else\n        {\n            d -= 3;\n        }\n        e--;\n        c++;\n    }\n    if (e)\n    {\n        c++;\n        e--;\n    }\n    c += (d / 6);\n    d %= 6;\n    if (d)\n    {\n        c++;\n    }\n    cout << c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "7412. Promedios en intervalos",
+        "url": "https://omegaup.com/arena/problem/Promedios-en-intervalos/",
+        "descripcion": "Dado un registro de alumnos donde cada uno tiene un número de lista y una calificación, escribe un programa que pueda resolver la siguiente pregunta: ¿cuál es el promedio entero de las calificaciones de los alumnos cuyos números de lista están entre I y U inclusivos?",
+        "entrada": "Un entero N seguido de N parejas de enteros L, C donde L es el número de lista de un alumno y C es su calificación. Posteriormente un entero M seguido de M parejas de enteros I y U. Puedes suponer que 0<=N<=10^5, que 0<=M, que, 0<=L<=10^9, que 0<=I<=U<N y que no hay números de lista repetidos, aunque puede haber números de lista faltantes.",
+        "salida": "Para cada intervalo, un entero que sea el promedio entero de las calificaciones de los alumnos con números de lista en ese intervalo o bien, el entero -1 si no hay alumnos en ese intervalo.",
+        "nivel": "Intermedio (difícil) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Lenguaje",
+            "Búsqueda binaria",
+            "Ordenamiento",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<pair<int, int>>",
+            "auto"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, g, h, l;\n    vector<pair<int, int>> num(100001);\n    cin >> a;\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> num[i].first >> num[i].second;\n    }\n    sort(num.begin(), num.end());\n    for (auto i = 1; i < a; i++)\n    {\n        num[i].second += num[i - 1].second;\n    }\n    cin >> b;\n    while (b--)\n    {\n        cin >> c >> d;\n        c--;\n        if (d < num[0].first || c >= num[a - 1].first)\n        {\n            cout << \"-1\\n\";\n            continue;\n        }\n        e = 0;\n        f = a - 1;\n        l = -1;\n        while (e <= f)\n        {\n            g = (e + f) / 2;\n            if (num[g].first == d)\n            {\n                l = g;\n                break;\n            }\n            else if (num[g].first < d)\n            {\n                e = g + 1;\n                l = max(l, g);\n            }\n            else\n            {\n                f = g - 1;\n            }\n        }\n        if (c < num[0].first)\n        {\n            cout << num[l].second / (l + 1) << \"\\n\";\n            continue;\n        }\n        e = 0;\n        f = a - 1;\n        h = -1;\n        while (e <= f)\n        {\n            g = (e + f) / 2;\n            if (num[g].first == c)\n            {\n                h = g;\n                break;\n            }\n            else if (num[g].first < c)\n            {\n                e = g + 1;\n                h = max(h, g);\n            }\n            else\n            {\n                f = g - 1;\n            }\n        }\n        if (h == l)\n        {\n            cout << \"-1\\n\";\n            continue;\n        }\n        cout << (num[l].second - num[h].second) / (l - h) << \"\\n\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "8464. SUMAR HORAS (ETITC)",
+        "url": "https://omegaup.com/arena/problem/SUMAR-HORAS-ETITC/",
+        "descripcion": "Haga un programa que reciba dos horas en formato hh mm y que dé como respuesta la hora resultante de sumar las dos horas en ese formato. Las horas estarán entre 0 y 23 y los minutos entre 0 y 59.",
+        "entrada": "Se ingresa el primer formato de hora minuto y posteriormente el segundo formato hora minuto.",
+        "salida": "Como salida debe mostrar la suma de las dos horas.",
+        "nivel": "(Fácil)",
+        "categorias": [
+            "Lenguaje"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d;\n    cin >> a >> b >> c >> d;\n    b += d;\n    if (b >= 60)\n    {\n        b -= 60;\n        a++;\n    }\n    a += c;\n    if (a >= 24)\n    {\n        a -= 24;\n    }\n    cout << a << \" \" << b;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "847. Suma de 3 números",
+        "url": "https://omegaup.com/arena/problem/Suma-de-3-numeros/",
+        "descripcion": "",
+        "entrada": "Recibe tres números enteros.",
+        "salida": "Retorna el total de la suma de los 3 números",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Lenguaje",
+            "Cálculos aritméticos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c;\n    cin >> a >> b >> c;\n    cout << a + b + c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "6593. Los focos",
+        "url": "https://omegaup.com/arena/problem/Los-focos/",
+        "descripcion": "Se tienen n focos apagados, cada uno tiene su interruptor, una persona pasa y cambia el interruptor de todos los focos, una segunda persona pasa y cambia los interruptores de los focos 2, 4, 6, 8, etc. Hasta n, una tercera persona pasa y cambia los interruptores de 3, 6, 9, 12, etc... hasta n, una cuarta persona pasa y cambia los interruptores 4, 8, 12...etc y así sucesivamente hasta la persona n. Dado n, determina que interruptores quedan prendidos. Para 50 puntos 1<=n<=1000. Para 50 puntos 1<=n<=1000000000",
+        "entrada": "Un entero n.",
+        "salida": "El número de cada uno de los focos que quedan prendidos, separados por un salto de linea.",
+        "nivel": "(Medio)",
+        "categorias": [
+            "Lenguaje",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b = 1;\n    cin >> a;\n    while (true)\n    {\n        if ((b * b) <= a)\n        {\n            cout << b * b << \"\\n\";\n        }\n        else\n        {\n            break;\n        }\n        b++;\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4745. Glorietas Campechanas",
+        "url": "https://omegaup.com/arena/problem/OMICAMP-Glorietas-Campechanas/",
+        "descripcion": "El gobierno del estado de Campeche, manda cada cierto tiempo a podar las áreas verdes de las glorietas que están en toda la ciudad, para ello cuenta con muchos trabajadores, cada uno de ellos tiene su monto a cobrar por metro cuadrado de las áreas verdes, el problema que tiene el gobierno del estado es que no conoce el área circular de las glorietas, pero si conoce los radios. El radio N que abarcan desde el punto central de la glorieta hasta la orilla de la misma y el radio M que abarca desde el punto central hasta la orilla donde comienza las zonas verdes de la glorieta. Considerando que el radio N siempre va a hacer mayor que el radio M  El gobierno del estado de Campeche te contrata para calcular el monto a pagar por una glorieta contemplando que S es el precio por metro cuadrado que cobra un trabajador y los radios N y M que conoce el gobierno de las glorietas. Tu deber es crear un programa que calcule el monto a pagar por cada glorieta. Considerar que 1<=S<=1000000 y 0<=M<N<=1000000.",
+        "entrada": "De entrada recibirás el costo S por metro cuadro, seguido de los radios N y M.",
+        "salida": "Tu programa debe imprimir el monto que hay que pagar con dos decimales después del punto, por la glorieta a podar",
+        "nivel": "(Fácil)",
+        "categorias": [
+            "Lenguaje"
+        ],
+        "estructuras": [
+            "unsigned long long",
+            "int double",
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    unsigned long long a, b, c, d;\n    int double z;\n    cin >> a >> b >> c;\n    d = ((pow(b, 2) * 31416) - (pow(c, 2) * 31416)) * a;\n    cout << fixed << setprecision(2) << \"$\";\n    if (d / 100000)\n        cout << d / 100000;\n    d %= 100000;\n    z = (long double)d / 10000;\n    cout << fixed << setprecision(2) << z;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "5409. Barajeo de Cartas",
+        "url": "https://omegaup.com/arena/problem/Shuffling-Cards-ASINUS/",
+        "descripcion": "Charles y William han sido amigos desde ya hace un tiempo, ellos son conocidos por su espíritu competitivo. Cada fin de semana se reúnen para jugar cartas, y a pesar de ser buenos amigos, durante los juegos ninguno quiere perder. Usualmente discuten sobre la manera en la que las cartas son barajeadas, Charles diciendo que William siempre hace trampa porque el obtiene las mejores cartas al final de cada juego, mientras que William dice que Charles simplemente no es tan bueno. Ahora, es tu turno de ayudarlos con este pequeño problema, te toca a ti barajear las cartas. Cada una de las cartas serán representadas por un número entero (k), estas deberán ser barajeadas teniendo dos grupos o sets (s1, s2), y cada uno debe contener el mismo número de cartas (n). Para obtener la pila barajeada final, una carta de cada set o grupo deberá ser tomada, comenzando con una carta del primer conjunto y luego una del segundo conjunto, y continuando hasta que no haya alguna carta sobrante de los sets originales.",
+        "entrada": "El número de cartas de cada set o mano dado por n. Cada una de las cartas k representadas por enteros.",
+        "salida": "La pila final barajeada a partir de las cartas de las dos manos originales.",
+        "nivel": "()",
+        "categorias": [
+            "Lenguaje",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<long>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    vector<long> falta;\n    vector<long> faltas;\n    cin >> a;\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> b;\n        falta.push_back(b);\n    }\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> b;\n        faltas.push_back(b);\n    }\n    for (auto i = 0; i < a; i++)\n    {\n        cout << falta[i] << \" \" << faltas[i] << \" \";\n    }\n\n    return 0;\n}s"
+    },
+    {
         "titulo": "...",
         "url": "...",
         "descripcion": "...",
