@@ -3573,7 +3573,7 @@
      },
      {
         "titulo": "8418. Probabilidad",
-        "url": "",
+        "url": "https://omegaup.com/arena/problem/Probabilidad/",
         "descripcion": "En un pueblo llamado Moroleón. se organizo una rifa, en la cual Pedro y Jorge compraron una cantidad determinada de boletos. Si se sabe cual es la cantidad que se vendieron en total de boletos. ¿Puedes ayudarlos a sacar su probabilidad de ganar la rifa?.",
         "entrada": "La primera linea contendrá la cantidad de boletos comprados por jorge y pedro. y la segunda los boletos totales.",
         "salida": "La salida contendrá la probabilidad de ganar con solamente 2 números después del punto decimal.",
