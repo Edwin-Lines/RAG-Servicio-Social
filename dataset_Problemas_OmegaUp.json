@@ -3556,6 +3556,136 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c=0;\n    int num[1001][1001];\n    cin>>a;\n    while(a){\n        c+=a;\n        b++;\n        cin>>a;\n    }\n    cout<<c<<\" \"<<b;\n    \n    return 0;\n}"
     },
     {
+        "titulo": "5074. Que fácil es dar cambio",
+        "url": "https://omegaup.com/arena/problem/Que-facil-es-dar-cambio-emh/",
+        "descripcion": "Atsa acaba de abrir una tienda de abarrotes en medio de la ciudad; después de unos días se dio cuenta que la cantidad de clientes que tenía era demasiada. Cierto día se dispuso a analizar cual podría ser la razón por la cual siempre tenía mucha clientela y se di cuenta que el problema no era que hubiera mucha gente sino que él tardaba mucho en dar el cambio, es decir, que cuando un cliente le pagaba el tardaba mucho en regresarle su cambio. Como Atsa quiere mejorar esta labor, decidió cambiar su forma de hacerlo. En la ciudad solo hay monedas de $10, $5, $2 y de $1 pesos; la nueva forma de dar el cambio será dar tantas monedas de $10 como sea posible, si hace falta dar más cambio dará la mayor cantidad de monedas de $5 que sea posible, si nuevamente es necesario dar cambio dará la mayor cantidad de monedas de $2 pesos y finalmente hará lo mismo con la moneda de $1.",
+        "entrada": "Una única linea que contiene un número entero C que representa la cantidad en pesos que debe dar de cambio. (0<=N<=x^10)",
+        "salida": "Una única línea con cuatro números separados por espacio que representen la cantidad de monedas de $10, $5, $2 y $1 respectivamente que debe dar para la cantidad de C.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Aritmética",
+            "Condicionales"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    cin>>a;\n    cout<<a/10<<\" \"<<(a%10)/5<<\" \"<<((a%10)%5)/2<<\" \"<<(((a%10)%5)%2);\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "8418. Probabilidad",
+        "url": "https://omegaup.com/arena/problem/Probabilidad/",
+        "descripcion": "En un pueblo llamado Moroleón. se organizo una rifa, en la cual Pedro y Jorge compraron una cantidad determinada de boletos. Si se sabe cual es la cantidad que se vendieron en total de boletos. ¿Puedes ayudarlos a sacar su probabilidad de ganar la rifa?.",
+        "entrada": "La primera linea contendrá la cantidad de boletos comprados por jorge y pedro. y la segunda los boletos totales.",
+        "salida": "La salida contendrá la probabilidad de ganar con solamente 2 números después del punto decimal.",
+        "nivel": "",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b, c;\n    cin>>a>>b;\n    c=(100/b)*a;\n    cout<<fixed<<setprecision(2)<<\"La probabilidad es de %\"<<c;\n\n    return 0;\n}"
+     },
+     {
+        "titulo": "5822. Raíces de un polinomio de segundo grado",
+        "url": "https://omegaup.com/arena/problem/raices-p2/",
+        "descripcion": "Anita está en su primer curso de programación, quiere combinar sus habilidades de programación y matemáticas. En esta ocasión le han pedido que calcule las raíces de polinomios de segundo grado usando la fórmula cuadrática. r+ = (-b + sqrt(b^2 - 4ac)) / (2a) y r- = (-b + sqrt(b^2 - 4ac)) / (2a). Anita únicamente está practicando con problemas en que existen las raíces son valores reales.",
+        "entrada": "Recibirás tres valores reales, que corresponden a los coeficientes de un polinomio de segundo grado: a, b y c. Todas las soluciones estarán en el dominio de los reales.",
+        "salida": "Mostrar los valores de las raíces para cada polinomio de entrada recibido en la entrada.",
+        "nivel": "",
+        "categorias": [
+            "Condicionales"
+        ],
+
+        "estructuras": [
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b, c, d, e;\n    cin>>a>>b>>c;\n    d=(((-1)*b)+sqrt(pow(b,2)-(4*a*c)))/(2*a);\n    e=(((-1)*b)-sqrt(pow(b,2)-(4*a*c)))/(2*a);\n    cout<<fixed<<setprecision(4)<<\"Root +: \"<<d<<\"\\nRoot -: \"<<e;\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "5821. Área de un triángulo",
+        "url": "https://omegaup.com/arena/problem/area-triangulo-inout/",
+        "descripcion": "En la escuela a Carlitos le han enseñado a calcular el área de un triángulo usando los valores de los lados. La maestra le ha indicado que lo primero que debe calcular es el valor: (S = (L1 + L2 + L3) / 2). El siguiente paso es aplicar la fórmula para calcular el área. area = (sqrt(s * (s - L1) * (s - L2) * (s - L3))). Carlitos está empezando sus cursos, por ello te pide que le apoyes escribiendo un programa que permita verificar si está haciendo bien sus cálculos.",
+        "entrada": "Recibirás 3 valores de tipo real. Estos lados corresponden siempre a un triángulo válido. Los valores de entrada para cada lado son reales positivos mayores a 0 y menores a 20,000. Todas las entradas forman triángulos válidos.",
+        "salida": "Mostrar cada uno de los lados leídos en la entrada y el área del triángulo. Considera 15 caracteres para imprimir cada número y cuatro decimales. Los detalles puedes consultarlos en los ejemplos.",
+        "nivel": "",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b, c, d, e;\n    cin>>a>>b>>c;\n    d=(a+b+c)/2;\n    e=sqrt(d*(d-a)*(d-b)*(d-c));\n    cout<<fixed<<setprecision(4)<<\"Side 1: \"<<a<<\"\\nSide 2: \"<<b<<\"\\nSide 3: \"<<c<<\"\\nArea : \"<<e;\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "8347. 0 fortnite vs minecraft",
+        "url": "https://omegaup.com/arena/problem/fvm/",
+        "descripcion": "Habia una ves un niño que se llamaba Jesus, el jugaba mucho al minecraft, pero luego salio el fortnite, ese niño no tenia amigos, por que estaba todo el dia jugando o fortnite o minecraft, pero ese niño quiere saber en cuantos años va a tener su primera novia, ya que cada dia que juegue uno de estos juegos, aumentan los años en los que no tendra novia de esta manera: 1 dia de minecraft=4.27 años sin novia, 1 dia de fortnite=2.91 años sin novia.",
+        "entrada": "linea 1: un entero que dice cuantos dias Jesus a jugado al mincecraft, linea 2: un entero que dice cuantos dias jugo al fortnite. jesus no es tan rata y no puede jugar mas de 1 000 000 dias en total.",
+        "salida": "el numero exacto de cuantos años jesus no va a tener novia en el siguiente formato [jesus no va a tener novia por X anos] o en el caso de que no haya jugado a ninguno imprime [jesus va a ser feliz].",
+        "nivel": "",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b, c;\n    cin>>a>>b;\n    c=(a*4.27)+(b*2.91);\n    if(c){\n        cout<<\"jesus no va a tener novia por \"<<c<<\" anos\";\n    }\n    else{\n        cout<<\"jesus va a ser feliz\";\n    }\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "5421. AnagramValidator",
+        "url": "https://omegaup.com/arena/problem/AnagramValidator/",
+        "descripcion": "Un anagrama de una frase es otra frase que contiene las mismas letras que la original, pero con las letras en diferente orden. Dadas dos frases, decidir si son anagramas una de la otra.",
+        "entrada": "Dos líneas, cada una conteniendo una frase compuesta por letras y símbolos de puntuación.",
+        "salida": "La frase \"Son anagramas\" si las dos frases son anagramas. La frase \"No son anagramas\" si las dos frases no son anagramas",
+        "nivel": "",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "int",
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    int num[30];\n    string z;\n    getline(cin,z);\n    for(int i=0; i<z.size(); i++){\n        if(z[i]>='a' && z[i]<='z'){\n            num[z[i]-97]++;\n        }\n        else if(z[i]>='A' && z[i]<='Z'){\n            num[z[i]-65]++;\n        }\n    }\n    getline(cin,z);\n    for(int i=0; i<z.size(); i++){\n        if(z[i]>='a' && z[i]<='z'){\n            num[z[i]-97]--;\n        }\n        else if(z[i]>='A' && z[i]<='Z'){\n            num[z[i]-65]--;\n        }\n    }\n    for(int i=0; i<30; i++){\n        if(num[i]!=0){\n            cout<<\"No son anagramas\";return 0;\n        }\n    }\n    cout<<\"Son anagramas\";\n    \n    return 0;\n}\n"
+     },
+     {
+        "titulo": "1301. Números Libres",
+        "url": "https://omegaup.com/arena/problem/Numeros-Libres/",
+        "descripcion": "Dados dos números square-free a y b, determina si su producto también es square-free. Decimos que un número x es square-free si para todo primo p, p^2 no divide a x. Por ejemplo, 6 es square free porque el cuadrado de ningún primo lo divide. En cambio, 12 sí, porque 2^2 = 4 sí lo divide.",
+        "entrada": "En la primera linea contiene un entero N el numero de casos a resolver. En las siguientes N lineas, dos numeros enteros a y b. (1<=N<=15 y 1<=a,b<=1000) 30 puntos, (1<=N<=500 y 1<=a,b<= 2^31) 30 puntos y (1<=N<=500 y 1<= a,b<=2^63) 40 puntos.",
+        "salida": "Para cada caso de prueba, decir \"SI\" (sin comillas) si el producto de a y b es square-free, de caso contrario \"NO\" (sin comillas).",
+        "nivel": "",
+        "categorias": [
+            "Aritmética",
+            "Loops",
+            "Prueba de primalidad",
+            "Generación primaria"
+
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d;\n    cin>>a;\n    while(a--){\n        cin>>b>>c;\n        d=__gcd(b,c);\n        if(d<=1){\n            cout<<\"SI\\n\";\n        }\n        else{\n            cout<<\"NO\\n\";\n        }\n    }\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "909. Capturando al gato",
+        "url": "https://omegaup.com/arena/problem/L-OMI2011-Capturando-al-gato/",
+        "descripcion": "Homero Simpson y su equipo de zorros (agentes secretos) se han dado a la tarea de capturar al criminal internacional conocido como el gato. El plan de Homero es crear un cerco de vigilancia alrededor del Museo de Springfield, próximo objetivo del criminal. Si se traza un círculo alrededor del museo existen N lugares adecuados para que un zorro ponga su puesto de vigilancia. Homero quiere poner el máximo número de zorros posibles alrededor del Museo, sin embargo hay una limitante. El método de comunicación entre los zorros (inventado por el mismo Homero) es el teléfono de hilo. Este teléfono consta de dos vasos unidos por un hilo el cual debe estar tenso para que funcione. El círculo de zorros estará comunicado por teléfonos de la siguiente forma: cada zorro tendrá dos teléfonos, uno para comunicarse con el zorro a su derecha y otro para comunicarse con el zorro a su izquierda. Para que la comunicación sea funcional, el círculo deberá estar cerrado. Homero no es un buen ingeniero y aunque puede hacer muchos teléfonos, requiere que el hilo de todos tenga la misma longitud. Ayuda a Homero a determinar cuál es el máximo número de zorros que puede colocar alrededor del Museo de modo que todos estén comunicados por teléfonos cuyo hilo sea de la misma longitud.",
+        "entrada": "En la primera línea el número N, la cantidad de posiciones posibles para zorros En las siguientes N líneas un entero d_i que representa la distancia que hay entre el puesto i y el puesto i+1. El entero en la última de estas líneas representa la distancia del último puesto hacia el primero para cerrar el círculo. (1 <= N <= 5000) y (1<= sum(di, i=1 to N) <= 2 * 10^9). Subtask 1 (75%): (0<N<=10^3) y los casos no están agrupados. Subtask 2 (25%): No hay restricciones adicionales.",
+        "salida": "Tu programa debe escribir a la pantalla un único número entero que representa la cantidad máxima de zorros que se pueden colocar.",
+        "nivel": "",
+        "categorias": [
+            "Arreglos",
+            "Implementación"
+        ],
+        "estructuras": [
+            "long long",
+            "stack<int>",
+            "int"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nlong long a, b=0, c=0, d, e=1, f;\nint num[5001];\nstack<int>falta;\n\nint sub(int x){\n    int y=0, z=0;\n    for(int i=x; i<a; i++){\n        y+=num[i];\n        if(y==e){\n            z++;\n            y=0;\n        }\n        else if(y>e){\n            return 0;\n        }\n    }\n    for(int i=0; i<x; i++){\n        y+=num[i];\n        if(y==e){\n            z++;\n            y=0;\n        }\n        else if(y>e){\n            return 0;\n        }\n    }\n    \n    return z;\n}\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>a;\n    for(int i=0; i<a; i++){\n        cin>>num[i];\n        b=max(b,(long long)num[i]);\n        c+=num[i];\n    }\n    while(e<sqrt(c)){\n        if(c%e==0){\n            falta.push(c/e);\n            if(e>=b){\n                d=0;\n                f=0;\n                for(int i=0; i<a; i++){\n                    d+=num[i];\n                    if(d==e){\n                        f++;\n                        d=0;\n                    }\n                    else if(d>e){\n                        f=-1;break;\n                    }\n                }\n                if(f!=-1){\n                    cout<<f;return 0;\n                }\n                d=0;\n                f=0;\n                for(int i=1; i<a; i++){\n                    d+=num[i];\n                    if(d==e){\n                        f++;\n                        d=0;\n                    }\n                    else if(d>e){\n                        f=-1;break;\n                    }\n                }\n                if(f!=-1){\n                    d+=num[0];\n                    if(d==e){\n                        f++;\n                        cout<<f;return 0;\n                    }\n                }\n                for(int j=2; j<=7; j++){\n                    f=sub(j);\n                    if(f){\n                        cout<<f;return 0;\n                    }\n                }\n            }\n        }\n        e++;\n    }\n    e=sqrt(c);\n    if((e*e)==c && e>=b){\n        d=0;\n        f=0;\n        for(int i=0; i<a; i++){\n            d+=num[i];\n            if(d==e){\n                f++;\n                d=0;\n            }\n            else if(d>e){\n                f=-1;break;\n            }\n        }\n        if(f!=-1){\n            cout<<f;return 0;\n        }\n        d=0;\n        f=0;\n        for(int i=1; i<a; i++){\n            d+=num[i];\n            if(d==e){\n                f++;\n                d=0;\n            }\n            else if(d>e){\n                f=-1;break;\n            }\n        }\n        if(f!=-1){\n            d+=num[0];\n            if(d==e){\n                f++;\n                cout<<f;return 0;\n            }\n        }\n        for(int j=2; j<=7; j++){\n            f=sub(j);\n            if(f){\n                cout<<f;return 0;\n            }\n        }\n    }\n    while(falta.size()!=1){\n        e=falta.top();\n        falta.pop();\n        if(e>=b){\n            d=0;\n            f=0;\n            for(int i=0; i<a; i++){\n                d+=num[i];\n                if(d==e){\n                    f++;\n                    d=0;\n                }\n                else if(d>e){\n                    f=-1;break;\n                }\n            }\n            if(f!=-1){\n                cout<<f;return 0;\n            }\n            d=0;\n            f=0;\n            for(int i=1; i<a; i++){\n                d+=num[i];\n                if(d==e){\n                    f++;\n                    d=0;\n                }\n                else if(d>e){\n                    f=-1;break;\n                }\n            }\n            if(f!=-1){\n                d+=num[0];\n                if(d==e){\n                    f++;\n                    cout<<f;return 0;\n                }\n            }\n            for(int j=2; j<=7; j++){\n                f=sub(j);\n                if(f){\n                    cout<<f;return 0;\n                }\n            }\n        }\n    }\n    cout<<1;\n\n    return 0;\n}"
+     },
+    {
         "titulo": "...",
         "url": "...",
         "descripcion": "...",
