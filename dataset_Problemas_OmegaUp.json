@@ -17,7 +17,7 @@
             "vector<vector<int>>",
             "queue<>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\ntypedef struct{\n    int aa, bb, cc, dd;\n}sobra;\n\nint a, b, c, d, e, f, g, h, l;\nchar num[102][102];\nint sub[102][102];\nqueue<sobra>falta;\nsobra z;\n\nint main(){\n  cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  cin>>a>>b>>c;\n for(int i=0; i<a; ++i){\n       for(int j=0; j<b; ++j){\n           cin>>num[i][j];\n           if(num[i][j]=='M'){\n               z.aa=i;\n               z.bb=j;\n               z.cc=c;\n               z.dd=0;\n               falta.push(z);\n                sub[i][j]=1;\n          }\n     }\n }\n while(falta.size()){\n      z=falta.front();\n      falta.pop();\n      z.dd++;\n       z.aa--;\n       if(z.aa>-1){\n          if(num[z.aa][z.bb]=='.' and !sub[z.aa][z.bb]){\n                falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='.' and z.dd<sub[z.aa][z.bb]){\n               falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and !sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and z.dd<sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='S'){\n                cout<<z.dd;return 0;\n          }\n     }\n     z.aa+=2;\n      if(z.aa<a){\n           if(num[z.aa][z.bb]=='.' and !sub[z.aa][z.bb]){\n                falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='.' and z.dd<sub[z.aa][z.bb]){\n               falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and !sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and z.dd<sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='S'){\n                cout<<z.dd;return 0;\n          }\n     }\n     z.aa--;\n       z.bb--;\n       if(z.bb>-1){\n          if(num[z.aa][z.bb]=='.' and !sub[z.aa][z.bb]){\n                falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='.' and z.dd<sub[z.aa][z.bb]){\n               falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and !sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and z.dd<sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='S'){\n                cout<<z.dd;return 0;\n          }\n     }\n     z.bb+=2;\n      if(z.bb<b){\n           if(num[z.aa][z.bb]=='.' and !sub[z.aa][z.bb]){\n                falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='.' and z.dd<sub[z.aa][z.bb]){\n               falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and !sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and z.dd<sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='S'){\n                cout<<z.dd;return 0;\n          }\n     }\n }\n cout<<\"F\";\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\ntypedef struct{\n    int aa, bb, cc, dd;\n}sobra;\n\nint a, b, c, d, e, f, g, h, l;\nchar num[102][102];\nint sub[102][102];\nqueue<sobra>falta;\nsobra z;\n\nint main(){\n  cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  cin>>a>>b>>c;\n for(auto i=0; i<a; ++i){\n       for(auto j=0; j<b; ++j){\n           cin>>num[i][j];\n           if(num[i][j]=='M'){\n               z.aa=i;\n               z.bb=j;\n               z.cc=c;\n               z.dd=0;\n               falta.push(z);\n                sub[i][j]=1;\n          }\n     }\n }\n while(falta.size()){\n      z=falta.front();\n      falta.pop();\n      z.dd++;\n       z.aa--;\n       if(z.aa>-1){\n          if(num[z.aa][z.bb]=='.' and !sub[z.aa][z.bb]){\n                falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='.' and z.dd<sub[z.aa][z.bb]){\n               falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and !sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and z.dd<sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='S'){\n                cout<<z.dd;return 0;\n          }\n     }\n     z.aa+=2;\n      if(z.aa<a){\n           if(num[z.aa][z.bb]=='.' and !sub[z.aa][z.bb]){\n                falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='.' and z.dd<sub[z.aa][z.bb]){\n               falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and !sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and z.dd<sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='S'){\n                cout<<z.dd;return 0;\n          }\n     }\n     z.aa--;\n       z.bb--;\n       if(z.bb>-1){\n          if(num[z.aa][z.bb]=='.' and !sub[z.aa][z.bb]){\n                falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='.' and z.dd<sub[z.aa][z.bb]){\n               falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and !sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and z.dd<sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='S'){\n                cout<<z.dd;return 0;\n          }\n     }\n     z.bb+=2;\n      if(z.bb<b){\n           if(num[z.aa][z.bb]=='.' and !sub[z.aa][z.bb]){\n                falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='.' and z.dd<sub[z.aa][z.bb]){\n               falta.push(z);\n                sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and !sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='X' and z.cc and z.dd<sub[z.aa][z.bb]){\n              z.cc--;\n               falta.push(z);\n                z.cc++;\n               sub[z.aa][z.bb]=z.dd;\n         }\n         else if(num[z.aa][z.bb]=='S'){\n                cout<<z.dd;return 0;\n          }\n     }\n }\n cout<<\"F\";\n\n    return 0;\n}\n"
     },
     {
         "titulo": "10234. Los discos de la recursión",
@@ -72,7 +72,7 @@
             "vector<vector<long long>>",
             "vector<vector<vector<vector<bool>>>>"
         ],
-        "codigo": "#include<bits/stdc++.h>\n\nusing namespace std;\n\nlong long num[5][1000000];\nlong long sum[2][4];\nbool nums[42][42][42][42];\nchar subs[44][44];\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=1, c, d, e, f, g, h, l, m, n, o, p=0, q, r, s;\n    sum[0][2]=sum[1][0]=1;\n    sum[0][3]=sum[1][1]=-1;\n    cin>>a;\n    for(int i=0; i<a; i++){\n        for(int j=0; j<a; j++){\n            cin>>subs[i][j];\n            if(subs[i][j]=='B'){\n                subs[i][j]='.';\n                if(p){\n                    r=i;\n                    s=j;\n                }\n                else{\n                    p=i;\n                    q=j;\n                }\n            }\n        }\n   }\n   num[0][0]=p;\n   num[1][0]=q;\n   num[2][0]=r;\n   num[3][0]=s;\n   nums[p][q][r][s]=true;\n   nums[r][s][p][q]=true;\n   while(c<b){\n        h=num[0][c];\n        m=num[1][c];\n        l=num[2][c];\n        n=num[3][c];\n        for(int i=0; i<4; i++){\n            d=h;\n            e=m;\n            f=sum[0][i];\n            g=sum[1][i];\n            if((d-f==l && e-g==n) || subs[d-f][e-g]=='#'){\n                continue;\n            }\n            while((d+f!=l || e+g!=n) && subs[d+f][e+g]=='.'){\n                d+=f;\n                e+=g;\n            }\n            if(((d+f==l && e+g==n) || subs[d+f][e+g]=='#') && nums[d][e][l][n]==false){\n                nums[d][e][l][n]=true;\n                nums[l][n][d][e]=true;\n                num[0][b]=d;\n                num[1][b]=e;\n                num[2][b]=l;\n                num[3][b]=n;\n                num[4][b]=num[4][c]+1;\n                b++;\n            }\n            else if(subs[d+f][e+g]=='A'){\n                num[4][b]=num[4][c]+1;\n                o=c;\n                c=b+1;break;\n            }\n        }\n        if(c>b){\n            c=o;break;\n        }\n        for(int i=0; i<4; i++){\n            d=l;\n            e=n;\n            f=sum[0][i];\n            g=sum[1][i];\n            if(subs[d-f][e-g]=='#' || (d-f==h && e-g==m))continue;\n            while(subs[d+f][e+g]=='.' && (d+f!=h || e+g!=m)){\n                d+=f;\n                e+=g;\n            }\n            if((subs[d+f][e+g]=='#' || (d+f==h && e+g==m)) && nums[h][m][d][e]==false){\n                nums[h][m][d][e]=true;\n                nums[h][m][d][e]=true;\n                num[0][b]=h;\n                num[1][b]=m;\n                num[2][b]=d;\n                num[3][b]=e;\n                num[4][b]=num[4][c]+1;\n                b++;\n            }\n            else if(subs[d+f][e+g]=='A'){\n                num[4][b]=num[4][c]+1;\n                o=c;\n                c=b+1;break;\n            }\n        }\n        if(c>b){\n            c=o;break;\n        }\n        c++;\n    }\n    cout<<num[4][c]+1;\n\n    return 0;\n}\n"
+        "codigo": "#include<bits/stdc++.h>\n\nusing namespace std;\n\nlong long num[5][1000000];\nlong long sum[2][4];\nbool nums[42][42][42][42];\nchar subs[44][44];\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=1, c, d, e, f, g, h, l, m, n, o, p=0, q, r, s;\n    sum[0][2]=sum[1][0]=1;\n    sum[0][3]=sum[1][1]=-1;\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<a; j++){\n            cin>>subs[i][j];\n            if(subs[i][j]=='B'){\n                subs[i][j]='.';\n                if(p){\n                    r=i;\n                    s=j;\n                }\n                else{\n                    p=i;\n                    q=j;\n                }\n            }\n        }\n   }\n   num[0][0]=p;\n   num[1][0]=q;\n   num[2][0]=r;\n   num[3][0]=s;\n   nums[p][q][r][s]=true;\n   nums[r][s][p][q]=true;\n   while(c<b){\n        h=num[0][c];\n        m=num[1][c];\n        l=num[2][c];\n        n=num[3][c];\n        for(auto i=0; i<4; i++){\n            d=h;\n            e=m;\n            f=sum[0][i];\n            g=sum[1][i];\n            if((d-f==l && e-g==n) || subs[d-f][e-g]=='#'){\n                continue;\n            }\n            while((d+f!=l || e+g!=n) && subs[d+f][e+g]=='.'){\n                d+=f;\n                e+=g;\n            }\n            if(((d+f==l && e+g==n) || subs[d+f][e+g]=='#') && nums[d][e][l][n]==false){\n                nums[d][e][l][n]=true;\n                nums[l][n][d][e]=true;\n                num[0][b]=d;\n                num[1][b]=e;\n                num[2][b]=l;\n                num[3][b]=n;\n                num[4][b]=num[4][c]+1;\n                b++;\n            }\n            else if(subs[d+f][e+g]=='A'){\n                num[4][b]=num[4][c]+1;\n                o=c;\n                c=b+1;break;\n            }\n        }\n        if(c>b){\n            c=o;break;\n        }\n        for(auto i=0; i<4; i++){\n            d=l;\n            e=n;\n            f=sum[0][i];\n            g=sum[1][i];\n            if(subs[d-f][e-g]=='#' || (d-f==h && e-g==m))continue;\n            while(subs[d+f][e+g]=='.' && (d+f!=h || e+g!=m)){\n                d+=f;\n                e+=g;\n            }\n            if((subs[d+f][e+g]=='#' || (d+f==h && e+g==m)) && nums[h][m][d][e]==false){\n                nums[h][m][d][e]=true;\n                nums[h][m][d][e]=true;\n                num[0][b]=h;\n                num[1][b]=m;\n                num[2][b]=d;\n                num[3][b]=e;\n                num[4][b]=num[4][c]+1;\n                b++;\n            }\n            else if(subs[d+f][e+g]=='A'){\n                num[4][b]=num[4][c]+1;\n                o=c;\n                c=b+1;break;\n            }\n        }\n        if(c>b){\n            c=o;break;\n        }\n        c++;\n    }\n    cout<<num[4][c]+1;\n\n    return 0;\n}\n"
     },
     {
         "titulo": "336. Mapas de bits",
@@ -111,7 +111,7 @@
             "long long",
             "vector<long long>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n     cout.tie(0);\n      long long a, b, c, d, e, f=1, g, h;\n   vector<long long>num;\n     cin>>a;\n   for(int i=0; i<a; i++){\n       cin>>b>>e;\n        num.push_back(b-e);\n   }\n b=1;\n  e=num[0];\n while(b<a){\n       if(e>=0){\n         b++;\n          d=(d+1)%a;\n            e+=num[d];\n        }\n     else{\n         b--;\n          e-=num[c];\n            c=(c+1)%a;\n        }\n }\n cout<<c;\n      \n  return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n     cout.tie(0);\n      long long a, b, c, d, e, f=1, g, h;\n   vector<long long>num;\n     cin>>a;\n   for(auto i=0; i<a; i++){\n       cin>>b>>e;\n        num.push_back(b-e);\n   }\n b=1;\n  e=num[0];\n while(b<a){\n       if(e>=0){\n         b++;\n          d=(d+1)%a;\n            e+=num[d];\n        }\n     else{\n         b--;\n          e-=num[c];\n            c=(c+1)%a;\n        }\n }\n cout<<c;\n      \n  return 0;\n}\n"
     },
     {
         "titulo": "10867. Antivirus",
@@ -164,7 +164,7 @@
             "vector<long long>",
             "string"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a, b=14, c, d, e, f, g, h;\n  long long num[]={1, 20, 400, 8000, 160000, 3200000, 64000000, 1280000000, 25600000000, 512000000000, 10240000000000, 204800000000000, 4096000000000000, 81920000000000000, 1638400000000000000};\n  string z, x;\n  cin>>a;\n   if(a==1){\n     cin>>a;\n       if(!a){\n           cout<<\"?/\";return 0;\n        }\n     while(num[b]>a){\n          b--;\n      }\n     for(; b>=0; --b){\n         c=a/num[b];\n           switch(c){\n                case 0: z=\"?/\"+z;break;\n             case 1: z=\"*/\"+z;break;\n             case 2: z=\"**/\"+z;break;\n                case 3: z=\"***/\"+z;break;\n               case 4: z=\"****/\"+z;break;\n              case 5: z=\"-/\"+z;break;\n             case 6: z=\"-*/\"+z;break;\n                case 7: z=\"-**/\"+z;break;\n               case 8: z=\"-***/\"+z;break;\n              case 9: z=\"-****/\"+z;break;\n             case 10: z=\"--/\"+z;break;\n               case 11: z=\"--*/\"+z;break;\n              case 12: z=\"--**/\"+z;break;\n             case 13: z=\"--***/\"+z;break;\n                case 14: z=\"--****/\"+z;break;\n               case 15: z=\"---/\"+z;break;\n              case 16: z=\"---*/\"+z;break;\n             case 17: z=\"---**/\"+z;break;\n                case 18: z=\"---***/\"+z;break;\n               case 19: z=\"---****/\"+z;break;\n          }\n         a%=num[b];\n        }\n     cout<<z;\n  }\n else{\n     cin>>z;\n       for(int i=0; i<z.size(); ++i){\n            if(z[i]=='/'){\n                if(x==\"?\"){\n                 b=0;\n              }\n             else if(x==\"*\"){\n                    b=1;\n              }\n             else if(x==\"**\"){\n                   b=2;\n              }\n             else if(x==\"***\"){\n                  b=3;\n              }\n             else if(x==\"****\"){\n                 b=4;\n              }\n             else if(x==\"-\"){\n                    b=5;\n              }\n             else if(x==\"-*\"){\n                   b=6;\n              }\n             else if(x==\"-**\"){\n                  b=7;\n              }\n             else if(x==\"-***\"){\n                 b=8;\n              }\n             else if(x==\"-****\"){\n                    b=9;\n              }\n             else if(x==\"--\"){\n                   b=10;\n             }\n             else if(x==\"--*\"){\n                  b=11;\n             }\n             else if(x==\"--**\"){\n                 b=12;\n             }\n             else if(x==\"--***\"){\n                    b=13;\n             }\n             else if(x==\"--****\"){\n                   b=14;\n             }\n             else if(x==\"---\"){\n                  b=15;\n             }\n             else if(x==\"---*\"){\n                 b=16;\n             }\n             else if(x==\"---**\"){\n                    b=17;\n             }\n             else if(x==\"---***\"){\n                   b=18;\n             }\n             else if(x==\"---****\"){\n                  b=19;\n             }\n             c+=num[d]*b;\n              d++;\n              x=\"\";\n           }\n         else{\n             x=x+z[i];\n         }\n     }\n     cout<<c;\n  }\n\n   return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a, b=14, c, d, e, f, g, h;\n  long long num[]={1, 20, 400, 8000, 160000, 3200000, 64000000, 1280000000, 25600000000, 512000000000, 10240000000000, 204800000000000, 4096000000000000, 81920000000000000, 1638400000000000000};\n  string z, x;\n  cin>>a;\n   if(a==1){\n     cin>>a;\n       if(!a){\n           cout<<\"?/\";return 0;\n        }\n     while(num[b]>a){\n          b--;\n      }\n     for(; b>=0; --b){\n         c=a/num[b];\n           switch(c){\n                case 0: z=\"?/\"+z;break;\n             case 1: z=\"*/\"+z;break;\n             case 2: z=\"**/\"+z;break;\n                case 3: z=\"***/\"+z;break;\n               case 4: z=\"****/\"+z;break;\n              case 5: z=\"-/\"+z;break;\n             case 6: z=\"-*/\"+z;break;\n                case 7: z=\"-**/\"+z;break;\n               case 8: z=\"-***/\"+z;break;\n              case 9: z=\"-****/\"+z;break;\n             case 10: z=\"--/\"+z;break;\n               case 11: z=\"--*/\"+z;break;\n              case 12: z=\"--**/\"+z;break;\n             case 13: z=\"--***/\"+z;break;\n                case 14: z=\"--****/\"+z;break;\n               case 15: z=\"---/\"+z;break;\n              case 16: z=\"---*/\"+z;break;\n             case 17: z=\"---**/\"+z;break;\n                case 18: z=\"---***/\"+z;break;\n               case 19: z=\"---****/\"+z;break;\n          }\n         a%=num[b];\n        }\n     cout<<z;\n  }\n else{\n     cin>>z;\n       for(auto i=0; i<z.size(); ++i){\n            if(z[i]=='/'){\n                if(x==\"?\"){\n                 b=0;\n              }\n             else if(x==\"*\"){\n                    b=1;\n              }\n             else if(x==\"**\"){\n                   b=2;\n              }\n             else if(x==\"***\"){\n                  b=3;\n              }\n             else if(x==\"****\"){\n                 b=4;\n              }\n             else if(x==\"-\"){\n                    b=5;\n              }\n             else if(x==\"-*\"){\n                   b=6;\n              }\n             else if(x==\"-**\"){\n                  b=7;\n              }\n             else if(x==\"-***\"){\n                 b=8;\n              }\n             else if(x==\"-****\"){\n                    b=9;\n              }\n             else if(x==\"--\"){\n                   b=10;\n             }\n             else if(x==\"--*\"){\n                  b=11;\n             }\n             else if(x==\"--**\"){\n                 b=12;\n             }\n             else if(x==\"--***\"){\n                    b=13;\n             }\n             else if(x==\"--****\"){\n                   b=14;\n             }\n             else if(x==\"---\"){\n                  b=15;\n             }\n             else if(x==\"---*\"){\n                 b=16;\n             }\n             else if(x==\"---**\"){\n                    b=17;\n             }\n             else if(x==\"---***\"){\n                   b=18;\n             }\n             else if(x==\"---****\"){\n                  b=19;\n             }\n             c+=num[d]*b;\n              d++;\n              x=\"\";\n           }\n         else{\n             x=x+z[i];\n         }\n     }\n     cout<<c;\n  }\n\n   return 0;\n}\n"
     },
     {
         "titulo": "11649. Tabla de ganar",
@@ -284,7 +284,7 @@
             "vector<pair<int,int>>",
             "vector<vector<int>>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    ios::sync_with_stdio(0);\n    cin.tie(0);\n    cout.tie(0);\n    int a, b, c, e, f, g, h, n,m;\n    cin>>n>>m;\n    vector<vector<int>> escuela(n+2,vector<int>(m+2,0));\n    for(int i = 1; i<=n;i++){\n        for(int j=1;j<=m;j++){\n            cin>>a;\n            if(a){\n                escuela[i][j]=0;\n            }\n            else{\n                escuela[i][j]=1;\n                b++;\n            }\n        }\n    }\n    vector<pair<int,int> >z;\n    pair<int,int>zz;\n    for(int i = 1; i<=n;i++){\n        if(escuela[i][1]==1){\n            b--;\n            escuela[i][1]=0;\n            z.push_back({i,1});\n        }\n        if(escuela[i][m]==1){\n            b--;\n            escuela[i][m]=0;\n            z.push_back({i,m});\n        }\n            \n    }\n    for(int i = 1; i<=m;i++){\n        if(escuela[1][i]==1){\n            b--;\n            escuela[1][i]=0;\n            z.push_back({1,i});\n        }\n        if(escuela[n][i]==1){\n            b--;\n            escuela[n][i]=0;\n            z.push_back({n,i});\n        }\n    }\n    while(z.size()){\n        zz=z.back();\n        z.pop_back();\n        int i=zz.first, j=zz.second;\n            if(escuela[i-1][j]){\n                b--;\n                escuela[i-1][j]=0;\n                z.push_back({i-1,j});\n            }\n            if(escuela[i+1][j]){\n                b--;\n                escuela[i+1][j]=0;\n                z.push_back({i+1,j});\n            }\n            if(escuela[i][j-1]){\n                b--;\n                escuela[i][j-1]=0;\n                z.push_back({i,j-1});\n            }\n            if(escuela[i][j+1]){\n                b--;\n                escuela[i][j+1]=0;\n                z.push_back({i,j+1});\n            }\n    }\n    cout<<b;\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    ios::sync_with_stdio(0);\n    cin.tie(0);\n    cout.tie(0);\n    int a, b, c, e, f, g, h, n,m;\n    cin>>n>>m;\n    vector<vector<int>> escuela(n+2,vector<int>(m+2,0));\n    for(auto i = 1; i<=n;i++){\n        for(auto j=1;j<=m;j++){\n            cin>>a;\n            if(a){\n                escuela[i][j]=0;\n            }\n            else{\n                escuela[i][j]=1;\n                b++;\n            }\n        }\n    }\n    vector<pair<int,int> >z;\n    pair<int,int>zz;\n    for(auto i = 1; i<=n;i++){\n        if(escuela[i][1]==1){\n            b--;\n            escuela[i][1]=0;\n            z.push_back({i,1});\n        }\n        if(escuela[i][m]==1){\n            b--;\n            escuela[i][m]=0;\n            z.push_back({i,m});\n        }\n            \n    }\n    for(auto i = 1; i<=m;i++){\n        if(escuela[1][i]==1){\n            b--;\n            escuela[1][i]=0;\n            z.push_back({1,i});\n        }\n        if(escuela[n][i]==1){\n            b--;\n            escuela[n][i]=0;\n            z.push_back({n,i});\n        }\n    }\n    while(z.size()){\n        zz=z.back();\n        z.pop_back();\n        int i=zz.first, j=zz.second;\n            if(escuela[i-1][j]){\n                b--;\n                escuela[i-1][j]=0;\n                z.push_back({i-1,j});\n            }\n            if(escuela[i+1][j]){\n                b--;\n                escuela[i+1][j]=0;\n                z.push_back({i+1,j});\n            }\n            if(escuela[i][j-1]){\n                b--;\n                escuela[i][j-1]=0;\n                z.push_back({i,j-1});\n            }\n            if(escuela[i][j+1]){\n                b--;\n                escuela[i][j+1]=0;\n                z.push_back({i,j+1});\n            }\n    }\n    cout<<b;\n\n    return 0;\n}\n"
     },
     {
         "titulo": "141. Oro",
@@ -305,7 +305,7 @@
             "pair<long long,long long>",
             "queue<pair<long long,long long>>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=1000001;\n    queue<pair<long long,long long>>falta;\n    pair<long long,long long> z;\n    cin>>a>>b;\n    vector<long long>num(a);\n    for(int i=0; i<a; i++){\n        cin>>num[i];\n    }\n    sort(num.begin(),num.end());\n    for(int i=a-1; i>0; i--){\n        if(num[i]>=b){\n            c=num[i];\n        }\n        else{\n            z.first=num[i];\n            z.second=i;\n            falta.push(z);\n        }\n    }\n    if(num[0]>=b){\n        c=num[0];\n    }\n    while(falta.size()){\n        z=falta.front();\n        falta.pop();\n        for(int i=z.second-1; i>0; i--){\n            z.first+=num[i];\n            if(c>z.first && z.first>=b){\n                c=z.first;\n            }\n            else if(z.first<b){\n                z.second=i;\n                falta.push(z);\n            }\n            z.first-=num[i];\n        }\n        z.first+=num[0];\n        if(c>z.first && z.first>=b){\n            c=z.first;\n        }\n    }\n    cout<<c-b;\n \n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=1000001;\n    queue<pair<long long,long long>>falta;\n    pair<long long,long long> z;\n    cin>>a>>b;\n    vector<long long>num(a);\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n    }\n    sort(num.begin(),num.end());\n    for(auto i=a-1; i>0; i--){\n        if(num[i]>=b){\n            c=num[i];\n        }\n        else{\n            z.first=num[i];\n            z.second=i;\n            falta.push(z);\n        }\n    }\n    if(num[0]>=b){\n        c=num[0];\n    }\n    while(falta.size()){\n        z=falta.front();\n        falta.pop();\n        for(auto i=z.second-1; i>0; i--){\n            z.first+=num[i];\n            if(c>z.first && z.first>=b){\n                c=z.first;\n            }\n            else if(z.first<b){\n                z.second=i;\n                falta.push(z);\n            }\n            z.first-=num[i];\n        }\n        z.first+=num[0];\n        if(c>z.first && z.first>=b){\n            c=z.first;\n        }\n    }\n    cout<<c-b;\n \n    return 0;\n}\n"
     },
     {
         "titulo": "1342. Nieves y el merge-sort",
@@ -341,7 +341,7 @@
             "int",
             "vector<vector<>>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n \nusing namespace std;\n\nint MOD=1000000007, N;\n \nint solve(int *p){\n    int i, ret=0;\n    sort(p,p+N);\n    for(i=0; i<N; i++){\n        ret=(ret+(long long)p[i]*(2*i-N+1))%MOD;\n    }\n    return ret+(ret<0?MOD:0);\n}\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    int MAXN=500010;\n    cin>>N;\n    vector<vector<int>>(2,vector<int>(N+1));\n    for(int i=0; i<N; i++){\n        cin>>points[0][i]>>points[1][i];\n    }\n    cout<<(solve(points[0])+solve(points[1]))%MOD;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n \nusing namespace std;\n\nint MOD=1000000007, N;\n \nint solve(int *p){\n    int i, ret=0;\n    sort(p,p+N);\n    for(i=0; i<N; i++){\n        ret=(ret+(long long)p[i]*(2*i-N+1))%MOD;\n    }\n    return ret+(ret<0?MOD:0);\n}\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    int MAXN=500010;\n    cin>>N;\n    vector<vector<int>>(2,vector<int>(N+1));\n    for(auto i=0; i<N; i++){\n        cin>>points[0][i]>>points[1][i];\n    }\n    cout<<(solve(points[0])+solve(points[1]))%MOD;\n}\n"
     },
     {
         "titulo": "7920. Incrementando intervalos",
@@ -359,7 +359,7 @@
             "int",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nconst int MAXN = 100005; \nint arr[MAXN]; \n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    int N, M;\n    cin >> N >> M;\n    // Aplicar la t?nica de diferencias\n    for(int i = 0; i < M; i++) {\n        int I, F;\n        cin >> I >> F;\n        arr[I]++; \n        arr[F]--; \n    }\n    // Reconstruir el arreglo sumando las diferencias\n    for(int i = 1; i < N; i++) {\n        arr[i] += arr[i - 1];\n    }\n    // Imprimir el arreglo resultante\n    for(int i = 0; i < N; i++) {\n        cout << arr[i] << \" \";\n    }\n    cout << endl;\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nconst int MAXN = 100005; \nint arr[MAXN]; \n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    int N, M;\n    cin >> N >> M;\n    // Aplicar la t?nica de diferencias\n    for(auto i = 0; i < M; i++) {\n        int I, F;\n        cin >> I >> F;\n        arr[I]++; \n        arr[F]--; \n    }\n    // Reconstruir el arreglo sumando las diferencias\n    for(auto i = 1; i < N; i++) {\n        arr[i] += arr[i - 1];\n    }\n    // Imprimir el arreglo resultante\n    for(auto i = 0; i < N; i++) {\n        cout << arr[i] << \" \";\n    }\n    cout << endl;\n\n    return 0;\n}\n"
     },
     {
         "titulo": "10839. Equipo de Basket",
@@ -398,7 +398,7 @@
             "pair<int,int>",
             "vector<pair<int,int>>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\ntypedef struct{\n    long long aa, bb, cc, dd;\n}sobras;\n\nlong long a, b, c, d, e, f, g, h;\nvector<pair<long long,long long> >falta;\nqueue<long long>aa;\nqueue<long long>bb;\nqueue<long long>cc;\nsobras sub;\n\nint main(){\n cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  cin>>a>>b>>c;\n while(a--){\n       cin>>d;\n       falta.push_back(make_pair(d,1));\n  }\n while(b--){\n       cin>>d;\n       falta.push_back(make_pair(d,2));\n  }\n while(c--){\n       cin>>d;\n       falta.push_back(make_pair(d,3));\n  }\n sort(falta.begin(),falta.end());\n  for(int i=0; i<falta.size(); ++i){\n        switch(falta[i].second){\n          case 1: aa.push(i);break;\n         case 2: bb.push(i);break;\n         case 3: cc.push(i);break;\n     }\n }\n sub.dd=1000000000;\n    while(aa.size() && bb.size() && cc.size()){\n       a=min(min(falta[aa.front()].first,falta[bb.front()].first),falta[cc.front()].first);\n      b=max(max(falta[aa.front()].first,falta[bb.front()].first),falta[cc.front()].first);\n      if(b-a<sub.dd){\n           sub.dd=b-a;\n           sub.aa=aa.front();\n            sub.bb=bb.front();\n            sub.cc=cc.front();\n        }\n     if(aa.front()<=bb.front() && aa.front()<=cc.front()){\n         aa.pop();\n     }\n     else if(bb.front()<=aa.front() && bb.front()<=cc.front()){\n            bb.pop();\n     }\n     else if(cc.front()<=aa.front() && cc.front()<=bb.front()){\n            cc.pop();\n     }\n }\n cout<<falta[sub.aa].first<<\" \"<<falta[sub.bb].first<<\" \"<<falta[sub.cc].first;\n\n  return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\ntypedef struct{\n    long long aa, bb, cc, dd;\n}sobras;\n\nlong long a, b, c, d, e, f, g, h;\nvector<pair<long long,long long> >falta;\nqueue<long long>aa;\nqueue<long long>bb;\nqueue<long long>cc;\nsobras sub;\n\nint main(){\n cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  cin>>a>>b>>c;\n while(a--){\n       cin>>d;\n       falta.push_back(make_pair(d,1));\n  }\n while(b--){\n       cin>>d;\n       falta.push_back(make_pair(d,2));\n  }\n while(c--){\n       cin>>d;\n       falta.push_back(make_pair(d,3));\n  }\n sort(falta.begin(),falta.end());\n  for(auto i=0; i<falta.size(); ++i){\n        switch(falta[i].second){\n          case 1: aa.push(i);break;\n         case 2: bb.push(i);break;\n         case 3: cc.push(i);break;\n     }\n }\n sub.dd=1000000000;\n    while(aa.size() && bb.size() && cc.size()){\n       a=min(min(falta[aa.front()].first,falta[bb.front()].first),falta[cc.front()].first);\n      b=max(max(falta[aa.front()].first,falta[bb.front()].first),falta[cc.front()].first);\n      if(b-a<sub.dd){\n           sub.dd=b-a;\n           sub.aa=aa.front();\n            sub.bb=bb.front();\n            sub.cc=cc.front();\n        }\n     if(aa.front()<=bb.front() && aa.front()<=cc.front()){\n         aa.pop();\n     }\n     else if(bb.front()<=aa.front() && bb.front()<=cc.front()){\n            bb.pop();\n     }\n     else if(cc.front()<=aa.front() && cc.front()<=bb.front()){\n            cc.pop();\n     }\n }\n cout<<falta[sub.aa].first<<\" \"<<falta[sub.bb].first<<\" \"<<falta[sub.cc].first;\n\n  return 0;\n}\n"
     },
     {
         "titulo": "11599. Ordenando tareas",
@@ -415,7 +415,7 @@
             "vector<int>",
             "vector<pair<int,int>>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(9);\n cout.tie(0);\n  int a, b, c, d, e, f, g, h;\n   vector<pair<int,int> >num(1000002,{0,0});\n vector<int>sub;\n   vector<int>sum;\n   cin>>a;\n   while(a--){\n       cin>>b;\n       c++;\n      if(b>0){\n          if(num[b].first){\n             while(a--){\n                   cin>>b;\n               }\n             cout<<-1;return 0;\n            }\n         if(num[b].second && d){\n               while(a--){\n                   cin>>b;\n               }\n             cout<<-1;return 0;\n            }\n         else{\n             d++;\n              sum.push_back(b);\n             num[b].first++;\n               num[b].second++;\n          }\n     }\n     else{\n         b=fabs(b);\n            if(!num[b].first){\n                while(a--){\n                   cin>>b;\n               }\n             cout<<-1;return 0;\n            }\n         else{\n             d--;\n              num[b].first--;\n               if(!d){\n                   while(sum.size()){\n                        num[sum[sum.size()-1]].second=0;\n                      sum.pop_back();\n                   }\n                 sub.push_back(c);\n                 c=0;\n              }\n         }\n     }\n }\n if(d){\n        cout<<-1;\n }\n else{\n     cout<<sub.size()<<\"\\n\";\n        for(int i=0; i<sub.size(); ++i){\n          cout<<sub[i]<<\" \";\n      }\n }\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(9);\n cout.tie(0);\n  int a, b, c, d, e, f, g, h;\n   vector<pair<int,int> >num(1000002,{0,0});\n vector<int>sub;\n   vector<int>sum;\n   cin>>a;\n   while(a--){\n       cin>>b;\n       c++;\n      if(b>0){\n          if(num[b].first){\n             while(a--){\n                   cin>>b;\n               }\n             cout<<-1;return 0;\n            }\n         if(num[b].second && d){\n               while(a--){\n                   cin>>b;\n               }\n             cout<<-1;return 0;\n            }\n         else{\n             d++;\n              sum.push_back(b);\n             num[b].first++;\n               num[b].second++;\n          }\n     }\n     else{\n         b=fabs(b);\n            if(!num[b].first){\n                while(a--){\n                   cin>>b;\n               }\n             cout<<-1;return 0;\n            }\n         else{\n             d--;\n              num[b].first--;\n               if(!d){\n                   while(sum.size()){\n                        num[sum[sum.size()-1]].second=0;\n                      sum.pop_back();\n                   }\n                 sub.push_back(c);\n                 c=0;\n              }\n         }\n     }\n }\n if(d){\n        cout<<-1;\n }\n else{\n     cout<<sub.size()<<\"\\n\";\n        for(auto i=0; i<sub.size(); ++i){\n          cout<<sub[i]<<\" \";\n      }\n }\n\n    return 0;\n}\n"
     },
     {
         "titulo": "8415. Display Led",
@@ -531,7 +531,7 @@
             "vector<bool>",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nlong long a, b, c, d, e, f;\nvector<int>num(1000002,0);\nvector<bool>sub(1000002,false), sum(1000002,false);\n\nlong long nums(long long x, long long y){\n    if(x==0)return y;\n    return nums(y%x,x);\n}\n  \nbool subs(long long g){\n    int h=g%c, l=num[h], m=a%c;\n    bool n=true;\n    if(sub[h]){\n        return sum[h];\n    }\n    for(int i=1; i<b; i++){\n        h=(h+m)%c;\n        if(num[h]!=l){\n            n=false;break;\n        }\n    }\n    h=g%c;\n    sum[h]=n;\n    sub[h]=true;\n    for(int i=1; i<b; i++){\n        h=(h+m)%c;\n        sum[h]=n;\n        sub[h]=true;\n    }\n  \n    return n;\n}\n  \nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>c>>a>>f;\n    for(int i=0; i<c; i++){\n        cin>>num[i];\n    }\n    cin>>e;\n    b=c/nums(c,a);\n    for(int i=0; i<e; i++){\n        cin>>d;\n        if(subs(d)){\n            cout<<\"1\";\n        }\n        else{\n            cout<<\"0\";\n        }\n    }\n    cout<<\"\\n\";\n    \n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nlong long a, b, c, d, e, f;\nvector<int>num(1000002,0);\nvector<bool>sub(1000002,false), sum(1000002,false);\n\nlong long nums(long long x, long long y){\n    if(x==0)return y;\n    return nums(y%x,x);\n}\n  \nbool subs(long long g){\n    int h=g%c, l=num[h], m=a%c;\n    bool n=true;\n    if(sub[h]){\n        return sum[h];\n    }\n    for(auto i=1; i<b; i++){\n        h=(h+m)%c;\n        if(num[h]!=l){\n            n=false;break;\n        }\n    }\n    h=g%c;\n    sum[h]=n;\n    sub[h]=true;\n    for(auto i=1; i<b; i++){\n        h=(h+m)%c;\n        sum[h]=n;\n        sub[h]=true;\n    }\n  \n    return n;\n}\n  \nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>c>>a>>f;\n    for(auto i=0; i<c; i++){\n        cin>>num[i];\n    }\n    cin>>e;\n    b=c/nums(c,a);\n    for(auto i=0; i<e; i++){\n        cin>>d;\n        if(subs(d)){\n            cout<<\"1\";\n        }\n        else{\n            cout<<\"0\";\n        }\n    }\n    cout<<\"\\n\";\n    \n    return 0;\n}\n"
     },
     {
         "titulo": "160. Pulseras",
@@ -595,7 +595,7 @@
             "pair<int, int>",
             "queue<pair<int, int>>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint n, m, r, c, ans;\nvector<vector<char>> grid;\nvector<vector<bool>> visited;\npair<int, int> start, door;\nqueue<pair<int, int>> q;\n\nbool isValid(int x, int y){\n    return (x >= 0 && x < n && y >= 0 && y < m && grid[x][y] == 'X' && !visited[x][y]);\n}\n\nvoid bfs(int l){\n    while(!q.empty()){\n        pair<int, int> curr = q.front();\n        q.pop();\n        int x = curr.first;\n        int y = curr.second;\n        if(curr == door){\n            return;\n        }\n        // Movement with the ladder\n        for(int i = max(0, x - l); i <= min(n - 1, x + l); i++){\n            if(isValid(i, y)){\n                visited[i][y] = true;\n                q.push({i, y});\n            }\n        }\n        // Horizontal movement\n        if(isValid(x, y - 1)){\n            visited[x][y - 1] = true;\n            q.push({x, y - 1});\n        }\n        if(isValid(x, y + 1)){\n            visited[x][y + 1] = true;\n            q.push({x, y + 1});\n        }\n    }\n}\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin >> n >> m;\n    cin >> r >> c;\n    door = {r - 1, c - 1}; \n    grid.assign(n, vector<char>(m));\n    visited.assign(n, vector<bool>(m, false));\n    for(int i = 0; i < n; i++){\n        for(int j = 0; j < m; j++){\n            cin >> grid[i][j];\n            if(i == n - 1 && grid[i][j] == 'X'){\n                start = {i, j};\n            }\n        }\n    }\n    if(start == door){\n        cout << \"0\\n\";\n        return 0;\n    }\n    for(int l = 0; l <= n; l++){\n        q.push(start);\n        visited.assign(n, vector<bool>(m, false));\n        visited[start.first][start.second] = true;\n        bfs(l);\n        if(visited[door.first][door.second]){\n            ans = l;\n            break;\n        }\n    }\n    cout << ans << \"\\n\";\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint n, m, r, c, ans;\nvector<vector<char>> grid;\nvector<vector<bool>> visited;\npair<int, int> start, door;\nqueue<pair<int, int>> q;\n\nbool isValid(int x, int y){\n    return (x >= 0 && x < n && y >= 0 && y < m && grid[x][y] == 'X' && !visited[x][y]);\n}\n\nvoid bfs(int l){\n    while(!q.empty()){\n        pair<int, int> curr = q.front();\n        q.pop();\n        int x = curr.first;\n        int y = curr.second;\n        if(curr == door){\n            return;\n        }\n        // Movement with the ladder\n        for(auto i = max(0, x - l); i <= min(n - 1, x + l); i++){\n            if(isValid(i, y)){\n                visited[i][y] = true;\n                q.push({i, y});\n            }\n        }\n        // Horizontal movement\n        if(isValid(x, y - 1)){\n            visited[x][y - 1] = true;\n            q.push({x, y - 1});\n        }\n        if(isValid(x, y + 1)){\n            visited[x][y + 1] = true;\n            q.push({x, y + 1});\n        }\n    }\n}\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin >> n >> m;\n    cin >> r >> c;\n    door = {r - 1, c - 1}; \n    grid.assign(n, vector<char>(m));\n    visited.assign(n, vector<bool>(m, false));\n    for(auto i = 0; i < n; i++){\n        for(auto j = 0; j < m; j++){\n            cin >> grid[i][j];\n            if(i == n - 1 && grid[i][j] == 'X'){\n                start = {i, j};\n            }\n        }\n    }\n    if(start == door){\n        cout << \"0\\n\";\n        return 0;\n    }\n    for(auto l = 0; l <= n; l++){\n        q.push(start);\n        visited.assign(n, vector<bool>(m, false));\n        visited[start.first][start.second] = true;\n        bfs(l);\n        if(visited[door.first][door.second]){\n            ans = l;\n            break;\n        }\n    }\n    cout << ans << \"\\n\";\n\n    return 0;\n}\n"
     },
     {
         "titulo": "236. La Venganza de Silvio",
@@ -633,7 +633,7 @@
             "long long",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nvector<pair<int>>num[101];\nlong long a, b, c, d;\nint nums[101];\npair<int> z;\n\nvoid sub(int x){\n    for(int i=0; i<num[x].size(); i++){\n        if(!nums[num[x][i].first]){\n            c+=num[x][i].second;\n            b=max(b,c);\n            nums[num[x][i].first]=1;\n            sub(num[x][i].first);\n            nums[num[x][i].first]=0;\n            c-=num[x][i].second;\n        }\n    }\n    return;\n}\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>a;\n    for(int i=1; i<a; i++){\n        cin>>b>>c>>d;\n        z.first=c;\n        z.second=d;\n        num[b].push_back(z);\n        z.first=b;\n        num[c].push_back(z);\n    }\n    b=c=0;\n    nums[0]=1;\n    sub(0);\n    cout<<b;\n    \n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nvector<pair<int>>num[101];\nlong long a, b, c, d;\nint nums[101];\npair<int> z;\n\nvoid sub(int x){\n    for(auto i=0; i<num[x].size(); i++){\n        if(!nums[num[x][i].first]){\n            c+=num[x][i].second;\n            b=max(b,c);\n            nums[num[x][i].first]=1;\n            sub(num[x][i].first);\n            nums[num[x][i].first]=0;\n            c-=num[x][i].second;\n        }\n    }\n    return;\n}\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>a;\n    for(auto i=1; i<a; i++){\n        cin>>b>>c>>d;\n        z.first=c;\n        z.second=d;\n        num[b].push_back(z);\n        z.first=b;\n        num[c].push_back(z);\n    }\n    b=c=0;\n    nums[0]=1;\n    sub(0);\n    cout<<b;\n    \n    return 0;\n}"
     },
     {
         "titulo": "11824. Limonadas",
@@ -650,7 +650,7 @@
             "int",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  int a, b, c, d, e, f, g, h;\n   vector<int>num(1000001,0);\n    cin>>a>>b;\n    for(int i=0; i<b; ++i){\n       cin>>num[i];\n  }\n c=0;\n  while(c<b-1 && num[c]<num[c+1]){\n      c++;\n  }\n if(c+1==b){\n       cout<<a;return 0;\n }\n d=b-1;\n    while(d>0 && num[d]<num[d-1]){\n        d--;\n  }\n if(d==0){\n     cout<<a;return 0;\n }\n while(c<d){\n       if(num[c]<=num[d]){\n           e=num[c];\n         c++;\n          while(num[c]<e){\n              f+=(e-num[c]);\n                c++;\n          }\n     }\n     else{\n         e=num[d];\n         d--;\n          while(num[d]<e){\n              f+=(e-num[d]);\n                d--;\n          }\n     }\n }\n cout<<abs(a-f);\n\n return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  int a, b, c, d, e, f, g, h;\n   vector<int>num(1000001,0);\n    cin>>a>>b;\n    for(auto i=0; i<b; ++i){\n       cin>>num[i];\n  }\n c=0;\n  while(c<b-1 && num[c]<num[c+1]){\n      c++;\n  }\n if(c+1==b){\n       cout<<a;return 0;\n }\n d=b-1;\n    while(d>0 && num[d]<num[d-1]){\n        d--;\n  }\n if(d==0){\n     cout<<a;return 0;\n }\n while(c<d){\n       if(num[c]<=num[d]){\n           e=num[c];\n         c++;\n          while(num[c]<e){\n              f+=(e-num[c]);\n                c++;\n          }\n     }\n     else{\n         e=num[d];\n         d--;\n          while(num[d]<e){\n              f+=(e-num[d]);\n                d--;\n          }\n     }\n }\n cout<<abs(a-f);\n\n return 0;\n}\n"
     },
     {
         "titulo": "11382. Bienestar Azteca",
@@ -685,7 +685,7 @@
             "~",
             "&"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a, b, c, d, e, f, g, h;\n vector<long long>num;\n cin>>a;\n   for(int i=1; i<=a; i++){\n      cin>>b;\n       if(b-(b&~(b-1))==0){\n          num.push_back(i);\n     }\n }\n cout<<num.size()<<\"\\n\";\n    for(int i=0; i<num.size(); i++){\n      cout<<num[i]<<\" \";\n  }\n \n  return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a, b, c, d, e, f, g, h;\n vector<long long>num;\n cin>>a;\n   for(auto i=1; i<=a; i++){\n      cin>>b;\n       if(b-(b&~(b-1))==0){\n          num.push_back(i);\n     }\n }\n cout<<num.size()<<\"\\n\";\n    for(auto i=0; i<num.size(); i++){\n      cout<<num[i]<<\" \";\n  }\n \n  return 0;\n}\n"
     },
     {
         "titulo": "8057. El autor no se molestó en escribir un título",
@@ -732,7 +732,7 @@
         "estructuras": [
             "long long"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0, d=0, e=0;\n    cin>>a;\n    for(int i=1; i<=a; i++){\n        cin>>b;\n        if(i%2 && b){\n            c++;\n        }\n        else if(i%2==0 && !b){\n            d++;\n        }\n        e+=b;\n    }\n    if(!(a%2)){\n        if(c+d<=a-c-d){\n            c+=d;\n        }\n        else{\n            c=a-c-d;\n        }\n        cout<<abs(a/2-e)+(c-abs(a/2-e))/2;\n    }\n    else if(c+d<a-c-d){\n        c+=d;\n        cout<<abs(a/2-e)+(c-abs(a/2-e))/2;\n    }\n    else{\n        c=a-c-d;\n        cout<<abs((a/2)+1-e)+(c-abs((a/2)+1-e))/2;\n    }\n    \n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0, d=0, e=0;\n    cin>>a;\n    for(auto i=1; i<=a; i++){\n        cin>>b;\n        if(i%2 && b){\n            c++;\n        }\n        else if(i%2==0 && !b){\n            d++;\n        }\n        e+=b;\n    }\n    if(!(a%2)){\n        if(c+d<=a-c-d){\n            c+=d;\n        }\n        else{\n            c=a-c-d;\n        }\n        cout<<abs(a/2-e)+(c-abs(a/2-e))/2;\n    }\n    else if(c+d<a-c-d){\n        c+=d;\n        cout<<abs(a/2-e)+(c-abs(a/2-e))/2;\n    }\n    else{\n        c=a-c-d;\n        cout<<abs((a/2)+1-e)+(c-abs((a/2)+1-e))/2;\n    }\n    \n    return 0;\n}\n"
     },
     {
         "titulo": "4276. Loggy y la Navidad",
@@ -807,7 +807,7 @@
             "long long",
             "int"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nlong long a, b, c, d, e, f, g, h, l;\n\nint num[100002];\n\nvoid sub(){\n    if(c>num[a]){\n        cout<<a;return;\n    }\n    if(c<=num[d]){\n        cout<<d-1;return;\n    }\n    e=0;\n    f=a;\n    h=0;\n    l=a;\n    while(e<=f){\n        g=(e+f)/2;\n        if(num[g]==c){\n            cout<<g-1;return;\n        }\n        else if(num[g]>c){\n            l=min(l,g);\n            f=g-1;\n        }\n        else{\n            h=max(h,g);\n            e=g+1;\n        }\n    }\n    cout<<l-1;return;\n}\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>a;\n    for(int i=1; i<=a; i++){\n        cin>>num[i];\n        num[i]+=num[i-1];\n    }\n    cin>>b;\n    while(b--){\n        cin>>c>>d;\n        d++;\n        c+=num[d-1];\n        sub();\n        cout<<\"\\n\";\n    }\n    \n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nlong long a, b, c, d, e, f, g, h, l;\n\nint num[100002];\n\nvoid sub(){\n    if(c>num[a]){\n        cout<<a;return;\n    }\n    if(c<=num[d]){\n        cout<<d-1;return;\n    }\n    e=0;\n    f=a;\n    h=0;\n    l=a;\n    while(e<=f){\n        g=(e+f)/2;\n        if(num[g]==c){\n            cout<<g-1;return;\n        }\n        else if(num[g]>c){\n            l=min(l,g);\n            f=g-1;\n        }\n        else{\n            h=max(h,g);\n            e=g+1;\n        }\n    }\n    cout<<l-1;return;\n}\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>a;\n    for(auto i=1; i<=a; i++){\n        cin>>num[i];\n        num[i]+=num[i-1];\n    }\n    cin>>b;\n    while(b--){\n        cin>>c>>d;\n        d++;\n        c+=num[d-1];\n        sub();\n        cout<<\"\\n\";\n    }\n    \n    return 0;\n}\n"
     },
     {
         "titulo": "16556. Fábrica de Globos",
@@ -864,7 +864,7 @@
             "int",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    ios::sync_with_stdio(0);\n  cin.tie(0);\n   cout.tie(0);\n  long n, m, a=0, b=0, c, d, e, f, g, h;\n    vector<int>ar(500001), ar2(500001);\n   cin>>n;\n   for(auto i=0; i<n; i++){\n      cin>>ar[i];\n   }\n for(auto i=0; i<n; i++){\n      cin>>ar2[i];\n  }\n sort(ar,ar+n);\n    sort(ar2,ar2+n);\n  ar2[n]=100000001;\n ar[n]=100000001;\n  for(auto i=0; i<n;){\n      d=ar[i];\n      e=i+1;\n        while(ar[e]==d){\n          e++;\n      }\n     while(ar2[a]<d){\n          a++;\n      }\n     b+=a*(e-i);\n       while(ar2[a]==d){\n         a++;\n      }\n     b-=(n-a)*(e-i);\n       i=e;\n  }\n if(b>0){\n      cout<<\"Avengers\\n\"<<b;\n }\n else{\n     cout<<\"Thanos\\n\"<<-b+1;\n    }\n\n   return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    ios::sync_with_stdio(0);\n  cin.tie(0);\n   cout.tie(0);\n  int n, m, a=0, b=0, c, d, e, f, g, h;\n    vector<int>ar(500001), ar2(500001);\n   cin>>n;\n   for(auto i=0; i<n; i++){\n      cin>>ar[i];\n   }\n for(auto i=0; i<n; i++){\n      cin>>ar2[i];\n  }\n sort(ar,ar+n);\n    sort(ar2,ar2+n);\n  ar2[n]=100000001;\n ar[n]=100000001;\n  for(auto i=0; i<n;){\n      d=ar[i];\n      e=i+1;\n        while(ar[e]==d){\n          e++;\n      }\n     while(ar2[a]<d){\n          a++;\n      }\n     b+=a*(e-i);\n       while(ar2[a]==d){\n         a++;\n      }\n     b-=(n-a)*(e-i);\n       i=e;\n  }\n if(b>0){\n      cout<<\"Avengers\\n\"<<b;\n }\n else{\n     cout<<\"Thanos\\n\"<<-b+1;\n    }\n\n   return 0;\n}\n"
     },
     {
         "titulo": "13000. Pareja que suma K",
@@ -900,7 +900,7 @@
             "long long",
             "vector<long long>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\ntypedef struct{\n    long long aa, bb, cc, dd, ee;\n}sobra;\nlong long a, b, c, d, e, f, g, h;\nsobra num[100002];\n\nint main(){\n  cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  cin>>a;\n   for(int i=1; i<=a; ++i){\n      cin>>num[i].aa;\n   }\n for(int i=1; i<=a; ++i){\n      cin>>num[i].ee;\n       num[i].bb=num[i].ee+num[i-1].bb;\n  }\n for(int i=1; i<=a; ++i){\n      if(num[a].bb-num[i-1].bb<=num[i].aa){\n         num[i].cc++;\n          num[i].cc+=num[i-1].cc;\n           cout<<num[i].cc*num[i].ee+num[i].dd<<\" \";continue;\n      }\n     if(num[i].aa<num[i].ee){\n          num[i].cc+=num[i-1].cc;\n           cout<<num[i].cc*num[i].ee+num[i].aa+num[i].dd<<\" \";continue;\n        }\n     b=i;\n      c=a;\n      while(b<=c){\n          d=(b+c)/2;\n            if(num[d].bb-num[i-1].bb<=num[i].aa){\n             e=d;\n              b=d+1;\n            }\n         else{\n             c=d-1;\n            }\n     }\n     while(num[e+1].bb-num[i-1].bb<=num[i].aa){\n            e++;\n      }\n     num[i].cc++;\n      num[i].cc+=num[i-1].cc;\n       num[e+1].cc--;\n        num[e+1].dd+=num[i].aa-num[e].bb+num[i-1].bb;\n     //cout<<\"-\"<<num[e+1].dd<<\" \"<<e+1<<\" \"<<num[i].cc<<\"-\\n\";\n       cout<<(num[i].cc*num[i].ee)+num[i].dd<<\" \";\n }\n\n   return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\ntypedef struct{\n    long long aa, bb, cc, dd, ee;\n}sobra;\nlong long a, b, c, d, e, f, g, h;\nsobra num[100002];\n\nint main(){\n  cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  cin>>a;\n   for(auto i=1; i<=a; ++i){\n      cin>>num[i].aa;\n   }\n for(auto i=1; i<=a; ++i){\n      cin>>num[i].ee;\n       num[i].bb=num[i].ee+num[i-1].bb;\n  }\n for(auto i=1; i<=a; ++i){\n      if(num[a].bb-num[i-1].bb<=num[i].aa){\n         num[i].cc++;\n          num[i].cc+=num[i-1].cc;\n           cout<<num[i].cc*num[i].ee+num[i].dd<<\" \";continue;\n      }\n     if(num[i].aa<num[i].ee){\n          num[i].cc+=num[i-1].cc;\n           cout<<num[i].cc*num[i].ee+num[i].aa+num[i].dd<<\" \";continue;\n        }\n     b=i;\n      c=a;\n      while(b<=c){\n          d=(b+c)/2;\n            if(num[d].bb-num[i-1].bb<=num[i].aa){\n             e=d;\n              b=d+1;\n            }\n         else{\n             c=d-1;\n            }\n     }\n     while(num[e+1].bb-num[i-1].bb<=num[i].aa){\n            e++;\n      }\n     num[i].cc++;\n      num[i].cc+=num[i-1].cc;\n       num[e+1].cc--;\n        num[e+1].dd+=num[i].aa-num[e].bb+num[i-1].bb;\n     //cout<<\"-\"<<num[e+1].dd<<\" \"<<e+1<<\" \"<<num[i].cc<<\"-\\n\";\n       cout<<(num[i].cc*num[i].ee)+num[i].dd<<\" \";\n }\n\n   return 0;\n}\n"
     },
     {
         "titulo": "11840. Trajineras",
@@ -919,7 +919,7 @@
             "int",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  int a, b, c, d, e, f, g, h;\n   vector<int>num(100002,0);\n cin>>a>>b;\n    for(int i=1; i<=a; ++i){\n      cin>>num[i];\n      if(num[i]>b){\n         i++;\n          while(i<=a){\n              cin>>num[i];\n              i++;\n          }\n         cout<<0;return 0;\n     }\n     num[i]+=num[i-1];\n }\n if(num[a]<b){\n     cout<<a;return 0;\n }\n c=a-1;\n    d=a-1;\n    while(d<=a){\n      while(num[d]-num[d-c]>b){\n         d--;\n          c--;\n      }\n     while(d<=a && num[d]-num[d-c]<=b){\n            d++;\n      }\n }\n cout<<c;\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  int a, b, c, d, e, f, g, h;\n   vector<int>num(100002,0);\n cin>>a>>b;\n    for(auto i=1; i<=a; ++i){\n      cin>>num[i];\n      if(num[i]>b){\n         i++;\n          while(i<=a){\n              cin>>num[i];\n              i++;\n          }\n         cout<<0;return 0;\n     }\n     num[i]+=num[i-1];\n }\n if(num[a]<b){\n     cout<<a;return 0;\n }\n c=a-1;\n    d=a-1;\n    while(d<=a){\n      while(num[d]-num[d-c]>b){\n         d--;\n          c--;\n      }\n     while(d<=a && num[d]-num[d-c]<=b){\n            d++;\n      }\n }\n cout<<c;\n\n    return 0;\n}\n"
     },
     {
         "titulo": "11391. Torre 5G",
@@ -936,7 +936,7 @@
             "int",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  int a, b, c, d, e, f, g, h;\n   vector<int>num;\n   cin>>a>>b;\n    for(int i=0; i<=b*2; i++){\n        cin>>c;\n       d+=c;\n     num.push_back(c);\n }\n e=d;\n  for(int i=(b*2)+1; i<a; i++){\n     cin>>c;\n       d+=c-num[i-((b*2)+1)];\n        num.push_back(c);\n     e=min(e,d);\n   }\n for(int i=a; i<a+b*2; i++){\n       d+=num[i-a]-num[i-((b*2)+1)];\n     e=min(e,d);\n   }\n cout<<e;\n  \n  return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  int a, b, c, d, e, f, g, h;\n   vector<int>num;\n   cin>>a>>b;\n    for(auto i=0; i<=b*2; i++){\n        cin>>c;\n       d+=c;\n     num.push_back(c);\n }\n e=d;\n  for(auto i=(b*2)+1; i<a; i++){\n     cin>>c;\n       d+=c-num[i-((b*2)+1)];\n        num.push_back(c);\n     e=min(e,d);\n   }\n for(auto i=a; i<a+b*2; i++){\n       d+=num[i-a]-num[i-((b*2)+1)];\n     e=min(e,d);\n   }\n cout<<e;\n  \n  return 0;\n}\n"
     },
     {
         "titulo": "9532. RooTriangulos",
@@ -1124,7 +1124,7 @@
         "estructuras": [
             "int"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    int n, itinerario = 0;\n    cin >> n;\n    for(int i = 0; i < n; ++i){\n        int ciudad;\n        cin >> ciudad;\n        itinerario |= (1 << ciudad); \n    }\n    cout << itinerario << \"\\n\";\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    int n, itinerario = 0;\n    cin >> n;\n    for(auto i = 0; i < n; ++i){\n        int ciudad;\n        cin >> ciudad;\n        itinerario |= (1 << ciudad); \n    }\n    cout << itinerario << \"\\n\";\n\n    return 0;\n}\n"
     },
     {
         "titulo": "6355. La Risa en Vacaciones 3",
@@ -1239,7 +1239,7 @@
             "long long",
             "int"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    int num[50010];\n    cin>>a>>b;\n    for(int i=0; i<a; i++){\n        cin>>num[i];\n    }\n    for(int i=0; i<a; i++){\n        if(i%2==0 && num[i]==0 && num[i+1]==1 && num[i+2]==1){\n            if(b%2){\n                num[i+1]=0;\n            }\n            break;\n        }\n        else if(i%2==0 && num[i]==0 && num[i+1]==1){\n            b--;\n            num[i+1]=0;\n            if(b==0){\n                break;\n            }\n        }\n        else if(i%2 && num[i]==0 && num[i+1]==1){\n            if(b%2){\n                num[i]=1;\n            }\n            break;\n        }\n    }\n    for(int i=0; i<a; i++){\n        cout<<num[i]<<\" \";\n    }\n        \n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    int num[50010];\n    cin>>a>>b;\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n    }\n    for(auto i=0; i<a; i++){\n        if(i%2==0 && num[i]==0 && num[i+1]==1 && num[i+2]==1){\n            if(b%2){\n                num[i+1]=0;\n            }\n            break;\n        }\n        else if(i%2==0 && num[i]==0 && num[i+1]==1){\n            b--;\n            num[i+1]=0;\n            if(b==0){\n                break;\n            }\n        }\n        else if(i%2 && num[i]==0 && num[i+1]==1){\n            if(b%2){\n                num[i]=1;\n            }\n            break;\n        }\n    }\n    for(auto i=0; i<a; i++){\n        cout<<num[i]<<\" \";\n    }\n        \n    return 0;\n}"
     },
     {
         "titulo": "12176. Cuantas veces aparece el numero",
@@ -1256,7 +1256,7 @@
             "int",
             "map<int,int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, g, h;\n   vector<long>sub;\n  map<int,int>num;\n    cin>>a>>b;\n    while(a--){\n        cin>>c;\n        num[c]++;\n        if(num[c]==b){\n            sub.push_back(c);\n        }\n    }\n    sort(sub.begin(),sub.end());\n    for(int i=0; i<sub.size(); ++i){\n        cout<<sub[i]<<\" \"<<num[sub[i]]<<\"\\n\";\n    }\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, g, h;\n   vector<int>sub;\n  map<int,int>num;\n    cin>>a>>b;\n    while(a--){\n        cin>>c;\n        num[c]++;\n        if(num[c]==b){\n            sub.push_back(c);\n        }\n    }\n    sort(sub.begin(),sub.end());\n    for(auto i=0; i<sub.size(); ++i){\n        cout<<sub[i]<<\" \"<<num[sub[i]]<<\"\\n\";\n    }\n\n    return 0;\n}\n"
     },
     {
         "titulo": "12321. Primos Relativos",
@@ -1289,7 +1289,7 @@
             "string",
             "getline()"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a=0, b, c, d, e, f, g, h;\n   string z;\n getline(cin,z);\n   cout<<z.size()<<\" \";\n    for(int i=0; i<z.size(); ++i){\n        if(z[i]>='a' && z[i]<='z'){\n           z[i]-=32;\n     }\n     else if(z[i]>='A' && z[i]<='Z'){\n          z[i]+=32;\n     }\n     else if(z[i]>='0' && z[i]<'9'){\n           z[i]++;\n       }\n     else if(z[i]==' '){\n           a++;\n      }\n }\n cout<<a<<\"\\n\"<<z;\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a=0, b, c, d, e, f, g, h;\n   string z;\n getline(cin,z);\n   cout<<z.size()<<\" \";\n    for(auto i=0; i<z.size(); ++i){\n        if(z[i]>='a' && z[i]<='z'){\n           z[i]-=32;\n     }\n     else if(z[i]>='A' && z[i]<='Z'){\n          z[i]+=32;\n     }\n     else if(z[i]>='0' && z[i]<'9'){\n           z[i]++;\n       }\n     else if(z[i]==' '){\n           a++;\n      }\n }\n cout<<a<<\"\\n\"<<z;\n\n    return 0;\n}\n"
     },
     {
         "titulo": "9565. Cantidad de Divisores",
@@ -1321,7 +1321,7 @@
             "int",
             "vector<vector<int>>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    ios_base::sync_with_stdio(false);\n cin.tie(0);\n   cout.tie(0);\n  int a, b, c, e, f, g, h, n,m;\n    cin>>n>>m;\n    vector<vector<int>> escuela(n+2,vector<int>(m+2,0));\n    for(int i = 1; i<=n;i++){\n        for(int j=1;j<=m;j++){\n            cin>>escuela[i][j];\n        }\n    }\n    int perimetro = 0;\n    for(int i = 1; i<=n;i++){\n        for(int j=1;j<=m;j++){\n            if(!escuela[i][j]) continue;\n            if(escuela[i-1][j] == 0){\n                perimetro++;\n            }\n            if(escuela[i+1][j] == 0){\n                perimetro++;\n            }\n            if(escuela[i][j-1] == 0){\n                perimetro++;\n            }\n            if(escuela[i][j+1] == 0){\n                perimetro++;\n            }\n        }\n    }\n    cout<<perimetro;\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    ios_base::sync_with_stdio(false);\n cin.tie(0);\n   cout.tie(0);\n  int a, b, c, e, f, g, h, n,m;\n    cin>>n>>m;\n    vector<vector<int>> escuela(n+2,vector<int>(m+2,0));\n    for(auto i = 1; i<=n;i++){\n        for(auto j=1;j<=m;j++){\n            cin>>escuela[i][j];\n        }\n    }\n    int perimetro = 0;\n    for(auto i = 1; i<=n;i++){\n        for(auto j=1;j<=m;j++){\n            if(!escuela[i][j]) continue;\n            if(escuela[i-1][j] == 0){\n                perimetro++;\n            }\n            if(escuela[i+1][j] == 0){\n                perimetro++;\n            }\n            if(escuela[i][j-1] == 0){\n                perimetro++;\n            }\n            if(escuela[i][j+1] == 0){\n                perimetro++;\n            }\n        }\n    }\n    cout<<perimetro;\n\n    return 0;\n}\n"
     },
     {
         "titulo": "19752. Diversión Bibliotecaria",
@@ -1340,7 +1340,7 @@
             "string",
             "map<char,int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    ios_base::sync_with_stdio(false);\n cin.tie(0);\n   cout.tie(0);\n  int a, b, c, e, f, g, h;\n    map<char,int>y;\n    int n;\n    string x;\n    cin>>x;\n    char z='@';\n    a=x.size();\n    for(int i = 0; i<a; i++){\n        y[x[i]]++;\n    }\n    vector<char>zz;\n    for(const auto &d: y){\n        if(d.second%2 && z=='@'){\n            z=d.first;\n        }\n        b=d.second;\n        if(b%2){\n            b--;\n        }\n            b/=2;\n            while(b--){\n            cout<<d.first;\n            zz.push_back(d.first);\n            }\n    }\n    if(z!='@'){\n        cout<<z;\n    }\n    while(zz.size()){\n        cout<<zz.back();\n        zz.pop_back();\n    }\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    ios_base::sync_with_stdio(false);\n cin.tie(0);\n   cout.tie(0);\n  int a, b, c, e, f, g, h;\n    map<char,int>y;\n    int n;\n    string x;\n    cin>>x;\n    char z='@';\n    a=x.size();\n    for(auto i = 0; i<a; i++){\n        y[x[i]]++;\n    }\n    vector<char>zz;\n    for(const auto &d: y){\n        if(d.second%2 && z=='@'){\n            z=d.first;\n        }\n        b=d.second;\n        if(b%2){\n            b--;\n        }\n            b/=2;\n            while(b--){\n            cout<<d.first;\n            zz.push_back(d.first);\n            }\n    }\n    if(z!='@'){\n        cout<<z;\n    }\n    while(zz.size()){\n        cout<<zz.back();\n        zz.pop_back();\n    }\n\n    return 0;\n}\n"
     },
     {
         "titulo": "13001. Suma elementos consecutivos",
@@ -1374,7 +1374,7 @@
             "int",
             "unordered_map<int,int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    ios_base::sync_with_stdio(false);\n cin.tie(0);\n   cout.tie(0);\n    int a, b, c, d, e, f, g, h;\n unordered_map<int,int> dinero;\n    int n;\n    cin>>n;\n    int aux;\n    for(int i = 0; i<n; i++){\n        cin>>aux;\n        dinero[aux]++;\n    }\n    int mayor = 0;\n    for(const auto &d: dinero){\n        if(d.second > mayor) mayor = d.second;\n    }\n    cout<<n-mayor;\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    ios_base::sync_with_stdio(false);\n cin.tie(0);\n   cout.tie(0);\n    int a, b, c, d, e, f, g, h;\n unordered_map<int,int> dinero;\n    int n;\n    cin>>n;\n    int aux;\n    for(auto i = 0; i<n; i++){\n        cin>>aux;\n        dinero[aux]++;\n    }\n    int mayor = 0;\n    for(const auto &d: dinero){\n        if(d.second > mayor) mayor = d.second;\n    }\n    cout<<n-mayor;\n\n    return 0;\n}\n"
     },
     {
         "titulo": "19594. Cazador de Anomalías",
@@ -1493,7 +1493,7 @@
         "estructuras": [
             "long long"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c=0, d;\n    string z;\n    cin>>z;\n    d=z.size();\n    for(int i=0; i<d; i++){\n        a=z[i]-48;\n        c*=10;\n        c+=a;\n        b+=pow(a,z.size());\n    }\n    if(c==b){\n        cout<<\"Es Narcisista\";\n    }\n    else{\n        cout<<\"No es Narcisista\";\n    }\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c=0, d;\n    string z;\n    cin>>z;\n    d=z.size();\n    for(auto i=0; i<d; i++){\n        a=z[i]-48;\n        c*=10;\n        c+=a;\n        b+=pow(a,z.size());\n    }\n    if(c==b){\n        cout<<\"Es Narcisista\";\n    }\n    else{\n        cout<<\"No es Narcisista\";\n    }\n\n    return 0;\n}\n"
     },
     {
         "titulo": "2208. Interview Question",
@@ -1549,7 +1549,7 @@
             "int",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e;\n    vector<long>num(1000000,0);\n    cin>>a;\n    for(int i=0; i<a; ++i){\n        cin>>num[i];\n    }\n    cin>>b;\n    for(int i=0; i<a; ++i){\n        if(num[i]%b==0){\n            cout<<num[i]<<\" \";\n        }\n        else{\n            cout<<\"X \";\n        }\n    }\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e;\n    vector<int>num(1000000,0);\n    cin>>a;\n    for(auto i=0; i<a; ++i){\n        cin>>num[i];\n    }\n    cin>>b;\n    for(auto i=0; i<a; ++i){\n        if(num[i]%b==0){\n            cout<<num[i]<<\" \";\n        }\n        else{\n            cout<<\"X \";\n        }\n    }\n\n    return 0;\n}\n"
     },
     {
         "titulo": "11414. Sumando elementos opuestos de un arreglo",
@@ -1565,7 +1565,7 @@
             "int",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e;\n    vector<long>num(1000000,0);\n    cin>>a;\n    for(int i=0; i<a; ++i){\n        cin>>num[i];\n    }\n    for(int i=0, j=a-1; i<a/2; ++i, --j){\n        cout<<num[i]+num[j]<<\"\\n\";\n    }\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e;\n    vector<int>num(1000000,0);\n    cin>>a;\n    for(auto i=0; i<a; ++i){\n        cin>>num[i];\n    }\n    for(auto i=0, j=a-1; i<a/2; ++i, --j){\n        cout<<num[i]+num[j]<<\"\\n\";\n    }\n\n    return 0;\n}\n"
     },
     {
         "titulo": "8632. Días de Felicidad",
@@ -1597,7 +1597,7 @@
             "int",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, g, h;\n   vector<long>num(10000,0);\n    cin>>a>>b;\n    while(b--){\n        cin>>c;\n        num[c]++;\n    }\n    for(int i=0; i<a; ++i){\n        cout<<num[i]<<\" \";\n    }\n    \n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, g, h;\n   vector<int>num(10000,0);\n    cin>>a>>b;\n    while(b--){\n        cin>>c;\n        num[c]++;\n    }\n    for(auto i=0; i<a; ++i){\n        cout<<num[i]<<\" \";\n    }\n    \n    return 0;\n}\n"
     },
     {
         "titulo": "11884. Una fórmula con muchas divisiones",
@@ -1629,7 +1629,7 @@
             "long long",
             "string"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a, b, c, d, e, f, g, h;\n string z;\n cin>>z;\n   if(z[0]=='a' || z[0]=='e' || z[0]=='i' || z[0]=='o' || z[0]=='u' || z[0]=='A' || z[0]=='E' || z[0]=='I' || z[0]=='O' || z[0]=='U'){\n       b=1;\n  }\n for(int i=0; i<z.size(); ++i){\n        if(b && (z[i]=='a' || z[i]=='e' || z[i]=='i' || z[i]=='o' || z[i]=='u' || z[i]=='A' || z[i]=='E' || z[i]=='I' || z[i]=='O' || z[i]=='U')){\n            cout<<z[i];\n       }\n     else if(!b && (z[i]!='a' && z[i]!='e' && z[i]!='i' && z[i]!='o' && z[i]!='u' && z[i]!='A' && z[i]!='E' && z[i]!='I' && z[i]!='O' && z[i]!='U')){\n          cout<<z[i];\n       }\n }\n ++b%=2;\n   for(int i=0; i<z.size(); ++i){\n        if(b && (z[i]=='a' || z[i]=='e' || z[i]=='i' || z[i]=='o' || z[i]=='u' || z[i]=='A' || z[i]=='E' || z[i]=='I' || z[i]=='O' || z[i]=='U')){\n            cout<<z[i];\n       }\n     else if(!b && (z[i]!='a' && z[i]!='e' && z[i]!='i' && z[i]!='o' && z[i]!='u' && z[i]!='A' && z[i]!='E' && z[i]!='I' && z[i]!='O' && z[i]!='U')){\n          cout<<z[i];\n       }\n }\n \n  return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a, b, c, d, e, f, g, h;\n string z;\n cin>>z;\n   if(z[0]=='a' || z[0]=='e' || z[0]=='i' || z[0]=='o' || z[0]=='u' || z[0]=='A' || z[0]=='E' || z[0]=='I' || z[0]=='O' || z[0]=='U'){\n       b=1;\n  }\n for(auto i=0; i<z.size(); ++i){\n        if(b && (z[i]=='a' || z[i]=='e' || z[i]=='i' || z[i]=='o' || z[i]=='u' || z[i]=='A' || z[i]=='E' || z[i]=='I' || z[i]=='O' || z[i]=='U')){\n            cout<<z[i];\n       }\n     else if(!b && (z[i]!='a' && z[i]!='e' && z[i]!='i' && z[i]!='o' && z[i]!='u' && z[i]!='A' && z[i]!='E' && z[i]!='I' && z[i]!='O' && z[i]!='U')){\n          cout<<z[i];\n       }\n }\n ++b%=2;\n   for(auto i=0; i<z.size(); ++i){\n        if(b && (z[i]=='a' || z[i]=='e' || z[i]=='i' || z[i]=='o' || z[i]=='u' || z[i]=='A' || z[i]=='E' || z[i]=='I' || z[i]=='O' || z[i]=='U')){\n            cout<<z[i];\n       }\n     else if(!b && (z[i]!='a' && z[i]!='e' && z[i]!='i' && z[i]!='o' && z[i]!='u' && z[i]!='A' && z[i]!='E' && z[i]!='I' && z[i]!='O' && z[i]!='U')){\n          cout<<z[i];\n       }\n }\n \n  return 0;\n}\n"
     },
     {
         "titulo": "6383. Matrices con Giro Completo",
@@ -1645,7 +1645,7 @@
             "int",
             "vector<vector<int>>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  int a, b, c, d, e, f, g, h, l, m=1;\n   int num[1000][1000];\n  cin>>a;\n   for(int i=0; i<a; i++){\n       for(int j=0; j<a; j++){\n           cin>>num[i][j];\n       }\n }\n for(int i=0; i<a; i++){\n       for(int j=a-1; j>=0; j--){\n            cout<<num[j][i]<<\" \";\n       }\n     cout<<\"\\n\";\n    }\n cout<<\"\\n\";\n    for(int i=a-1; i>=0; i--){\n        for(int j=a-1; j>=0; j--){\n            cout<<num[i][j]<<\" \";\n       }\n     cout<<\"\\n\";\n    }\n cout<<\"\\n\";\n    for(int i=a-1; i>=0; i--){\n        for(int j=0; j<a; j++){\n           cout<<num[j][i]<<\" \";\n       }\n     cout<<\"\\n\";\n    }\n cout<<\"\\n\";\n    for(int i=0; i<a; i++){\n       for(int j=0; j<a; j++){\n           cout<<num[i][j]<<\" \";\n       }\n     cout<<\"\\n\";\n    }\n\n   return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  int a, b, c, d, e, f, g, h, l, m=1;\n   int num[1000][1000];\n  cin>>a;\n   for(auto i=0; i<a; i++){\n       for(auto j=0; j<a; j++){\n           cin>>num[i][j];\n       }\n }\n for(auto i=0; i<a; i++){\n       for(auto j=a-1; j>=0; j--){\n            cout<<num[j][i]<<\" \";\n       }\n     cout<<\"\\n\";\n    }\n cout<<\"\\n\";\n    for(auto i=a-1; i>=0; i--){\n        for(auto j=a-1; j>=0; j--){\n            cout<<num[i][j]<<\" \";\n       }\n     cout<<\"\\n\";\n    }\n cout<<\"\\n\";\n    for(auto i=a-1; i>=0; i--){\n        for(auto j=0; j<a; j++){\n           cout<<num[j][i]<<\" \";\n       }\n     cout<<\"\\n\";\n    }\n cout<<\"\\n\";\n    for(auto i=0; i<a; i++){\n       for(auto j=0; j<a; j++){\n           cout<<num[i][j]<<\" \";\n       }\n     cout<<\"\\n\";\n    }\n\n   return 0;\n}\n"
     },
     {
         "titulo": "6123. Matriz serpentina",
@@ -1661,7 +1661,7 @@
             "int",
             "vector<vector<int>>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  int a, b, c, d=0, e=0, f, g, h, l, m=1;\n   vector<vector<int> >num(1000,vector<int>(1000,0));\n    cin>>a>>b;\n    c=a*b;\n    while(c--){\n       num[d][e]=a*b-c;\n      if(m==1){\n         if(e==b-1){\n               d++;\n              m=2;\n          }\n         else{\n             e++;\n          }\n     }\n     else{\n         if(e==0){\n             d++;\n              m=1;\n          }\n         else{\n             e--;\n          }\n     }\n }\n for(int i=0; i<a; i++){\n       for(int j=0; j<b; j++){\n           cout<<num[i][j]<<\" \";\n       }\n     cout<<\"\\n\";\n    }\n\n   return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  int a, b, c, d=0, e=0, f, g, h, l, m=1;\n   vector<vector<int> >num(1000,vector<int>(1000,0));\n    cin>>a>>b;\n    c=a*b;\n    while(c--){\n       num[d][e]=a*b-c;\n      if(m==1){\n         if(e==b-1){\n               d++;\n              m=2;\n          }\n         else{\n             e++;\n          }\n     }\n     else{\n         if(e==0){\n             d++;\n              m=1;\n          }\n         else{\n             e--;\n          }\n     }\n }\n for(auto i=0; i<a; i++){\n       for(auto j=0; j<b; j++){\n           cout<<num[i][j]<<\" \";\n       }\n     cout<<\"\\n\";\n    }\n\n   return 0;\n}\n"
     },
     {
         "titulo": "6892. Ordenamiento super basico",
@@ -1678,7 +1678,7 @@
             "int",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n     cout.tie(0);\n      int a, b, c, d, e, f, g, h;\n   vector<int>num;\n   cin>>a;\n   while(a--){\n       cin>>b;\n       num.push_back(b);\n }\n sort(num.begin(),num.end());\n  for(int i=0; i<num.size(); i++){\n      cout<<num[i]<<\" \";\n  }\n     \n  return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n     cout.tie(0);\n      int a, b, c, d, e, f, g, h;\n   vector<int>num;\n   cin>>a;\n   while(a--){\n       cin>>b;\n       num.push_back(b);\n }\n sort(num.begin(),num.end());\n  for(auto i=0; i<num.size(); i++){\n      cout<<num[i]<<\" \";\n  }\n     \n  return 0;\n}\n"
     },
     {
         "titulo": "6864. Direcciones al Tec",
@@ -1909,7 +1909,7 @@
             "int",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    int N;\n    cin >> N;\n    vector<int> arr(N);\n    for(int i = 0; i < N; i++){\n        cin >> arr[i];\n    }\n    sort(arr.rbegin(), arr.rend()); // Ordenar de mayor a menor\n    int maxDiff = 0;\n    for(int i = 1; i < N; i++){\n        maxDiff = max(maxDiff, arr[i - 1] - arr[i]);\n    }\n    cout << maxDiff << \"\\n\";\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    int N;\n    cin >> N;\n    vector<int> arr(N);\n    for(auto i = 0; i < N; i++){\n        cin >> arr[i];\n    }\n    sort(arr.rbegin(), arr.rend()); // Ordenar de mayor a menor\n    int maxDiff = 0;\n    for(auto i = 1; i < N; i++){\n        maxDiff = max(maxDiff, arr[i - 1] - arr[i]);\n    }\n    cout << maxDiff << \"\\n\";\n\n    return 0;\n}\n"
     },
     {
         "titulo": "7186. Girando un vector",
@@ -2024,7 +2024,7 @@
             "long long",
             "int"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0;\n    vector<long long>falta;\n    cin>>a;\n    if(a<=0 || a>45){\n        cout<<\"ERROR\";return 0;\n    }\n    while(a--){\n        cin>>b;\n        if(b==21){\n            c++;\n        }\n        else if(b==0){\n            cout<<\"ERROR\";return 0;\n        }\n        falta.push_back(b);\n    }\n    for(int i=0; i<falta.size(); i++){\n        cout<<falta[i]<<\"\\n\";\n    }\n    if(c){\n        cout<<\"ALERTA\";\n    }\n    \n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0;\n    vector<long long>falta;\n    cin>>a;\n    if(a<=0 || a>45){\n        cout<<\"ERROR\";return 0;\n    }\n    while(a--){\n        cin>>b;\n        if(b==21){\n            c++;\n        }\n        else if(b==0){\n            cout<<\"ERROR\";return 0;\n        }\n        falta.push_back(b);\n    }\n    for(auto i=0; i<falta.size(); i++){\n        cout<<falta[i]<<\"\\n\";\n    }\n    if(c){\n        cout<<\"ALERTA\";\n    }\n    \n    return 0;\n}"
     },
     {
         "titulo": "4085. El Intervalo y el divisor",
@@ -2073,7 +2073,7 @@
         "estructuras": [
             "int"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c, d, e, f, g, h;\n    for(int i=0; i<30; ++i){\n        cin>>a;\n        if(a<0){\n            cout<<i<<\" \";\n            b++;\n        }\n    }\n    cout<<b;\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c, d, e, f, g, h;\n    for(auto i=0; i<30; ++i){\n        cin>>a;\n        if(a<0){\n            cout<<i<<\" \";\n            b++;\n        }\n    }\n    cout<<b;\n\n    return 0;\n}\n"
     },
     {
         "titulo": "12323. Leer al reves",
@@ -2104,7 +2104,7 @@
             "int",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, g, h;\n   vector<long>num(1000000,0);\n    cin>>a;\n    for(int i=0; i<a; ++i){\n        cin>>num[i];\n    }\n    for(int i=a-1; i>=0; --i){\n        cout<<num[i]<<\" \";\n    }\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, g, h;\n   vector<int>num(1000000,0);\n    cin>>a;\n    for(auto i=0; i<a; ++i){\n        cin>>num[i];\n    }\n    for(auto i=a-1; i>=0; --i){\n        cout<<num[i]<<\" \";\n    }\n\n    return 0;\n}\n"
     },
     {
         "titulo": "11773. Sumando Arreglos",
@@ -2120,7 +2120,7 @@
             "int",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, g, h;\n   vector<long>num(1000000,0);\n    cin>>a;\n    for(int i=0; i<a; ++i){\n        cin>>num[i];\n    }\n    for(int i=0; i<a; ++i){\n        cin>>b;\n        cout<<num[i]+b<<\" \";\n    }\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, g, h;\n   vector<int>num(1000000,0);\n    cin>>a;\n    for(auto i=0; i<a; ++i){\n        cin>>num[i];\n    }\n    for(auto i=0; i<a; ++i){\n        cin>>b;\n        cout<<num[i]+b<<\" \";\n    }\n\n    return 0;\n}\n"
     },
     {
         "titulo": "10173. Parasoul",
@@ -2133,7 +2133,7 @@
         "estructuras": [
             "int"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a, b, c, d, e, f, g, h;\n cin>>a>>b>>c;\n if(a==b && a==c){\n     cout<<a<<\"\\n\"<<a+2<<\"\\n\"<<a+4<<\"\\n\"<<a+6<<\"\\n\"<<a+8<<\"\\n\"<<a+10<<\"\\n\"<<a+12<<\"\\n\"<<a+14;return 0;\n    }\n cin>>d;\n   a=max(max(a,b),c);\n    cout<<a<<\"\\n\";\n for(int i=1; i<=d; ++i){\n      cout<<a+2*i<<\"\\n\";\n }\n\n   return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a, b, c, d, e, f, g, h;\n cin>>a>>b>>c;\n if(a==b && a==c){\n     cout<<a<<\"\\n\"<<a+2<<\"\\n\"<<a+4<<\"\\n\"<<a+6<<\"\\n\"<<a+8<<\"\\n\"<<a+10<<\"\\n\"<<a+12<<\"\\n\"<<a+14;return 0;\n    }\n cin>>d;\n   a=max(max(a,b),c);\n    cout<<a<<\"\\n\";\n for(auto i=1; i<=d; ++i){\n      cout<<a+2*i<<\"\\n\";\n }\n\n   return 0;\n}\n"
     },
     {
         "titulo": "9464. B07 Mientras tanto",
@@ -2163,7 +2163,7 @@
             "int",
             "vector<string>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a, b, c=0, d=0, e=0, f=0, g, h;\n string z;\n cin>>a;\n   while(a--){\n       cin>>z;\n       b=0;\n      for(int i=0; i<z.size(); ++i){\n            if(z[i]=='a' || z[i]=='y'){\n               b=1;break;\n            }\n     }\n     if(b && z.size()<6){\n          c++;\n      }\n     else if(!b && z.size()<6){\n            d++;\n      }\n     else if(b && z.size()>5){\n         e++;\n      }\n     else{\n         f++;\n      }\n }\n cout<<\"Tiene \"<<d<<\" perros macho\\nTiene \"<<c<<\" perros hembra\\nTiene \"<<f<<\" gatos macho\\nTiene \"<<e<<\" gatos hembra\";\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a, b, c=0, d=0, e=0, f=0, g, h;\n string z;\n cin>>a;\n   while(a--){\n       cin>>z;\n       b=0;\n      for(auto i=0; i<z.size(); ++i){\n            if(z[i]=='a' || z[i]=='y'){\n               b=1;break;\n            }\n     }\n     if(b && z.size()<6){\n          c++;\n      }\n     else if(!b && z.size()<6){\n            d++;\n      }\n     else if(b && z.size()>5){\n         e++;\n      }\n     else{\n         f++;\n      }\n }\n cout<<\"Tiene \"<<d<<\" perros macho\\nTiene \"<<c<<\" perros hembra\\nTiene \"<<f<<\" gatos macho\\nTiene \"<<e<<\" gatos hembra\";\n\n    return 0;\n}\n"
     },
     {
         "titulo": "8457. Dados apilados",
@@ -2246,7 +2246,7 @@
         "estructuras": [
             "int"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    int X;\n    cin >> X;\n    int suma = 0;\n    for(int i = 1; i <= X; ++i){\n        suma += i*i;\n    }\n    cout << suma << \"\\n\";\n\n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    int X;\n    cin >> X;\n    int suma = 0;\n    for(auto i = 1; i <= X; ++i){\n        suma += i*i;\n    }\n    cout << suma << \"\\n\";\n\n    return 0;\n}\n"
     },
     {
         "titulo": "10458. PromedioAlumno",
@@ -2701,7 +2701,7 @@
             "queue<>",
             "int"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nlong long a, b;\nstruct sobra{\n    long aa, bb, cc;\n};\nqueue<sobra>falta;\nchar num[102][102];\nsobra z;\n\nvoid sub(){\n    while(falta.size()){\n        falta.pop();\n    }\n    falta.push(z);\n    num[z.aa][z.bb]='*';\n    while(falta.size()){\n        z=falta.front();\n        falta.pop();\n        z.cc++;\n        z.aa++;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n        z.aa-=2;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n        z.aa++;\n        z.bb++;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n        z.bb-=2;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n    }\n    cout<<\"-1\";\n}\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>a>>b;\n    for(int i=1; i<=a; i++){\n        for(int j=1; j<=b; j++){\n            cin>>num[i][j];\n            if(num[i][j]=='c'){\n                z.aa=i;\n                z.bb=j;\n                falta.push(z);\n                num[z.aa][z.bb]='0';\n            }\n        }\n    }\n    while(falta.size()){\n        z=falta.front();\n        falta.pop();\n        z.cc++;\n        z.aa++;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n        z.aa-=2;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n        z.aa++;\n        z.bb++;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n        z.bb-=2;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n    }\n    cout<<\"-1\";return 0;\n    \n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nlong long a, b;\nstruct sobra{\n    int aa, bb, cc;\n};\nqueue<sobra>falta;\nchar num[102][102];\nsobra z;\n\nvoid sub(){\n    while(falta.size()){\n        falta.pop();\n    }\n    falta.push(z);\n    num[z.aa][z.bb]='*';\n    while(falta.size()){\n        z=falta.front();\n        falta.pop();\n        z.cc++;\n        z.aa++;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n        z.aa-=2;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n        z.aa++;\n        z.bb++;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n        z.bb-=2;\n        if(num[z.aa][z.bb]=='p'){\n            cout<<z.cc;return;\n        }\n        else if(num[z.aa][z.bb]=='.' || num[z.aa][z.bb]=='0'){\n            num[z.aa][z.bb]='*';\n            falta.push(z);\n        }\n    }\n    cout<<\"-1\";\n}\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>a>>b;\n    for(auto i=1; i<=a; i++){\n        for(auto j=1; j<=b; j++){\n            cin>>num[i][j];\n            if(num[i][j]=='c'){\n                z.aa=i;\n                z.bb=j;\n                falta.push(z);\n                num[z.aa][z.bb]='0';\n            }\n        }\n    }\n    while(falta.size()){\n        z=falta.front();\n        falta.pop();\n        z.cc++;\n        z.aa++;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n        z.aa-=2;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n        z.aa++;\n        z.bb++;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n        z.bb-=2;\n        if(num[z.aa][z.bb]=='l'){\n            sub();return 0;\n        }\n        else if(num[z.aa][z.bb]=='.'){\n            num[z.aa][z.bb]='0';\n            falta.push(z);\n        }\n    }\n    cout<<\"-1\";return 0;\n    \n    return 0;\n}"
     },
     {
         "titulo": "7042. Déjà Vu en ESCOM",
@@ -2718,7 +2718,7 @@
             "long long",
             "int"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0;\n    int num[1000002];\n    cin>>a;\n    for(int i=0; i<a; i++){\n        cin>>num[i];\n    }\n    for(int i=1; i<a; i++){\n        if(num[i]==num[0]){\n            b=0;\n            while((i+b)<a && num[i+b]==num[b]){\n                b++;\n            }\n            c=max(c,b);\n            if((i+b)==a){\n                cout<<c;return 0;\n            }\n        }\n    }\n    cout<<c;\n    \n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0;\n    int num[1000002];\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n    }\n    for(auto i=1; i<a; i++){\n        if(num[i]==num[0]){\n            b=0;\n            while((i+b)<a && num[i+b]==num[b]){\n                b++;\n            }\n            c=max(c,b);\n            if((i+b)==a){\n                cout<<c;return 0;\n            }\n        }\n    }\n    cout<<c;\n    \n    return 0;\n}"
     },
     {
         "titulo": "1099. Cifrado de Vigenère",
@@ -2736,7 +2736,7 @@
             "long long",
             "string"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c;\n    string z, zz;\n    cin>>a>>z>>zz;\n    if(a==1){\n        for(int i=0; i<z.size(); i++){\n            b=z[i]-64;\n            c=zz[i%zz.size()]-65;\n            b+=c;\n            b%=26;\n            if(b==0){\n                b=26;\n            }\n            z[i]=64+b;\n            cout<<z[i];\n        }\n    }\n    else{\n        for(int i=0; i<z.size(); i++){\n            b=z[i]-64;\n            c=zz[i%zz.size()]-65;\n            b-=c;\n            if(b<=0){\n                b+=26;\n            }\n            z[i]=64+b;\n            cout<<z[i];\n        }\n    }\n    \n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c;\n    string z, zz;\n    cin>>a>>z>>zz;\n    if(a==1){\n        for(auto i=0; i<z.size(); i++){\n            b=z[i]-64;\n            c=zz[i%zz.size()]-65;\n            b+=c;\n            b%=26;\n            if(b==0){\n                b=26;\n            }\n            z[i]=64+b;\n            cout<<z[i];\n        }\n    }\n    else{\n        for(auto i=0; i<z.size(); i++){\n            b=z[i]-64;\n            c=zz[i%zz.size()]-65;\n            b-=c;\n            if(b<=0){\n                b+=26;\n            }\n            z[i]=64+b;\n            cout<<z[i];\n        }\n    }\n    \n    return 0;\n}"
     },
     {
         "titulo": "8442. Perfectamente Balanceado",
@@ -2759,7 +2759,7 @@
             "int",
             "bool"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    ios_base::sync_with_stdio(0);\n    cin.tie(0);\n    cout.tie(0);\n    typedef pair < int, int > pii;\n    typedef long long int lld;\n    int n;\n    cin >> n;\n    int arr[n];\n    for (int i = 0; i < n; ++i)\n        cin >> arr[i];\n    if (n == 1) {\n        cout << \"0\\n\";\n        return 0;\n    }\n    int ans = -1;\n    for(int f = -1; f <= 1; ++f) for (int s = -1; s <= 1; ++s) {\n        arr[0] += f; arr[1] += s;\n        bool progresion = true;\n        int cnt = abs(f) + abs(s);\n        int k = arr[1] - arr[0];\n        int act = arr[0];\n        for (int i = 1; i < n; ++i) {\n            act += k;\n            if (abs(act - arr[i]) > 1) {\n                progresion = false;\n                break;\n            }\n            cnt += abs(act - arr[i]);\n        }\n        if (progresion) ans = ans == -1 ? cnt : min(ans, cnt);\n        arr[0] -= f; arr[1] -= s;\n    }\n    cout << ans << \"\\n\";\n\n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    ios_base::sync_with_stdio(0);\n    cin.tie(0);\n    cout.tie(0);\n    typedef pair < int, int > pii;\n    typedef long long int lld;\n    int n;\n    cin >> n;\n    int arr[n];\n    for (int i = 0; i < n; ++i)\n        cin >> arr[i];\n    if (n == 1) {\n        cout << \"0\\n\";\n        return 0;\n    }\n    int ans = -1;\n    for(auto f = -1; f <= 1; ++f) for (int s = -1; s <= 1; ++s) {\n        arr[0] += f; arr[1] += s;\n        bool progresion = true;\n        int cnt = abs(f) + abs(s);\n        int k = arr[1] - arr[0];\n        int act = arr[0];\n        for (int i = 1; i < n; ++i) {\n            act += k;\n            if (abs(act - arr[i]) > 1) {\n                progresion = false;\n                break;\n            }\n            cnt += abs(act - arr[i]);\n        }\n        if (progresion) ans = ans == -1 ? cnt : min(ans, cnt);\n        arr[0] -= f; arr[1] -= s;\n    }\n    cout << ans << \"\\n\";\n\n    return 0;\n}"
     },
     {
         "titulo": "6129. Mesa Redonda",
@@ -2775,7 +2775,7 @@
             "int",
             "struct"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint localiza(int x);\nvoid alta(int x);\nvoid baja();\n\ntypedef struct reg{\n    reg *sig;\n    int  dat;       //número de alumno\n}reg;\n\nreg *p, *a, *aux;\nint  n, k, c;\n\nint main(){\n    p =(reg*)malloc(sizeof(reg));  //inicio d ela lista\n    p->sig=NULL;\n    a =(reg*)malloc(sizeof(reg));  //nodo actual\n    a->sig=NULL;\n    aux=(reg*)malloc(sizeof(reg));\n    aux->sig=NULL;\n    cin>>n>>k;\n    for(int i=1;i<=n;i++) alta(i);\n    a=p;\n    while(1){\n        a=a->sig;\n        for(int i=1;i<=k;i++) localiza(i);\n        if(a->dat==1) break;       //regresa con Randy\n        baja();\n    }\n    cout<<c;\n\n    return 0;\n}\n\nvoid alta(int x){\n    if (p->sig == NULL){       // Si Lista Vacia\n        p->sig = a;\n        a->dat = x;\n    }\n    else{\n        reg *n;\n        n=(reg*) malloc(sizeof(reg));\n        n->sig=p->sig;\n        n->dat=x;\n        a->sig=n;\n        a=n;\n    }\n}\n\nint localiza(int x){\n    if(a->sig!=NULL){       //Solo queda Randy\n        aux=a;\n        a=a->sig;\n    }\n}\n\nvoid baja(){\n    aux->sig=a->sig;\n    if (p==aux) p->sig=aux->sig;\n    c++;\n\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint localiza(int x);\nvoid alta(int x);\nvoid baja();\n\ntypedef struct reg{\n    reg *sig;\n    int  dat;       //número de alumno\n}reg;\n\nreg *p, *a, *aux;\nint  n, k, c;\n\nint main(){\n    p =(reg*)malloc(sizeof(reg));  //inicio d ela lista\n    p->sig=NULL;\n    a =(reg*)malloc(sizeof(reg));  //nodo actual\n    a->sig=NULL;\n    aux=(reg*)malloc(sizeof(reg));\n    aux->sig=NULL;\n    cin>>n>>k;\n    for(auto i=1;i<=n;i++) alta(i);\n    a=p;\n    while(1){\n        a=a->sig;\n        for(auto i=1;i<=k;i++) localiza(i);\n        if(a->dat==1) break;       //regresa con Randy\n        baja();\n    }\n    cout<<c;\n\n    return 0;\n}\n\nvoid alta(int x){\n    if (p->sig == NULL){       // Si Lista Vacia\n        p->sig = a;\n        a->dat = x;\n    }\n    else{\n        reg *n;\n        n=(reg*) malloc(sizeof(reg));\n        n->sig=p->sig;\n        n->dat=x;\n        a->sig=n;\n        a=n;\n    }\n}\n\nint localiza(int x){\n    if(a->sig!=NULL){       //Solo queda Randy\n        aux=a;\n        a=a->sig;\n    }\n}\n\nvoid baja(){\n    aux->sig=a->sig;\n    if (p==aux) p->sig=aux->sig;\n    c++;\n\n}"
     },
     {
         "titulo": "6201. Rectangulo",
@@ -2793,7 +2793,7 @@
             "stack<long long>",
             "vector<long long>"
         ],
-        "codigo": "#include<bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    long long int hist[1000100];\n    long long int n;\n    stack<long long int> s;\n    cin>>n;\n    for(int i=0;i<n;i++){\n        cin>>hist[i];\n    }\n    long long int area = 0;\n    long long int tp;\n    long long int areasuperior;\n    long long int i = 0;\n    while (i < n){\n        if (s.empty() || hist[s.top()] <= hist[i]){\n            s.push(i++);\n        }\n        else{\n            tp = s.top();\n            s.pop();\n            areasuperior = hist[tp] * (s.empty() ? i : i - s.top() - 1);\n            if (area < areasuperior)\n                area = areasuperior;\n        }\n    }\n    while (s.empty() == false){\n        tp = s.top();\n        s.pop();\n        areasuperior = hist[tp] * (s.empty() ? i : i - s.top() - 1);\n        if (area < areasuperior)\n            area = areasuperior;\n    }\n    cout<<area;\n}"
+        "codigo": "#include<bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    long long int hist[1000100];\n    long long int n;\n    stack<long long int> s;\n    cin>>n;\n    for(auto i=0;i<n;i++){\n        cin>>hist[i];\n    }\n    long long int area = 0;\n    long long int tp;\n    long long int areasuperior;\n    long long int i = 0;\n    while (i < n){\n        if (s.empty() || hist[s.top()] <= hist[i]){\n            s.push(i++);\n        }\n        else{\n            tp = s.top();\n            s.pop();\n            areasuperior = hist[tp] * (s.empty() ? i : i - s.top() - 1);\n            if (area < areasuperior)\n                area = areasuperior;\n        }\n    }\n    while (s.empty() == false){\n        tp = s.top();\n        s.pop();\n        areasuperior = hist[tp] * (s.empty() ? i : i - s.top() - 1);\n        if (area < areasuperior)\n            area = areasuperior;\n    }\n    cout<<area;\n}"
     },
     {
         "titulo": "3471. Carguero",
@@ -2847,7 +2847,7 @@
             "long long",
             "vector<pair<long long,long long>>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    queue<long long>falta;\n    queue<long long>sobra;\n    long long a, b, c, d, e, f;\n    cin>>a>>b;\n    long long num[2][a];\n    for(int i=0; i<a; i++){\n        cin>>num[0][i]>>num[1][i];\n    }\n    for(int i=0; i<a; i++){\n        c=0;\n        for(int j=0; j<(a-i)-1; j++){\n            if(num[0][j+1]<num[0][j]){\n                swap(num[0][j],num[0][j+1]);\n                swap(num[1][j],num[1][j+1]);\n                c=1;\n            }\n        }\n        if(c==0){\n            break;\n        }\n        c=0;\n    }\n    while(b!=0){\n        b--;\n        cin>>c;\n        d=0; e=a-1;\n        while(d<=e){\n            f=(d+e)/2;\n            if(num[0][f]==c){\n                cout<<num[1][f]<<\"\\n\";break;\n            }\n            else if(num[0][f]>c){\n                e=f-1;\n            }\n            else{\n                d=f+1;\n            }\n        }\n        if(d>e){\n            cout<<\"C?\\n\";\n        }\n    }\n        \n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    queue<long long>falta;\n    queue<long long>sobra;\n    long long a, b, c, d, e, f;\n    cin>>a>>b;\n    long long num[2][a];\n    for(auto i=0; i<a; i++){\n        cin>>num[0][i]>>num[1][i];\n    }\n    for(auto i=0; i<a; i++){\n        c=0;\n        for(auto j=0; j<(a-i)-1; j++){\n            if(num[0][j+1]<num[0][j]){\n                swap(num[0][j],num[0][j+1]);\n                swap(num[1][j],num[1][j+1]);\n                c=1;\n            }\n        }\n        if(c==0){\n            break;\n        }\n        c=0;\n    }\n    while(b!=0){\n        b--;\n        cin>>c;\n        d=0; e=a-1;\n        while(d<=e){\n            f=(d+e)/2;\n            if(num[0][f]==c){\n                cout<<num[1][f]<<\"\\n\";break;\n            }\n            else if(num[0][f]>c){\n                e=f-1;\n            }\n            else{\n                d=f+1;\n            }\n        }\n        if(d>e){\n            cout<<\"C?\\n\";\n        }\n    }\n        \n    return 0;\n}"
     },
     {
         "titulo": "6955. Guacamole",
@@ -2885,7 +2885,7 @@
             "long long",
             "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    vector<int>falta;\n    vector<int>faltas;\n    cin>>a;\n    for(int i=0; i<a; i++){\n        cin>>b;\n        falta.push_back(b);\n    }\n    for(int i=0; i<a; i++){\n        cin>>b;\n        faltas.push_back(b);\n    }\n    sort(falta.begin(),falta.end());\n    sort(faltas.begin(),faltas.end());\n    for(int i=0; i<a; i++){\n        if(falta[i]>faltas[i]){\n            cout<<\"NE\";return 0;\n        }\n    }\n    cout<<\"DA\";\n    \n    return 0;\n}\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    vector<int>falta;\n    vector<int>faltas;\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>b;\n        falta.push_back(b);\n    }\n    for(auto i=0; i<a; i++){\n        cin>>b;\n        faltas.push_back(b);\n    }\n    sort(falta.begin(),falta.end());\n    sort(faltas.begin(),faltas.end());\n    for(auto i=0; i<a; i++){\n        if(falta[i]>faltas[i]){\n            cout<<\"NE\";return 0;\n        }\n    }\n    cout<<\"DA\";\n    \n    return 0;\n}\n"
     },
     {
         "titulo": "3442. COCI TABOVI",
@@ -2901,7 +2901,7 @@
             "long long",
             "vector<pair<int,int>>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d=0;\n    pair<int,int>num[1002];\n    cin>>a;\n    for(int i=0; i<a; i++){\n        cin>>num[i].first;\n    }\n    for(int i=0; i<a; i++){\n        cin>>num[i].second;\n    }\n    for(int i=0; i<a; i++){\n        if(num[i].first==num[i].second){\n            continue;\n        }\n        if(num[i].first>num[i].second){\n            b=i;\n            c=num[i].first-num[i].second;\n            while(num[b].first>num[b].second){\n                if((num[b].first-num[b].second)<c){\n                    c=num[b].first-num[b].second;\n                }\n                b++;\n            }\n            for(int j=i; j<b; j++){\n                num[j].first-=c;\n            }\n            d+=c;\n            i--;continue;\n        }\n        b=i;\n        c=num[i].first-num[i].second;\n        while(num[b].first<num[b].second){\n            if((num[b].first-num[b].second)>c){\n                c=num[b].first-num[b].second;\n            }\n            b++;\n        }\n        for(int j=i; j<b; j++){\n            num[j].first-=c;\n        }\n        d-=c;\n        i--;continue;\n    }\n    cout<<d;\n    \n    return 0;\n}\n\n"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d=0;\n    pair<int,int>num[1002];\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i].first;\n    }\n    for(auto i=0; i<a; i++){\n        cin>>num[i].second;\n    }\n    for(auto i=0; i<a; i++){\n        if(num[i].first==num[i].second){\n            continue;\n        }\n        if(num[i].first>num[i].second){\n            b=i;\n            c=num[i].first-num[i].second;\n            while(num[b].first>num[b].second){\n                if((num[b].first-num[b].second)<c){\n                    c=num[b].first-num[b].second;\n                }\n                b++;\n            }\n            for(auto j=i; j<b; j++){\n                num[j].first-=c;\n            }\n            d+=c;\n            i--;continue;\n        }\n        b=i;\n        c=num[i].first-num[i].second;\n        while(num[b].first<num[b].second){\n            if((num[b].first-num[b].second)>c){\n                c=num[b].first-num[b].second;\n            }\n            b++;\n        }\n        for(auto j=i; j<b; j++){\n            num[j].first-=c;\n        }\n        d-=c;\n        i--;continue;\n    }\n    cout<<d;\n    \n    return 0;\n}\n\n"
     },
     {
         "titulo": "4246. COCI-NIZOVI",
@@ -2918,7 +2918,7 @@
             "string",
             "getline()"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a=0, b, c;\n    string z, zz=\"\";\n    getline(cin,z);\n    for(int i=0; i<z.size()-1; i++){\n        if(z[i]==' ' || z[i]==','){\n            continue;\n        }\n        if(z[i]=='{'){\n            b=a;\n            while(b--){\n                cout<<\" \";\n            }\n            cout<<z[i]<<\"\\n\";\n            a+=2;continue;\n        }\n        if(z[i]=='}'){\n            b=1;\n            for(int j=i+1; j<z.size(); j++){\n                if(z[j]=='}'){\n                    b--;break;\n                }\n                if(z[j]!=' ' && z[j]!=','){\n                    break;\n                }\n            }\n            a-=2;\n            c=a;\n            while(c--){\n                cout<<\" \";\n            }\n            cout<<\"}\";\n            if(b){\n                cout<<\",\";\n            }\n            cout<<\"\\n\";continue;\n        }\n        zz=zz+z[i];\n        i++;\n        while(z[i]!=' ' && z[i]!=',' && z[i]!='{' && z[i]!='}'){\n            zz=zz+z[i];\n            i++;\n        }\n        i--;\n        b=a;\n        while(b--){\n            cout<<\" \";\n        }\n        cout<<zz;\n        zz=\"\";\n        b=1;\n        for(int j=i+1; j<z.size(); j++){\n            if(z[j]=='}'){\n                b--;break;\n            }\n            if(z[j]!=' ' && z[j]!=','){\n                break;\n            }\n        }\n        if(b){\n            cout<<\",\";\n        }\n        cout<<\"\\n\";\n    }\n    cout<<\"}\";\n    \n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a=0, b, c;\n    string z, zz=\"\";\n    getline(cin,z);\n    for(auto i=0; i<z.size()-1; i++){\n        if(z[i]==' ' || z[i]==','){\n            continue;\n        }\n        if(z[i]=='{'){\n            b=a;\n            while(b--){\n                cout<<\" \";\n            }\n            cout<<z[i]<<\"\\n\";\n            a+=2;continue;\n        }\n        if(z[i]=='}'){\n            b=1;\n            for(auto j=i+1; j<z.size(); j++){\n                if(z[j]=='}'){\n                    b--;break;\n                }\n                if(z[j]!=' ' && z[j]!=','){\n                    break;\n                }\n            }\n            a-=2;\n            c=a;\n            while(c--){\n                cout<<\" \";\n            }\n            cout<<\"}\";\n            if(b){\n                cout<<\",\";\n            }\n            cout<<\"\\n\";continue;\n        }\n        zz=zz+z[i];\n        i++;\n        while(z[i]!=' ' && z[i]!=',' && z[i]!='{' && z[i]!='}'){\n            zz=zz+z[i];\n            i++;\n        }\n        i--;\n        b=a;\n        while(b--){\n            cout<<\" \";\n        }\n        cout<<zz;\n        zz=\"\";\n        b=1;\n        for(auto j=i+1; j<z.size(); j++){\n            if(z[j]=='}'){\n                b--;break;\n            }\n            if(z[j]!=' ' && z[j]!=','){\n                break;\n            }\n        }\n        if(b){\n            cout<<\",\";\n        }\n        cout<<\"\\n\";\n    }\n    cout<<\"}\";\n    \n    return 0;\n}"
     },
     {
         "titulo": "4151. Carlos El Oso y la víbora",
@@ -2935,7 +2935,7 @@
         "estructuras": [
             "long long"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=1;\n    cin>>a>>b;\n    for(int i=1; i<=a; i++){\n        if(i%2){\n            for(int j=1; j<=b; j++){\n                cout<<\"#\";\n            }\n        }\n        else{\n            if(c%2){\n                for(int j=1; j<b; j++){\n                    cout<<\".\";\n                }\n                cout<<\"#\";\n            }\n            else{\n                cout<<\"#\";\n                for(int j=1; j<b; j++){\n                    cout<<\".\";\n                }\n            }\n            c++;\n        }\n        cout<<\"\\n\";\n    }\n    \n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=1;\n    cin>>a>>b;\n    for(auto i=1; i<=a; i++){\n        if(i%2){\n            for(auto j=1; j<=b; j++){\n                cout<<\"#\";\n            }\n        }\n        else{\n            if(c%2){\n                for(auto j=1; j<b; j++){\n                    cout<<\".\";\n                }\n                cout<<\"#\";\n            }\n            else{\n                cout<<\"#\";\n                for(auto j=1; j<b; j++){\n                    cout<<\".\";\n                }\n            }\n            c++;\n        }\n        cout<<\"\\n\";\n    }\n    \n    return 0;\n}"
     },
     {
         "titulo": "3050. Casilla para votar",
@@ -2955,7 +2955,7 @@
             "queue<pair<int,int>>",
             "pair<int,int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d;\n    pair<int,pair<int,int>>num[102][102];\n    queue<pair<int,int>>falta;\n    pair<int,int>z;\n    cin>>a>>b;\n    for(int i=1; i<=a; i++){\n        for(int j=1; j<=b; j++){\n            cin>>num[i][j].first;\n        }\n    }\n    for(int i=1; i<=a; i++){\n        for(int j=1; j<=b; j++){\n            if(num[i][j].first==3 && num[i][j].second.first==0){\n                z.first=i;\n                z.second=j;\n                c=i;\n                d=j;\n                falta.push(z);\n                num[i][j].second.first=-1;\n                while(falta.size()){\n                    z=falta.front();\n                    falta.pop();\n                    if(z.first>c){\n                        c=z.first;\n                        d=z.second;\n                    }\n                    else if(z.first==c && z.second>d){\n                        d=z.second;\n                    }\n                    z.first++;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==0){\n                        num[z.first][z.second].second.first=-1;\n                        falta.push(z);\n                    }\n                    z.first-=2;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==0){\n                        num[z.first][z.second].second.first=-1;\n                        falta.push(z);\n                    }\n                    z.first++;\n                    z.second++;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==0){\n                        num[z.first][z.second].second.first=-1;\n                        falta.push(z);\n                    }\n                    z.second-=2;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==0){\n                        num[z.first][z.second].second.first=-1;\n                        falta.push(z);\n                    }\n                }\n                z.first=i;\n                z.second=j;\n                falta.push(z);\n                num[i][j].second.first=c;\n                num[i][j].second.second=d;\n                while(falta.size()){\n                    z=falta.front();\n                    falta.pop();\n                    z.first++;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==-1){\n                        num[z.first][z.second].second.first=c;\n                        num[z.first][z.second].second.second=d;\n                        falta.push(z);\n                    }\n                    z.first-=2;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==-1){\n                        num[z.first][z.second].second.first=c;\n                        num[z.first][z.second].second.second=d;\n                        falta.push(z);\n                    }\n                    z.first++;\n                    z.second++;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==-1){\n                        num[z.first][z.second].second.first=c;\n                        num[z.first][z.second].second.second=d;\n                        falta.push(z);\n                    }\n                    z.second-=2;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==-1){\n                        num[z.first][z.second].second.first=c;\n                        num[z.first][z.second].second.second=d;\n                        falta.push(z);\n                    }\n                }\n            }\n        }\n    }\n    cin>>a;\n    while(a--){\n        cin>>b>>c;\n        if(num[b][c].first==3){\n            cout<<\"(\"<<num[b][c].second.first<<\",\"<<num[b][c].second.second<<\")\";\n        }\n        else{\n            switch(num[b][c].first){\n                case 0: cout<<\"agua\";break;\n                case 1: cout<<\"montana\";break;\n                case 2: cout<<\"pastizal\";break;\n            }\n        }\n        cout<<\"\\n\";\n    }\n    \n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d;\n    pair<int,pair<int,int>>num[102][102];\n    queue<pair<int,int>>falta;\n    pair<int,int>z;\n    cin>>a>>b;\n    for(auto i=1; i<=a; i++){\n        for(auto j=1; j<=b; j++){\n            cin>>num[i][j].first;\n        }\n    }\n    for(auto i=1; i<=a; i++){\n        for(auto j=1; j<=b; j++){\n            if(num[i][j].first==3 && num[i][j].second.first==0){\n                z.first=i;\n                z.second=j;\n                c=i;\n                d=j;\n                falta.push(z);\n                num[i][j].second.first=-1;\n                while(falta.size()){\n                    z=falta.front();\n                    falta.pop();\n                    if(z.first>c){\n                        c=z.first;\n                        d=z.second;\n                    }\n                    else if(z.first==c && z.second>d){\n                        d=z.second;\n                    }\n                    z.first++;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==0){\n                        num[z.first][z.second].second.first=-1;\n                        falta.push(z);\n                    }\n                    z.first-=2;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==0){\n                        num[z.first][z.second].second.first=-1;\n                        falta.push(z);\n                    }\n                    z.first++;\n                    z.second++;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==0){\n                        num[z.first][z.second].second.first=-1;\n                        falta.push(z);\n                    }\n                    z.second-=2;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==0){\n                        num[z.first][z.second].second.first=-1;\n                        falta.push(z);\n                    }\n                }\n                z.first=i;\n                z.second=j;\n                falta.push(z);\n                num[i][j].second.first=c;\n                num[i][j].second.second=d;\n                while(falta.size()){\n                    z=falta.front();\n                    falta.pop();\n                    z.first++;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==-1){\n                        num[z.first][z.second].second.first=c;\n                        num[z.first][z.second].second.second=d;\n                        falta.push(z);\n                    }\n                    z.first-=2;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==-1){\n                        num[z.first][z.second].second.first=c;\n                        num[z.first][z.second].second.second=d;\n                        falta.push(z);\n                    }\n                    z.first++;\n                    z.second++;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==-1){\n                        num[z.first][z.second].second.first=c;\n                        num[z.first][z.second].second.second=d;\n                        falta.push(z);\n                    }\n                    z.second-=2;\n                    if(num[z.first][z.second].first==3 && num[z.first][z.second].second.first==-1){\n                        num[z.first][z.second].second.first=c;\n                        num[z.first][z.second].second.second=d;\n                        falta.push(z);\n                    }\n                }\n            }\n        }\n    }\n    cin>>a;\n    while(a--){\n        cin>>b>>c;\n        if(num[b][c].first==3){\n            cout<<\"(\"<<num[b][c].second.first<<\",\"<<num[b][c].second.second<<\")\";\n        }\n        else{\n            switch(num[b][c].first){\n                case 0: cout<<\"agua\";break;\n                case 1: cout<<\"montana\";break;\n                case 2: cout<<\"pastizal\";break;\n            }\n        }\n        cout<<\"\\n\";\n    }\n    \n    return 0;\n}"
     },
     {
         "titulo": "6275. Centro de un vector",
@@ -2973,7 +2973,7 @@
             "long long",
             "int"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c=0, d=0;\n    int num[1001];\n    cin>>a;\n    for(int i=0; i<=a; i++){\n        cin>>num[i];\n        c+=(num[i]*i);\n    }\n    if(c==0){\n        cout<<\"0 0\";return 0;\n    }\n    while(d<a){\n        d++;\n        for(int i=d; i<=a; i++){\n            c-=num[i];\n        }\n        for(int i=d-1; i>=0; i--){\n            b+=num[i];\n        }\n        if(b==c){\n            cout<<d<<\" \"<<b;return 0;\n        }\n        if(b>c){\n            cout<<\"-1 0\";return 0;\n        }\n    }\n    cout<<\"-1 0\";\n    \n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c=0, d=0;\n    int num[1001];\n    cin>>a;\n    for(auto i=0; i<=a; i++){\n        cin>>num[i];\n        c+=(num[i]*i);\n    }\n    if(c==0){\n        cout<<\"0 0\";return 0;\n    }\n    while(d<a){\n        d++;\n        for(auto i=d; i<=a; i++){\n            c-=num[i];\n        }\n        for(auto i=d-1; i>=0; i--){\n            b+=num[i];\n        }\n        if(b==c){\n            cout<<d<<\" \"<<b;return 0;\n        }\n        if(b>c){\n            cout<<\"-1 0\";return 0;\n        }\n    }\n    cout<<\"-1 0\";\n    \n    return 0;\n}"
     },
     {
         "titulo": "102. Cadenas de Potencias de 2",
@@ -3100,7 +3100,7 @@
             "unsigned long long",
             "int"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nunsigned long long a, b, c = 0, d;\n\nint num(long x, long y)\n{\n    c++;\n    if (x == y || y == 0)\n    {\n        return 1;\n    }\n    return num(x - 1, y) + num(x - 1, y - 1);\n}\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin >> a >> b;\n    d = num(a, b);\n    cout << d << \" \" << c;\n\n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nunsigned long long a, b, c = 0, d;\n\nint num(int x, int y)\n{\n    c++;\n    if (x == y || y == 0)\n    {\n        return 1;\n    }\n    return num(x - 1, y) + num(x - 1, y - 1);\n}\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin >> a >> b;\n    d = num(a, b);\n    cout << d << \" \" << c;\n\n    return 0;\n}"
     },
     {
         "titulo": "4183. Contando Ovejas",
@@ -3205,7 +3205,7 @@
             "vector<pair<int,int>>",
             "pair<int,int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n   cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a, b, c=0, d=1000000;\n   char num[52][52];\n queue<pair<int,int>>falta;\n    vector<pair<int,int>>sub;\n pair<int,int> z;\n  cin>>a>>b;\n    for(int i=1; i<=a; i++){\n      for(int j=1; j<=b; j++){\n          cin>>num[i][j];\n       }\n }\n for(int i=1; i<=a; i++){\n      for(int j=1; j<=b; j++){\n          if(num[i][j]=='X' && c==0){\n               z.first=i;\n                z.second=j;\n               sub.push_back(z);\n             num[i][j]='.';\n                falta.push(z);\n                while(falta.size()){\n                  z=falta.front();\n                  falta.pop();\n                  z.first++;\n                    if(num[z.first][z.second]=='X'){\n                      sub.push_back(z);\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n                 z.first-=2;\n                   if(num[z.first][z.second]=='X'){\n                      sub.push_back(z);\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n                 z.first++;\n                    z.second++;\n                   if(num[z.first][z.second]=='X'){\n                      sub.push_back(z);\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n                 z.second-=2;\n                  if(num[z.first][z.second]=='X'){\n                      sub.push_back(z);\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n             }\n             c=1;\n          }\n         else if(num[i][j]=='X'){\n              z.first=i;\n                z.second=j;\n               for(long k=0; k<sub.size(); k++){\n                 d=min(d,(long long)(fabs(i-sub[k].aa)+fabs(j-sub[k].second))-1);\n              }\n             num[i][j]='.';\n                falta.push(z);\n                while(falta.size()){\n                  z=falta.front();\n                  falta.pop();\n                  z.first++;\n                    if(num[z.first][z.second]=='X'){\n                      for(long k=0; k<sub.size(); k++){\n                        d=min(d,(long long)(fabs(z.first-sub[k].aa)+fabs(z.second-sub[k].second))-1);\n                      }\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n                 z.first-=2;\n                   if(num[z.first][z.second]=='X'){\n                      for(long k=0; k<sub.size(); k++){\n                        d=min(d,(long long)(fabs(z.first-sub[k].aa)+fabs(z.second-sub[k].second))-1);\n                      }\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n                 z.first++;\n                    z.second++;\n                   if(num[z.first][z.second]=='X'){\n                      for(long k=0; k<sub.size(); k++){\n                        d=min(d,(long long)(fabs(z.first-sub[k].aa)+fabs(z.second-sub[k].second))-1);\n                      }\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n                 z.second-=2;\n                  if(num[z.first][z.second]=='X'){\n                      for(long k=0; k<sub.size(); k++){\n                        d=min(d,(long long)(fabs(z.first-sub[k].aa)+fabs(z.second-sub[k].second))-1);\n                      }\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n             }\n             c=1;\n          }\n     }\n }\n cout<<d;\n  \n  return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n   cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a, b, c=0, d=1000000;\n   char num[52][52];\n queue<pair<int,int>>falta;\n    vector<pair<int,int>>sub;\n pair<int,int> z;\n  cin>>a>>b;\n    for(auto i=1; i<=a; i++){\n      for(auto j=1; j<=b; j++){\n          cin>>num[i][j];\n       }\n }\n for(auto i=1; i<=a; i++){\n      for(auto j=1; j<=b; j++){\n          if(num[i][j]=='X' && c==0){\n               z.first=i;\n                z.second=j;\n               sub.push_back(z);\n             num[i][j]='.';\n                falta.push(z);\n                while(falta.size()){\n                  z=falta.front();\n                  falta.pop();\n                  z.first++;\n                    if(num[z.first][z.second]=='X'){\n                      sub.push_back(z);\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n                 z.first-=2;\n                   if(num[z.first][z.second]=='X'){\n                      sub.push_back(z);\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n                 z.first++;\n                    z.second++;\n                   if(num[z.first][z.second]=='X'){\n                      sub.push_back(z);\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n                 z.second-=2;\n                  if(num[z.first][z.second]=='X'){\n                      sub.push_back(z);\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n             }\n             c=1;\n          }\n         else if(num[i][j]=='X'){\n              z.first=i;\n                z.second=j;\n               for(auto k=0; k<sub.size(); k++){\n                 d=min(d,(long long)(fabs(i-sub[k].aa)+fabs(j-sub[k].second))-1);\n              }\n             num[i][j]='.';\n                falta.push(z);\n                while(falta.size()){\n                  z=falta.front();\n                  falta.pop();\n                  z.first++;\n                    if(num[z.first][z.second]=='X'){\n                      for(auto k=0; k<sub.size(); k++){\n                        d=min(d,(long long)(fabs(z.first-sub[k].aa)+fabs(z.second-sub[k].second))-1);\n                      }\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n                 z.first-=2;\n                   if(num[z.first][z.second]=='X'){\n                      for(auto k=0; k<sub.size(); k++){\n                        d=min(d,(long long)(fabs(z.first-sub[k].aa)+fabs(z.second-sub[k].second))-1);\n                      }\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n                 z.first++;\n                    z.second++;\n                   if(num[z.first][z.second]=='X'){\n                      for(auto k=0; k<sub.size(); k++){\n                        d=min(d,(long long)(fabs(z.first-sub[k].aa)+fabs(z.second-sub[k].second))-1);\n                      }\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n                 z.second-=2;\n                  if(num[z.first][z.second]=='X'){\n                      for(auto k=0; k<sub.size(); k++){\n                        d=min(d,(long long)(fabs(z.first-sub[k].aa)+fabs(z.second-sub[k].second))-1);\n                      }\n                     num[z.first][z.second]='.';\n                       falta.push(z);\n                    }\n             }\n             c=1;\n          }\n     }\n }\n cout<<d;\n  \n  return 0;\n}"
     },
     {
         "titulo": "8315. Desv.Est",
@@ -3224,7 +3224,7 @@
             "long double",
             "vector<long double>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n   cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long double a, b, c;\n  long double num[101];\n cin>>a;\n   for(long i=0; i<a; i++){\n      cin>>num[i];\n      b+=num[i];\n    }\n b/=a;\n for(long i=0; i<a; i++){\n      c+=pow((num[i]-b),2);\n }\n c/=a;\n c=sqrt(c);\n    cout<<fixed<<setprecision(2)<<c;\n  \n  return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n   cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long double a, b, c;\n  long double num[101];\n cin>>a;\n   for(auto i=0; i<a; i++){\n      cin>>num[i];\n      b+=num[i];\n    }\n b/=a;\n for(auto i=0; i<a; i++){\n      c+=pow((num[i]-b),2);\n }\n c/=a;\n c=sqrt(c);\n    cout<<fixed<<setprecision(2)<<c;\n  \n  return 0;\n}"
     },
     {
         "titulo": "4720. Divertidas Cadenas",
@@ -3240,7 +3240,7 @@
             "long long",
             "string"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n   cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a, b;\n   string z;\n cin>>a;\n   while(a--){\n       cin>>z;\n       b=0;\n      for(int i=1; i<z.size(); i++){\n            if(z[i]==z[i-1]){\n             b++;\n          }\n     }\n     cout<<b<<\"\\n\";\n }\n \n  return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n   cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long a, b;\n   string z;\n cin>>a;\n   while(a--){\n       cin>>z;\n       b=0;\n      for(auto i=1; i<z.size(); i++){\n            if(z[i]==z[i-1]){\n             b++;\n          }\n     }\n     cout<<b<<\"\\n\";\n }\n \n  return 0;\n}"
     },
     {
         "titulo": "3007. Divide Tres",
@@ -3256,7 +3256,7 @@
             "long long",
             "string"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n   cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long b;\n  string z;\n cin>>z;\n   b=0;\n  for(long i=0; i<z.size(); i++){\n       b+=(z[i]-48);\n }\n b%=3;\n if(b){\n        cout<<\"NO es divisible\";\n    }\n else{\n     cout<<\"SI es divisible\";\n    }\n \n  return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n   cin.tie(0);\n   ios_base::sync_with_stdio(0);\n cout.tie(0);\n  long long b;\n  string z;\n cin>>z;\n   b=0;\n  for(auto i=0; i<z.size(); i++){\n       b+=(z[i]-48);\n }\n b%=3;\n if(b){\n        cout<<\"NO es divisible\";\n    }\n else{\n     cout<<\"SI es divisible\";\n    }\n \n  return 0;\n}"
     },
     {
         "titulo": "5525. Divide y sumarás",
@@ -3303,7 +3303,7 @@
         "estructuras": [
             "unsigned long long"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    unsigned long long a, b=1;\n    cin>>a;\n    for(long i=1; i<=a; i++){\n        b*=i;\n    }\n    cout<<b;\n\n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    unsigned long long a, b=1;\n    cin>>a;\n    for(auto i=1; i<=a; i++){\n        b*=i;\n    }\n    cout<<b;\n\n    return 0;\n}"
     },
     {
         "titulo": "5584. Ahorrando Agua",
@@ -3318,7 +3318,7 @@
         "estructuras": [
             "long long"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0, d;\n    cin>>a>>b;\n    for(long i=1; i<a; i++){\n        cin>>d;\n        c+=b-d;\n    }\n    cout<<c;\n\n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0, d;\n    cin>>a>>b;\n    for(auto i=1; i<a; i++){\n        cin>>d;\n        c+=b-d;\n    }\n    cout<<c;\n\n    return 0;\n}"
     },
     {
         "titulo": "5611. Lenguaje de la efe",
@@ -3392,11 +3392,8 @@
         "descripcion": "A Pedro le gustan mucho las galletas y siempre va a comprar a la tienda de la esquina, cada paquete contiene 10 galletas, pero como el es un comprador frecuente, el vendedor le regala galletas cada numero par como lo muestra la siguiente secuencia: 10,11,10,12,10,13. son el ejemplo de galletas que contendría cada paquete si Pedro comprase 6. Ayuda a pedro a encontrar las galletas totales que compraría.",
         "entrada": "En una linea escribe el numero de paquetes de galletas que Pedro comprara.",
         "salida": "La salida contendrá la cantidad de galletas que pedro compro incluyendo las que le fueron regaladas.",
-        "nivel": "(Fácil)",
-        "categorias": [
-            "Lenguaje",
-            "Ciclos"
-        ],
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [],
         "estructuras": [
             "long double"
         ],
@@ -3408,12 +3405,11 @@
         "descripcion": "En la preparatoria CBTIS 217, se organizo una excursión. pero para ello, los maestras decidieron contratar trocas en lugar de un autobús y formar grupos de alumnos de cantidades indefinidas. tu misión sera repartir a todos los alumnos a un autobús, la única condición es que no se puedan separar grupos.",
         "entrada": "En una sola linea coloca el numero de integrantes de cada grupo, separados por un espacio.",
         "salida": "El numero de trocas necesario para transportar a todos los alumnos. A cada troca le caben máximo 6 alumnos.",
-        "nivel": "...",
+        "nivel": "Intermedio (medio) - Estructuras de datos y Algoritmos",
         "categorias": [
-            "Lenguaje",
             "Vectores",
-            "Ciclos",
-            "Ordenamiento"
+            "Ordenamiento",
+            "Ciclos"
         ],
         "estructuras": [
             "long long",
@@ -3429,10 +3425,10 @@
         "salida": "Para cada intervalo, un entero que sea el promedio entero de las calificaciones de los alumnos con números de lista en ese intervalo o bien, el entero -1 si no hay alumnos en ese intervalo.",
         "nivel": "Intermedio (difícil) - Estructuras de datos y Algoritmos",
         "categorias": [
-            "Lenguaje",
             "Búsqueda binaria",
             "Ordenamiento",
-            "Ciclos"
+            "Ciclos",
+            "Suma de prefijos"
         ],
         "estructuras": [
             "long long",
@@ -3447,10 +3443,8 @@
         "descripcion": "Haga un programa que reciba dos horas en formato hh mm y que dé como respuesta la hora resultante de sumar las dos horas en ese formato. Las horas estarán entre 0 y 23 y los minutos entre 0 y 59.",
         "entrada": "Se ingresa el primer formato de hora minuto y posteriormente el segundo formato hora minuto.",
         "salida": "Como salida debe mostrar la suma de las dos horas.",
-        "nivel": "(Fácil)",
-        "categorias": [
-            "Lenguaje"
-        ],
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [],
         "estructuras": [
             "long long"
         ],
@@ -3464,7 +3458,6 @@
         "salida": "Retorna el total de la suma de los 3 números",
         "nivel": "Básico (fácil) - Introducción a la programación",
         "categorias": [
-            "Lenguaje",
             "Cálculos aritméticos"
         ],
         "estructuras": [
@@ -3478,9 +3471,8 @@
         "descripcion": "Se tienen n focos apagados, cada uno tiene su interruptor, una persona pasa y cambia el interruptor de todos los focos, una segunda persona pasa y cambia los interruptores de los focos 2, 4, 6, 8, etc. Hasta n, una tercera persona pasa y cambia los interruptores de 3, 6, 9, 12, etc... hasta n, una cuarta persona pasa y cambia los interruptores 4, 8, 12...etc y así sucesivamente hasta la persona n. Dado n, determina que interruptores quedan prendidos. Para 50 puntos 1<=n<=1000. Para 50 puntos 1<=n<=1000000000",
         "entrada": "Un entero n.",
         "salida": "El número de cada uno de los focos que quedan prendidos, separados por un salto de linea.",
-        "nivel": "(Medio)",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
-            "Lenguaje",
             "Ciclos"
         ],
         "estructuras": [
@@ -3494,16 +3486,16 @@
         "descripcion": "El gobierno del estado de Campeche, manda cada cierto tiempo a podar las áreas verdes de las glorietas que están en toda la ciudad, para ello cuenta con muchos trabajadores, cada uno de ellos tiene su monto a cobrar por metro cuadrado de las áreas verdes, el problema que tiene el gobierno del estado es que no conoce el área circular de las glorietas, pero si conoce los radios. El radio N que abarcan desde el punto central de la glorieta hasta la orilla de la misma y el radio M que abarca desde el punto central hasta la orilla donde comienza las zonas verdes de la glorieta. Considerando que el radio N siempre va a hacer mayor que el radio M  El gobierno del estado de Campeche te contrata para calcular el monto a pagar por una glorieta contemplando que S es el precio por metro cuadrado que cobra un trabajador y los radios N y M que conoce el gobierno de las glorietas. Tu deber es crear un programa que calcule el monto a pagar por cada glorieta. Considerar que 1<=S<=1000000 y 0<=M<N<=1000000.",
         "entrada": "De entrada recibirás el costo S por metro cuadro, seguido de los radios N y M.",
         "salida": "Tu programa debe imprimir el monto que hay que pagar con dos decimales después del punto, por la glorieta a podar",
-        "nivel": "(Fácil)",
-        "categorias": [
-            "Lenguaje"
-        ],
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [],
         "estructuras": [
             "unsigned long long",
-            "int double",
-            "long double"
+            "long double",
+            "pow()",
+            "fixed",
+            "setprecision()"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    unsigned long long a, b, c, d;\n    int double z;\n    cin >> a >> b >> c;\n    d = ((pow(b, 2) * 31416) - (pow(c, 2) * 31416)) * a;\n    cout << fixed << setprecision(2) << \"$\";\n    if (d / 100000)\n        cout << d / 100000;\n    d %= 100000;\n    z = (long double)d / 10000;\n    cout << fixed << setprecision(2) << z;\n\n    return 0;\n}"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    unsigned long long a, b, c, d;\n    long double z;\n    cin >> a >> b >> c;\n    d = ((pow(b, 2) * 31416) - (pow(c, 2) * 31416)) * a;\n    cout << fixed << setprecision(2) << \"$\";\n    if (d / 100000)\n        cout << d / 100000;\n    d %= 100000;\n    z = (long double)d / 10000;\n    cout << fixed << setprecision(2) << z;\n\n    return 0;\n}"
     },
     {
         "titulo": "5409. Barajeo de Cartas",
@@ -3511,16 +3503,16 @@
         "descripcion": "Charles y William han sido amigos desde ya hace un tiempo, ellos son conocidos por su espíritu competitivo. Cada fin de semana se reúnen para jugar cartas, y a pesar de ser buenos amigos, durante los juegos ninguno quiere perder. Usualmente discuten sobre la manera en la que las cartas son barajeadas, Charles diciendo que William siempre hace trampa porque el obtiene las mejores cartas al final de cada juego, mientras que William dice que Charles simplemente no es tan bueno. Ahora, es tu turno de ayudarlos con este pequeño problema, te toca a ti barajear las cartas. Cada una de las cartas serán representadas por un número entero (k), estas deberán ser barajeadas teniendo dos grupos o sets (s1, s2), y cada uno debe contener el mismo número de cartas (n). Para obtener la pila barajeada final, una carta de cada set o grupo deberá ser tomada, comenzando con una carta del primer conjunto y luego una del segundo conjunto, y continuando hasta que no haya alguna carta sobrante de los sets originales.",
         "entrada": "El número de cartas de cada set o mano dado por n. Cada una de las cartas k representadas por enteros.",
         "salida": "La pila final barajeada a partir de las cartas de las dos manos originales.",
-        "nivel": "()",
+        "nivel": "Intermedio (medio) - Análisis y diseño de algoritmos",
         "categorias": [
-            "Lenguaje",
-            "Ciclos"
+            "Ciclos",
+            "Vectores"
         ],
         "estructuras": [
             "long long",
-            "vector<long>"
+            "vector<int>"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    vector<long> falta;\n    vector<long> faltas;\n    cin >> a;\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> b;\n        falta.push_back(b);\n    }\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> b;\n        faltas.push_back(b);\n    }\n    for (auto i = 0; i < a; i++)\n    {\n        cout << falta[i] << \" \" << faltas[i] << \" \";\n    }\n\n    return 0;\n}s"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    vector<int> falta;\n    vector<int> faltas;\n    cin >> a;\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> b;\n        falta.push_back(b);\n    }\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> b;\n        faltas.push_back(b);\n    }\n    for (auto i = 0; i < a; i++)\n    {\n        cout << falta[i] << \" \" << faltas[i] << \" \";\n    }\n\n    return 0;\n}"
     },
     {
         "titulo": "8375. Las cemitas programadoras",
@@ -3530,7 +3522,6 @@
         "salida": "Si las ganancias superan las perdidas tendrás que imprimir sin comillas \"El negocio si va a jalar\" y después el valor de las ganancias. De lo contrario si las perdidas son mas grandes que las ganancias deberás imprimir sin comillas \"Dejalo ya esta muerto\" y después el valor de las perdidas.",
         "nivel": "Básico (fácil) - Introducción a la programación",
         "categorias": [
-            "Arboles",
             "Cálculos aritméticos"
         ],
         "estructuras": [
@@ -3547,7 +3538,8 @@
         "nivel": "Básico (fácil) - Introducción a la programación",
         "categorias": [
             "Ciclos",
-            "Cálculos aritméticos"
+            "Cálculos aritméticos",
+            "Matrices"
         ],
         "estructuras": [
             "long long",
@@ -3570,112 +3562,112 @@
             "long long"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    cin>>a;\n    cout<<a/10<<\" \"<<(a%10)/5<<\" \"<<((a%10)%5)/2<<\" \"<<(((a%10)%5)%2);\n    \n    return 0;\n}"
-     },
-     {
+    },
+    {
         "titulo": "8418. Probabilidad",
         "url": "https://omegaup.com/arena/problem/Probabilidad/",
         "descripcion": "En un pueblo llamado Moroleón. se organizo una rifa, en la cual Pedro y Jorge compraron una cantidad determinada de boletos. Si se sabe cual es la cantidad que se vendieron en total de boletos. ¿Puedes ayudarlos a sacar su probabilidad de ganar la rifa?.",
         "entrada": "La primera linea contendrá la cantidad de boletos comprados por jorge y pedro. y la segunda los boletos totales.",
         "salida": "La salida contendrá la probabilidad de ganar con solamente 2 números después del punto decimal.",
-        "nivel": "",
-        "categorias": [
-            ""
-        ],
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [],
         "estructuras": [
-            "long double"
+            "long double",
+            "fixed",
+            "setprecision()"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b, c;\n    cin>>a>>b;\n    c=(100/b)*a;\n    cout<<fixed<<setprecision(2)<<\"La probabilidad es de %\"<<c;\n\n    return 0;\n}"
-     },
-     {
+    },
+    {
         "titulo": "5822. Raíces de un polinomio de segundo grado",
         "url": "https://omegaup.com/arena/problem/raices-p2/",
         "descripcion": "Anita está en su primer curso de programación, quiere combinar sus habilidades de programación y matemáticas. En esta ocasión le han pedido que calcule las raíces de polinomios de segundo grado usando la fórmula cuadrática. r+ = (-b + sqrt(b^2 - 4ac)) / (2a) y r- = (-b + sqrt(b^2 - 4ac)) / (2a). Anita únicamente está practicando con problemas en que existen las raíces son valores reales.",
         "entrada": "Recibirás tres valores reales, que corresponden a los coeficientes de un polinomio de segundo grado: a, b y c. Todas las soluciones estarán en el dominio de los reales.",
         "salida": "Mostrar los valores de las raíces para cada polinomio de entrada recibido en la entrada.",
-        "nivel": "",
-        "categorias": [
-            "Condicionales"
-        ],
-
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [],
         "estructuras": [
-            "long double"
+            "long double",
+            "sqrt()"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b, c, d, e;\n    cin>>a>>b>>c;\n    d=(((-1)*b)+sqrt(pow(b,2)-(4*a*c)))/(2*a);\n    e=(((-1)*b)-sqrt(pow(b,2)-(4*a*c)))/(2*a);\n    cout<<fixed<<setprecision(4)<<\"Root +: \"<<d<<\"\\nRoot -: \"<<e;\n    \n    return 0;\n}"
-     },
-     {
+    },
+    {
         "titulo": "5821. Área de un triángulo",
         "url": "https://omegaup.com/arena/problem/area-triangulo-inout/",
         "descripcion": "En la escuela a Carlitos le han enseñado a calcular el área de un triángulo usando los valores de los lados. La maestra le ha indicado que lo primero que debe calcular es el valor: (S = (L1 + L2 + L3) / 2). El siguiente paso es aplicar la fórmula para calcular el área. area = (sqrt(s * (s - L1) * (s - L2) * (s - L3))). Carlitos está empezando sus cursos, por ello te pide que le apoyes escribiendo un programa que permita verificar si está haciendo bien sus cálculos.",
         "entrada": "Recibirás 3 valores de tipo real. Estos lados corresponden siempre a un triángulo válido. Los valores de entrada para cada lado son reales positivos mayores a 0 y menores a 20,000. Todas las entradas forman triángulos válidos.",
         "salida": "Mostrar cada uno de los lados leídos en la entrada y el área del triángulo. Considera 15 caracteres para imprimir cada número y cuatro decimales. Los detalles puedes consultarlos en los ejemplos.",
-        "nivel": "",
-        "categorias": [
-            ""
-        ],
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [],
         "estructuras": [
-            "long double"
+            "long double",
+            "fixed",
+            "setprecision()",
+            "sqrt()"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b, c, d, e;\n    cin>>a>>b>>c;\n    d=(a+b+c)/2;\n    e=sqrt(d*(d-a)*(d-b)*(d-c));\n    cout<<fixed<<setprecision(4)<<\"Side 1: \"<<a<<\"\\nSide 2: \"<<b<<\"\\nSide 3: \"<<c<<\"\\nArea : \"<<e;\n    \n    return 0;\n}"
-     },
-     {
+    },
+    {
         "titulo": "8347. 0 fortnite vs minecraft",
         "url": "https://omegaup.com/arena/problem/fvm/",
         "descripcion": "Habia una ves un niño que se llamaba Jesus, el jugaba mucho al minecraft, pero luego salio el fortnite, ese niño no tenia amigos, por que estaba todo el dia jugando o fortnite o minecraft, pero ese niño quiere saber en cuantos años va a tener su primera novia, ya que cada dia que juegue uno de estos juegos, aumentan los años en los que no tendra novia de esta manera: 1 dia de minecraft=4.27 años sin novia, 1 dia de fortnite=2.91 años sin novia.",
         "entrada": "linea 1: un entero que dice cuantos dias Jesus a jugado al mincecraft, linea 2: un entero que dice cuantos dias jugo al fortnite. jesus no es tan rata y no puede jugar mas de 1 000 000 dias en total.",
         "salida": "el numero exacto de cuantos años jesus no va a tener novia en el siguiente formato [jesus no va a tener novia por X anos] o en el caso de que no haya jugado a ninguno imprime [jesus va a ser feliz].",
-        "nivel": "",
-        "categorias": [
-            ""
-        ],
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [],
         "estructuras": [
             "long double"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b, c;\n    cin>>a>>b;\n    c=(a*4.27)+(b*2.91);\n    if(c){\n        cout<<\"jesus no va a tener novia por \"<<c<<\" anos\";\n    }\n    else{\n        cout<<\"jesus va a ser feliz\";\n    }\n    \n    return 0;\n}"
-     },
-     {
+    },
+    {
         "titulo": "5421. AnagramValidator",
         "url": "https://omegaup.com/arena/problem/AnagramValidator/",
         "descripcion": "Un anagrama de una frase es otra frase que contiene las mismas letras que la original, pero con las letras en diferente orden. Dadas dos frases, decidir si son anagramas una de la otra.",
         "entrada": "Dos líneas, cada una conteniendo una frase compuesta por letras y símbolos de puntuación.",
         "salida": "La frase \"Son anagramas\" si las dos frases son anagramas. La frase \"No son anagramas\" si las dos frases no son anagramas",
-        "nivel": "",
+        "nivel": "Básico (difícil) - Introducción a la programación",
         "categorias": [
-            ""
+            "Vectores",
+            "Caracteres y cadenas"
         ],
         "estructuras": [
             "int",
-            "string"
+            "string",
+            "getline()"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    int num[30];\n    string z;\n    getline(cin,z);\n    for(int i=0; i<z.size(); i++){\n        if(z[i]>='a' && z[i]<='z'){\n            num[z[i]-97]++;\n        }\n        else if(z[i]>='A' && z[i]<='Z'){\n            num[z[i]-65]++;\n        }\n    }\n    getline(cin,z);\n    for(int i=0; i<z.size(); i++){\n        if(z[i]>='a' && z[i]<='z'){\n            num[z[i]-97]--;\n        }\n        else if(z[i]>='A' && z[i]<='Z'){\n            num[z[i]-65]--;\n        }\n    }\n    for(int i=0; i<30; i++){\n        if(num[i]!=0){\n            cout<<\"No son anagramas\";return 0;\n        }\n    }\n    cout<<\"Son anagramas\";\n    \n    return 0;\n}\n"
-     },
-     {
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    int num[30];\n    string z;\n    getline(cin,z);\n    for(auto i=0; i<z.size(); i++){\n        if(z[i]>='a' && z[i]<='z'){\n            num[z[i]-97]++;\n        }\n        else if(z[i]>='A' && z[i]<='Z'){\n            num[z[i]-65]++;\n        }\n    }\n    getline(cin,z);\n    for(auto i=0; i<z.size(); i++){\n        if(z[i]>='a' && z[i]<='z'){\n            num[z[i]-97]--;\n        }\n        else if(z[i]>='A' && z[i]<='Z'){\n            num[z[i]-65]--;\n        }\n    }\n    for(auto i=0; i<30; i++){\n        if(num[i]!=0){\n            cout<<\"No son anagramas\";return 0;\n        }\n    }\n    cout<<\"Son anagramas\";\n    \n    return 0;\n}\n"
+    },
+    {
         "titulo": "1301. Números Libres",
         "url": "https://omegaup.com/arena/problem/Numeros-Libres/",
         "descripcion": "Dados dos números square-free a y b, determina si su producto también es square-free. Decimos que un número x es square-free si para todo primo p, p^2 no divide a x. Por ejemplo, 6 es square free porque el cuadrado de ningún primo lo divide. En cambio, 12 sí, porque 2^2 = 4 sí lo divide.",
         "entrada": "En la primera linea contiene un entero N el numero de casos a resolver. En las siguientes N lineas, dos numeros enteros a y b. (1<=N<=15 y 1<=a,b<=1000) 30 puntos, (1<=N<=500 y 1<=a,b<= 2^31) 30 puntos y (1<=N<=500 y 1<= a,b<=2^63) 40 puntos.",
         "salida": "Para cada caso de prueba, decir \"SI\" (sin comillas) si el producto de a y b es square-free, de caso contrario \"NO\" (sin comillas).",
-        "nivel": "",
+        "nivel": "Intermedio (medio) - Matemáticas en la programación",
         "categorias": [
             "Aritmética",
-            "Loops",
+            "Ciclos",
             "Prueba de primalidad",
             "Generación primaria"
-
         ],
         "estructuras": [
-            "long long"
+            "long long",
+            "__gcd()"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d;\n    cin>>a;\n    while(a--){\n        cin>>b>>c;\n        d=__gcd(b,c);\n        if(d<=1){\n            cout<<\"SI\\n\";\n        }\n        else{\n            cout<<\"NO\\n\";\n        }\n    }\n    \n    return 0;\n}"
-     },
-     {
+    },
+    {
         "titulo": "909. Capturando al gato",
         "url": "https://omegaup.com/arena/problem/L-OMI2011-Capturando-al-gato/",
         "descripcion": "Homero Simpson y su equipo de zorros (agentes secretos) se han dado a la tarea de capturar al criminal internacional conocido como el gato. El plan de Homero es crear un cerco de vigilancia alrededor del Museo de Springfield, próximo objetivo del criminal. Si se traza un círculo alrededor del museo existen N lugares adecuados para que un zorro ponga su puesto de vigilancia. Homero quiere poner el máximo número de zorros posibles alrededor del Museo, sin embargo hay una limitante. El método de comunicación entre los zorros (inventado por el mismo Homero) es el teléfono de hilo. Este teléfono consta de dos vasos unidos por un hilo el cual debe estar tenso para que funcione. El círculo de zorros estará comunicado por teléfonos de la siguiente forma: cada zorro tendrá dos teléfonos, uno para comunicarse con el zorro a su derecha y otro para comunicarse con el zorro a su izquierda. Para que la comunicación sea funcional, el círculo deberá estar cerrado. Homero no es un buen ingeniero y aunque puede hacer muchos teléfonos, requiere que el hilo de todos tenga la misma longitud. Ayuda a Homero a determinar cuál es el máximo número de zorros que puede colocar alrededor del Museo de modo que todos estén comunicados por teléfonos cuyo hilo sea de la misma longitud.",
         "entrada": "En la primera línea el número N, la cantidad de posiciones posibles para zorros En las siguientes N líneas un entero d_i que representa la distancia que hay entre el puesto i y el puesto i+1. El entero en la última de estas líneas representa la distancia del último puesto hacia el primero para cerrar el círculo. (1 <= N <= 5000) y (1<= sum(di, i=1 to N) <= 2 * 10^9). Subtask 1 (75%): (0<N<=10^3) y los casos no están agrupados. Subtask 2 (25%): No hay restricciones adicionales.",
         "salida": "Tu programa debe escribir a la pantalla un único número entero que representa la cantidad máxima de zorros que se pueden colocar.",
-        "nivel": "",
+        "nivel": "Intermedio (fácil) - Análisis y diseño de algoritmos",
         "categorias": [
-            "Arreglos",
+            "Vectores",
+            "Pilas",
             "Implementación"
         ],
         "estructuras": [
@@ -3683,8 +3675,8 @@
             "stack<int>",
             "int"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nlong long a, b=0, c=0, d, e=1, f;\nint num[5001];\nstack<int>falta;\n\nint sub(int x){\n    int y=0, z=0;\n    for(int i=x; i<a; i++){\n        y+=num[i];\n        if(y==e){\n            z++;\n            y=0;\n        }\n        else if(y>e){\n            return 0;\n        }\n    }\n    for(int i=0; i<x; i++){\n        y+=num[i];\n        if(y==e){\n            z++;\n            y=0;\n        }\n        else if(y>e){\n            return 0;\n        }\n    }\n    \n    return z;\n}\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>a;\n    for(int i=0; i<a; i++){\n        cin>>num[i];\n        b=max(b,(long long)num[i]);\n        c+=num[i];\n    }\n    while(e<sqrt(c)){\n        if(c%e==0){\n            falta.push(c/e);\n            if(e>=b){\n                d=0;\n                f=0;\n                for(int i=0; i<a; i++){\n                    d+=num[i];\n                    if(d==e){\n                        f++;\n                        d=0;\n                    }\n                    else if(d>e){\n                        f=-1;break;\n                    }\n                }\n                if(f!=-1){\n                    cout<<f;return 0;\n                }\n                d=0;\n                f=0;\n                for(int i=1; i<a; i++){\n                    d+=num[i];\n                    if(d==e){\n                        f++;\n                        d=0;\n                    }\n                    else if(d>e){\n                        f=-1;break;\n                    }\n                }\n                if(f!=-1){\n                    d+=num[0];\n                    if(d==e){\n                        f++;\n                        cout<<f;return 0;\n                    }\n                }\n                for(int j=2; j<=7; j++){\n                    f=sub(j);\n                    if(f){\n                        cout<<f;return 0;\n                    }\n                }\n            }\n        }\n        e++;\n    }\n    e=sqrt(c);\n    if((e*e)==c && e>=b){\n        d=0;\n        f=0;\n        for(int i=0; i<a; i++){\n            d+=num[i];\n            if(d==e){\n                f++;\n                d=0;\n            }\n            else if(d>e){\n                f=-1;break;\n            }\n        }\n        if(f!=-1){\n            cout<<f;return 0;\n        }\n        d=0;\n        f=0;\n        for(int i=1; i<a; i++){\n            d+=num[i];\n            if(d==e){\n                f++;\n                d=0;\n            }\n            else if(d>e){\n                f=-1;break;\n            }\n        }\n        if(f!=-1){\n            d+=num[0];\n            if(d==e){\n                f++;\n                cout<<f;return 0;\n            }\n        }\n        for(int j=2; j<=7; j++){\n            f=sub(j);\n            if(f){\n                cout<<f;return 0;\n            }\n        }\n    }\n    while(falta.size()!=1){\n        e=falta.top();\n        falta.pop();\n        if(e>=b){\n            d=0;\n            f=0;\n            for(int i=0; i<a; i++){\n                d+=num[i];\n                if(d==e){\n                    f++;\n                    d=0;\n                }\n                else if(d>e){\n                    f=-1;break;\n                }\n            }\n            if(f!=-1){\n                cout<<f;return 0;\n            }\n            d=0;\n            f=0;\n            for(int i=1; i<a; i++){\n                d+=num[i];\n                if(d==e){\n                    f++;\n                    d=0;\n                }\n                else if(d>e){\n                    f=-1;break;\n                }\n            }\n            if(f!=-1){\n                d+=num[0];\n                if(d==e){\n                    f++;\n                    cout<<f;return 0;\n                }\n            }\n            for(int j=2; j<=7; j++){\n                f=sub(j);\n                if(f){\n                    cout<<f;return 0;\n                }\n            }\n        }\n    }\n    cout<<1;\n\n    return 0;\n}"
-     },
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nlong long a, b=0, c=0, d, e=1, f;\nint num[5001];\nstack<int>falta;\n\nint sub(int x){\n    int y=0, z=0;\n    for(auto i=x; i<a; i++){\n        y+=num[i];\n        if(y==e){\n            z++;\n            y=0;\n        }\n        else if(y>e){\n            return 0;\n        }\n    }\n    for(auto i=0; i<x; i++){\n        y+=num[i];\n        if(y==e){\n            z++;\n            y=0;\n        }\n        else if(y>e){\n            return 0;\n        }\n    }\n    \n    return z;\n}\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n        b=max(b,(long long)num[i]);\n        c+=num[i];\n    }\n    while(e<sqrt(c)){\n        if(c%e==0){\n            falta.push(c/e);\n            if(e>=b){\n                d=0;\n                f=0;\n                for(auto i=0; i<a; i++){\n                    d+=num[i];\n                    if(d==e){\n                        f++;\n                        d=0;\n                    }\n                    else if(d>e){\n                        f=-1;break;\n                    }\n                }\n                if(f!=-1){\n                    cout<<f;return 0;\n                }\n                d=0;\n                f=0;\n                for(auto i=1; i<a; i++){\n                    d+=num[i];\n                    if(d==e){\n                        f++;\n                        d=0;\n                    }\n                    else if(d>e){\n                        f=-1;break;\n                    }\n                }\n                if(f!=-1){\n                    d+=num[0];\n                    if(d==e){\n                        f++;\n                        cout<<f;return 0;\n                    }\n                }\n                for(auto j=2; j<=7; j++){\n                    f=sub(j);\n                    if(f){\n                        cout<<f;return 0;\n                    }\n                }\n            }\n        }\n        e++;\n    }\n    e=sqrt(c);\n    if((e*e)==c && e>=b){\n        d=0;\n        f=0;\n        for(auto i=0; i<a; i++){\n            d+=num[i];\n            if(d==e){\n                f++;\n                d=0;\n            }\n            else if(d>e){\n                f=-1;break;\n            }\n        }\n        if(f!=-1){\n            cout<<f;return 0;\n        }\n        d=0;\n        f=0;\n        for(auto i=1; i<a; i++){\n            d+=num[i];\n            if(d==e){\n                f++;\n                d=0;\n            }\n            else if(d>e){\n                f=-1;break;\n            }\n        }\n        if(f!=-1){\n            d+=num[0];\n            if(d==e){\n                f++;\n                cout<<f;return 0;\n            }\n        }\n        for(auto j=2; j<=7; j++){\n            f=sub(j);\n            if(f){\n                cout<<f;return 0;\n            }\n        }\n    }\n    while(falta.size()!=1){\n        e=falta.top();\n        falta.pop();\n        if(e>=b){\n            d=0;\n            f=0;\n            for(auto i=0; i<a; i++){\n                d+=num[i];\n                if(d==e){\n                    f++;\n                    d=0;\n                }\n                else if(d>e){\n                    f=-1;break;\n                }\n            }\n            if(f!=-1){\n                cout<<f;return 0;\n            }\n            d=0;\n            f=0;\n            for(auto i=1; i<a; i++){\n                d+=num[i];\n                if(d==e){\n                    f++;\n                    d=0;\n                }\n                else if(d>e){\n                    f=-1;break;\n                }\n            }\n            if(f!=-1){\n                d+=num[0];\n                if(d==e){\n                    f++;\n                    cout<<f;return 0;\n                }\n            }\n            for(auto j=2; j<=7; j++){\n                f=sub(j);\n                if(f){\n                    cout<<f;return 0;\n                }\n            }\n        }\n    }\n    cout<<1;\n\n    return 0;\n}"
+    },
     {
         "titulo": "...",
         "url": "...",
@@ -3701,7 +3693,7 @@
         ],
         "codigo": "..."
     },
-    "Problemas totales: 161",
+    "Problemas totales: 221",
     "Avanzado (difícil) - Programación competitiva: 4",
     "Avanzado (medio) - Temas especializados: 1",
     "Avanzado (medio) - Programación competitiva: 3",
