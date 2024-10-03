@@ -4243,6 +4243,272 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    ;\n    char z;\n    cin >> z;\n    if (z >= 'a' && z <= 'z')\n    {\n        cout << \"MINUSCULA\";\n    }\n    else if (z >= 'A' && z <= 'Z')\n    {\n        cout << \"MAYUSCULA\";\n    }\n    else\n    {\n        cout << \"OTRO\";\n    }\n\n    return 0;\n}"
     },
     {
+        "titulo": "6982. Metros de Carretera",
+        "url": "https://omegaup.com/arena/problem/Metros-de-Carretera/",
+        "descripcion": "Tu buen amigo Rany ha conseguido un nuevo empleo, este consiste en pintar una carretera, pero Rany como ya es costumbre pinta de una manera muy rara. Su manera de pintar se consiste en pintar 1 metro de carretera el día 1, pintar 2 metros desde el punto anterior el día 2, pintar 3 metros el día 3, así hasta pintar k metros más en el día k. A Rany le pagarán por día pero el distraído de tu amigo olvidó cuantos días trabajo, lo único que recuerda son los N metros totales que pinto. Ayudalo a averiguar cuantos días trabajo con base a los N metros que pinto.",
+        "entrada": "Un único entero N representando los metros totales que pinto. (1<=N<6*10^9)",
+        "salida": "La cantidad de días que Rany trabajo.",
+        "nivel": "",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c;\n    cin>>a;\n    b=sqrt(a*2)-1;\n    while(true){\n        c=((b+1)*b)/2;\n        if(a==c){\n            cout<<b;return 0;\n        }\n        b++;\n    }\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "4348. Perímetro de asteriscos",
+        "url": "https://omegaup.com/arena/problem/RECT_PERIM_ASTERISCOS/",
+        "descripcion": "Escribe un programa que permita desplegar un rectángulo que consista de un perímetro formado por asteriscos. El rectángulo mide h asteriscos de alto y w asteriscos de ancho. Por ejemplo, el siguiente rectángulo tiene estas medidas: h=5 y w=10. Es importante notar lo siguiente: Los asteriscos de las dos líneas horizontales están separados entre sí por un espacio en blanco. El área central del rectángulo está compuesto únicamente de espacios en blanco. No debe haber espacios en blanco al final de cualquiera de los renglones. En otras palabras, el último carácter antes de cada salto de línea debe ser un asterisco. Tengan mucho cuidado con este punto pues es muy fácil pasarlo por alto ya que es algo que no es visible a simple vista.",
+        "entrada": "La entrada consiste de dos líneas. La primera línea es el entero h, y la segunda línea es el entero w. (1<=h<=100), (1<=w<=100)",
+        "salida": "La salida consiste del rectángulo correspondiente.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Loops"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    cin>>a>>b;\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<b; j++){\n            if(i==0 || j==0 || i==a-1 || j==b-1){\n                cout<<\"*\";\n            }\n            else{\n                cout<<\" \";\n            }\n            if(j!=b-1){\n                cout<<\" \";\n            }\n        }\n        cout<<\"\\n\";\n    }\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "8309. Perímetro de poligono",
+        "url": "https://omegaup.com/arena/problem/Perimetro-de-poligono/",
+        "descripcion": "Un ingeniero está tratando de calcular el perímetro de una figura de múltiples lados y desea que le ayudemos creando un programa para dicha tarea. El desea que el programa pueda leer múltiples números que representan la longitud de cada uno de los lados y terminar con un cero. Sin embargo, el teclado de su computadora está fallando y de vez en cuanto escribe - (signos negativos, convenientemente solo antes de escribir números). El ingeniero desea que el programa está preparado para estos errores y corrija dichos números negativos.",
+        "entrada": "La entrada tendrá varios numeros enteros positivos y negativos, siendo el último un cero. La cantidad de números será menor a 100. Los números serán enteros positivos y negativos.",
+        "salida": "La salida será el valor de la suma de los lados de la figura, cambiando los valores negativos a positivos.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Loops",
+            "Aritmética"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0;\n    cin>>a;\n    while(a){\n        b+=fabs(a);\n        cin>>a;\n    }\n    cout<<b;\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "6269. El calendario de la cuenta larga",
+        "url": "https://omegaup.com/arena/problem/Calendario-cuenta-larga/",
+        "descripcion": "Los mayas usaban tres calendarios, pero en este ejercicio nos concentraremos solamente en el calendario choltún, o calendario de la cuenta larga. En éste, un día se llama kin, 20 kines forman un uinal, 18 uinales forman un tun, 20 tunes forman un katún y 20 katunes forman un baktún (también existen periodos de tiempo más grandes, pero no nos ocuparemos de ellos). Una fecha se especifica como el número b de baktunes, seguido del número k de katunes, el número t de tunes, el número u de uinales y el número d de kines ocurridos a partir de una fecha inicial llamada 0.0.0.0.0 que corresponde al 11 de agosto del año 3113 antes de nuestra era, según el calendario gregoriano. Si sabemos el número n de días transcurridos a partir de esa fecha, se puede calcular fácilmente la fecha correspondiente del calendario choltún. Por ejemplo, si han transcurrido 314 159 265 días a partir de la fecha inicial, entonces la fecha correspondiente es 2181.13.4.11.5, es decir b=2181, k=13, t =4, u=11, d=5.",
+        "entrada": "Consiste de un número entero n que tendrá un valor entre 0 y 2 000 000 000.",
+        "salida": "Consiste de cinco números enteros, b, k, t, u, d, separados por espacios.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Aritmética"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e;\n    cin>>a;\n    b=a%20;\n    a/=20;\n    c=a%18;\n    a/=18;\n    d=a%20;\n    a/=20;\n    e=a%20;\n    a/=20;\n    cout<<a<<\" \"<<e<<\" \"<<d<<\" \"<<c<<\" \"<<b;\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "1101. Nutrientes",
+        "url": "https://omegaup.com/arena/problem/Nutrientes/",
+        "descripcion": "Existe cierto árbol que a diferencia de los árboles comunes, que nutren sus hojas y tallos a través de su raiz, éste nutre su raíz con los nutrientes que sus hojas recogen del medio ambiente. Dicho árbol nace de una forma muy particular, exactamente igual que como se construye un árbol binario de búsqueda. inicialmente hay un brote que será la raiz del árbol, enseguida, suceden brotes secuencialmente de tamaño Ti y buscan su lugar en el árbol de acuerdo a su tamaño (tal como se inserta en un ABB). . Cada brote i, nace con Gi nutrientes. Una vez que el árbol termina de crecer, Empieza el proceso de nutrir desde las hojas hacia la raiz. Una raiz solo se nutre de aquella hoja o rama que tenga la mayor cantidad de nutrientes. Dada la descripción de crecimiento del árbol y los nutrientes de cada brote, escribe un programa que calcule el máximo de nutrientes que recibe la raiz.",
+        "entrada": "En la primera línea un entero N que representa la cantidad brotes. En cada una de las siguientes N líneas, los enteros T y G que representan el tamaño del brote y la cantidad de nutrientes que tiene, respectivamente. Puedes estar seguro que nunca habrá dos brotes del mismo tamaño. (1 <= N <=1000 1 <= Ti<= 1000 1 <= Gi <= 100).",
+        "salida": "Un entero seguido de un salto de línea que indique el máximo número de nutrientes que la raiz puede absorber. Explicación de la salida: Con la descripción de la entrada se construye el siguiente árbol. El máximo de nutrientes se logra a partir de la hoja de tamaño 6 que nutre a su raiz con 10 nutrientes, de tal manera que la raiz de tamaño 7 tendrá 18 nutrientes (los suyos mas los de su hoja con más nutrientes 10+8) . Este nodo a su vez, nutre a su raiz con 18 nutrientes de tal manera que la raiz del arbol tendrá finalmente 20 nutrientes. Existen otras maneras de nutrir a la raiz, sin embargo, la descrita proporciona la máxima cantidad de nutrientes.",
+        "nivel": "Avanzado (medio) - Programación competitiva",
+        "categorias": [
+            "Recorrido de árboles",
+            "Árbol de búsqueda binaria"
+        ],
+        "estructuras": [
+            "int",
+            "long long"
+        ],
+        "codigo": "\n#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra{\n    int aa, bb, cc, dd;\n};\nsobra num[1001];\n\nint sub(int x){\n    int y=0;\n    if(num[x].bb!=-1){\n        y=sub(num[x].bb);\n    }\n    if(num[x].cc!=-1){\n        y=max(y,sub(num[x].cc));\n    }\n    return y+num[x].dd;\n}\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    cin>>a>>num[0].aa>>num[0].dd;\n    num[0].bb=-1;\n    num[0].cc=-1;\n    for(auto i=1; i<a; i++){\n        cin>>num[i].aa>>num[i].dd;\n        b=0;\n        num[i].bb=-1;\n        num[i].cc=-1;\n        while(true){\n            if(num[i].aa>num[b].aa && num[b].cc==-1){\n                num[b].cc=i;break;\n            }\n            else if(num[i].aa>num[b].aa){\n                b=num[b].cc;\n            }\n            else if(num[i].aa<num[b].aa && num[b].bb==-1){\n                num[b].bb=i;break;\n            }\n            else{\n                b=num[b].bb;\n            }\n        }\n    }\n    cout<<sub(0);\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "7050. Cálculos condicionales",
+        "url": "https://omegaup.com/arena/problem/Calculos-condicionales/",
+        "descripcion": "Eres muy bueno evaluando fórmulas y realizando cálculos directos, pero te cuesta trabajo decidir en qué situaciones se deben hacer qué operaciones. Un compañero te sugirió un ejercicio de cálculo mental que consiste en, dado un número inicial N, realizar las siguientes operaciones en el orden indicado y con aritmética entera: 1.Si el valor actual de N es par, divídelo entre 2. En caso contrario, súmale 1. 2.Si el valor actual de N tiene tres o más cifras, divídelo entre 100. Pero si tiene exactamente dos cifras, divídelo entre 10. 3.Si el valor actual de N es un múltiplo de tres, réstale uno. Escribe un programa que te ayude a calcular el valor final de N y el número de veces que N fue modificado.",
+        "entrada": "Un entero N. Puedes suponer que 1<=N<=1000.",
+        "salida": "Dos enteros que correspondan con el valor final de N y el número de veces que N fue modificado respectivamente.",
+        "nivel": "Básico (medio) - Introducción a la programación",
+        "categorias": [
+            "Aritmética",
+            "Condicionales"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a=1, b=1;\n    cin>>a;\n    if(a%2){\n        a++;\n    }\n    else{\n        a/=2;\n    }\n    if(a>=100){\n        a/=100;\n        b++;\n    }\n    else if(a>=10){\n        a/=10;\n        b++;\n    }\n    if(a%3==0){\n        a--;\n        b++;\n    }\n    cout<<a<<\" \"<<b;\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "7107. Cálculos iterativos",
+        "url": "https://omegaup.com/arena/problem/Calculos-iterativos/",
+        "descripcion": "Dado un entero N con valor inicial 0, modifícalo realizando los siguientes pasos en el orden indicado: Súmale al valor actual de N todos los números impares que existen de 1 a A. Réstale al valor actual de N todas las potencias de 2 que existen de 1 a B. Si el valor actual de N es un múltiplo de C, divídelo entre C hasta que deje de serlo.",
+        "entrada": "Tres enteros A, B, C. Puedes suponer que 2<=A,B,C<=1000.",
+        "salida": "Un entero que sea el valor final de N.",
+        "nivel": "",
+        "categorias": [
+            "Aritmética",
+            "Loops"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d;\n    cin>>a>>b>>c;\n    if(a%2){\n        a++;\n    }\n    d=pow(a/2,2);\n    while(e<=b){\n        d-=e;\n        e*=2;\n    }\n    while(d%c==0){\n        d/=c;\n    }\n    cout<<d;\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "7001. Cálculos mentales competitivos",
+        "url": "https://omegaup.com/arena/problem/Calculos-mentales-competitivos/",
+        "descripcion": "Tu mejor amigo y tú siempre sacan la mejor calificación en matemáticas (y además acaban los exámenes al mismo tiempo), por lo que siempre han tenido la duda de quién es el mejor haciendo cálculos. Un día, un compañero de ambos los retó a que jugaran un reto de cálculo mental; el que lo resolviera primero sería el mejor en matemáticas de la escuela. El reto consiste en, dado un número inicial R: Calcular el resultado de R+5. Al resultado anterior, elevarlo al cuadrado. Al resultado anterior, dividirlo entre un tercio del número original R. Al resultado anterior, elevarlo al cubo. Como el título de ser el mejor de matemáticas en la escuela es sumamente importante, tendrás un día para practicar. Escribe un programa que te ayude a verificar los resultados que vas realizando a cada paso.",
+        "entrada": "Un real R. Puedes suponer que (1<=R<=20).",
+        "salida": "Cinco reales separados por espacios, donde el primer real es el número original y los siguientes cuatro son los resultados obtenidos después de aplicar cada paso en sucesión. Tu programa se considerará correcto si los valores calculados son razonablemente cercanos a las respuestas exactas.",
+        "nivel": "Básico (medio) - Introducción a la programación",
+        "categorias": [
+            "Aritmética",
+            "Caracteres y cadenas"
+        ],
+        "estructuras": [
+            "string",
+            "getline()"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    string z;\n    getline(cin,z);\n    for(long i=z.size()-1; i>=0; i--){\n        cout<<z[i];\n    }\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "8671. Cálculo de la mediana",
+        "url": "https://omegaup.com/arena/problem/Calculo-de-la-mediana/",
+        "descripcion": "Escribe un programa que lea una secuencia de N enteros distintos A = a_0,a_1,...,a_(n-1) y que determine el valor de la mediana de A así como su índice.",
+        "entrada": "Un entero N seguido de los N enteros de A. Puedes suponer que N es impar y menor que 10^5.",
+        "salida": "Dos enteros que sean el valor de la mediana de A y su índice.",
+        "nivel": "",
+        "categorias": [
+            "Vectores",
+            "Loops",
+            "Ordenamiento"
+
+        ],
+        "estructuras": [
+            "long long",
+            "vector<pair<int,int>>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    vector<pair<int,int>>num(100001);\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i].first;\n        num[i].second=i;\n    }\n    sort(num,num+a);\n    cout<<num[a/2].first<<\" \"<<num[a/2].second;\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "8672. Sumando con pilas",
+        "url": "https://omegaup.com/arena/problem/Sumando-con-pilas/",
+        "descripcion": "Escribe un programa que comience con una pila P de enteros inicialmente vacía y que ejecute una lista de las siguientes operaciones: AGREGA v: Agregar a P. Por ejemplo, si P=(3,1,4) y v = 5 entonces P = (3,1,4,5). CONSUME: Quitar los dos últimos elementos de P, calcular su suma y agregarla a P. Por ejemplo, si P=(3,1,4) entonces P=(3,5). IMPRIME: Imprimir el último elemento de P. Por ejemplo, si P=(3,1,4) entonces se debe imprimir 4.",
+        "entrada": "Un entero N seguido de las N operaciones a realizar sobre P. Puedes suponer que (0<=N<=10^5) y que nunca se pedirá consumir o imprimir un elemento que no existe.",
+        "salida": "Cada para operación de impresión, el valor del entero correspondiente.",
+        "nivel": "Intermedio (fácil) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Aritmética",
+            "Loops",
+            "Pilas"
+            "Caracteres y cadenas"
+        ],
+        "estructuras": [
+            "long long",
+            "stack<int>",
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    stack<int>falta;\n    string z;\n    cin>>a;\n    while(a--){\n        cin>>z;\n        if(z==\"AGREGA\"){\n            cin>>b;\n            falta.push(b);\n        }\n        else if(z==\"CONSUME\"){\n            b=falta.top();\n            falta.pop();\n            falta.top()+=b;\n        }\n        else{\n            cout<<falta.top()<<\"\\n\";\n        }\n    }\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "8673. Nodos alcanzables",
+        "url": "https://omegaup.com/arena/problem/Nodos-alcanzables/",
+        "descripcion": "Dados N nodos numerados del 0 al N-1 donde cada uno tiene un enlace a su siguiente nodo, escribe un programa que determine si existe una forma de llegar del nodo 0 al nodo N-1.",
+        "entrada": "Dos enteros N, M seguidos de M parejas de enteros X, Y que denotan un enlace del nodo X al Y. Pueden existir nodos que no tengan un nodo siguiente. Puedes suponer que (1<=M<=N<=100).",
+        "salida": "El valor 1 si existe una forma de llegar del nodo 0 al N-1 y el valor 0 en otro caso.",
+        "nivel": "Intermedio (fácil) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Listas ligadas",
+            "Loops"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<>",
+            "queue<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra{\n        int aa, bb, cc;\n    };\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d;\n    vector<sobra>num(101);\n    queue<int>falta;\n    cin>>a>>b;\n    a--;\n    for(auto i=0; i<b; i++){\n        cin>>num[i].aa>>num[i].bb;\n        if(num[i].aa==0){\n            if(num[i].bb==a){\n                a=-1;\n            }\n            else{\n                c=num[i].bb;\n                falta.push(c);\n            }\n            num[i].cc=1;\n        }\n    }\n    if(a==-1){\n        cout<<\"1\";return 0;\n    }\n    while(falta.size()){\n        c=falta.size();\n        falta.pop();\n        for(auto i=0; i<b; i++){\n            if(num[i].aa==c && num[i].cc==0){\n                if(num[i].bb==a){\n                    cout<<\"1\";return 0;\n                }\n                d=num[i].bb;\n                falta.push(d);\n                num[i].cc=1;\n            }\n        }\n    }\n    cout<<\"0\";\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "910. L-OMI2011-La guardia negra",
+        "url": "https://omegaup.com/arena/problem/L-OMI2011-La-guardia-negra/",
+        "descripcion": "Según la canción del fuego y el hielo, la guardia de los centinelas negros ha defendido al reino de Westeros de las amenazas del norte durante los últimos 8,000 años. A últimas fechas un gran número de huestes enemigas se ha venido concentrando en la frontera norte de Westeros. El comandante de la guardia, Lord Snow, ha mandado llamar por ti para que le ayudes a planear la defensa. La guardia tiene representado el campamento enemigo como una cuadrícula de M filas por N columnas, en cada casilla de la cuadrícula hay un número s_{i,j} que representa la cantidad de soldados enemigos en esa casilla. La guardia cuenta con una catapulta capaz de lanzar un proyectil explosivo a cualquier lugar de esta cuadrícula. Al explotar, el proyectil eliminará a todos los soldados enemigos que se encuentren a una distancia menor o igual a un número d_i que depende del proyectil en cuestión. La distancia entre dos casillas se define como la suma del valor absoluto de la diferencia de sus columnas mas el valor absoluto de la diferencia de sus filas. El comandante de la guardia quiere que desarrolles un programa para calcular la cantidad de soldados que eliminaría un proyectil específico si fuera lanzado en una cierta casilla. Escribe un programa que dada la cuadrícula del campamento, el número de soldados en cada casilla, el número de proyectiles, la distancia de alcance de cada uno y el lugar donde quieres lanzarlo, calcule el número de enemigos que serán eliminados con cada proyectil.",
+        "entrada": "Tu programa debe leer del teclado la siguiente información: En la primer línea los números M y N que representan el número de filas y columnas del campamento. En cada una de las siguientes M líneas hay N números enteros (s_{i,j}) separados por un espacio que representan los soldados en cada casilla del campamento. En la siguiente línea el número P de proyectiles que tiene la guardia. En las últimas P líneas hay 3 enteros separados por espacios en cada una que representan la fila y columna donde se lanzará un proyectil y la distancia de alcance del mismo. Tanto las filas como las columnas inician numeradas a partir del 0 y hasta M-1 y N-1 respectivamente. La fila 0 es la fila superior y la columna 0 es la columna hasta la izquierda. Puedes estar seguro de que los proyectiles serán lanzados de tal forma que su alcance no exceda el campamento, es decir, ninguna explosión llegará a una casilla que este fuera de la cuadrícula. (1<=M,N<= 1000), (0<=s_{i,j}<=1000000000), (1<=P<=100000), (0<=di<=500), Para este problema los casos de prueba se agruparán en 3 grupos distintos. Para obtener los puntos de un grupo es necesario que tu programa resuelva correctamente TODOS los casos de ese grupo, de otra forma obtendrás 0 puntos por ese grupo aun cuando hayas resuelto correctamente algunos de los casos. RESTRICCIONES ESPECIALES PARA EL GRUPO 1 (Valor del grupo, 25 puntos): (1<=M, N<=100, 1<=P<=100,0<=s_{i,j}<=10^5 y 0<=di<=50). RESTRICCIONES ESPECIALES PARA EL GRUPO 2 (Valor del grupo, 50 puntos): (1<=M,N<=10^3, 1<=P<=10^3, 0<=s_{i,j}<=10^6 y 0<=di <=500). RESTRICCIONES ESPECIALES PARA EL GRUPO 3 (Valor del grupo, 25 puntos): Las restricciones para el grupo 3 son las especificadas en la primera sección de límites. ",
+        "salida": "Tu programa deberá escribir a la pantalla P líneas con un número cada una. La i-ésima línea debe contener la cantidad de enemigos que serían eliminados al lanzar el proyectil i.",
+        "nivel": "",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "long long",
+            "vector<vector<int>>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, g, h;\n    vector<vector<int>>num(1001,vector<int>(1001,0));\n    cin>>a>>b;\n    for(auto i=1; i<=a; i++){\n        for(auto j=1; j<=b; j++){\n            cin>>num[i][j];\n            num[i][j]+=num[i][j-1];\n        }\n    }\n    cin>>c;\n    while(c--){\n        cin>>d>>e>>f;\n        d++;\n        e++;\n        g=num[d][e+f]-num[d][(e-f)-1];\n        h=1;\n        f--;\n        while(f>=0){\n            g+=(num[d-h][e+f]-num[d-h][(e-f)-1]);\n            g+=(num[d+h][e+f]-num[d+h][(e-f)-1]);\n            f--;\n            h++;\n        }\n        cout<<g<<\"\\n\";\n    }\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "5837. Diario de tu hermano",
+        "url": "https://omegaup.com/arena/problem/Diario-de-tu-hermano/",
+        "descripcion": "Has encontrado el diario de tu hermano y quieres revelar sus oscuros secretos a sus amigos pero tienes un problema: ¡todo el diario está al revés! Para poder leerlo (y mostrárselo a sus amigos) necesitas voltear todos los caracteres que se encuentran en el diario.",
+        "entrada": "Un string S que representa el diario de tu hermano.",
+        "salida": "Un string Z que representa el diario volteado de tu hermano.",
+        "nivel": "",
+        "categorias": [
+            "Caracteres y cadenas"
+        ],
+        "estructuras": [
+            "getline()",
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, g, h;\n    vector<vector<int>>num(1001,vector<int>(1001,0));\n    cin>>a>>b;\n    for(auto i=1; i<=a; i++){\n        for(auto j=1; j<=b; j++){\n            cin>>num[i][j];\n            num[i][j]+=num[i][j-1];\n        }\n    }\n    cin>>c;\n    while(c--){\n        cin>>d>>e>>f;\n        d++;\n        e++;\n        g=num[d][e+f]-num[d][(e-f)-1];\n        h=1;\n        f--;\n        while(f>=0){\n            g+=(num[d-h][e+f]-num[d-h][(e-f)-1]);\n            g+=(num[d+h][e+f]-num[d+h][(e-f)-1]);\n            f--;\n            h++;\n        }\n        cout<<g<<\"\\n\";\n    }\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "423. Dos Veces",
+        "url": "https://omegaup.com/arena/problem/Formateando-las-letras/",
+        "descripcion": "Meta: Leer una línea con caracteres tanto de minúsculas como de mayúsculas e imprimirlos dos veces, una con todo cambiado a mayúsculas y otro con todo convertido a minúsculas. En ocasiones es deseable poder transformar un texto a mayúsculas o también a minúsculas. En este ejercicio haremos eso.",
+        "entrada": "Vas a leer por líneas hasta que se llegue al fin de archivo.",
+        "salida": "Por cada línea que leas, debes imprimirla dos veces. La primera formateando todas las letras a mayúsculas y en la otra todas a minúsculas.",
+        "nivel": "Básico (medio) - Introducción a la programación",
+        "categorias": [
+            "Loops",
+            "Caracteres y cadenas"
+        ],
+        "estructuras": [
+            "string",
+            "getline()"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    string z;\n    while(getline(cin,z)){\n        for(long i=0; i<z.size(); i++){\n            if(z[i]>='a' && z[i]<='z'){\n                z[i]-=32;\n            }\n            cout<<z[i];\n        }\n        cout<<\"\\n\";\n        for(long i=0; i<z.size(); i++){\n            if(z[i]>='A' && z[i]<='Z'){\n                z[i]+=32;\n            }\n            cout<<z[i];\n        }\n        cout<<\"\\n\";\n    }\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "7066. El tablero en forma de dona",
+        "url": "https://omegaup.com/arena/problem/El-tablero-en-forma-de-dona/",
+        "descripcion": "Después de jugar un juego de ajedrez con uno de tus amigos se te ocurrió una idea extraña. ¿Qué sucedería si pudieras enrollar el tablero de manera que los bordes del tablero estuvieran conectados?. Es decir el borde izquierdo estaría conectado con el borde derecho y el borde superior estaría conectado con el borde inferior. !El resultado sería un tablero de ajedrez en forma de dona! Cualquier pieza que se moviera más alla de alguno de los bordes del tablero acabaría por pasar al borde opuesto. Esto debería ocurrir incluso si el tablero fuera más pequeño o más grande de lo normal. Para probar tu idea tomaste una hoja de papel y dibujaste un tablero de ajedrez asignando una coordenada a cada casilla, empezando por la esquina superior izquierda a la que le asignaste la coordenada (0, 0). Una vez hecho esto enrollaste el tablero para dejarlo en forma de dona y ver que sucedía con el movimiento de una pieza.",
+        "entrada": "Seis enteros W, H, X, Y, R, S que denotan el ancho W y alto H del tablero, la coordenada inicial (X,Y) de la pieza, el número de casillas R que la pieza se mueve de manera horizontal y el número de casillas S que se mueve de manera vertical. Puedes asumir que (1<=W, H<=10, X<=W, Y<=H) y que (-20<=R, S<=20). Asuma que la pieza se mueve primero en la dirección horizontal y después en la dirección vertical.",
+        "salida": "Dos enteros que represental las coordenadas finales de la pieza.",
+        "nivel": "Básico (medio) - Introducción a la programación",
+        "categorias": [
+            "Entrada y salida",
+            "Aritmética",
+            "Loops"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f;\n    cin>>a>>b>>c>>d>>e>>f;\n    c+=e;\n    d+=f;\n    if(a!=1){\n        c%=a;\n    }\n    else{\n        c=0;\n    }\n    if(b!=1){\n        d%=b;\n    }\n    else{\n        d=0;\n    }\n    if(c<0){\n        c=a+c;\n    }\n    if(d<0){\n        d=b+d;\n    }\n    cout<<c<<\" \"<<d;\n    \n    return 0;\n}"
+     },
+     {
+        "titulo": "7002. Evaluando fórmulas en sucesión",
+        "url": "https://omegaup.com/arena/problem/Evaluando-formulas-en-sucesion/",
+        "descripcion": "Cada vez eres mejor en matemáticas y ahora estás practicando con múltiples fórmulas en sucesión. Es decir, el resultado de una fórmula lo usarás para evaluar otra fórmula y así sucesivamente hasta obtener el resultado final. Como estás aprendiendo a programar, crees que podrías ayudarte de programas de computadora para facilitar tu labor. Las fórmulas con las que trabajarás esta vez son: y = (x + 5) / (2 * (x + 1)), z = (y^2 + x * (x - 2 * y)) / (x * y). Escribe un programa que calcule el valor de z dado x.",
+        "entrada": "Un real x. Puedes suponer que (1<=x<=100).",
+        "salida": "Un real que sea el valor de z. El valor se considerará correcto si está razonablemente cercano a la respuesta exacta.",
+        "nivel": "Intermedio (fácil) - Matemáticas en la programación",
+        "categorias": [
+            "Aritmética"
+        ],
+        "estructuras": [
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b, c;\n    cin>>a;\n    b=(a+5)/(2*(a+1));\n    c=(pow(b,2)+(a*(a-(2*b))))/(a*b);\n    cout<<c;\n    \n    return 0;\n}"
+     },
+    
+    {
         "titulo": "...",
         "url": "...",
         "descripcion": "...",
