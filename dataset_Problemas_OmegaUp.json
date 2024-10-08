@@ -4890,6 +4890,91 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    vector<int> num(1000000, 0);\n    cin >> a;\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> num[i];\n    }\n    for (auto i = a - 2; i > -1; i--)\n    {\n        for (auto j = 0; j <= i; j++)\n        {\n            num[j] += num[j + 1];\n        }\n    }\n    cout << num[0];\n\n    return 0;\n}"
     },
     {
+        "titulo": "1941. Desorden en el cuarto",
+        "url": "https://omegaup.com/arena/problem/Desorden-en-el-Cuarto/",
+        "descripcion": "María tiene N libros numerados tirados en su cuarto. Su mamá le ordenó (sin gritarle) que recogiera y ordenara su cuarto. Para ordenarlos, los comenzó a colocar uno por uno en un estante de derecha a izquierda. Al terminar, sin querer chocó con el estante y se cayeron los primeros K libros que estaban ahí, contando desde la izquierda. Los libros que se quedaron en el estante se quedaron en su orden inicial, pero al volver a meter los que se habían caído los puso en el mismo orden en el que estaban, pero al revés.",
+        "entrada": "El número N y el número K, seguidos por una línea con los N números de los libros en el orden que los puso en el estante al principio (antes de que se cayeran), separados por un espacio. 0<=K<=N<=20000.",
+        "salida": "Los números de los libros en el orden en el que quedaron en el estante, de izquierda a derecha.",
+        "nivel": "",
+        "categorias": [
+            "Pilas",
+            "Colas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "stack<long>",
+            "queue<long>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c;\n    stack<long>falta;\n    queue<long>faltas;\n    cin>>a>>b;\n    a-=b;\n    while(a--){\n        cin>>c;\n        falta.push(c);\n    }\n    while(b--){\n        cin>>c;\n        faltas.push(c);\n    }\n    while(faltas.size()){\n        cout<<faltas.front()<<\"\\n\";\n        faltas.pop();\n    }\n    while(falta.size()){\n        cout<<falta.top()<<\"\\n\";\n        falta.pop();\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1189. CETVRTA (Cuarto)",
+        "url": "https://omegaup.com/arena/problem/CETVRTA-Cuarto/",
+        "descripcion": "Mirko tiene que elegir cuatro puntos en el plano de manera que formen un rectángulo con lados paralelos a los ejes. Él ya ha elegido a tres puntos y no ha cometido algún error, pero está teniendo problemas para encontrar el último punto. Ayúdalo.",
+        "entrada": "Cada uno de los tres puntos se darán en líneas separadas. Todas las coordenadas estarán entre 1 y 1000.",
+        "salida": "La coordenada del cuarto vértice del rectángulo.",
+        "nivel": "Básico () - Introducción a la programación",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f;\n    cin>>a>>b>>c>>d>>e>>f;\n    if(a!=c && a!=e){\n        cout<<a;\n    }\n    else if(c!=a && c!=e){\n        cout<<c;\n    }\n    else{\n        cout<<e;\n    }\n    cout<<\" \";\n    if(b!=d && b!=f){\n        cout<<b;\n    }\n    else if(d!=b && d!=f){\n        cout<<d;\n    }\n    else{\n        cout<<f;\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "7311. Sobras",
+        "url": "https://omegaup.com/arena/problem/Sobras/",
+        "descripcion": "Javert va a organizar una fiesta con sus M amigos, y compró N dulces. El problema es que en su casa hay un ratón que le encantan los dulces, por lo que si sobran, el ratón hará de las suyas. Él quiere saber si puede repartir dulces entre todos sus amigos, dándoles cantidades iguales sin que sobre ningún dulce. Él no comerá dulces, así que solo es necesario repartir los N dulces entre sus M amigos. Dado un número N: la cantidad de dulces; y un número M: la cantidad de amigos. Determina si es posible repartir todos los dulces sin que sobre ninguno, de tal manera que el ratón no tenga nada que comer.",
+        "entrada": "Un número entero N, el número de dulces, seguido de un número entero M que representa al número de amigos de Javert. N<=1000000000, M<=N.",
+        "salida": "Si es posible repartir todos los dulces sin que sobre ninguno, entonces imprimir \"Si\" (sin comillas), de otra forma, imprimir \"No\".",
+        "nivel": "(Fácil)",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    cin>>a>>b;\n    if(a%b){\n        cout<<\"No\";\n    }\n    else{\n        cout<<\"Si\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "8318. Suma de Multiplicación de Pares",
+        "url": "https://omegaup.com/arena/problem/Suma-de-Multiplicacion-de-Pares/",
+        "descripcion": "Dado un número de entrada n, se procede a capturar una lista de valores numéricos de tamaño n. El objetivo es realizar la suma de la multiplicación de cada pareja de datos.",
+        "entrada": "La entrada constará en capturar un numero n, que servirá para determinar la cantidad de elementos que contendrá la lista que será evaluada. La cantidad de elementos de la lista deberá de ser igual al número n ingresado.",
+        "salida": "La salida será el resultado de la suma de la multiplicación de cada pareja de datos.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Vectores",
+            "Cálculos aritméticos",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0;\n    vector<int> num(1001,0);\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n    }\n    b=num[a-1];\n    for(auto i=a-2; i>-1; i--){\n        c+=(num[i]*b);\n        b+=num[i];\n    }\n    cout<<c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1006. Secuencia creciente máxima",
+        "url": "https://omegaup.com/arena/problem/scm/",
+        "descripcion": "Sea n un entero positivo y sea a_1, a_2,..., a_n una secuencia de n enteros positivos. Sean h y k dos enteros con 1<=h<=k<=n. Decimos que a_h, a_h+1,..., a_k es una secuencia creciente si a_h<a_h+1<...<a_k y decimos que es máxima si no es parte de otra secuencia creciente más larga. Por ejemplo, si n=7 y a=(3,1,4,1,5,9,2) entonces (1,5) es una secuencia creciente, pero no es máxima porque es parte de (1,5,9). Escribe un programa que encuentre la longitud s de la secuencia creciente máxima más larga de todas y la posición p donde inicia. En caso de existir varias que sean máximas entonces imprima el índice de la que ocurre primero.",
+        "entrada": "Un número entero n con 1<=n<=1000 seguido de n números enteros a_1, a_2,..., a_n separados por espacios y en el intervalo de 1 a 1,000,000.",
+        "salida": "Un número entero s y un número entero p.",
+        "nivel": "Intermedio (fácil) - Análisis y diseño de algoritmos",
+        "categorias": [
+            "Búsqueda de subarreglos",
+            "Ciclos",
+            "Vectores"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=1, c, d;\n    vector<int> num(1001,0);\n    cin>>a;\n    for(auto i=1; i<=a; i++){\n        cin>>num[i];\n    }\n    for(auto i=2; i<=a; i++){\n        if(num[i]>num[i-1]){\n            b++;\n        }\n        else{\n            if(b>c){\n                c=b;\n                d=i-c;\n            }\n            b=1;\n        }\n    }\n    if(b>c){\n        c=b;\n        d=(a+1)-c;\n    }\n    cout<<c<<\" \"<<d;\n\n    return 0;\n}"
+    },
+    {
         "titulo": "...",
         "url": "...",
         "descripcion": "...",
