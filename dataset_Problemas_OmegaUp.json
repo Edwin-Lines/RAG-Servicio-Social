@@ -3878,8 +3878,8 @@
         "categorias": [
             "Ciclos",
             "Ordenamiento",
-            "Vectores"
-            "Cadenas y caracteres",
+            "Vectores",
+            "Cadenas y caracteres"
         ],
         "estructuras": [
             "long long",
@@ -4973,6 +4973,179 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=1, c, d;\n    vector<int> num(1001,0);\n    cin>>a;\n    for(auto i=1; i<=a; i++){\n        cin>>num[i];\n    }\n    for(auto i=2; i<=a; i++){\n        if(num[i]>num[i-1]){\n            b++;\n        }\n        else{\n            if(b>c){\n                c=b;\n                d=i-c;\n            }\n            b=1;\n        }\n    }\n    if(b>c){\n        c=b;\n        d=(a+1)-c;\n    }\n    cout<<c<<\" \"<<d;\n\n    return 0;\n}"
     },
     {
+        "titulo": "1100. L-OMI Super Agente",
+        "url": "https://omegaup.com/arena/problem/L-OMI-Super-Agente/",
+        "descripcion": "En su última misión, el súper agente Jaime Papel Blanco, debe hackear una red mientras se encuentra dentro de un edificio enemigo. El edificio está lleno de guardias y para poder hackear la red, Jaime Papel Blanco necesita esconderse y pasar desapercibido. Ahora debe encontrar el lugar óptimo para esconderse. Jaime Papel Blanco tiene un mapa de la planta del edificio, el cual está representado como una cuadrícula de MxN que tiene tres tipos de cuadros: pared, por la que nadie puede pasar, representado por un '#'; pasillo, representado por '.'; y guardia, representado por 'G'. El edificio no tiene cuartos cerrados, es decir, desde cualquier cuadro se puede llegar a cualquier otro. Jaime Papel Blanco sabe que los guardias solo lo detectaron si se encuentran en el mismo cuadro del mapa que él. Los guardias solo pueden moverse hacia arriba, abajo, izquierda o derecha. Para lograr su misión, debe encontrar un cuadro cuya distancia al guardia más cercano sea la máxima posible. Con distancia, el agente Jaime Papel Blanco, se refiere al mínimo de cuadros que tendrá que recorrer un guardia para llegar a él. Escribe un programa que dado un mapa, encuentra un cuadro óptimo para el escondite de Jaime Papel Blanco, es decir, aquel que maximice la distancia al guardia más cercano y deberás reportar esa distancia.",
+        "entrada": "Tu programa debe leer del teclado la siguiente información: En la primer línea los números M y N (1 < N, M <= 2,000), las dimensiones del mapa.  Las siguientes M líneas contendrán N caracteres del tipo '#', '.' o 'G' (1 <= G <= 1,000) indicando si en ese cuadro del mapa hay una pared, un pasillo o un guardia, respectivamente.",
+        "salida": "Tu programa debe escribir en la pantalla un único entero D seguido de un salto de línea, representando la distancia máxima al guardia más cercano a Jaime Papel Blanco.",
+        "nivel": "Intermedio (medio) - Análisis y diseño de algoritmos",
+        "categorias": [
+            "Búsqueda en amplitud",
+            "Búsqueda en profundidad",
+            "Vectores",
+            "Cadenas y caracteres",
+            "Colas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<vector<char>>",
+            "queue<>",
+            "int",
+            "char"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra\n{\n    int aa, bb, cc;\n};\n\nvector<vector<char>> num(2002);\nqueue<sobra> falta;\nint a, b, c;\nsobra l;\nchar m;\n\nvoid llamar()\n{\n    if (num[l.aa][l.bb] == '.')\n    {\n        l.cc++;\n        c = max(c, l.cc);\n        falta.push(l);\n        num[l.aa][l.bb] = '#';\n        l.cc--;\n    }\n}\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin >> a >> b;\n    for (auto i = 0; i <= b + 1; i++)\n    {\n        num[0].push_back('#');\n        num[a + 1].push_back('#');\n    }\n    for (auto i = 1; i <= a; i++)\n    {\n        num[i].push_back('#');\n        for (auto j = 1; j <= b; j++)\n        {\n            cin >> m;\n            num[i].push_back(m);\n            if (m == 'G')\n            {\n                l.aa = i;\n                l.bb = j;\n                l.cc = 0;\n                falta.push(l);\n            }\n        }\n        num[i].push_back('#');\n    }\n    while (falta.size())\n    {\n        l = falta.front();\n        falta.pop();\n        l.aa++;\n        llamar();\n        l.aa -= 2;\n        llamar();\n        l.aa++;\n        l.bb++;\n        llamar();\n        l.bb -= 2;\n        llamar();\n    }\n    cout << c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "5496. Dos Botones",
+        "url": "https://omegaup.com/arena/problem/twobuttons/",
+        "descripcion": "Vasya ha encontrado un dispositivo algo raro. En la parte frontal del dispositivo hay dos botones, un botón rojo y un botón azul además de una pantalla que muestra algún número positivo. Despues de darle click al botón rojo, el dispositivo multiplica el número mostrado en la pantalla por dos. Al presionar el botón azul, el dispositivo resta uno al número mostrado en pantalla. Si en algún punto el número mostrado en pantalla deja de ser positivo, el dispositivo se congela. El dispositivo puede mostrar números arbitrariamente grandes. Inicialmente muestra el número n. Bob quiere obtener el número m. ¿Cuál es el menor número de clicks que el debe realizar para poder lograr este resultado?",
+        "entrada": "En la primera linea tendremos dos números entero n y m (1<=n,m<=10^4) separados por un espacio en blanco.",
+        "salida": "Imprime un solo número - El menor número de veces que el necesita presionar los botones para obtener el número m a partir del número n.",
+        "nivel": "(medio)",
+        "categorias": [
+            "Vectores",
+            "Colas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<int>",
+            "queue<>",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra\n{\n    int aa, bb, cc;\n};\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<int> num(10001, 0);\n    queue<sobra> falta;\n    long long a, b;\n    sobra z;\n    cin >> a >> b;\n    if (a == b)\n    {\n        cout << \"0\";\n        return 0;\n    }\n    z.aa = a;\n    z.bb = 0;\n    num[z.aa] = 1;\n    falta.push(z);\n    while (true)\n    {\n        z = falta.front();\n        falta.pop();\n        z.bb++;\n        z.aa *= 2;\n        if (z.aa == b)\n        {\n            cout << z.bb;\n            return 0;\n        }\n        if (z.aa < 10001 && !num[z.aa])\n        {\n            falta.push(z);\n            num[z.aa] = 1;\n        }\n        z.aa /= 2;\n        z.aa--;\n        if (z.aa == b)\n        {\n            cout << z.bb;\n            return 0;\n        }\n        if (z.aa > 0 && !num[z.aa])\n        {\n            falta.push(z);\n            num[z.aa] = 1;\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "98. Artista",
+        "url": "https://omegaup.com/arena/problem/artista/",
+        "descripcion": "En su viaje por Italia, Solid Nieves conoció un extraño artista. Hace sus obras de arte pegando pedazos rectagulares de papel sobre una cartulina de M columnas y N filas. La cartulina es de un color C. Él también puede pegar pedazos de papel sobre otros pedazos de papel, formando así una especie de collage. El artista es tan extraño que todo lo que pega es paralelo a los bordes de la cartulina y las dimensiones de los rectangulos siempre son enteras, y siempre los pega en coordenadas igualmente enteras. También el suele pegar rectangulos adhesivos y despegarlos inmediatamente desgarrando el papel, lo cual deja ver o la cartulina o un pedazo de papel que se encontrara debajo del papel desgarrado; cuando el artista desgarra el papel es tan cuidadoso que solo desgarra la superficie que toca el papel adhesivo. Él también puede desgarrar la cartulina, pero al ser esta más gruesa se necesitan pegar y despegar por lo menos G rectangulos adhesivos. Si en parte de la superficie de un rectangulo adhesivo no queda papel o cartulina debajo no pasa nada. Como andar desgarrando papel es muy costoso, el artista le ha pedido Solid Nieves que le ayude a obtener una idea de como quedaría su obra de arte dada una secuencia de pasos.",
+        "entrada": "Primera Línea: M y N, las dimensiones de la cartulina. Segunda Línea: G y C, el grosor y color de la cartulina. Tercer Línea: K, que reprensenta el número de rectangulos que el artísta planea pegar. Siguientes K lineas: Ci, Mi, Ni, Xi, Yi: donde Ci es el color del papel(si es -1, se trata de un rectangulo adhesivo), Mi y Ni son las dimensiones del rectangulo, y finalmente Xi y Yi son las coordenas donde el artista planea poner la esquina superior izquierda del rectangulo. Considera que (M, N <= 200), (Mi, Xi <= M), (Ni, Yi <= N), (K,G <= 1000) y (C, Ci <= 100).",
+        "salida": "...",
+        "nivel": "Intermedio (fácil) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Implementación",
+            "Vectores",
+            "Pilas",
+            "Matrices",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<vector<stack<int>>>",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<vector<stack<int>>> num(202, vector<stack<int>>(202));\n    long long a, b, c, d, e, f, g, h;\n    cin >> a >> b >> c >> d;\n    for (auto i = 1; i <= b; i++)\n    {\n        for (auto j = 1; j <= a; j++)\n        {\n            e = c;\n            while (e--)\n            {\n                num[i][j].push(d);\n            }\n        }\n    }\n    cin >> e;\n    while (e--)\n    {\n        cin >> c >> d >> f >> g >> h;\n        for (auto i = h; i < h + f; i++)\n        {\n            for (auto j = g; j < g + d; j++)\n            {\n                if (c != -1)\n                {\n                    num[i][j].push(c);\n                }\n                else if (c == -1)\n                {\n                    if (num[i][j].size())\n                    {\n                        num[i][j].pop();\n                    }\n                }\n            }\n        }\n    }\n    for (auto i = 1; i <= b; i++)\n    {\n        for (auto j = 1; j <= a; j++)\n        {\n            if (num[i][j].size())\n            {\n                cout << num[i][j].top() << \" \";\n            }\n            else\n            {\n                cout << \"-1 \";\n            }\n        }\n        cout << \"\\n\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "6817. Cuantos Productos",
+        "url": "https://omegaup.com/arena/problem/Cuantos-Productos/",
+        "descripcion": "Dada una lista de productos que se reciben en un almacen. Escribe un programa que imprima el nombre de todos los productos en orden alfabético junto a la cantidad de unidades en el almacen.",
+        "entrada": "La entrada contiene virios nombres de productos, la entrada termina con el string \"#\".",
+        "salida": "Varias líneas. En cada línea imprime el nombre del producto y la cantidad de unidades que existen. Los productos deben ir ordenados alfabeticamente.",
+        "nivel": "Intermedio (fácil) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Árboles de búsqueda binaria",
+            "Vectores",
+            "Ordenamiento",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<pair<string, int>>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nlong long b, c, d;\nvector<pair<string, int>> num(100001, {\"\", 0});\nstring z;\n\nvoid falta()\n{\n    sort(num.begin(), num.end());\n    c = 0;\n    for (auto i = 1; i < b; i++)\n    {\n        if (num[i].first == num[i - 1].first)\n        {\n            d = num[i - 1].second;\n            while (num[i].first == num[i - 1].first)\n            {\n                d += num[i].second;\n                i++;\n                if (i == b)\n                {\n                    break;\n                }\n            }\n            num[c].first = num[i - 1].first;\n            num[c].second = d;\n            c++;\n        }\n        else\n        {\n            num[c].first = num[i - 1].first;\n            num[c].second = num[i - 1].second;\n            c++;\n        }\n    }\n    if (num[b - 1].first != num[b - 2].first)\n    {\n        num[c].first = num[b - 1].first;\n        num[c].second = num[b - 1].second;\n        c++;\n    }\n    b = c;\n}\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin >> z;\n    while (true)\n    {\n        num[b].first = z;\n        num[b].second = 1;\n        b++;\n        if (b == 100000)\n        {\n            falta();\n        }\n        cin >> z;\n        if (z == \"#\")\n        {\n            break;\n        }\n    }\n    falta();\n    for (auto i = 0; i < b; i++)\n    {\n        cout << num[i].first << \" \" << num[i].second << \"\\n\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "6352. Cuantos Unos",
+        "url": "https://omegaup.com/arena/problem/Cuantos-Unos/",
+        "descripcion": "Un número en base 2 contiene sólo 1's y 0's. Por ejemplo el número 6 en base 2 se escribe como 110. Que es igual a (1 * 2^2 + 1 * 2^1 + 0 * 2^0). Escribe un programa que dado un número en base 10, escriba cuantos 1's tiene al escribirlo en base 2.",
+        "entrada": "Un número n (0<=n<=3000)",
+        "salida": "La cantidad de 1's al representar n en base 2.",
+        "nivel": "Avanzado (fácil) - Programación competitiva",
+        "categorias": [
+            "Manipulación de bits",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b = 0;\n    cin >> a;\n    while (a)\n    {\n        if (a % 2)\n        {\n            b++;\n        }\n        a /= 2;\n    }\n    cout << b;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "8463. ¿Cuánto tiene que pagar? occ 2019",
+        "url": "https://omegaup.com/arena/problem/cuanto-tiene-que-pagar-occ-2019/",
+        "descripcion": "En la libreria de Olimpiadas Colombianas los libros de matemáticas cuestan 15 000 pesos y los de física 20 000 pesos. Pero como Olimpiadas está de aniversario hay descuentos del p% para los libros de matemáticas y del q% para los de física. Haga un programa que diga cuánto tiene que pagar Juan si compra A libros de matemáticas y B libros de física.",
+        "entrada": "Su programa recibirá como entrada A, B, p y q en ese orden.",
+        "salida": "La cantidad de dinero que tiene que pagar por los libros, puede suponer que el resultado es entero.",
+        "nivel": "(fácil)",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e;\n    cin >> a >> b >> c >> d;\n    e = ((15000 - ((15000 / 100) * c)) * a) + ((20000 - ((20000 / 100) * d)) * b);\n    cout << e;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "3169. occ15pnf22",
+        "url": "https://omegaup.com/arena/problem/Cuantos_numeros_distintos_hay/",
+        "descripcion": "Haga un programa que reciba como entrada un número entero n (1<=n<=50) y a continuación n números enteros y que dé como salida cuántos números enteros distintos hay en esos n.",
+        "entrada": "La primera línea contiene n (2<=n<=50), la segunda línea contiene n números enteros.",
+        "salida": "Una línea con el número de números distintos en los n números dados en la segunda línea de la entrada.",
+        "nivel": "()",
+        "categorias": [
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "set<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    set<int> falta;\n    cin >> a;\n    while (a--)\n    {\n        cin >> b;\n        falta.insert(b);\n    }\n    cout << falta.size();\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "5805. ¿Cuánto Sacaste?",
+        "url": "https://omegaup.com/arena/problem/Cuanto-Sacaste/",
+        "descripcion": "Linette es una chica muy competitiva, siempre que sale de un examen le pregunta a sus 3 amigos por su calificación, dependiendo del resultado de sus amigos tiene distintas reacciones. Cuando ella logra ganarle a un amigo, siempre les dice \"Soy Mejor\", cuando ella obtiene una calificación menor les dice enojada \"Shh\" y, finalmente, si obtiene la misma calificación les dice \"Te gano en la siguiente\". Linette tuvo un examen ayer, tú tarea es preguntarle a ella y a sus 3 amigos por sus calificaciones para conocer anticipadamente las reacciones de Linette.",
+        "entrada": "Una entero N, que será la calificación de Linette. Después leerás 3 enteros, que representarán las calificaciones de sus únicos amigos. Considera que todas las calificaciones son enteros y están entre 0 y 10",
+        "salida": "Deberás imprimir un 'Soy Mejor' si la calificación de Linette es mayor a la de sus amigos. Si la calificación de sus amigos es mayor a la de ella, imprimirás 'Shh' y finalmente si empatan imprimirás 'Te gano en la siguiente'",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b = 3, c;\n    cin >> a;\n    while (b--)\n    {\n        cin >> c;\n        if (a > c)\n        {\n            cout << \"Soy Mejor\\n\";\n        }\n        else if (a == c)\n        {\n            cout << \"Te gano en la siguiente\\n\";\n        }\n        else\n        {\n            cout << \"Shh\\n\";\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "2580. Bisiesto - Es o no bisiesto",
+        "url": "https://omegaup.com/arena/problem/Bisiesto---Es-o-no-bisiesto/",
+        "descripcion": "Este es un primer ejercicio para ir practicando con instrucciones selectivas. Un año trópico tiene una duración de 365 días 5 h 48 min 45, 25 s. Generalmente se considera un año de 365 días, pero para corregir el desfase que se presenta, cada 4 años se agrega un día. Sin embargo eso sería correcto si la duración de un año fuera exactamente 365 días y 6 horas. De modo que de acuerdo al calendario Gregoriano: Un año es bisiesto si es divisible entre 4, a menos que sea divisible entre 100. Sin embargo, si un año es divisible entre 100 y además es divisible entre 400, también es bisiesto. Lee un número entero que represente un año e imprime a la salida si es bisiesto o no lo es.",
+        "entrada": "Un entero A (1582<A<=3000) positivo que represente un año entre 1583 y 3000",
+        "salida": "La cadena de texto ES BISIESTO si el número A es Bisiesto o bien la cadena de texto NO ES BISIESTO si no lo es.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    cin >> a;\n    if (a % 100 == 0 && a % 400 == 0)\n    {\n        cout << \"ES BISIESTO\";\n    }\n    else if (a % 4 == 0 && a % 100)\n    {\n        cout << \"ES BISIESTO\";\n    }\n    else\n    {\n        cout << \"NO ES BISIESTO\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "7092. ¿Cuántos días tiene febrero?",
+        "url": "https://omegaup.com/arena/problem/Cuantos-dias-tiene-febrero/",
+        "descripcion": "Escribe un programa que lea cuatro años e imprima cuántos días tendrá febrero en esos años.",
+        "entrada": "Cuatro enteros A_1, A_2, A_3, A_4 que representan años. Puedes suponer que 1000<=A_1,A_2,A_3,A_4<=3000",
+        "salida": "Para cada año, un entero que represente el número de días que tendrá febrero en ese año.",
+        "nivel": "Básico (medio) - Introducción a la programación",
+        "categorias": [
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    while (b--)\n    {\n        cin >> a;\n        if (a % 100 == 0 && a % 400 == 0)\n        {\n            cout << \"29 \";\n        }\n        else if (a % 4 == 0 && a % 100)\n        {\n            cout << \"29 \";\n        }\n        else\n        {\n            cout << \"28 \";\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
         "titulo": "2651. Secuencia creciente",
         "url": "https://omegaup.com/arena/problem/Secuencia-creciente/",
         "descripcion": "Dada una serie de datos enteros, determinar cuántos números en esa serie están en orden creciente. La lista de datos termina cuando se lee un número menor al anterior. Por Ejemplo: Datos: 2 3 5 7 8 9 4. El número de elementos creciente es 6 (2 ,3, 5, 7, 8 y 9).",
@@ -5098,7 +5271,7 @@
         "nivel": "Básico (fácil) - Introducción a la programación",
         "categorias": [
             "Matrices",
-            "Ciclos",
+            "Ciclos"
         ],
         "estructuras": [
             "long long",
