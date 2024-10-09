@@ -4975,6 +4975,224 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=1, c, d;\n    vector<int> num(1001,0);\n    cin>>a;\n    for(auto i=1; i<=a; i++){\n        cin>>num[i];\n    }\n    for(auto i=2; i<=a; i++){\n        if(num[i]>num[i-1]){\n            b++;\n        }\n        else{\n            if(b>c){\n                c=b;\n                d=i-c;\n            }\n            b=1;\n        }\n    }\n    if(b>c){\n        c=b;\n        d=(a+1)-c;\n    }\n    cout<<c<<\" \"<<d;\n\n    return 0;\n}"
     },
     {
+        "titulo": "2651. Secuencia creciente",
+        "url": "https://omegaup.com/arena/problem/Secuencia-creciente/",
+        "descripcion": "Dada una serie de datos enteros, determinar cuántos números en esa serie están en orden creciente. La lista de datos termina cuando se lee un número menor al anterior. Por Ejemplo: Datos: 2 3 5 7 8 9 4. El número de elementos creciente es 6 (2 ,3, 5, 7, 8 y 9).",
+        "entrada": "Una línea con los números de la secuencia separados por un espacio entre ellos.",
+        "salida": "El tamaño de la secuencia.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Ciclos",
+            "Vectores"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=1, c=1, d;\n    vector<int> num(101,0);\n    cin>>a;\n    while(cin>>d){\n        if(d>a){\n            c++;\n        }\n        else{\n            c=1;\n        }\n        b=max(b,c);\n        a=d;\n    }\n    cout<<b;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "7664. Secuencia Creciente Estricta",
+        "url": "https://omegaup.com/arena/problem/Secuencia-Creciente-Estricta/",
+        "descripcion": "Dado un vector de N (1<=N<=100) elementos enteros X (1<=X<=100), se quiere determinar la longitud de la secuencia creciente estricta más larga.",
+        "entrada": "En la primer línea viene el valor N, y luego vienen N valores enteros X.",
+        "salida": "Una línea conteniendo un valor entero L (1 <= L <= N) que indica la longitud de la secuencia creciente estricta más larga en la secuencia de X ingresada.",
+        "nivel": "",
+        "categorias": [
+            "Ciclos",
+            "Vectores"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=1, c=1;\n    vector<int> num(101,0);\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n    }\n    for(auto i=1; i<a; i++){\n        if(num[i]>num[i-1]){\n            b++;\n        }\n        else{\n            c=max(c,b);\n            b=1;\n        }\n    }\n    c=max(c,b);\n    cout<<c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4449. Num Mayor en arreglo",
+        "url": "https://omegaup.com/arena/problem/Num-Mayor-en-arreglo/",
+        "descripcion": "Escriba un programa que pida 10 numeros y los guarde en un arreglo. Luego debe encontrar el numero mayor en el arreglo y escribirlo así como el indice del lugar donde lo encontró.",
+        "entrada": "10 enteros.",
+        "salida": "El numero mayor y el indice de su ubicación.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0;\n    for(auto i=0; i<10; i++){\n        cin>>a;\n        if(a>b){\n            b=a;\n            c=i;\n        }\n    }\n    cout<<b<<\" \"<<c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4459. La pirámide Inversa",
+        "url": "https://omegaup.com/arena/problem/La-piramide-Inversa/",
+        "descripcion": "Se desea forma una piramide comenzando con las letras de la derecha de una cadena de caracteres.",
+        "entrada": "Cada caso de prueba contiene únicamente una línea con uno cadena de caracteres.",
+        "salida": "Por cada caso de prueba mostrar el número de caso y una pirámide formada con los caracteres del correspondiente case de pruebo alineada a la derecha.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Caracteres y cadenas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "getline()",
+            "string",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    string z;\n    getline(cin,z);\n    for(auto i=z.size()-1; i>-1; i--){\n        a=i;\n        while(a--){\n            cout<<\" \";\n        }\n        for(auto j=i; j<z.size(); j++){\n            cout<<z[j];\n        }\n        cout<<\"\\n\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "6675. HCF-Diferencia absoluta mínima",
+        "url": "https://omegaup.com/arena/problem/HFC-Diferencia-absoluta-minima/",
+        "descripcion": "Dado un conjunto de N números enteros, encuentra la diferencia absoluta mínima entre cualquier pareja posible.",
+        "entrada": "En la primera línea un entero N que denota el número de elementos a procesar. En la segunda línea N enteros.",
+        "salida": "En la primera línea la diferencia absoluta mínima. En la segunda línea los números que generaron la diferencia absoluta mínima, en caso de que dos parejas o más hagan la diferencia mínima, imprimir la primera que aparezca respecto a la entrada. En la tercera línea la posición de los números que tomaste para calcular la respuesta (contando desde 0 de izquierda a derecha).",
+        "nivel": "Básico () - Introducción a la programación",
+        "categorias": [
+            "Cálculos aritméticos",
+            "Ciclos",
+            "Vectores"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, g;\n    vector<int> num(1001,0);\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n    }\n    b=abs(num[0]-num[1]);\n    c=num[0];\n    d=num[1];\n    e=0;\n    f=1;\n    for(auto i=0; i<a-1; i++){\n        for(auto j=i+1; j<a; j++){\n            g=abs(num[i]-num[j]);\n            if(g<b){\n                b=g;\n                c=num[i];\n                d=num[j];\n                e=i;\n                f=j;\n            }\n        }\n    }\n    cout<<b<<\"\\n\"<<c<<\" \"<<d<<\"\\n\"<<e<<\" \"<<f<<\"\\n\";\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "6170. Contar Valor",
+        "url": "https://omegaup.com/arena/problem/Contar-Valor/",
+        "descripcion": "Hacer un programa que diga cuantas veces aparece en un arreglo un valor introducido desde teclado.",
+        "entrada": "Un entero N que indica la cantidad de elementos del arreglo. Las siguientes N lineas un entero que indica un elemento del arreglo. Un entero K que indica el valor que se quiere contar.",
+        "salida": "La cantidad de veces que aparece el valor.",
+        "nivel": "Básico (Medio) - Introducción a la programación",
+        "categorias": [
+            "Ciclos",
+            "Ordenamiento"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0;\n    vector<int> num(100000,0);\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n    }\n    cin>>b;\n    sort(num.begin(),num.end());\n    for(auto i=0; i<a; i++){\n        if(num[i]==b){\n            c++;\n        }\n        else if(num[i]>b){\n            break;\n        }\n    }\n    cout<<c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "6588. Hora de Meter Materias",
+        "url": "https://omegaup.com/arena/problem/Hora-de-Meter-Materias/",
+        "descripcion": "Brandon odia tener un horario que no esté balanceado, él prefiere tener el mismo número de horas de clase tanto en la mañana como en la noche, cada semestre se empeña en ordenar sus clases de tal forma que esto suceda. Para el siguiente semestre Brandon no sabe cuántas materias meter, lo único que le interesa es que el número de horas esté balanceado entre la mañana y la noche. Por ejemplo, si mete 6 materias, cada una con duración de 1 hora, su horario quedará de la siguiente manera: [1,1,1,1,1,1], la primera mitad del arreglo son 3 materias con duración de una hora impartidas en la mañana, la segunda mitad son 3 materias impartidas en la noche con la misma duración. A Brandon le gusta este horario porque está balanceado. Por lo general, Brandon no logra tener el horario que le gusta, este semestre metió 4 materias de la siguiente forma: [1,2,3,2], las materias de la mitad izquierda pertenecen a la mañana, mientras que las de la mitad derecha a la noche. Brandon odia este horario porque no está balanceado, en la mañana toma 3 horas de clase y en la noche 5 horas. Dile a Brandon cómo quedará su horario.",
+        "entrada": "N un número par, que representa el número de materias, a continuación, N números que representan las horas por materia.",
+        "salida": "Debes imprimir "Genial" si el horario está balanceado, en caso contrario imprime "Horrible".",
+        "nivel": "",
+        "categorias": [
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c=0, d;\n    cin>>a;\n    for(auto i=1; i<=a/2; i++){\n        cin>>d;\n        b+=d;\n    }\n    for(auto i=1; i<=a/2; i++){\n        cin>>d;\n        c+=d;\n    }\n    if(b==c){\n        cout<<\"Genial\";\n    }\n    else{\n        cout<<\"Horrible\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4576. ParesenRejilla",
+        "url": "https://omegaup.com/arena/problem/ParesenRejilla/",
+        "descripcion": "Realice un programa pida un número n, luego pedirá los números necesarios para llenar un arreglo de nxn elementos. Despues desplegará el arreglo, renglon por renglon sin espacio entre las columnas. Al final desplegará el modulo 2 de cada elemento del arreglo por renglones, sin espacio entre las columnas.",
+        "entrada": "Un entero n.",
+        "salida": "El contenido del arreglo, n renglones con n elementos cada uno. Seguido por el modulo 2 de cada elemento en n renglones con n elementos cada uno.",
+        "nivel": "Básico (Fácil) - Introducción a la programación",
+        "categorias": [
+            "Matrices",
+            "Ciclos",
+        ],
+        "estructuras": [
+            "long long",
+            "vector<vector<int>>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    vector<vector<int>> num(1001, vector<int>(1001, 0));\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<a; j++){\n            cin>>num[i][j];\n            cout<<num[i][j];\n        }\n        cout<<\"\\n\";\n    }\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<a; j++){\n            cout<<num[i][j]%2;\n        }\n        cout<<\"\\n\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4243. Coordenadas Cartesianas",
+        "url": "https://omegaup.com/arena/problem/Coordenadas-Cartesianas/",
+        "descripcion": "Dadas las coordenadas enteras X,Y, de N puntos en un plano cartesiano, determina a qué cuadrante corresponde cada coordenada.",
+        "entrada": "En la primera línea el entero N. En cada una de las siguientes N líneas, los enteros X, Y, separados por un espacio. Puedes estar seguro que ninguno de los dos enteros será cero.",
+        "salida": "Para cada coordenada, imprime el número romano correspondiente al cuadrante, es decir (I, II, III ó IV).",
+        "nivel": "Básico (Fácil) - Introducción a la programación",
+        "categorias": [
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c;\n    cin>>c;\n    while(c--){\n        cin>>a>>b;\n        if(a>0 && b>0){\n            cout<<\"I\\n\";\n        }\n        else if(a<0 && b>0){\n            cout<<\"II\\n\";\n        }\n        else if(a<0 && b<0){\n            cout<<\"III\\n\";\n        }\n        else{\n            cout<<\"IV\\n\";\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "5321. Misión Imposible",
+        "url": "https://omegaup.com/arena/problem/Mision-Imposible-bombas-hgo/",
+        "descripcion": "Eres un agente especial, experto en cuestiones de tecnología. Te han mandado llamar debido a la existencia de una situación poco común. Un criminal, reconocido por su inteligencia, ha colocado una red de bombas alrededor de un centro turístico muy importante. Sin embargo, a este maleante le gusta creer que no hay nadie más inteligente que él y, para demostrarlo, le ha dado la oportunidad al gobierno de desactivar las bombas si logran descifrar cómo lograrlo. Cada una de las bombas tiene un contador que indica cuánto falta para que estalle esa bomba. El contador de cada bomba decrece a cierta velocidad; por ejemplo, para una bomba el contador puede disminuir 2 unidades por minuto, para otra 5, etc. A partir del aviso del criminal, todos los contadores comienzan a disminuir a su velocidad correspondiente. Tú puedes detener el contador de cualquier bomba mediante un botón y cada vez que haces esto, te lleva un minuto (esto es, no puedes detener dos contadores al mismo tiempo). Si así lo deseas, puedes dejar pasar tiempo sin detener ninguna bomba. La red de bombas esta configurada de tal manera que si al final, los contadores de todas las bombas marcan el mismo valor, no explotarán. Pero con una sola que quede diferente, tú y todos los turistas, serán historia. Si cualquier bomba llega al valor de cero, o se pasa (negativo) todas las bombas explotarán inmediatamente. Sin embargo, el criminal asegura que su acertijo tiene solución. Al gobierno, obviamente, le interesa que la desactivación de las bombas se lleve a cabo en el menor tiempo posible. Puedes comenzar a detener la primera bomba desde el instante en que comienza el conteo. O sea que puedes congelar el primer contador en su valor inicial. Tu misión, si decides aceptarla, consiste en realizar un programa que: dado el número de bombas, el número inicial de cada contador y la velocidad a la cual disminuye cada bomba, encuentre el contador final que marcarán todas las bombas, si logras desactivarlas.",
+        "entrada": "Tu programa deberá leer, en la primera línea, el número N de bombas; en las siguientes N líneas, el valor inicial del contador C y la velocidad V respectiva, para cada bomba. 2<=N<=250, 1<=C<=50000, 1<=V<=100.",
+        "salida": "Tu programa deberá escribir, en una sola línea, el valor final que deberán marcar todos los contadores para evitar que las bombas estallen. Si, desafortunadamente, no hay manera de desactivar ninguna de ellas, tu programa deberá imprimir, tristemente, un cero.",
+        "nivel": "",
+        "categorias": [
+            "Ordenamiento",
+            "Vectores",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<struct>",
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra{\n    int aa, bb, cc;\n};\n\nbool operator<(sobra x, sobra y){\n    if(x.aa>y.aa)return true;\n    if(y.aa>x.aa)return false;\n    if(x.bb>y.bb)return true;\n    if(y.bb>x.bb)return false;\n    if(x.cc>y.cc)return true;\n    return false;\n}\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    vector<sobra> num(231);\n    vector<int>falta;\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i].bb>>num[i].aa;\n    }\n    sort(num.begin(), num.end());\n    while(true){\n        falta.push_back(num[0].cc);\n        for(auto i=1; i<a; i++){\n            while(num[i].bb>num[0].bb){\n                num[i].bb-=num[i].aa;\n                num[i].cc++;\n                if(num[i].bb<=0){\n                    cout<<\"0\";return 0;\n                }\n            }\n            if(num[i].bb!=num[0].bb){\n                falta.clear();break;\n            }\n            else{\n                falta.push_back(num[i].cc);\n            }\n        }\n        if(falta.size()){\n            sort(falta.begin(),falta.end());\n            for(auto i=1; i<falta.size(); i++){\n                if(falta[i]==falta[i-1]){\n                    falta.clear();break;\n                }\n            }\n            if(falta.size()){\n                cout<<num[0].bb;return 0;\n            }\n        }\n        num[0].bb-=num[0].aa;\n        num[0].cc++;\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "6852. Pastes al tanteo",
+        "url": "https://omegaup.com/arena/problem/itp18-pastes/",
+        "descripcion": "¡Llegó la hora de la comida en el 1er Concurso de Programación del Instituto Tecnológico de Pachuca! Para la comida los organizadores pidieron una caja llena de pastes de los siguientes sabores: Papa con carne, Mole verde, Hawaiano, Zarzamora. Los organizadores habían ya preguntado a cada concursante cuántos pastes iban a querer de cada sabor; pero cuando fueron a comprarlos olvidaron la lista y para no regresar con las manos vacías compraron lo que se les ocurrió en el momento. Tu tarea es decir si los organizadores compraron suficientes pastes para satisfacer lo que los concursantes pidieron originalmente.",
+        "entrada": "Cuatro enteros indicando la cantidad de pastes de cada sabor que se compraron. El formato es P M H Z donde: P es la cantidad de pastes de papa con carne, M es la cantidad de pastes de mole verde, H es la cantidad de pastes hawaianos, Z es la cantidad de pastes de zarzamora. Un entero N, indicando el número de concursantes. N renglones, cada renglón seguirá el formato p m h z, donde: p pastes de papa con carne que originalmente pidió el concursante, m pastes de mole verde que originalmente pidió el concursante, h pastes hawaianos que originalmente pidió el concursante, y z pastes de zarzamora que originalmente pidió el concursante. 1<=N<=100, 0<=P,M,H,Z,p,m,h,z<=100.",
+        "salida": "Imprime #epicfail si los organizadores no compraron suficientes pastes para satisfacer lo que los concursantes pidieron originalmente. Imprime #win si todos van a poder comer lo que pidieron originalmente (no importa que sobren pastes)",
+        "nivel": "Básico (Fácil) - Introducción a la programación",
+        "categorias": [
+            "Ciclos",
+            "Cálculos aritméticos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, g, h, l;\n    cin>>a>>b>>c>>d>>e;\n    while(e--){\n        cin>>f>>g>>h>>l;\n        a-=f;\n        b-=g;\n        c-=h;\n        d-=l;\n    }\n    if(a<0 || b<0 || c<0 || d<0){\n        cout<<\"#epicfail\";\n    }\n    else{\n        cout<<\"#win\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4452. Rango del arreglo",
+        "url": "https://omegaup.com/arena/problem/Rango-del-arreglo/",
+        "descripcion": "Escriba un programa que pida 10 numeros y los guarde en un arreglo. Luego debe encontrar el numero mayor en el arreglo y el número menor en el arreglo, y sacar la diferencia entre estos dos números. La salida debe ser el número menor, el numero mayor y la diferencia entre ellos.",
+        "entrada": "10 enteros.",
+        "salida": "La diferencia entre el número mayor y el menor en el arreglo.",
+        "nivel": "",
+        "categorias": [
+            "Ordenamiento",
+            "Ciclos",
+            "Vectores"
+        ],
+        "estructuras": [
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<int> num(10, 0);\n    for(auto i=0; i<10; i++){\n        cin>>num[i];\n    }\n    sort(num.begin(), num.end());\n    cout<<num[0]<<\" \"<<num[9]<<\" \"<<num[9]-num[0];\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4108. Matriz Espejo",
+        "url": "https://omegaup.com/arena/problem/Matriz-Espejo/",
+        "descripcion": "Dada una matriz de MxN (1<=M,N<=100) datos enteros (M filas x N columnas) imprime su matriz espejo, es decir, la matriz reflejada horizontalmente (ver ejemplo)",
+        "entrada": "En la primera línea los enteros M, N. Donde M representa el número de filas y N el número de columnas. En cada una de las siguientes M líneas, N enteros. Donde cada entero representa una pieza.",
+        "salida": "La matriz espejo.",
+        "nivel": "Básico (Fácil) - Introducción a la programación",
+        "categorias": [
+            "Ciclos",
+            "Matrices"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<vector<int>>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    vector<vector<int>> num(101, vector<int>(101, 0));\n    cin>>a>>b;\n    for(auto i=0; i<a; i++){\n        for(auto j=b-1; j>-1; j--){\n            cin>>num[i][j];\n        }\n    }\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<b; j++){\n            cout<<num[i][j]<<\" \";\n        }\n        cout<<\"\\n\";\n    }\n\n    return 0;\n}"
+    },
+    {
         "titulo": "...",
         "url": "...",
         "descripcion": "...",
