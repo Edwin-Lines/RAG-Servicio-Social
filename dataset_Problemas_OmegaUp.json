@@ -6630,6 +6630,211 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b = 1;\n    stack<int> falta;\n    cin >> a;\n    while (b < sqrt(a))\n    {\n        if (a % b == 0)\n        {\n            cout << b << \" \";\n            falta.push(a / b);\n        }\n        b++;\n    }\n    if (b * b == a)\n    {\n        cout << b << \" \";\n    }\n    while (falta.size())\n    {\n        cout << falta.top() << \" \";\n        falta.pop();\n    }\n\n    return 0;\n}"
     },
     {
+        "titulo": "191. L-OMI98-Calculos",
+        "url": "https://omegaup.com/arena/problem/OIEG2013SSA/",
+        "descripcion": "Tienes una calculadora de 4 dígitos decimales que sólo puede realizar 2 operaciones: multiplicar por A y dividir entre B. Si el resultado de multiplicar un número por A es un número de más de 4 dígitos la calculadora da como resultado 1. Si el resultado de dividir entre B no es un número entero, entonces la calculadora trunca el resultado entregando únicamente la parte entera. Por ejemplo, si A=2 y B=3 entonces 20*A=40 y 20/B=6 mientras que 6000*A=1 y 6000/B=2000. La calculadora siempre comienza con el número 1 y almacena el último resultado obtenido para utilizarlo en la siguiente operación. Escribe un programa que dados A y B encuentre el número mínimo de pasos que se tienen que realizar con la calculadora para obtener un número N comenzando en el 1 y utilizando únicamente las dos operaciones válidas.",
+        "entrada": "En la primera linea los enteros A, B y N. Dónde 1<=A,B,N<=10^4.",
+        "salida": "En la primera linea la cantidad mínima de pasos para obtener N.",
+        "nivel": "Intermedio (medio) - Análisis y diseño de algoritmos",
+        "categorias": [
+            "Búsqueda en amplitud",
+            "Colas",
+            "Vectores",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "queue<pair<int, int>>",
+            "vector<int>",
+            "long long",
+            "pair<int, int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    queue<pair<int, int> >falta;\n    vector<int> num(10000, 0);\n    long long a, b, c;\n    pair<int, int>z;\n    cin>>a>>b>>c;\n    z.first++;\n    num[1]=1;\n    falta.push(z);\n    while(true){\n        z=falta.front();\n        falta.pop();\n        z.second++;\n        z.first*=a;\n        if(z.first==c){\n            cout<<z.second;return 0;\n        }\n        else if(z.first<10000 && !num[z.first]){\n            falta.push(z);\n            num[z.first]=1;\n        }\n        z.first/=a;\n        z.first/=b;\n        if(z.first==c){\n            cout<<z.second;return 0;\n        }\n        else if(z.first && !num[z.first]){\n            falta.push(z);\n            num[z.first]=1;\n        }\n    }\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "3077. occ04pnsf24",
+        "url": "https://omegaup.com/arena/problem/Vueltas-Minuto-de-Dios/",
+        "descripcion": "En cierta cadena de almacenes están redondeando hacia arriba la cifra que el cliente paga para que se acerque a un múltiplo de 50 pesos. La diferencia es donada ala Fundación MInuto de Dios.",
+        "entrada": "La cantidad pagada por un cliente.",
+        "salida": "La cantidad de la donación por redondeo al Minuto de Dios.",
+        "nivel": "(Muy fácil)",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    cin>>a;\n    a%=50;\n    if(!a){\n        cout<<\"0\";return 0;\n    }\n    cout<<50-a;\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "2223. Anagramas",
+        "url": "https://omegaup.com/arena/problem/Anagramas/",
+        "descripcion": "Una palabra A y una palabra B son anagramas si A y B tienen las mismas letras, por ejemplo \"paso\" y \"sopa\". Todas las palabras seran minusculas. Determinar si dos cadenas son anagramas.",
+        "entrada": "Un entero N que indica el numero de casos de prueba, seguido por N lineas que contienen 2 cadenas de caracteres separadas por un espacio en blanco.",
+        "salida": "N líneas de salida con \"si\" o \"no\" segun corresponda, \"si\" si son anagramas y \"no\" en caso contrario.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Caracteres y cadenas",
+            "Vectores",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<int>",
+            "long long",
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<int> num(26, 0);\n    long long a, b;\n    string z, zz;\n    cin>>a;\n    while(a--){\n        cin>>z>>zz;\n        if(z.size()!=zz.size()){\n            cout<<\"no\\n\";continue;\n        }\n        for(auto i=0; i<z.size(); i++){\n            num[z[i]-97]++;\n        }\n        for(auto i=0; i<zz.size(); i++){\n            num[zz[i]-97]--;\n        }\n        b=0;\n        for(auto i=0; i<26; i++){\n            if(num[i]){\n                b=1;\n            }\n            num[i]=0;\n        }\n        if(b){\n            cout<<\"no\\n\";\n        }\n        else{\n            cout<<\"si\\n\";\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "996. Bajo el cielo estrellado",
+        "url": "https://omegaup.com/arena/problem/bce/",
+        "descripcion": "De grande te gustaría ser astrónomo y muchas veces te has preguntado cuántas estrellas hay en el universo. Te queda claro que esta pregunta no la podrás responder únicamente mirando hacia el cielo, pues es posible que el brillo de una estrella cercana oculte a las que están atrás. Lo que sí podrás contestar es cuántas estrellas visibles hay en el firmamento. Como nosotros miramos el cielo desde abajo, diremos que el brillo de una estrella con coordenadas X_0,Y_0 oculta a todas las estrellas que están arriba (es decir, a aquéllas con coordenadas X_0,Y_i con Y_i>Y_0). Escribe un programa que dadas las coordenadas de N estrellas calcule las E estrellas visibles en el firmamento.",
+        "entrada": "Un entero N seguido de N coordenadas enteras X,Y. Puedes suponer que 0<=N,X,Y<=50000 y que todas las estrellas tendrán coordenadas diferentes. 0<=N,X,Y<=50000.",
+        "salida": "Un entero E seguido de las coordenadas X,Y de las E estrellas visibles, una por línea y ordenadas de forma creciente con respecto a la componente X. Las componentes de las coordenadas deberán ir separadas por un espacio.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Vectores",
+            "Tablas de dispersión",
+            "Ciclos",
+            "Ordenamiento"
+        ],
+        "estructuras": [
+            "vector<pair<int, int>>",
+            "map<int, int>",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<pair<int, int>> num(50001, {0, 0});\n    map<int, int>falta;\n    long long a;\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i].first>>num[i].second;\n    }\n    sort(num.begin(), num.end());\n    falta[num[0].first]=num[0].second;\n    for(auto i=1; i<a; i++){\n        if(num[i].first!=num[i-1].first){\n            falta[num[i].first]=num[i].second;\n        }\n    }\n    cout<<falta.size()<<\"\\n\";\n    map<int, int>::iterator it=falta.begin();\n    while(it!=falta.end()){\n        cout<<it->first<<\" \"<<it->second<<\"\\n\";\n        it++;\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "5638. Los cuadrados semimágicos",
+        "url": "https://omegaup.com/arena/problem/Los-cuadrados-semimagicos/",
+        "descripcion": "Te gustan mucho los acertijos y estás estudiando el tema de los cuadrados semimágicos (los cuadrados mágicos todavía se te complican un poco). Un cuadrado semimágico es una matriz de NxN números que tiene la propiedad de que la suma de los elementos de cada fila, cada columna y ambas diagonales vale lo mismo. Crees ser capaz de escribir un programa que te diga si una matriz cuadrada es o no un cuadrado semimágico.",
+        "entrada": "Un entero N seguido de NxN enteros que representan los elementos de una matriz cuadrada dada de arriba hacia abajo y de izquierda a derecha. Puedes suponer que 1<=N<=100 y que los enteros de la matriz caben en un int.",
+        "salida": "Un 1 si la matriz dada es un cuadrado semimágico y un 0 en otro caso.",
+        "nivel": "Básico (medio) - Introducción a la programación",
+        "categorias": [
+            "Cálculos aritméticos",
+            "Matrices",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<vector<int>>",
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<vector<int>> num(101, vector<int> (101, 0));\n    long double a, b=0, c, e=0;\n    cin>>a;\n    for(auto j=0; j<a; j++){\n        cin>>num[0][j];\n        b+=num[0][j];\n    }\n    for(auto i=1; i<a; i++){\n        c=0;\n        for(auto j=0; j<a; j++){\n            cin>>num[i][j];\n            c+=num[i][j];\n        }\n        if(c!=b){\n            e=1;\n        }\n    }\n    if(e){\n        cout<<0;return 0;\n    }\n    for(auto i=0; i<a; i++){\n        c=0;\n        for(auto j=0; j<a; j++){\n            c+=num[j][i];\n        }\n        if(c!=b){\n            cout<<0;return 0;\n        }\n    }\n    c=0;\n    for(auto i=0; i<a; i++){\n        c+=num[i][i];\n    }\n    if(c!=b){\n        cout<<0;return 0;\n    }\n    c=0;\n    for(auto i=0, j=a-1; i<a; i++, j--){\n        c+=num[i][j];\n    }\n    if(c!=b){\n        cout<<0;return 0;\n    }\n    cout<<1;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "7444. UP-HeapSort",
+        "url": "https://omegaup.com/arena/problem/UP-HeapSort/",
+        "descripcion": "Dado un arreglo numérico, aplicar el ordenamiento por montículo para regresarlo ordenado, de menor a mayor.",
+        "entrada": "Una sóla línea con un conjunto de n números enteros separados por espacio. n<1000000.",
+        "salida": "Los números de la entrada, ordenados de menor a mayor, separados por espacio.",
+        "nivel": "...",
+        "categorias": [
+            "Ordenamiento",
+            "Vectores",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<int>",
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<int> falta;\n    long double b=0;\n    while(cin>>b){\n        falta.push_back(b);\n    }\n    sort(falta.begin(), falta.end());\n    vector<int>::iterator it=falta.begin();\n    while(it!=falta.end()){\n        cout<<*it++<<\" \";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1582. La Lista de Reservaciones",
+        "url": "https://omegaup.com/arena/problem/reservaciones/",
+        "descripcion": "Eres el gerente de operaciones del Teatro de la Ópera de tu ciudad. En este teatro no se presentan únicamente cantantes de ópera, sino también grupos musicales, obras de teatro, exhibiciones de productos y otros eventos especiales. El día de hoy llegó a tus manos una lista de r reservaciones para futuros eventos. Sin embargo, en esta lista existen eventos diferentes que desean presentarse en la misma fecha, y por motivos de montaje y desmontaje sólo puede haber un evento por dia. La lista está de acuerdo al orden en el que se hicieron las reservaciones, así es que debes respetar ese orden. Es decir, si hay 2 o más eventos para la misma fecha, debes aceptar el primero que aparezca en la lista y rechazar los demás. Dada una lista de reservaciones con sus respectivas fechas, escribe un programa que cuente el número n de reservaciones que fueron rechazadas, y que obtenga una lista con la fecha y el nombre de dichas reservaciones. No importa el orden en el que estén estos eventos rechazados, lo importante es que enumeres todos y cada uno de ellos.",
+        "entrada": "Linea 1: r, el número de reservaciones en la lista. Siguientes r lineas: dia, mes, año de presentacion, y nombre del evento, separados por un espacio. 10<=r<=20000. Todas las fechas son válidas y estarán comprendidas entre el 1 de enero de 2000 y 31 de diciembre de 2199. El nombre del evento será una sola palabra sin espacios. La longitud del nombre será entre 1 y 255 caracteres inclusive.",
+        "salida": "Linea 1:, número n de reservaciones rechazadas. Siguientes n lineas: Lista de reservaciones rechazadas, una por linea.",
+        "nivel": "(medio)",
+        "categorias": [
+            "Vectores",
+            "Caracteres y cadenas",
+            "Colas",
+            "Ciclos",
+            "Ordenamiento"
+        ],
+        "estructuras": [
+            "vector<pair<long double, int>>",
+            "vector<string>",
+            "queue<pair<long double, string>>",
+            "pair<long double, string>",
+            "long double",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<pair<long double, int>> num(20001, {0, 0});\n    vector<string> sub(20001, \"\");\n    queue<pair<long double, string> >falta;\n    pair<long double, string>z;\n    long double a, b, c, d;\n    long long zz;\n    cin>>a;\n    zz=a;\n    for(auto i=0; i<a; i++){\n        cin>>b>>c>>d>>sub[i];\n        num[i].first=d+(c/100)+(b/10000);\n        num[i].second=i;\n    }\n    sort(num.begin(), num.end());\n    for(auto i=1; i<a; i++){\n        if(num[i].first==num[i-1].first){\n            z.first=num[i].first;\n            z.second=sub[num[i].second];\n            falta.push(z);\n        }\n    }\n    cout<<falta.size()<<\"\\n\";\n    while(falta.size()){\n        z=falta.front();\n        falta.pop();\n        zz=(z.first*10000);\n        zz%=100;\n        if(zz<10){\n            cout<<0;\n        }\n        cout<<zz<<\" \";\n        zz=(z.first*100);\n        zz%=100;\n        if(zz<10){\n            cout<<0;\n        }\n        cout<<zz<<\" \";\n        zz=z.first;\n        cout<<zz<<\" \"<<z.second<<\"\\n\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4081. ADMISIÓN ASINUS INSTITUTE",
+        "url": "https://omegaup.com/arena/problem/ADMISION-ASINUS-INSTITUTE/",
+        "descripcion": "La tercera generación del ASINUS INSTITUTE está por ingresar, los estudiantes están a días de presentar su examen de admisión; según la estadística, indica que aquellos estudiantes que han sido aceptados, es porque logran una puntuación > o = a 200 reactivos. Existen tres categorías para ser aceptado, EXCELENCIA que se obtiene con una puntuación de 300, BUENO con puntuación de 250 y REGULAR de 200 puntos. Si para alcanzar 20 reactivos es necesario que se estudien 4 horas, ayuda a Rafael a saber si será aceptado o no, y que tipo de estudiante es.",
+        "entrada": "El número de horas que ha estudiado. Las horas no pueden ser menor que 0, de lo contrario marcará ERROR.",
+        "salida": "La puntuación que obtendrá en su examen de admisión dependiendo del número de horas que estudio. ACEPTADO-EXCELENTE, ACEPTADO-BUENO, ACEPTADO-REGULAR según sea el caso o bien NO ACEPTADO. El puntaje máximo a obtener es 300. El puntaje mínimo para ser aceptado es de 200.",
+        "nivel": "(fácil)",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    cin>>a;\n    a*=5;\n    if(a<0){\n        cout<<\"ERROR\";return 0;\n    }\n    cout<<a<<\"\\n\";\n    if(a>299){\n        cout<<\"ACEPTADO-EXCELENTE\";\n    }\n    else if(a>249){\n        cout<<\"ACEPTADO-BUENO\";\n    }\n    else if(a>199){\n        cout<<\"ACEPTADO-REGULAR\";\n    }\n    else{\n        cout<<\"NO ACEPTADO\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "2576. Bacterias",
+        "url": "https://omegaup.com/arena/problem/mirBacterias/",
+        "descripcion": "Un grupo de biólogos computacionales ha diseñado un experimento para decidir si una colonia de microbios es capaz de resolver problemas cuando se le estimula de ciertas formas específicas. En este experimento se construye un recipiente con la forma de una cuadricula rectangular con m renglones y n columnas. En cada uno de los cuadritos de la cuadricula se coloca cierta cantidad de un compuesto químico que le es muy desagradable a los microbios y que, por lo tanto, los microbios preferirían evitar lo más posible. El recipiente está inclinado de tal forma que los microbios solo puede avanzar hacia el este o hacia el sur. Por supuesto, los microbios tampoco pueden salir del recipiente. Al principio la colonia de microbios está localizada en el cuadrito correspondiente al primer renglón y primera columna del recipiente. Al final se espera que la colonia de microbios termine en el cuadrito correspondiente al último renglón y última columna del recipiente. En términos de un sistema de coordenadas, los microbios comienzan en la coordenada (1, 1) y terminan en la coordenada (m, n). Antes de llevar a cabo el experimento, los científicos desean calcular la cantidad c de unidades del compuesto químico que deberá soportar la colonia en su trayecto, esto es, la suma de todas las cantidades del compuesto químico que fueron depositadas en todos los cuadritos por los que pasen. En el ejemplo se muestra un recipiente donde el mínimo valor posible de c es 17.",
+        "entrada": "Dos enteros m y n separados por un espacio, seguidos de m renglones cada uno con n enteros separados por espacios. Estos enteros representan las cantidades del compuesto químico. Puedes suponer que 2 ≤ m ≤ 100, 2 ≤ n ≤ 100 y que todas las demás cantidades están entre 1 y 9, incluyéndolos.",
+        "salida": "Deberás escribir en pantalla un entero c el cual representa la cantidad mínima del compuesto químico al que puede estar expuesto la colonia durante su recorrido. Consideraciones Tu programa se evaluará con varios casos de prueba.",
+        "nivel": "Intermedio (medio) - Análisis y diseño de algoritmos",
+        "categorias": [
+            "Programación dinámica",
+            "Matrices",
+            "Colas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<vector<pair<int, int>>>",
+            "long long",
+            "queue<struct>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra{\n    int aa, bb, cc;\n};\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<vector<pair<int, int>>> num(101, vector<pair<int, int>>(101, {0, 0}));\n    long long a, b, c=102010;\n    queue<sobra> falta;\n    sobra z, zz;\n    cin>>a>>b;\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<b; j++){\n            cin>>num[i][j].first;\n        }\n    }\n    z.cc=num[0][0].first;\n    num[0][0].second=1;\n    falta.push(z);\n    while(falta.size()){\n        z=falta.front();\n        falta.pop();\n        z.aa++;\n        if(z.aa==a-1 && z.bb==b-1){\n            z.cc+=num[z.aa][z.bb].first;\n            if(z.cc<c){\n                c=z.cc;\n            }\n            z.cc-=num[z.aa][z.bb].first;\n        }\n        else if(z.aa<a){\n            z.cc+=num[z.aa][z.bb].first;\n            if(num[z.aa][z.bb].second){\n                while(true){\n                    zz=falta.front();\n                    falta.pop();\n                    if(zz.aa==z.aa && zz.bb==z.bb){\n                        break;\n                    }\n                    falta.push(zz);\n                }\n                if(zz.cc<z.cc){\n                    falta.push(zz);\n                }\n                else{\n                    falta.push(z);\n                }\n            }\n            else{\n                falta.push(z);\n                num[z.aa][z.bb].second=1;\n            }\n            z.cc-=num[z.aa][z.bb].first;\n        }\n        z.aa--;\n        z.bb++;\n        if(z.aa==a-1 && z.bb==b-1){\n            z.cc+=num[z.aa][z.bb].first;\n            if(z.cc<c){\n                c=z.cc;\n            }\n            z.cc-=num[z.aa][z.bb].first;\n        }\n        else if(z.bb<b){\n            z.cc+=num[z.aa][z.bb].first;\n            if(num[z.aa][z.bb].second){\n                while(true){\n                    zz=falta.front();\n                    falta.pop();\n                    if(zz.aa==z.aa && zz.bb==z.bb){\n                        break;\n                    }\n                    falta.push(zz);\n                }\n                if(zz.cc<z.cc){\n                    falta.push(zz);\n                }\n                else{\n                    falta.push(z);\n                }\n            }\n            else{\n                falta.push(z);\n                num[z.aa][z.bb].second=1;\n            }\n            z.cc-=num[z.aa][z.bb].first;\n        }\n    }\n    cout<<c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "7430. Lucky Purchase",
+        "url": "https://omegaup.com/arena/problem/Lucky-Purchase/",
+        "descripcion": "Sharon quiere comprar una computadora portátil para programar. Planea comprar una computadora portátil cuyo precio esté formado únicamente por los dígitos 4 y 7. La cantidad de 4 y 7 en el precio debe ser igual. Se te proporcionan las marcas de las computadoras portátiles y sus precios. Busque e imprima el nombre de la marca de la computadora portátil que cumpla con los criterios anteriores. Si hay varias marcas que cumplen con los criterios, imprima el nombre de la que tenga el menor precio. Si ninguna de las computadoras portátiles cumple con los criterios, imprima -1. Por ejemplo, si Sharon tiene que elegir entre las computadoras portátiles 'BestBook', cuyo precio es de 444777 y 'LapBook', cuyo precio es de 7744, la solución debería indicar que la opción ideal es 'LapBook'. Aunque tanto 'BestBook' como 'LapBook' tienen la misma cantidad de 4 y 7 en el precio, 'LapBook' tiene un precio más bajo, lo que la convierte en la opción correcta para Sharon.",
+        "entrada": "La primera línea contiene un número entero n, que indica la cantidad de computadoras portátiles. Las siguientes n líneas contienen una cadena (nombre de la computadora portátil de la empresa) y un número entero que describe el valor de cada computadora portátil. 1<=n<=10^5. 1<=longitud del nombre de la laptop<=10. El nombre de la computadora portátil debe estar formado únicamente por letras incluidas en el alfabeto inglés. 1<=precio de la computadora portátil<=10^9. Tanto el nombre como el precio deben ser únicos.",
+        "salida": "Si la respuesta no existe, imprima -1. De otra manera, imprima el nombre de la marca cuya computadora portátil cueste menos (número mínimo de la suerte) y cumpla con los criterios requeridos.",
+        "nivel": "",
+        "categorias": [
+            "Caracteres y cadenas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d=0, e;\n    string z=\"\", zz, y, yy;\n    cin>>a;\n    while(a){\n        a--;\n        cin>>y>>yy;\n        b=0;\n        c=0;\n        e=0;\n        for(auto i=yy.size()-1, j=0; i>-1; i--, j++){\n            if(yy[i]!='4' && yy[i]!='7'){\n                b=-1;break;\n            }\n            else if(yy[i]=='4'){\n                b++;\n            }\n            else{\n                c++;\n            }\n            e+=((yy[i]-48)*pow(10, j));\n        }\n        if(b!=c || b==-1){\n            continue;\n        }\n        if(z==\"\"){\n            z=y;\n            zz=yy;\n            d=e;\n        }\n        else{\n            if(e<d){\n                d=e;\n                z=y;\n                zz=yy;\n            }\n        }\n    }\n    if(z==\"\"){\n        cout<<\"-1\";\n    }\n    else{\n        cout<<z;\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1028. Dos bases numéricas",
+        "url": "https://omegaup.com/arena/problem/dbn/",
+        "descripcion": "Si un entero n se escribe en base b como (a_m)(a_m-1)...(a_1)(a_0) esto quiere decir que n=(a_m)(b^m)+(a_m-1)(b^m-1)+...+(a_1)(b^1)+(a_0)(b^0) y que0<=a_i<b para cada 0<=i<=m. Por supuesto, al escribir el mismo número n en bases distintas se obtienen expresiones distintas, por ejemplo, el número decimal n=31 se escribe 11111 en base 2 y 1011 en base 3. Escribe un programa al cual se le dan dos expresiones A y B en bases desconocidas p y q que representan al mismo número n y que encuentre ese valor. Si hay varios números que se puedan escribir de esas dos formas, debe encontrar al más pequeño de ellos. Por ejemplo, si se dan las expresiones 11111 y 1011 entonces n=31, ya que 11111 en base 2 es igual a 1011 en base 3 que es igual a 31 en decimal.",
+        "entrada": "Dos expresiones A y B, cada una con un máximo de 64 dígitos, separadas por un espacio. La primera expresión estará en base p y la segunda en base q. Puedes suponer que 2<=p,q<=10 y que 1<=n<=4,000,000,000.",
+        "salida": "Tres números enteros n, p y q (en decimal) separados por espacios.",
+        "nivel": "Básico () - Introducción a la programación",
+        "categorias": [
+            "Ciclos",
+            "Caracteres y cadenas"
+        ],
+        "estructuras": [
+            "pow()",
+            "unsigned long long",
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    unsigned long long a=2, b=0, c, d=0;\n    string z, zz;\n    cin>>z>>zz;\n    if(z.size()<zz.size()){\n        swap(z, zz);\n        d=1;\n    }\n    while(true){\n        for(auto i=z.size()-1, j=0; i>-1; i--, j++){\n            b+=((z[i]-48)*pow(a, j));\n            if((z[i]-48)>=a){\n                b=-1;break;\n            }\n        }\n        if(b!=-1){\n            cout<<b<<\" \";\n            c=a;\n            a++;\n            b=0;break;\n        }\n        b=0;\n        a++;\n    }\n    while(true){\n        for(auto i=zz.size()-1, j=0; i>-1; i--, j++){\n            b+=((zz[i]-48)*pow(a, j));\n            if((zz[i]-48)>=a){\n                b=-1;break;\n            }\n        }\n        if(b!=-1){\n            if(d){\n                cout<<a<<\" \"<<c;return 0;\n            }\n            else{\n                cout<<c<<\" \"<<a;return 0;\n            }\n        }\n        b=0;\n        a++;\n    }\n    \n    return 0;\n}"
+    },
+    {
         "titulo": "...",
         "url": "...",
         "descripcion": "...",
