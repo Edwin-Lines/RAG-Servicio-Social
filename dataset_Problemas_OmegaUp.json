@@ -5726,7 +5726,7 @@
         "salida": " Las M filas con los alumnos que quedaron en cada i grupo en el orden que se fueron poniendo.",
         "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
-            "vectores",
+            "Vectores",
             "Colas"
         ],
         "estructuras": [
@@ -6214,6 +6214,7 @@
         ],
         "estructuras": [
             "long double",
+            "fixed",
             "setprecision()"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a;\n    cin >> a;\n    a *= 22.414;\n    cout << fixed << setprecision(3) << a << \" l\";\n\n    return 0;\n}"
@@ -6244,7 +6245,7 @@
         "descripcion": "Cuentan que en un terreno baldío, cerca del Carol Baur, crece un árbol milagroso. Lo milagroso de este árbol radica en que si comes una de sus frutas puedes memorizar durante 7 días cualquier cantidad de información que quieras sin ningún esfuerzo (algo muy útil en semana de exámenes). Además, el árbol tiene la propiedad de que al caer la noche, cada una de sus frutas se convierte en dos. Sólo un grupo selecto de 10 estudiantes conoce la ubicación del árbol y este grupo te ha seleccionado para ser su nuevo integrante. Pero para ser aceptado primero deberás ser capaz de contestar la siguiente pregunta: Dado el número de frutas actualmente en el árbol y el número de integrantes del grupo (11 contándote a ti), calcula ¿cuántas noches tienen que pasar para que si cosechan TODAS las frutas del árbol menos 1 (para que puedan seguir multiplicándose) a cada miembro del grupo le toque el mismo número de frutas? Escribe un programa que dado f el número de frutas acualmente en el árbol calcule la cantidad de noches que es necesario esperar para que, si se cosechan TODAS las frutas del árbol menos 1, a cada miembro del grupo le toquen la misma cantidad de frutas.",
         "entrada": "Tu programa deberá leer del teclado un único número entero f (0 < f <= 1000) que representa la cantidad de frutas en el árbol.",
         "salida": "Tu programa deberá escribir un único número entero que represente la cantidad de noches que es necesario esperar. RETO: Es posible que el número de frutas en el árbol haga que sea imposible llegar a la configuración deseada. Si este es el caso tu programa deberá escribir un -1. La cantidad de casos así en este problema equivale a 10% de los puntos totales.",
-        "nivel": "(medio)",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
             "Ciclos"
         ],
@@ -6313,7 +6314,7 @@
         "descripcion": "Últimamente Briaares ha estado muy atareado por lo que necesita tu ayuda. Él debe resolver tareas de las que tiene, en el menor tiempo posible. Para facilitar las cosas le asignó un valor de tiempo a cada tarea. Por el mismo motivo -- que está muy apurado -- necesita tu ayuda para que le digas cuál es el menor tiempo que debe invertir para acabar K tareas. Supongamos que decide hacer las tareas x_1 , x_2, x_3 , ... , x_k (en ese orden). Entonces, el tiempo que le toma resolver estas tareas juntas lo definió como: Sumatoria con limits_{1 <= i < j <=k} |x_i - x_j|. ¿Por qué una formula tan rara y no solo sumar los tiempos? Solo Briaares lo sabe...",
         "entrada": "En la primera linea dos enteros, N y K (2<=K<=N<=10^5), la cantidad de tareas que tiene y la cantidad que debe resolver. En la siguiente linea N enteros separados por un espacio, donde el i-esimo valor representa el tiempo que le asignó a la tarea i (0<=x_i<=10^9, donde x_i es el tiempo asignado a la tarea i).",
         "salida": "La mínima cantidad de tiempo para que Briaares acabe K tareas.",
-        "nivel": "Intermedio () - Análisis y diseño de algoritmos",
+        "nivel": "Intermedio (medio) - Análisis y diseño de algoritmos",
         "categorias": [
             "Ventana deslizante",
             "Ordenamiento",
@@ -6326,7 +6327,7 @@
             "vector<int>",
             "auto"
         ],
-        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c = 0, d = 0, e = 0, f = 0, g, h = 10000000000000000000000000;\n    vector<int> num(100001, 0);\n    cin >> a >> b;\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> num[i];\n    }\n    sort(num.begin(), num.end());\n    for (long long i = 1; i <= a; i++)\n    {\n        c += num[i - 1];\n        d += c;\n        e += (num[i - 1] * (min(b, i)));\n        if (i >= b)\n        {\n            if (i > b)\n            {\n                d -= ((num[(i - b) - 1]) * (b + 1));\n                c -= (num[(i - b) - 1]);\n                e -= f;\n                f -= num[(i - b) - 1];\n            }\n            g = e - d;\n            if (g < h)\n            {\n                h = g;\n            }\n        }\n        f += num[i - 1];\n    }\n    cout << h;\n\n    return 0;\n}s"
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c = 0, d = 0, e = 0, f = 0, g, h = 10000000000000000000000000;\n    vector<int> num(100001, 0);\n    cin >> a >> b;\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> num[i];\n    }\n    sort(num.begin(), num.end());\n    for (long long i = 1; i <= a; i++)\n    {\n        c += num[i - 1];\n        d += c;\n        e += (num[i - 1] * (min(b, i)));\n        if (i >= b)\n        {\n            if (i > b)\n            {\n                d -= ((num[(i - b) - 1]) * (b + 1));\n                c -= (num[(i - b) - 1]);\n                e -= f;\n                f -= num[(i - b) - 1];\n            }\n            g = e - d;\n            if (g < h)\n            {\n                h = g;\n            }\n        }\n        f += num[i - 1];\n    }\n    cout << h;\n\n    return 0;\n}"
     },
     {
         "titulo": "3597. El Albañil Descuidado",
@@ -6334,12 +6335,12 @@
         "descripcion": "A un albañil le encargaron hacer una escalera formada por cubos del mismo tamaño. El primer escalón debía tener un cubo, el segundo dos cubos, el tercero tres cubos y así sucesivamente hasta el último escalón, el cual debía tener n cubos. Al albañil le importó poco lo que le pidieron y puso los cubos como le dio su gana. Ahora se trata de acomodar bien los cubos. El trabajo que cuesta trasladar un cubo de un escalón a otro escalón es igual a la distancia que hay entre los escalones. Veamos el siguiente caso: se pidió hacer una escalera que tuviera cuatro escalones, por lo cual necesitaríamos que los escalones tuvieran altura 1, 2, 3 y 4. El albañil dejó la escalera como se muestra en la siguiente figura. Una forma de acomodar bien los cubos es primero pasar tres cubos del primer escalón (el de la izquierda) al tercer escalón. El trabajo que cuesta hacer esto es 3×2=6, ya que son tres cubos y se van a trasladar dos escalones. Después, se puede pasar un cubo del cuarto escalón al segundo. El trabajo que cuesta hacer esto es 1×2=2, ya que es un cubo y se va a trasladar dos escalones. El trabajo total realizado de esa forma sería 6+2=8. Sin embargo, existe otra forma de hacerlo con un trabajo total de 6. Dada la configuración que dejó el albañil, dar la cantidad mínima de trabajo necesario para que la escalera quede como se deseaba. ",
         "entrada": "Primera línea n, la cantidad de escalones, 0 < n = 100,000. Segunda línea, n números dando la cantidad de cubos que puso el albañil en cada escalón.",
         "salida": "Un único entero, la cantidad mínima de trabajo necesario para que la escalera quede como se deseaba. Siempre se podrá hacer ese trabajo.",
-        "nivel": "()",
+        "nivel": "Intermedio (medio) - Estructuras de datos y Algoritmos",
         "categorias": [
-            "Colas",
+            "Tablas de dispersión",
             "Vectores",
-            "Ciclos",
-            "Tablas de dispersión"
+            "Colas",
+            "Ciclos"
         ],
         "estructuras": [
             "queue<pair<long long, long long>>",
@@ -6427,7 +6428,7 @@
         "descripcion": "En la ciudad de Helsinki viven varios conejitos con distintos colores. Como estás haciendo un censo les hiciste la siguiente pregunta: \"¿Cuántos conejitos además de ti tienen el mismo color?\". Como son conejitos honestos, todos contestaron el número correcto. Además, ningún conejito contestó dos veces. Tu tarea es determinar el menor número de conejitos que puede haber en Helsinki que coincidan con las respuestas que te dieron los conejitos. Nota que no encuestaste a todos los conejitos.",
         "entrada": "En la primer línea, un entero: N, el número de conejitos encuestados. En la siguiente línea, las N respuestas de cada conejito.",
         "salida": "El menor número de conejitos que pueden haber en Helsinki",
-        "nivel": "()",
+        "nivel": "Intermedio (fácil) - Estructuras de datos y Algoritmos",
         "categorias": [
             "Vectores",
             "Ciclos",
@@ -6468,11 +6469,11 @@
         "descripcion": "Un amigo le propone que piense en número y que haga una serie de operaciones (+, -, *, /) una a la vez. A continuación su amigo pide que le diga cual es el resultado, con el cual su amigo adivina el número que pensó. Para evitar errores de redondeo aseguramos que en todos los casos de prueba la división es exacta.",
         "entrada": "La primera línea tiene un número C (C<=100) que indica la cantidad de casos. A continuación vendrá una línea con el número de operaciones N (0<=N<=100). Las siguientes N líneas indican las operaciones realizadas en el formato operador número. La última línea de cada test será el resultado de hacer las N operaciones indicadas en el número pensado.",
         "salida": "Por cada test, se debe dar como resultado el número inicial. La salida deberá seguir estrictamente el formato del ejemplo a seguir.",
-        "nivel": "(medio)",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
-            "vectores",
             "Tablas de dispersión",
             "Caracteres y cadenas",
+            "Vectores",
             "Ciclos"
         ],
         "estructuras": [
@@ -6488,7 +6489,7 @@
         "descripcion": "En una sociedad extraña acaban de pasar una ley sobre cómo se deben casar las personas. Como las reglas son muy complicadas, te pidieron que escribieras un programa para saber cuántos y cuáles hombres se quedarían solteros si las siguieran. El procedimiento para encontrar pareja es así: El hombre más viejo se debe casar con la mujer que tenga la edad más cercana a él. El proceso se repite hasta que ya no haya parejas posibles. La ley decreta que sólo se pueden casar hombres con mujeres, siempre y cuando se sigan las reglas anteriores. (Les dijimos que era una sociedad extraña.) Por ejemplo, si hay 3 hombres con 26, 24 y 28 años y 4 mujeres con 20, 25, 26 y 29 años, las parejas serían: el hombre de 28 con la mujer de 29, el hombre de 26 con la mujer de 26, el hombre de 24 con la mujer de 25, y la mujer de 20 se queda sola.",
         "entrada": "Dos enteros, H y M: la cantidad de hombres y mujeres. En la siguiente línea H enteros: las edades de los hombres. En la siguiente línea M enteros: las edades de las mujeres. Por el 50% de los puntos N,M<=1000, y para el resto de los puntos N,M<=100000.",
         "salida": "En caso de que no queden hombres solteros, imprime “No hay solteros”. Si quedan hombres solteros, imprime cuántos y la edad del más joven.",
-        "nivel": "(fácil)",
+        "nivel": "Intermedio (fácil) - Estructuras de datos y Algoritmos",
         "categorias": [
             "Vectores",
             "Ciclos",
@@ -6525,10 +6526,8 @@
         "descripcion": "Cada año, la universidad de Zagred organiza un competecia de informática por equipos. Cada equipo debe estar compuesto por tres estudiantes. Normalmente, los mejores competidores de la universidad son chicas, y ellas superan significativamente en número a los chicos. Este año los chicos se han levantado la voz y se hizo una regla que hace que cada equipos deba estar formado exactamente por un chico y dos chicas. Para hacerle la vida más dificil a los competidores, el director de la univesidad ha decicido mandar a K estudiantes de intercambio a un país lejano. Estos competidores no estarán disponibles para la competencia. Dado el número de competidoras (M), el número de competidores (N) y número de competidores que tienen que ser enviados de intercambio (K),  el director tiene que crear el número máximo de equipos disponibles para asistir a la competencia. Por ejemplo, si M es 6, N es 3 y K es 2, el director puede enviar una chica y un chico de intercambio. Después el puede crear 2 equipos a partir de los competidores sobrantes. (Una chica quedaría sin equipo).",
         "entrada": "La primera y única línea contiene tres enteros: M (0<=M<=100), el número de chicas; N (0<=N<=100), el número de chicos; y K (0<=K<= N+M), el número de competidores que tienen que ser mandados de intercambio.",
         "salida": "La primera y única línea debe contener un único número , el máximo número de equipos que pueden ser formados.",
-        "nivel": "()",
-        "categorias": [
-            ""
-        ],
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [],
         "estructuras": [
             "long long"
         ],
@@ -6540,9 +6539,9 @@
         "descripcion": "Muestra un triángulo que se genera a partir de dos números: el tamaño y la semilla. El tamaño n (1<=n<=20) indica cuantos renglones tendrá el triángulo, y la semilla s (1<=s<=9) será el primer número del triángulo.",
         "entrada": "Dos enteros separados por un espacio: n y s.",
         "salida": "Muestra un triángulo de n renglones empezando en scomo primer número del triángulo, como se indica en los ejemplos.",
-        "nivel": "(medio)",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
-            "Vectores",
+            "Matrices",
             "Ciclos"
         ],
         "estructuras": [
@@ -6561,7 +6560,7 @@
         "nivel": "Intermedio (medio) - Matemáticas en la programación",
         "categorias": [
             "Teoría de números",
-            "Arreglos",
+            "Vectores",
             "Ciclos",
             "Ordenamiento"
         ],
@@ -6579,7 +6578,7 @@
         "descripcion": "Una secuencia de n>0 enteros es llamada \"saltador alegre\" si el valor absoluto de la diferencia entre elementos sucesivos toman todos los valores desde el 1 hasta n-1. Por ejemplo: es un saltador alegre, porque las diferencias absolutas son 3, 2 y 1 respectivamente. La definición implica que cualquier secuencia de un solo entero es un saltador alegre. Escribe un programa que determine si una secuencia es un saltador alegre o no.",
         "entrada": "En la primera linea tendrás un número t (t <= 100) , que representa la cantidad de casos que resolverás. En las siguientes t líneas encontrarás el número n (n <= 3,000), seguido de n valores que representan la secuencia. Considera que |n_i| <= 10,000 (cada elemento de la secuencia).",
         "salida": "Para cada caso debes imprimir una linea diciendo \"Alegre\" o \"No alegre\".",
-        "nivel": "(medio)",
+        "nivel": "Intermedio (fácil) - Estructuras de datos y Algoritmos",
         "categorias": [
             "Vectores",
             "Ciclos",
@@ -6597,7 +6596,7 @@
         "descripcion": "Tienes un campo de 5 x 5 metros dividido en cuadros de 1x1, de los cuales 24 están vacíos y hay un único brote de árbol. Para que el campo se vea bello el árbol debe crecer en el centro, por lo tanto, si nació ahí se deberá mover. Solo puedes mover el árbol un cuadro a la vez y únicamente se permiten movimientos horizontales(izquierda-derecha) y verticales (arriba-abajo). Necesitas saber cuál es la mínima cantidad de pasos que necesitas para llevar el árbol de su posición inicial al centro del campo.",
         "entrada": "Consiste en 5 líneas, y cada línea contiene 5 enteros. Donde existen 24 cero (0) los cuales representan un espacio vacío en el campo y un único uno (1) que representa el brote de árbol que deberás mover al centro del campo.",
         "salida": "Imprime un único numero entero – El mínimo número de movimientos que necesitas para llevar el árbol al centro.",
-        "nivel": "Básico () - Introducción a la programación",
+        "nivel": "Básico (fácil) - Introducción a la programación",
         "categorias": [
             "Ciclos",
             "Cálculos aritméticos"
@@ -6614,11 +6613,11 @@
         "descripcion": "En un día normal, Buddy el perro iba caminando por la calle, pensando en lo rico que sería comerse un pollo. Al tratar de comunicarle a su dueña su necesidad de comer pollo, se dio cuenta de que no tenía suficientes croquetas para decirle este mensaje (sí, Buddy y su dueña se entienden con croquetas). Triste pero no derrotado, Buddy se decidió salir de casa en busca de delicioso pollo frito, rostizado o en salsa verde. Al cabo de unos días, un misterioso pollo de tamaño n  apareció en su camino, este fue el mejor día de su vida. Como Buddy es un perro muy compartido, consideró repartirlo entre sus amigos perrunos, y analizó de qué manera podía repartir el pollo en partes iguales sin que sobrara ningún pellejito, hueso o carne. Ayuda a Buddy dándole todas las opciones en las que puede repartir su pollo.",
         "entrada": "La entrada consiste de una sola línea con n: el tamaño del pollo. Considera que: Para un conjunto agrupado del 25% 0<=n<=2*10^7. Para un conjunto agrupado del 25% 0<=n<=7*10^7. Para un conjunto agrupado del 50% 0<=n<=10^9.",
         "salida": "Deberás imprimir en una sola línea una lista con las opciones en las que Buddy puede repartir su pollo en partes iguales. Como Buddy quiere evitar la fatiga, deberás imprimir esta lista en orden ascendente. Si dicha lista no existe entonces deberás dejar una línea en blanco.",
-        "nivel": "(medio)",
+        "nivel": "Intermedio (fácil) - Análisis y diseño de algoritmos",
         "categorias": [
-            "Ordenamiento",
-            "Números grandes",
             "Teoría de números",
+            "Números grandes",
+            "Ordenamiento",
             "Pilas",
             "Ciclos"
         ],
@@ -6656,10 +6655,8 @@
         "descripcion": "En cierta cadena de almacenes están redondeando hacia arriba la cifra que el cliente paga para que se acerque a un múltiplo de 50 pesos. La diferencia es donada ala Fundación MInuto de Dios.",
         "entrada": "La cantidad pagada por un cliente.",
         "salida": "La cantidad de la donación por redondeo al Minuto de Dios.",
-        "nivel": "(Muy fácil)",
-        "categorias": [
-            ""
-        ],
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [],
         "estructuras": [
             "long long"
         ],
@@ -6728,7 +6725,7 @@
         "descripcion": "Dado un arreglo numérico, aplicar el ordenamiento por montículo para regresarlo ordenado, de menor a mayor.",
         "entrada": "Una sóla línea con un conjunto de n números enteros separados por espacio. n<1000000.",
         "salida": "Los números de la entrada, ordenados de menor a mayor, separados por espacio.",
-        "nivel": "...",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
             "Ordenamiento",
             "Vectores",
@@ -6768,12 +6765,10 @@
         "titulo": "4081. ADMISIÓN ASINUS INSTITUTE",
         "url": "https://omegaup.com/arena/problem/ADMISION-ASINUS-INSTITUTE/",
         "descripcion": "La tercera generación del ASINUS INSTITUTE está por ingresar, los estudiantes están a días de presentar su examen de admisión; según la estadística, indica que aquellos estudiantes que han sido aceptados, es porque logran una puntuación > o = a 200 reactivos. Existen tres categorías para ser aceptado, EXCELENCIA que se obtiene con una puntuación de 300, BUENO con puntuación de 250 y REGULAR de 200 puntos. Si para alcanzar 20 reactivos es necesario que se estudien 4 horas, ayuda a Rafael a saber si será aceptado o no, y que tipo de estudiante es.",
-        "entrada": "El número de horas que ha estudiado. Las horas no pueden ser menor que 0, de lo contrario marcará ERROR.",
+        "entrada": "El número de horas que ha estudiado. Las horas no pueden ser menor que 0, de lo contrario marcará \"ERROR\".",
         "salida": "La puntuación que obtendrá en su examen de admisión dependiendo del número de horas que estudio. ACEPTADO-EXCELENTE, ACEPTADO-BUENO, ACEPTADO-REGULAR según sea el caso o bien NO ACEPTADO. El puntaje máximo a obtener es 300. El puntaje mínimo para ser aceptado es de 200.",
-        "nivel": "(fácil)",
-        "categorias": [
-            ""
-        ],
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [],
         "estructuras": [
             "long long"
         ],
@@ -6788,6 +6783,7 @@
         "nivel": "Intermedio (medio) - Análisis y diseño de algoritmos",
         "categorias": [
             "Programación dinámica",
+            "Búsqueda en amplitud",
             "Matrices",
             "Colas",
             "Ciclos"
@@ -6805,7 +6801,7 @@
         "descripcion": "Sharon quiere comprar una computadora portátil para programar. Planea comprar una computadora portátil cuyo precio esté formado únicamente por los dígitos 4 y 7. La cantidad de 4 y 7 en el precio debe ser igual. Se te proporcionan las marcas de las computadoras portátiles y sus precios. Busque e imprima el nombre de la marca de la computadora portátil que cumpla con los criterios anteriores. Si hay varias marcas que cumplen con los criterios, imprima el nombre de la que tenga el menor precio. Si ninguna de las computadoras portátiles cumple con los criterios, imprima -1. Por ejemplo, si Sharon tiene que elegir entre las computadoras portátiles 'BestBook', cuyo precio es de 444777 y 'LapBook', cuyo precio es de 7744, la solución debería indicar que la opción ideal es 'LapBook'. Aunque tanto 'BestBook' como 'LapBook' tienen la misma cantidad de 4 y 7 en el precio, 'LapBook' tiene un precio más bajo, lo que la convierte en la opción correcta para Sharon.",
         "entrada": "La primera línea contiene un número entero n, que indica la cantidad de computadoras portátiles. Las siguientes n líneas contienen una cadena (nombre de la computadora portátil de la empresa) y un número entero que describe el valor de cada computadora portátil. 1<=n<=10^5. 1<=longitud del nombre de la laptop<=10. El nombre de la computadora portátil debe estar formado únicamente por letras incluidas en el alfabeto inglés. 1<=precio de la computadora portátil<=10^9. Tanto el nombre como el precio deben ser únicos.",
         "salida": "Si la respuesta no existe, imprima -1. De otra manera, imprima el nombre de la marca cuya computadora portátil cueste menos (número mínimo de la suerte) y cumpla con los criterios requeridos.",
-        "nivel": "",
+        "nivel": "Básico (fácil) - Introducción a la programación",
         "categorias": [
             "Caracteres y cadenas",
             "Ciclos"
@@ -6822,7 +6818,7 @@
         "descripcion": "Si un entero n se escribe en base b como (a_m)(a_m-1)...(a_1)(a_0) esto quiere decir que n=(a_m)(b^m)+(a_m-1)(b^m-1)+...+(a_1)(b^1)+(a_0)(b^0) y que0<=a_i<b para cada 0<=i<=m. Por supuesto, al escribir el mismo número n en bases distintas se obtienen expresiones distintas, por ejemplo, el número decimal n=31 se escribe 11111 en base 2 y 1011 en base 3. Escribe un programa al cual se le dan dos expresiones A y B en bases desconocidas p y q que representan al mismo número n y que encuentre ese valor. Si hay varios números que se puedan escribir de esas dos formas, debe encontrar al más pequeño de ellos. Por ejemplo, si se dan las expresiones 11111 y 1011 entonces n=31, ya que 11111 en base 2 es igual a 1011 en base 3 que es igual a 31 en decimal.",
         "entrada": "Dos expresiones A y B, cada una con un máximo de 64 dígitos, separadas por un espacio. La primera expresión estará en base p y la segunda en base q. Puedes suponer que 2<=p,q<=10 y que 1<=n<=4,000,000,000.",
         "salida": "Tres números enteros n, p y q (en decimal) separados por espacios.",
-        "nivel": "Básico () - Introducción a la programación",
+        "nivel": "Básico (difícil) - Introducción a la programación",
         "categorias": [
             "Ciclos",
             "Caracteres y cadenas"
@@ -6850,7 +6846,7 @@
         ],
         "codigo": "..."
     },
-    "Problemas totales: 367",
+    "Problemas totales: 402",
     "Avanzado (difícil) - Programación competitiva: 4",
     "Avanzado (medio) - Temas especializados: 1",
     "Avanzado (medio) - Programación competitiva: 3",
