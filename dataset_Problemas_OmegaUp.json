@@ -6831,6 +6831,522 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    unsigned long long a=2, b=0, c, d=0;\n    string z, zz;\n    cin>>z>>zz;\n    if(z.size()<zz.size()){\n        swap(z, zz);\n        d=1;\n    }\n    while(true){\n        for(auto i=z.size()-1, j=0; i>-1; i--, j++){\n            b+=((z[i]-48)*pow(a, j));\n            if((z[i]-48)>=a){\n                b=-1;break;\n            }\n        }\n        if(b!=-1){\n            cout<<b<<\" \";\n            c=a;\n            a++;\n            b=0;break;\n        }\n        b=0;\n        a++;\n    }\n    while(true){\n        for(auto i=zz.size()-1, j=0; i>-1; i--, j++){\n            b+=((zz[i]-48)*pow(a, j));\n            if((zz[i]-48)>=a){\n                b=-1;break;\n            }\n        }\n        if(b!=-1){\n            if(d){\n                cout<<a<<\" \"<<c;return 0;\n            }\n            else{\n                cout<<c<<\" \"<<a;return 0;\n            }\n        }\n        b=0;\n        a++;\n    }\n    \n    return 0;\n}"
     },
     {
+        "titulo": "1296. Matriz",
+        "url": "https://omegaup.com/arena/problem/Matriz/",
+        "descripcion": "Dados los datos enteros de una matriz cuadrada de F filas por C columnas. 1<=F,C<=50. Imprime sus datos desde la última fila hasta la primera.",
+        "entrada": "En la primera línea los enteros F,C separados por espacios, que denotan el número de filas y columnas de la matriz. En cada una de las siguientes F filas, C enteros separados por espacios.",
+        "salida": "F líneas, en cada línea. Los C datos separados por un espacio.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Matrices",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<vector<int>>",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<vector<int>> num(51, vector<int> (51, 0));\n    long long a, b;\n    cin>>a>>b;\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<b; j++){\n            cin>>num[i][j];\n        }\n    }\n    for(auto i=a-1; i>-1; i--){\n        for(auto j=0; j<b; j++){\n            cout<<num[i][j]<<\" \";\n        }\n        cout<<\"\\n\";\n    }\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "129. Buscaminas",
+        "url": "https://omegaup.com/arena/problem/buscaminas1/",
+        "descripcion": "Todos hemos jugado el clásico juego de computadora conocido como \"Buscaminas\". Pues bien, este problema está inspirado en dicho juego, pero, por supuesto, con pequeñas variaciones. Para empezar, comenzaremos con una matriz cuyos valores solo pueden ser 0 o 1, como esta: [[0, 1, 0, 1],[1, 0, 1, 1],[0, 1, 1, 0]]. A partir de esta matriz, debes generar una segunda matriz (de las mismas dimensiones) a la cual denotaremos por B, en la que el número contenido en cada casilla representará el número de bombas con las cuales está en contacto esa casilla en específico (incluyéndose a sí misma). Considerar una matriz a la que denotaremos por A de MxN (1<=M,N<=200) con M filas y N columnas cuyos valores solo pueden ser 0 o 1, a partir de esta se genera una segunda matriz a la que denotaremos por B de las mismas dimensiones, en la que cada casilla X de B tiene una valor entre 0 y 9 inclusive, que es igual a la suma de las casillas de la matriz A que son adyacentes a la casilla X en A más el valor de la casilla X en A (dos casillas son adyacentes si tienen un vértice en común). Genera la matriz B a partir de la matriz A.",
+        "entrada": "En la primera línea dos números M y N separados por un único espacio que nos indica el tamaño de la matriz. En las siguientes M líneas habrá por línea N números separados por un espacio entre ellos que serán los datos de la matriz.",
+        "salida": "M líneas cada una con N números separados por un espacio entre ellos que nos demuestra la cantidad de bombas que tiene en contacto cada una de las casillas.",
+        "nivel": "Básico (medio) - Introducción a la programación",
+        "categorias": [
+            "Cálculos aritméticos",
+            "Matrices",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<vector<int>>",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<vector<int>> num(201, vector<int> (201, 0));\n    long long a, b, c;\n    cin>>a>>b;\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<b; j++){\n            cin>>num[i][j];\n        }\n    }\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<b; j++){\n            c=num[i][j];\n            if(i+1<a){\n                c+=num[i+1][j];\n            }\n            if(j+1<b){\n                c+=num[i][j+1];\n            }\n            if(i-1>-1){\n                c+=num[i-1][j];\n            }\n            if(j-1>-1){\n                c+=num[i][j-1];\n            }\n            if(i+1<a && j+1<b){\n                c+=num[i+1][j+1];\n            }\n            if(i+1<a && j-1>-1){\n                c+=num[i+1][j-1];\n            }\n            if(i-1>-1 && j+1<b){\n                c+=num[i-1][j+1];\n            }\n            if(i-1>-1 && j-1>-1){\n                c+=num[i-1][j-1];\n            }\n            cout<<c<<\" \";\n        }\n        cout<<\"\\n\";\n    }\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "3010. String Manipulation 2",
+        "url": "https://omegaup.com/arena/problem/Manipula-Cadenas-2/",
+        "descripcion": "La UP (Unidad de Programadores) esta analizando un texto que les acaba de llegar, al parecer tiene un mensaje oculto, pero tu no debes preocuparte por eso, tu trabajo es escribir un programa que ejecute un cierto número de operaciones, cada una de ellas puede ser de este tipo: 0: Voltea el texto al revés. 1: Cambia mayúsculas por minúsculas.",
+        "entrada": "La primera línea contendrá un número n (1<=n<=1000000), indicando el número de operaciones a realizar. La segunda será el texto a manipular, la longitud del texto no sobrepasará los 1000 caracteres, y sólo contendra letras. Le siguen n números indicando el tipo de operación a ejecutar.",
+        "salida": "El texto resultante.",
+        "nivel": "(fácil)",
+        "categorias": [
+            "Caracteres y cadenas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c=0, d;\n    string z;\n    cin>>a>>z;\n    while(a){\n        a--;\n        cin>>d;\n        if(!d){\n            b++;\n        }\n        else{\n            c++;\n        }\n    }\n    b%=2;\n    c%=2;\n    if(b){\n        for(auto i=0, j=z.size()-1; i<z.size()/2; i++, j--){\n            swap(z[i], z[j]);\n        }\n    }\n    if(c){\n        for(auto i=0; i<z.size(); i++){\n            if(z[i]>96){\n                z[i]-=32;\n            }\n            else{\n                z[i]+=32;\n            }\n        }\n    }\n    cout<<z;\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "7071. ¿Qué probabilidad hay?",
+        "url": "https://omegaup.com/arena/problem/Que-probabilidad-hay/",
+        "descripcion": "Como es bien sabido, cuando dejas a olímpicos juntos sin cuidador, pronto empezaran a realizar juegos y travesuras. Esta noche, después de comer pizza se dispusieron a jugar \"¿Qué probabilidad hay?\" Un juego de retos en el que dos personas dicen dos números entre 1, 2 y 3; si son iguales, la persona retada debe cumplir lo que se acordó; si no, no pasa nada. Pasado el rato se empezaron a aburrir, por lo que decidieron cambiar las reglas. Ahora el retador escribirá un numero oculto, el retado dirá tres números diferentes entre 1 y K, si uno de ellos es el mismo que el numero escrito, entonces el retado debe cumplir el reto. Con estas reglas se preguntaron cual debería ser la mejor K, por ello decidieron crear un programa que dado la les diga la posibilidad de que se tenga que cumplir el reto.",
+        "entrada": "El número K (3<=K<=200).",
+        "salida": "La probabilidad de que el reto se deba cumplir con una precision de 10^-5.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Cálculos aritméticos"
+        ],
+        "estructuras": [
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a;\n    cin>>a;\n    a=3/a;\n    if(a==1){\n        cout<<\"1.00000\";return 0;\n    }\n    cout<<a<<\"00000\";\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "7408. ¡Fabulosos números triangulares!",
+        "url": "https://omegaup.com/arena/problem/Fabulosos-numeros-triangulares/",
+        "descripcion": "Ricardo es un matemático en el ITAM, por lo tanto es natural su fascinación por los números. En particular, le interesan los números que caen en categorías particulares, números primos, números perfectos, números de taxista etc. y justo esta semana descubrió una nueva categoría: ¡Los números triangulares! Un número t se dice triangular si al tener t pelotitas estas se pueden acomodar para formar un triángulo equilátero. Ahora, aunque Ricardo es muy listo, también es muy flojo. Por esto, el quiere una manera rápida de saber cual es el el n-ésimo numero triangular, pero al ser tan flojo, el te encarga a ti que escribas un programa que le resuelva este problema. Además, el quiere que tu programa pueda encontrar no solo uno sino varios números triangulares en una sola ejecución.",
+        "entrada": "La primera entrada será un número entero N seguido de N números M para los cuales deberás encontrar el M-ésimo número triangular.",
+        "salida": "N números siendo cada uno el resultado de encontrar un número triangular.",
+        "nivel": "Intermedio (fácil) - Matemáticas en la programación",
+        "categorias": [
+            "Combinaciones",
+            "Problemas de conteo",
+            "Diseños combinatorios",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c;\n    cin>>a;\n    while(a){\n        a--;\n        cin>>b;\n        c=((b+1)*b)/2;\n        cout<<c<<\"\\n\";\n    }\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "3106. occ04pnf12",
+        "url": "https://omegaup.com/arena/problem/Concatenando_palabras/",
+        "descripcion": "Dadas dos palabras hay que formar una tercera intercalando letras de la primera y de la segunda hasta agotar las letras de una de ellas o de ambas. Si solo se agota una de las palabras, la palabra a formar se completa con las letras sobrantes de la palabra no agotada.",
+        "entrada": "Dos palabras a formar.",
+        "salida": "Una tercera palabra formada de acuerdo a las reglas dadas.",
+        "nivel": "(medio)",
+        "categorias": [
+            "Caracteres y cadenas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    string z, zz;\n    cin>>z>>zz;\n    for(auto i=0, j=0; i<100000001; i++, j++){\n        if(i==z.size()){\n            while(j<zz.size()){\n                cout<<zz[j];\n                j++;\n            }\n            return 0;\n        }\n        else if(j==zz.size()){\n            while(i<z.size()){\n                cout<<z[i];\n                i++;\n            }\n            return 0;\n        }\n        cout<<z[i]<<zz[j];\n    }\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "5983. Problema del diablo",
+        "url": "https://omegaup.com/arena/problem/Problema-del-diablo/",
+        "descripcion": "Seguir leyendo bajo tu propio riesgo, no me hago responsable de convulsiones cerebrales, muertes o invocaciones repentinas a satanas. Santiago ha visto que tienes las hallagas de leer su ultimo problema de este examen (si llegaste aquí después de resolver los anteriores muy bien, si dejaste los demás incompletos y vienes a probar suerte pues... estas como el 96% de los participantes) Santiago no se le ocurría un problema para que Roberto no saque todos los puntos, así que hizo empezó un ritual satánico para pedirle ayuda al diablo. Después de una larga charla el diablo le dio el problema a resolver pero con la condición de que si alguien lo resuelve durante el examen tiene que dar chocolates a todos la siguiente clase. El diablo le dijo \"Para entender el problema debes hipotecar tu casa y comprar una nueva\". La casa nueva es un rectángulo de N x M dimensiones y los cuartos fueron hechos de la siguiente forma: 1-Te vas a la esquina superior izquierda de la parte de la casa aun no construida y formas el cuadro más grande que puedas. 2-Repites el primer paso hasta llenar toda la casa. Y tu debes averiguar cuantos cuartos hay. Dada las dimensiones de las casa decir cuantos cuartos tiene la casa.",
+        "entrada": "N y M que representan las dimensiones de la casa. Para un conjunto de casos con 60 puntos 1<N,M,10^6. Para un conjunto de casos con 40 puntos 10^6<N,M,10^8.",
+        "salida": "Número de cuartos de la casa.",
+        "nivel": "(fácil)",
+        "categorias": [
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n  \nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0;\n    cin>>a>>b;\n    if(a==b){\n        cout<<\"1\";\n    }\n    else if(a%b==0){\n        a/=b;\n        cout<<a;\n    }\n    else if(b%a==0){\n        b/=a;\n        cout<<b;\n    }\n    else{\n        while(a && b){\n            if(b>a){\n                swap(b, a);\n            }\n            c+=a/b;\n            a%=b;\n        }\n        cout<<c;\n    }\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "7104. Narrando la carrera de caballos",
+        "url": "https://omegaup.com/arena/problem/Narrando-la-carrera-de-caballos/",
+        "descripcion": "Todo está listo para la carrera de los dos caballos más famosos del mundo, pero el narrador se enfermó y no podrá asistir al evento. Afortunadamente, en la era de la información existen programas que leen lo que se les escribe con voces chistosas, pero el problema ahora es determinar qué texto darle al programa para que lo lea. Los organizadores del evento decidieron ponerles sensores a los caballos para que la narración de la carrera pueda generarse con los datos entregados por los mismos. Tu labor será la de escribir un programa que lea la información de los sensores y genere la narración correspondiente.",
+        "entrada": "Inicialmente, un entero T que es la duración en minutos de la carrera. Posteriormente, T parejas de enteros A_1,A_2 que representan la cantidad de metros que avanzaron los caballos 1 y 2 durante cada minuto de la carrera, respectivamente. Puedes suponer que 1<=T<=1000 y que 0<=A_1,A_2<=10.",
+        "salida": "Cada vez que un caballo tome la delantera, se debe imprimir el mensaje \"Al minuto m el caballo c toma la delantera\" donde m es el minuto tras el que ocurre el rebase y c es el número del caballo que toma la delantera. Cada vez que el caballo que iba en segundo lugar alcance al que iba en primer lugar (sin rebasarlo), se debe imprimir el letrero \"Al minuto m los caballos van empatados\" donde m es el minuto tras el que ocurre el alcance. No se deben imprimir mensajes en los minutos en los que no ocurren cambios de posiciones (es decir, el caballo que iba ganando sigue ganando o bien, cuando los caballos iban empatados y siguen empatados). Cada mensaje debe imprimirse en su propia línea. Se considera que los caballos comienzan empatados. Al término de la carrera, se debe imprimir el mensaje \"Termina la carrera y gana el caballo c\" donde c es el número del caballo que ganó, o bien, el mensaje \"Termina la carrera y empatan los caballos\" si los caballos quedaron empatados. Posteriormente, se debe imprimir el mensaje \"La distancia maxima entre los caballos fue de d\" donde d es la magnitud de la distancia más grande que hubo entre los caballos durante la carrera.",
+        "nivel": "Básico (medio) - Introducción a la programación",
+        "categorias": [
+            "Vectores",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<int>",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c=0, d, e, f=0, g, h=0;\n    vector<int> num(1000, 0);\n    cin>>a;\n    for(auto i=1; i<=a; i++){\n        cin>>d>>e;\n        b+=d;\n        c+=e;\n        if(!f && b>c){\n            cout<<\"Al minuto \"<<i<<\" el caballo 1 toma la delantera\\n\";\n            f=1;\n        }\n        else if(!f && c>b){\n            cout<<\"Al minuto \"<<i<<\" el caballo 2 toma la delantera\\n\";\n            f=2;\n        }\n        else if(f==1 && b==c){\n            cout<<\"Al minuto \"<<i<<\" los caballos van empatados\\n\";\n            f=0;\n        }\n        else if(f==1 && c>b){\n            cout<<\"Al minuto \"<<i<<\" el caballo 2 toma la delantera\\n\";\n            f=2;\n        }\n        else if(f==2 && b==c){\n            cout<<\"Al minuto \"<<i<<\" los caballos van empatados\\n\";\n            f=0;\n        }\n        else if(f==2 && b>c){\n            cout<<\"Al minuto \"<<i<<\" el caballo 1 toma la delantera\\n\";\n            f=1;\n        }\n        g=abs(b-c);\n        if(g>h){\n            h=g;\n        }\n    }\n    if(!f){\n        cout<<\"Termina la carrera y empatan los caballos\\n\";\n    }\n    else if(f==1){\n        cout<<\"Termina la carrera y gana el caballo 1\\n\";\n    }\n    else{\n        cout<<\"Termina la carrera y gana el caballo 2\\n\";\n    }\n    cout<<\"La distancia maxima entre los caballos fue de \"<<h<<\"\\n\";\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "2288. El caballo de John Carter",
+        "url": "https://omegaup.com/arena/problem/El-caballo-de-John-Carter/",
+        "descripcion": "John Carter, temiendo que su amigo Powell fuera capturado por los indios hostiles en su búsqueda de equipo minero, decidió seguir sus huellas a través de un sendero montañoso. Aunque el caballo de John iba a todo galope, lo irregular del terreno hacían que el caballo variara su velocidad. En terreno plano, el caballo de John era capaz de recorrer una unidad de distancia en P segundos, mientras que le tomaba S segundos recorrerla si el terreno estaba inclinado (de subida) y B segundos si estaba declinado (de bajada). Calcula el tiempo total en segundos que le tomó al caballo de John Carter recorrer todo el terreno.",
+        "entrada": "Tres enteros P, S, B y una cadena de no más de 1000 caracteres, donde el caracter - representa una unidad de terreno plano, / una unidad de terreno inclinado y \\ una unidad de terreno declinado. Puedes suponer que 1<=B<=P<=S<=1000.",
+        "salida": "Un entero T que sea el tiempo total en segundos que le tomó al caballo recorrer el terreno.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Cálculos aritméticos",
+            "Caracteres y cadenas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d=0;\n    string z;\n    cin>>a>>b>>c>>z;\n    for(auto i=0; i<z.size(); i++){\n        if(z[i]=='-'){\n            d+=a;\n        }\n        else if(z[i]=='/'){\n            d+=b;\n        }\n        else{\n            d+=c;\n        }\n    }\n    cout<<d;\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "6473. Lanzando Misiles",
+        "url": "https://omegaup.com/arena/problem/Lanzando-Misiles/",
+        "descripcion": "La bitácora de la Organización de Misiles Idénticos (OMI) cuenta con un listado de los misiles que han sido lanzados hasta la fecha. Cada misil tiene un número de identificación (ID). Tu trabajo es, dada la bitácora de la OMI y una lista de IDs, decir cuales de esos misiles ya han sido lanzados.",
+        "entrada": "Un entero N de misiles que han sido lanzados. Una lista de N enteros N_i, cada uno el ID de un misil en la bitácora. Un entero Q de misiles por los que se preguntará si ya han sido lanzados. Una lista de Q enteros Q_i, los IDs de los misiles por los que se pregunta. Limitaciones: 0<=N,Q<=10^6. 0<=N_i,Q_i<=10^6.",
+        "salida": "Por cada misil preguntado. Una linea: '1' si ya se ha lanzado '0' si aún no se ha lanzado.",
+        "nivel": "",
+        "categorias": [
+            "Vectores",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<int>",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<int> num(1000000, 0);\n    long long a, b;\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>b;\n        num[b]++;\n    }\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>b;\n        if(!num[b]){\n            cout<<\"0\\n\";\n        }\n        else{\n            cout<<\"1\\n\";\n        }\n    }\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "4934. La ciudad de Mate-Itza",
+        "url": "https://omegaup.com/arena/problem/Mate-Itza/",
+        "descripcion": "En la antigüedad existía un pueblo llamado Mate-Itza donde vivan grandes mentes matemáticas, el 50% de las personas poseían habilidades matemáticas fuera de su época, era un bello lugar, sin presidentes con copete como cerebro, toda melodía que sonaba al reguetón era extermina de forma inmediata, las personas pensaban en formulas matemáticas, áreas de volúmenes, teorías del universo. La desventaja es que era un pueblo que sufría de hambre y personas morían a causa de esto varias veces. Un día llego una persona de otra parte del mundo con muchos panes y le dio a elegir a cada persona \"puedo darte A+B panes ahorita o puedo darte A panes hoy y los días siguientes te voy a dar 1 más que el anterior, así hasta llegar al B; pero esta segunda solo se cumplirá si me dices cuantos panes habrás recibido al final\". Todas las personas hasta los matemáticos desesperados sin saber como sumar tantos números eligieron la primera opción; excepto por una persona llamada \"Chavelo\" respondió en menos de 1 segundo, nadie sabia como lo había hecho, hasta el extranjero quedo sorprendido. Resulta que Chavelo había creado un sistema computacional capaz de sacar el total de panes que tendría. Descifra el programa que hizo chavelo y recréalo. Se te darán dos enteros A y B deberás sacar A+(A+1)+...+B.",
+        "entrada": "Se te darán los dos enteros A y B. Límites: 0<A<B<(5*10^10). Para el 40% de los casos: (B-A)<10^6. Para el 60% de los casos: (B-A)<10^8.",
+        "salida": "El resultado de la suma A+(A+1)+(A+2)+...+B.",
+        "nivel": "(fácil)",
+        "categorias": [
+            "Caracteres y cadenas"
+        ],
+        "estructuras": [
+            "unsigned long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    unsigned long long a, b, c;\n    string z;\n    cin>>a>>b;\n    c=(((b-a)+1)*a)+(((b-a)*((b-a)+1))/2);\n    cout<<c;\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "4253. FuzzBuzz",
+        "url": "https://omegaup.com/arena/problem/FuzzBuzz/",
+        "descripcion": "Dados números cualquiera entre 1 y 1000 a la entrada del programa debe imprimir el número dado , pero si el número es múltiplo de 3 imprimirá la palabra \"Fuzz\", en el caso que sea múltiplo de 5 deberá imprimir \"Buzz\", y en caso de ser múltiplo de ambos (3 y 5) imprimirá \"FuzzBuzz\".",
+        "entrada": "Números entre 1 y 1000.",
+        "salida": "Por cada número en la entrada, imprimir la salida descrita en el enunciado (uno por línea).",
+        "nivel": "(fácil)",
+        "categorias": [
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);    \n    long long a;\n    while(cin>>a){\n        if(a%3==0 && a%5==0){\n            cout<<\"FuzzBuzz\\n\";\n        }\n        else if(a%5==0){\n            cout<<\"Buzz\\n\";\n        }\n        else if(a%3==0){\n            cout<<\"Fuzz\\n\";\n        }\n        else{\n            cout<<a<<\"\\n\";\n        }\n    }\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "4990. El zorro y las uvas",
+        "url": "https://omegaup.com/arena/problem/El-zorro-y-las-uvas/",
+        "descripcion": "Un hambriento zorro vio unos espléndidos racimos de uvas colgados de una viña sostenida de una reja muy alta. El zorro hizo su mejor intento de alcanzarlas brincando tan alto como pudo, pero todo esto fue en vano pues los racimos siempre quedaron un poco fuera de su alcance. Al final desistió y se alejó con un cierto aire de dignidad. En su camino meditó \"la verdad es que las uvas no estaban maduras, así que si hubiera brincado más alto de nada hubiera servido\". Escribe un programa que calcule cuántas uvas hubiera alcanzado el zorro si hubiera saltado más alto.",
+        "entrada": "Un entero N seguido de las alturas de los N racimos de uvas. Posteriormente un entero M seguido de las M alturas a las que hubiera podido brincar el zorro. Puedes suponer que 1<=N,M<=100,000 y que todas las alturas están entre 0 y 1,000,000,000.",
+        "salida": "Para cada posible brinco del zorro, la cantidad de racimos que hubiera podido alcanzar.",
+        "nivel": "Intermedio (fácil) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Búsqueda binaria",
+            "Ordenamiento",
+            "Vectores",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<pair<int, int>>",
+            "long long",
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<pair<int, int>> sub(100000, {0, 0});\n    long long a, b=0, c, d, e, f;\n    vector<int> num(100000, 0);\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n    }\n    sort(num.begin(), num.end());\n    for(auto i=1; i<a; i++){\n        if(num[i]!=num[i-1]){\n            sub[b].first=num[i-1], \n            sub[b].second=i;\n            b++;\n        }\n    }\n    sub[b].first=num[a-1];\n    sub[b].second=a;\n    b++;\n    cin>>a;\n    while(a){\n        a--;\n        cin>>c;\n        if(c<sub[0].first){\n            cout<<\"0 \";\n        }\n        else if(c>sub[b-1].first){\n            cout<<sub[b-1].second<<\" \";\n        }\n        else{\n            d=0;\n            e=b-1;\n            while(d<=e){\n                f=(d+e)/2;\n                if(sub[f].first==c){\n                    break;\n                }\n                else if(sub[f].first>c){\n                    e=f-1;\n                }\n                else{\n                    d=f+1;\n                }\n            }\n            if(sub[f].first>c){\n                f--;\n            }\n            cout<<sub[f].second<<\" \";\n        }\n    }\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "2359. MUH",
+        "url": "https://omegaup.com/arena/problem/muh/",
+        "descripcion": "Mario y Ugo, dos osos polares del zoológico de San Petersburgo y Horacio, un elefante del zoológico de Kiev, tienen 6 palitos para jugar y evaluar la creatividad de los animales. Mario, Ugo y Horacio han decidido hacer, o un elefante o un oso con esos palitos. Ellos pueden formar un animal con los palitos de la siguiente manera: 1.- Cuatro palitos representan las patas del animal, estos deben de tener la misma longitud. 2.- Los dos palitos restantes representan la cabeza y el cuerpo del animal. La cabeza del oso debe de ser más corta que el palito del cuerpo. El elefante, además, tiene un tronco largo, como su palito de la cabeza debe de ser tan largo como el del cuerpo. Note que aquí no hay límites en relación entre los palitos que forman las patas y los que forman la cabeza y el cuerpo. Tu tarea es encontrar que animal puede formarse dado el conjunto de palitos. El cuidador del zoológico quiere de regreso los palitos, así que no deben de ser quebrados; esto lo entiende hasta un oso.",
+        "entrada": "La única línea de la entrada contiene seis enteros separados por un espacio l_i(1<=l_i<=9), la longitud de los seis palitos. Se garantiza que la entrada no permite hacer dos animales a la vez.",
+        "salida": "Si se puede hacer un oso con todos los palitos, muestre la cadena \"Bear\" (sin las comillas). Si se puede hacer un elefante, despliegue la cadena \"Elephant\" (sin las comillas). Si no se puede hacer ni un oso o elefante, muestre la cadena \"Alien\" (sin las comillas).",
+        "nivel": "(medio)",
+        "categorias": [
+            "Vectores",
+            "Ordenamiento"
+        ],
+        "estructuras": [
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<int> num(6, 0);\n    cin>>num[0]>>num[1]>>num[2]>>num[3]>>num[4]>>num[5];\n    sort(num.begin(), num.end());\n    if(num[0]==num[1] && num[0]==num[2] && num[0]==num[3]){\n        if(num[4]==num[5]){\n            cout<<\"Elephant\";\n        }\n        else{\n            cout<<\"Bear\";\n        }\n    }\n    else if(num[1]==num[2] && num[1]==num[3] && num[1]==num[4]){\n        cout<<\"Bear\";\n    }\n    else if(num[2]==num[3] && num[2]==num[4] && num[2]==num[5]){\n        if(num[0]==num[1]){\n            cout<<\"Elephant\";\n        }\n        else{\n            cout<<\"Bear\";\n        }\n    }\n    else{\n        cout<<\"Alien\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "3293. DFD-IMC",
+        "url": "https://omegaup.com/arena/problem/DFD-IMC/",
+        "descripcion": "Desarrolla un DFD que lea el peso y la estatura de una persona, calcula e imprime su imc y determina si es normal o tiene sobrepeso. Una persona se considera con sobrepeso si su imc es mayor o igual a 25.",
+        "entrada": "En la primera línea el valor correspondiente al peso. En la segunda línea el valor correspondiente a la estatura en metros. Nota: el imc se calcula dividiendo el peso entre el cuadrado de la estatura. imc=peso/estatura^2.",
+        "salida": "En la primera línea el valor del IMC. En la segunda línea el mensaje NORMAL o SOBREPESO, según sea el caso.",
+        "nivel": "",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "pow()",
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b;\n    cin>>a>>b;\n    b=pow(b, 2);\n    a/=b;\n    cout<<a<<\"\\n\";\n    if(a>24){\n        cout<<\"SOBREPESO\";\n    }\n    else{\n        cout<<\"NORMAL\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "3297. DFD-Contando Estaturas",
+        "url": "https://omegaup.com/arena/problem/DFD-Contando-Estaturas/",
+        "descripcion": "Desarrolla un DFD que lea la estatura de N personas e imprima cuantas miden más de 1.70.",
+        "entrada": "En la primera línea el enetero N. En cada una de las siguientes N líneas, una estatura.",
+        "salida": "Un valor entero correpondiente al número de personas que miden más de 1.70.",
+        "nivel": "",
+        "categorias": [
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b=0, z;\n    cin>>a;\n    while(a){\n        a--;\n        cin>>z;\n        if(z>=1.71){\n            b++;\n        }\n    }\n    cout<<b;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "7469. Creo que ya funciona",
+        "url": "https://omegaup.com/arena/problem/Creo-que-ya-funciona/",
+        "descripcion": "En tu nuevo trabajo en la NASA, se te pidió realizar un programa que codificara en binario (solo 0s y 1s) los mensajes entre la estación terrestre y los astronautas en el espacio. A pesar de haberle dedicado casi toda la tarde a la importante tarea, tus superiores te reportan que cuando ejecutaron el programa, éste recibía de vez en cuando mensajes no binarios. Recordando los mejores años de tu vida en la universidad, se te ocurre \"parchar\" temporalmente el programa para que parezca funcionar correctamente por unos días (cuando tu equipo de lectura de comprensión competitiva por fin despegue, ya no tendrás que preocuparte por estas nimiedades). Para resolver el problema rápidamente, se te ha ocurrido el \"Brillante Filtro Doble Estrella\", que dejará pasar los mensajes binarios sin modificarlos, mientras que aquellos no binarios serán reemplazados por la cadena '10101'.",
+        "entrada": "1 linea con el mensaje al cual se le debe aplicar el \"brillante filtro doble estrella\".",
+        "salida": "1 línea con el resultado de aplicar el filtro.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Caracteres y cadenas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    string z;\n    cin>>z;\n    for(auto i=0; i<z.size(); i++){\n        if(z[i]!='0' && z[i]!='1'){\n            cout<<\"10101\"; return 0;\n        }\n    }\n    cout<<z;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "5710. Contando Dvisores fast",
+        "url": "https://omegaup.com/arena/problem/Contando-Dvisores-fast/",
+        "descripcion": "Dado un numero entero N, quieres saber si la cantidad de divisores de N es par o impar. Por ejemplo, si N=12, tiene de divisores a 1, 2, 3, 4, 6, 12. Por lo tanto tiene 6 divisores y 6 es par.",
+        "entrada": "Un numero N.",
+        "salida": "\"PAR\", si la cantidad de divisores de N es par, de lo contrario \"IMPAR\".",
+        "nivel": "",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "sqrt()"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    cin>>a;\n    b=sqrt(a);\n    if(b*b==a){\n        cout<<\"IMPAR\";\n    }\n    else{\n        cout<<\"PAR\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "2694. Cena",
+        "url": "https://omegaup.com/arena/problem/Cena-oficial/",
+        "descripcion": "Los alumnos de Naty son muy necios acerca de sus compañeros de comida. Ellos se han organizado en dos grupos alimenticios(convenientemente numerados 1 y 2) que insisten en comer juntos, con el grupo 1 al inicio de la fila y el grupo 2 al final de la misma. El problema comienza cuando ellas se forman para entrar al área de alimentación. Cada alumnos i lleva con el una pequeña tarjeta en la cual está grabado D_i(1<=D_i<=2) indicando su pertenencia a un grupo alimenticio. Todo el conjunto de N(1<=N<=30,000) alumnos se ha alineado para la comida pero es fácil para cualquiera ver, que ellos no están agrupadas según sus tarjetas de grupo alimenticio. El trabajo de la mestra Naty no es tan difícil. Ella simplemente recorre la línea de alumnos cambiando su asignación de grupo alimenticio tachando el número antiguo y escribiendo uno nuevo. Haciendo eso, ella crea grupos de alumnos como 1112222 o 1111122 en los que los grupos alimenticios de los alumnos están ordenados ascendentemente. En pocas ocasiones, ella podría cambiar las tarjetas de tal manera que solamente quede un grupo de alumnos (por ejemplo, 1111111 o 2222222). Naty esta cansada y es curiosa: ¿cuál el número mínimo absoluto de tarjetas que ella debe cambiar para crear un grupo apropiado de socios alimentarios? El únicamente debe cambiar los números de las tarjetas y no debe reorganizar a los alumnos en la fila",
+        "entrada": "Línea 1: Un solo entero: N. Líneas 2..N+1: La línea i+1 describe la preferencia alimentaria del alumno i con un solo entero: D_i.",
+        "salida": "Línea 1: Un solo entero que es el número mínimo de tarjetas que la maestra Naty debe cambiar para asignar los alumnos a los grupos alimentarios como se ha descrito.",
+        "nivel": "(fácil)",
+        "categorias": [
+            "Vectores",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<pair<int, int>>",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<pair<int, int>> num(30001, {0, 0});\n    long long a, b=30000, c=0, d;\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i].first;\n    }\n    for(auto i=a-1; i>-1; i--){\n        if(num[i].first==1){\n            c++;\n        }\n        else{\n            num[i].second=c;\n        }\n    }\n    c=0;\n    for(auto i=0; i<a; i++){\n        if(num[i].first==2){\n            d=c+num[i].second;\n            if(d<b){\n                b=d;\n            }\n            c++;\n        }\n    }\n    if(c<b){\n        b=c;\n    }\n    cout<<b;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "376. Calificaciones",
+        "url": "https://omegaup.com/arena/problem/Calificaciones/",
+        "descripcion": "Hoy conociste a tu nuevo profesor de matemáticas y les explicó su método de calificaciones. Como es muy radical decidió que solo iba a poner como calificaciones 0, 7 ó 10. Tu calificación final será aquella que se acerque más, sumando o restando, al 0, 7 ó 10 según tu calificación del examen.",
+        "entrada": "Leerás varias líneas, cada una con una calificación M de examen.",
+        "salida": "Por cada línea leída deberás imprimir cuál es la calificación final según el criterio del profesor.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    while(cin>>a){\n        if(a<4){\n            cout<<\"0\\n\";\n        }\n        else if(a<9){\n            cout<<\"7\\n\";\n        }\n        else{\n            cout<<\"10\\n\";\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4019. Agregando Tareas Reloaded",
+        "url": "https://omegaup.com/arena/problem/Agregando-Tareas-Reloaded/",
+        "descripcion": "Diego es un alumno muy organizado con sus tareas, y las tiene apiladas por el tiempo que le toma realizar cada una. La tarea que le toma menos tiempo está en el fondo de la pila y la que le lleva más tiempo está en el tope. Además, Diego siempre hace la tarea que le lleva más tiempo antes que todas las demás. Sin embargo, Diego olvidó agregar una de sus tareas y como es un poco flojo no quiere tener que revisar todas sus tareas para acomodar de nuevo la pila. Tu tarea es decirle a Diego cuántas tareas tiene que terminar antes de poder hacer la que olvidó agregar.",
+        "entrada": "En la primera línea, dos números, N y P, que representan la cantidad de tareas de Diego y el tiempo que le toma a Diego hacer la tarea que olvidó agregar, respectivamente. En las siguientes N líneas, N números que representan el tiempo que le toma a Diego realizar cada tarea. 1<=N<=1000. 1<=P<=10^6. La tarea olvidada nunca será la que le lleva menos tiempo a Diego. No hay 2 o más tareas que le lleven el mismo tiempo a Diego.",
+        "salida": "La cantidad de tareas que Diego tiene que terminar antes de acomodar la tarea olvidada.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=0, d;\n    cin>>a>>b;\n    for(auto i=0; i<a; i++){\n        cin>>d;\n        if(d>b){\n            c++;\n        }\n    }\n    cout<<c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "5754. 2018_1_CONDICIONES3",
+        "url": "https://omegaup.com/arena/problem/2018_1_CONDICIONES3/",
+        "descripcion": "El impuesto del ISR es escalonado, lo que quiere decir que mientras más ganas, más porcentaje de impuestos debes pagar, pero sólo si pasas de ciertos límites. La manera de calcularlo es viendo en qué nivel de la tabla se encuentra un salario. Dependiendo de ese nivel, se paga una cuota fija. La parte del salario que se pase del límite inferior en nuestro nivel de la paga, paga una tasa porcentual de ISR. Al final se unen esos dos valores. Una tabla simplificada de impuestos es como sigue: \"tablaISR\": [{\"limite_inferior\": 0.01, \"limite_superior\": 969.5, \"cuota_fija\": 0, \"tasa_ISR\": 1.92},{\"limite_inferior\": 969.51, \"limite_superior\": 1703.80, \"cuota_fija\": 56.91, \"tasa_ISR\": 10.88},{\"limite_inferior\": 1703.81, \"limite_superior\": 4782.61, \"cuota_fija\": 136.85, \"tasa_ISR\": 16},{\"limite_inferior\": 4782.62, \"limite_superior\": 14391.44, \"cuota_fija\": 766.15, \"tasa_ISR\": 23.52},{\"limite_inferior\": 14391.45, \"limite_superior\": 19188.61, \"cuota_fija\": 3470.25, \"tasa_ISR\": 32},{\"limite_inferior\": 19188.62, \"limite_superior\": 57565.76, \"cuota_fija\": 5005.35, \"tasa_ISR\": 34},{\"limite_inferior\": 57565.77, \"limite_superior\": \"En adelante\", \"cuota_fija\": 18053.63, \"tasa_ISR\": 35}]. A partir de la tabla, calcular el ISR para un salario dado.",
+        "entrada": "El salario de una persona, como número decimal. 0<=N<=200,000.",
+        "salida": "La cantidad de impuesto ISR que se debe pagar, como número decimal.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Cálculos aritméticos"
+        ],
+        "estructuras": [
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a;\n    cin>>a;\n    if(a>=0.01 && a<=969.5){\n        a=a-0.01;\n        a=((a*1.92)/(100))+0;\n        cout<<a;\n    }\n    else if(a>=969.51 && a<=1703.80){\n        a=a-969.51;\n        a=((a*10.88)/(100))+56.91;\n        cout<<a;\n    }\n    else if(a>=1703.81 && a<=4782.61){\n        a=a-1703.81;\n        a=((a*16)/(100))+136.85;\n        cout<<a;\n    }\n    else if(a>=4782.62 && a<=14391.44){\n        a=a-4782.62;\n        a=((a*23.52)/(100))+766.15;\n        cout<<a;\n    }\n    else if(a>=14391.45 && a<=19188.61){\n        a=a-14391.45;\n        a=((a*32)/(100))+3470.25;\n        cout<<a;\n    }\n    else if(a>=19188.62 && a<=57565.76){\n        a=a-19188.62;\n        a=((a*34)/(100))+5005.35;\n        cout<<a;\n    }\n    else if(a>=57565.77){\n        a=a-57565.77;\n        a=((a*35)/(100))+18053.63;\n        cout<<a;\n    }\n    else{\n        cout<<\"0\";\n    }\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "5260. Andy trabaja en el Oxxo",
+        "url": "https://omegaup.com/arena/problem/Andy-trabaja-en-el-Oxxo-c/",
+        "descripcion": "¿Recuerdas la vez que Andrea rompió el jarrón de su mamá? Si no lo recuerdas te platicare un poco acerca de aquella ocasión, ella rompió el jarrón de su mamá mientras ella estaba de vacaciones, accidentalmente alzó su brazo y tiró el jarrón. Debido a ello tuvo que conseguir un trabajo en el Oxxo, a ella le tocaba atender una caja registradora que contaba con N pesos. Durante una jornada laboral hubieron M personas (Entre ellas incluidas clientes y gerentes) que retiraron o abonaron P_M pesos. Tu tarea será crear un programa en el cual según los datos ingresados digas con cuánto dinero quedó al final, en caso de que trates de retirar una cantidad mayor a la que tienes en caja da un aviso de que no hay suficiente dinero para retirar. Consideraciones: Los clientes abonan, los gerentes retiran. En caso de que se trate de retirar una cantidad que no se posee, el programa debe terminar y decir: \"No hay suficiente dinero\". Los clientes siempre pagaran sus productos exactamente. Se debe preceder el signo de peso ($) antes de escribir el total que quedó en la caja. En caso de tratar de retirar una cantidad que no se tiene, será el último gerente que tratará de retirarlo.",
+        "entrada": "En la primera linea un número N que indica cuánto dinero posee la caja al inicio del día. En la segunda linea, un número M indicando la cantidad de personas que atendió Andrea en el Oxxo. En las siguientes M lineas, un caracter sea G o C, representando a Gerentes o Clientes que visitaron la caja de Andrea seguido de un espacio, seguido de los P pesos que llevaron consigo.",
+        "salida": "La cantidad de pesos con la que quedó la caja registradora al final del día precedida de un signo de peso ($), en caso de que se haya tratado de retirar una cantidad de pesos que no se tiene imprimir \"No hay suficiente dinero\".",
+        "nivel": "",
+        "categorias": [
+            "Caracteres y cadenas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long double",
+            "char"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b, c;\n    char z;\n    cin>>a>>b;\n    while(b){\n        b--;\n        cin>>z>>c;\n        if(z=='C'){\n            a+=c;\n        }\n        else{\n            a-=c;\n            if(a<0){\n                cout<<\"No hay suficiente dinero\"; \n                while(b--){\n                    cin>>c;\n                }\n                return 0;\n            }\n        }\n    }\n    cout<<\"$\"<<a;\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "7760. Ayudando a Santa",
+        "url": "https://omegaup.com/arena/problem/Ayudando-a-Santa/",
+        "descripcion": "La Navidad ya esta a la vuelta de la esquina y como sabes que te portaste bien todo el año, Santa te traerá aquel regalo que tanto quieres y mueres por tener. Llega el día 24 y te quedas muy despierto a un lado de tu arbolito de Navidad con chocolate caliente esperando su llegada, de pronto escuchas que abren la puerta y gritan tu nombre, ¡es Santa! quien en vez de darte tu regalo, pide tu ayuda para salvar la Navidad. Resulta que por la tormenta de nieve que tuvo que atravesar, la computadora que controla el trineo se averió y necesita reprogramarse. La computadora necesita una ecuación de calibración que hace que el trineo pueda navegar por sí solo. Como Santa sabe que eres buen programador, logró llegar hasta tu casa para que lo ayudes a reprogramarla y salvar la Navidad. La computadora del trineo de santa funciona con la siguiente ecuación: (Velocidad/PesoTrineo)*Distancia. Tu tarea consiste en generar un programa que reciba dichas variables descritas por la ecuación, la resuelva y devuelva el resultado. Ya que el trineo de Santa viaja a muchos destinos la computadora tiene que recalcular los datos dependiendo como vayan cambiando las variables, así que recibirás muchos casos para probar que en verdad funcione correctamente.",
+        "entrada": "Recibirás una linea que contiene las variables enteras V[metros*seg], P[gramos] y D[metros], cada uno representa la velocidad, peso del trineo y distancia, respectivamente. 0<V<2^31. 1<P<=100. 0<D<2^31.",
+        "salida": "La computadora del trineo de Santa no soporta decimales por lo que solo deberás imprimir un sólo número entero sin decimales indicando el resultado de la ecuación de calibración del trineo, si hay numeros decimales en el resultado, debes truncar este resultado.",
+        "nivel": "",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "fixed",
+            "setprecision",
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b, c, d;\n    cin>>a>>b>>c;\n    d=(a/b)*c;\n    cout<<fixed<<setprecision(0)<<d;\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "1377. Abriendo La Puerta",
+        "url": "https://omegaup.com/arena/problem/abre/",
+        "descripcion": "El primer paso esta dado, ya encontraste la tumba, sin embargo, tus problemas apenas comienzan, primero deberá abrir la puerta y una vez adentro deberás sortear todas la trampas en el camino al tesoro. ¡Pero comencemos por el principio, antes que cualquier cosa hay que abrir la puerta! Al llegar a la tumba te encuentras con una puerta repleta de palancas, todas las palancas son negras, salvo una de ellas, la cual es de un color rojo sangre. En la puerta hay además una inscripción y una secuencia de números. Tras leer la inscripción descubres que para abrir la puerta es necesario bajar todas las palancas, sin embargo, las palancas se deberán ir bajando siguiendo la secuencia de números en la puerta, con la condición de que la última palanca que se baje sea la palanca roja. Hay que ser muy cuidadoso, porque la inscripción dice que si se rompe la secuencia o si se baja la palanca roja antes de bajar todas las negras \"... su alma será condenada a los fuegos eternos mientras dure la era del quinto sol\". La forma de ir bajando las palancas es la siguiente: inicialmente se baja una palanca, que puede ser cualquiera. A partir de ésta se cuenta un número x1 de palancas, donde x1 es el primer número de la secuencia escrita en la puerta y se baja la palanca en donde quedaste, de ahí, cuentas x2 palancas dónde x2 es el segundo número de la secuencia y nuevamente bajas la palanca correspondiente. Continuando con la secuencia hasta que todas las palancas estén abajo. Las palancas siempre se cuentan en el mismo sentido, es decir, siempre hacia la derecha y si llegas al final debes de seguir contando por el principio. Al contar las palancas no debes tomar en cuenta las que ya estén abajo. Debes escribir un programa que conociendo el número de palancas, la posición de la palanca roja y la secuencia de números, te diga cual es la primera palanca que debes bajar para que siguiendo la secuencia de números, la última palanca que bajes sea la palanca roja.",
+        "entrada": "Tu programa deberá leer los siguientes datos: en la primera línea el número 9<=P<=20000 de palancas en la puerta, en la segunda línea el número R, dónde 1<=R<=P que indica la posición de la palanca roja contando a partir de 1 y por último en la tercera línea P-1 números separados por un espacio que indican la secuencia que se debe llevar en el conteo de palancas.Los números de la secuencia de saltos son todos entre 1 y 16. 9<=P<=20000. 1<=R<=P. Los números de la secuencia de saltos son todos entre 1 y 16.",
+        "salida": "Tu programa deberá un único número indicando la posición de la primera palanca que se debe bajar.",
+        "nivel": "Básico (medio) - Introducción a la programación",
+        "categorias": [
+            "Implementación",
+            "Cálculos aritméticos",
+            "Vectores",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<int>",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d=0, e, f=1, g, h;\n    vector<int> num(20001, 0);\n    vector<int> sub(20001, 0);\n    cin>>a>>b;\n    b--;\n    e=a;\n    num[0]=1;\n    a--;\n    while(a){\n        cin>>c;\n        if(a==1){\n            break;\n        }\n        c%=a;\n        if(c){\n            while(c){\n                d++;\n                if(d==e){\n                    d=0;\n                }\n                if(!num[d]){\n                    c--;\n                }\n            }\n        }\n        else{\n            while(num[d]==1){\n                d--;\n                if(d<0){\n                    d=e-1;\n                }\n            }\n        }\n        num[d]=1;\n        if(d==b){\n            g=0;\n            h=d;\n            while(num[h]==1){\n                g++;\n                h--;\n                if(h<0){\n                    h=e-1;\n                }\n            }\n            f+=g;\n            for(auto i=0; i<e; i++){\n                sub[i]=num[((((i-g)%e)+e)%e)];\n            }\n            for(auto i=0; i<e; i++){\n                num[i]=sub[i];\n            }\n        }\n        a--;\n    }\n    cout<<f;\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "4023. A Esparcir Rumores",
+        "url": "https://omegaup.com/arena/problem/Rumores/",
+        "descripcion": "En una ciudad de N habitantes se esparce un rumor de modo que cada hora se duplica la cantidad de personas que se enteran del mismo. Muy bien, pues TU Quieres saber cuantas personas han iniciado este rumor y cuantas lo sabrán después de y horas.",
+        "entrada": "Dado un entero N y la cantidad X horas que tardara en esparcirse este rumor por toda tu ciudad calcula cuantas personas iniciaron el rumor. Seguido de esto recibirás un numero M El cual sera una pregunta sobre cuantas personas sabrán el rumor tras esas horas. 1<=N<=10^12. 1<=M<=100000000.",
+        "salida": "En la primera linea deberás imprimir cuantas personas iniciaron el rumor en la siguiente la respuesta a la pregunta sobre cuantas personas lo sabían después de M Horas.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Cálculos aritméticos",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "unsigned long long",
+            "long double"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long double a, b, c;\n    unsigned long long z;\n    cin>>a>>b>>c;\n    z=a;\n    while(b--){\n        z/=2;\n        a/=2;\n    }\n    cout<<z<<\"\\n\";\n    while(c--){\n        a*=2;\n    }\n    z=a;\n    cout<<z;\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "5654. Suma de reales",
+        "url": "https://omegaup.com/arena/problem/Suma-de-reales/",
+        "descripcion": "Elabora un programa que sume dos numeros.",
+        "entrada": "Dos numeros reales. -2^8 < x < 2^8",
+        "salida": "La suma de los dos numeros con dos decimales",
+        "nivel": "Básico (medio) - Introducción a la programación",
+        "categorias": [
+            "Cálculos aritméticos",
+            "Vectores"
+        ],
+        "estructuras": [
+            "long double",
+            "setprecision",
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<int> num(30001, 0);\n    long double a, b, c;\n    cin>>a>>b;\n    c=a+b;\n    cout<<fixed<<setprecision(2)<<c;\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "1460. Las Cuentas del Hippie",
+        "url": "https://omegaup.com/arena/problem/cuentas/",
+        "descripcion": "Hace algún tiempo conociste a un hippie que se dedica a hacer collares con cuentas (bolitas) de vidrio, como anda muy escaso de dinero tu amigo tiene únicamente un hilo en donde guarda todas las cuentas que utiliza. Hace poco tu amigo recibió un pedido de un collar que debe llevar únicamente C cuentas negras. En su hilo tu amigo puede tener cuentas de diversos colores, y cada vez que hace un collar saca todas las cuentas, escoge las que necesita y vuelve a meter las que le sobraron. Como éste método le resulta muy tedioso, te ha pedido que le ayudes a encontrar una forma de optimizarlo. Cuando abres el hilo, puedes obtener una a una cuentas de cualquiera de los lados del hilo que abriste, si la cuenta que obtienes es negra, la puedes utilizar en el collar, si es de otro color deberás \"desperdiciar\" esa cuenta. Debes escribir un programa que determine donde abrir el hilo para que puedas obtener las C cuentas negras desperdiciando el menor número de cuentas posibles de otro color.",
+        "entrada": "Tu programa deberá leer del teclado de la PC los siguientes datos: En la primera línea el número 0<C<=3,000 de cuentas negras que necesitas. En la segunda línea el número C<N<=30,000 que indica la cantidad de cuentas en el hilo. En la tercera línea habrá N números enteros separados cada uno por un espacio que indican el color de las cuentas del hilo, si el número es un 0 indica que la cuenta en esa posición es negra, si el número es 1 indica que la cuenta es de un color distinto. NOTA: El número de cuentas negras en el hilo siempre será mayor o igual al número de cuentas que necesitas.",
+        "salida": "Tu programa deberá escribir en la pantalla de la PC un número entero que indique el mínimo número de cuentas que debes \"desperdiciar\" para poder obtener todas las cuentas negras que necesitas.",
+        "nivel": "(medio)",
+        "categorias": [
+            "Vectores",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c=-1, d=0, e=0, f, g=300000;\n    vector<int> num(30001, 0);\n    cin>>b>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n        if(c==-1 && !num[i]){\n            c=i;\n        }\n        if(d<b){\n            if(num[i]==1 && c!=-1){\n                e++;\n            }\n            else if(!num[i]){\n                d++;\n            }\n            f=i;\n        }\n    }\n    if(e<g){\n        g=e;\n    }\n    while(true){\n        c++;\n        if(c==a){\n            break;\n        }\n        while(num[c]==1){\n            e--;\n            c++;\n            if(c==a){\n                break;\n            }\n        }\n        if(c==a){\n            break;\n        }\n        f++;\n        if(f==a){\n            f=0;\n        }\n        while(num[f]==1){\n            e++;\n            f++;\n            if(f==a){\n                f=0;\n            }\n        }\n        if(e<g){\n            g=e;\n        }\n    }\n    cout<<g;\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "842. Agencia matrimonial",
+        "url": "https://omegaup.com/arena/problem/agencia_matrimonial/",
+        "descripcion": "Una agencia matrimonial tiene n clientes de ambos sexos. Se conoce la edad de todos los clientes (expresada en la misma unidad para todos, la cual no tiene porqué ser años; podrían ser meses, días, etcétera). Los dos encargados de la agencia tienen opiniones diferentes acerca de cómo deberían emparejarse los clientes. Uno piensa que debería minimizarse la suma de las diferencias de edades de cada pareja formada. El otro opina justamente lo contrario, es decir, que debería maximizarse esa suma de diferencias. Escribe un programa que calcule la mínima suma posible de diferencias y la máxima suma posible de diferencias. Por ejemplo, si n=2, los hombres tienen edades 25 y 40, y las mujeres tienen edades 20 y 50, entonces sólo hay dos posibilidades: 25 - 20, 40  50 (con suma total 15) y 40  20, 25  50 (con suma total 45).",
+        "entrada": "La entrada consiste en 1<=n<=50000, seguido de n números en una línea con las edades de los hombres, seguido de n números en otra línea con las edades de las mujeres.",
+        "salida": "Escribe una línea con dos números separados por un espacio: La mínima suma posible de las diferencias de edades, y la máxima suma posible de las diferencias de edades.",
+        "nivel": "Intermedio (fácil) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Vectores",
+            "Ciclos",
+            "Ordenamiento"
+        ],
+        "estructuras": [
+            "vector<int>",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c=0;\n    vector<int> num(50001, 0);\n    vector<int> sub(50001, 0);\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n    }\n    for(auto i=0; i<a; i++){\n        cin>>sub[i];\n    }\n    sort(num.begin(), num.end());\n    sort(sub.begin(), sub.end());\n    for(auto i=0; i<a; i++){\n        b+=abs(num[i]-sub[i]);\n    }\n    cout<<b<<\" \";\n    for(auto i=0, j=a-1; i<a; i++, j--){\n        c+=abs(num[i]-sub[j]);\n    }\n    cout<<c;\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "6180. sumar matrices",
+        "url": "https://omegaup.com/arena/problem/sumar-matrices/",
+        "descripcion": "Hacer un programa que sume dos arreglos bidimensionales de NxN elementos hacia un tercer arreglo.",
+        "entrada": "En la primera linea el entero N. En los siguientes N conjuntos de lineas, N enteros que indican los elementos de una fila de la primer matriz. En los siguientes N conjuntos de lineas, N enteros que indican los elementos de una fila de la segunda matriz.",
+        "salida": "La matriz final.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Cálculos aritméticos",
+            "Matrices",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<vector<int>>",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    vector<vector<int>> num(1000, vector<int> (1000, 0));\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<a; j++){\n            cin>>num[i][j];\n        }\n    }\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<a; j++){\n            cin>>b;\n            num[i][j]+=b;\n        }\n    }\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<a; j++){\n            cout<<num[i][j]<<\" \";\n        }\n        cout<<\"\\n\";\n    }\n    \n    return 0;\n}"
+    },
+    {
+        "titulo": "4059. Las Cartas del Dr. Lira (Adaptacion)",
+        "url": "https://omegaup.com/arena/problem/Cartas-Lira/",
+        "descripcion": "Dr. Lira tiene N cartas acomodadas en una secuencia. Él numeró las cartas de izquierda a derecha con números de 0 a N-1. Cada carta está coloreada negra de un lado y blanco del otro. Algunas de las cartas (posiblemente ninguna o todas) estarán acomodadas con el lado negro hacia arriba y otras con el blanco. Para activar su arsenal de armas, Dr. Lira necesita voltear algunas cartas tal que queden acomodadas de forma alternada: cada par de cartas consecutivas deben tener colores diferentes. Para no cansarse, Dr. Lira ha contratado tus servicios para que encuentres cuál es el mínimo número de cartas que tienes que voltear para que todas las cartas queden alternadas.",
+        "entrada": "Tendrás como entrada un entero 3<=N<=50 que indica el número de cartas de Dr. Lira. En la siguiente línea encontrarás la configuración actual de las cartas, cada una representada por un numero 1 o 0: si el caracter en la i-ésima posición es 1, quiere decir que la carta está actualmente mostrando su lado negro, si es 0, quiere decir que está mostrando su lado blanco.",
+        "salida": "Cuenta e imprime un entero representando el mínimo número de cartas que necesitas voltear para obtener la configuración que alterne las cartas.",
+        "nivel": "Intermedio (fácil) - Análisis y diseño de algoritmos",
+        "categorias": [
+            "Vectores",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c=0, d=0;\n    vector<int> num(500, 0);\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n        if(i%2==0){\n            b+=num[i];\n        }\n        else{\n            c+=num[i];\n        }\n    }\n    if(b>c){\n        for(auto i=0; i<a; i++){\n            if(i%2==0 && !num[i]){\n                d++;\n            }\n            else if(i%2==1 && num[i]==1){\n                d++;\n            }\n        }\n    }\n    else{\n        for(auto i=0; i<a; i++){\n            if(i%2==0 && num[i]==1){\n                d++;\n            }\n            else if(i%2==1 && !num[i]){\n                d++;\n            }\n        }\n    }\n    cout<<d;\n    \n    return 0;\n}"
+    },
+    {
         "titulo": "...",
         "url": "...",
         "descripcion": "...",
