@@ -7347,6 +7347,361 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b=0, c=0, d=0;\n    vector<int> num(500, 0);\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n        if(i%2==0){\n            b+=num[i];\n        }\n        else{\n            c+=num[i];\n        }\n    }\n    if(b>c){\n        for(auto i=0; i<a; i++){\n            if(i%2==0 && !num[i]){\n                d++;\n            }\n            else if(i%2==1 && num[i]==1){\n                d++;\n            }\n        }\n    }\n    else{\n        for(auto i=0; i<a; i++){\n            if(i%2==0 && num[i]==1){\n                d++;\n            }\n            else if(i%2==1 && !num[i]){\n                d++;\n            }\n        }\n    }\n    cout<<d;\n    \n    return 0;\n}"
     },
     {
+        "titulo": "2421. Las ventanas del dormitorio marciano",
+        "url": "https://omegaup.com/arena/problem/ventanas_dormitorio_marciano/",
+        "descripcion": "John Carter fue capturado por los marcianos verdes, pero recibe un trato preferencial por sus grandes habilidades de salto. Sola, la marciana encargada de cuidarlo, condujo a John a su dormitorio: un cuarto con grandes ventanas en una pared y con un estilo antiguo bastante peculiar. El clima en Marte es extremo, pero cuando las ventanas del lugar están cerradas entonces John puede evitar los gélidos vientos nocturnos. Para su mala fortuna, las marcianas del lugar abren y cierran constantemente las ventanas, por lo que John debe cambiarse de lugar con frecuencia. Ayuda a John a determinar si una posición en el dormitorio está libre de viento, dada la situación de las ventanas.",
+        "entrada": "Un entero N seguido de los intervalos [I_i, F_i] de las posiciones cubiertas por cada una de las N ventanas de la pared, inicialmente abiertas. Posteriormente un entero M seguido de M renglones, cada uno con un caracter Q y un entero K: si Q = C entonces la ventana que cubre la posición K acaba de cambiar su estado; si Q = P entonces se desea conocer si la posición K del dormitorio está libre de viento en ese momento. Puedes suponer que 1 <= N, M <= 100000, que 1 <= I_i, F_i, K <= 1000000000 con I_i <= F_i para 1 <= i <= N, que no hay ventanas sobrepuestas y que existe una ventana que cubre la posición K cuando Q = C.",
+        "salida": "Para cada pregunta con Q = P, un 1 si la posición K está libre de viento en ese momento y un 0 en otro caso.",
+        "nivel": "Intermedio (medio) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Búsqueda binaria",
+            "Ordenamiento",
+            "Vectores",
+            "Tablas de dispersión",
+            "Ciclos",
+            "Caracteres y cadenas"
+        ],
+        "estructuras": [
+            "vector<pair<int, int>>",
+            "vector<int>",
+            "auto",
+            "long long",
+            "char"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, h;\n    vector<pair<int, int>> venta(100000, {0, 0});\n    vector<int> num(100000, 0);\n    char n;\n    cin >> a;\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> venta[i].first >> venta[i].second;\n    }\n    sort(venta.begin(), venta.end());\n    cin >> b;\n    while (b)\n    {\n        b--;\n        cin >> n >> c;\n        if (n == 'C')\n        {\n            d = 0;\n            e = a - 1;\n            while (d <= e)\n            {\n                h = (d + e) / 2;\n                if (venta[h].first <= c && venta[h].second >= c)\n                {\n                    if (!num[h])\n                    {\n                        num[h] = 1;\n                    }\n                    else\n                    {\n                        num[h] = 0;\n                    }\n                    break;\n                }\n                else if (venta[h].second < c)\n                {\n                    d = h + 1;\n                }\n                else\n                {\n                    e = h - 1;\n                }\n            }\n        }\n        else\n        {\n            d = 0;\n            e = a - 1;\n            f = -1;\n            while (d <= e)\n            {\n                h = (d + e) / 2;\n                if (venta[h].first <= c && venta[h].second >= c)\n                {\n                    f = 1;\n                    cout << num[h] << \"\\n\";\n                    break;\n                }\n                else if (venta[h].second < c)\n                {\n                    d = h + 1;\n                }\n                else\n                {\n                    e = h - 1;\n                }\n            }\n            if (f == -1)\n            {\n                cout << \"1\\n\";\n            }\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1549. Paredes Movedizas",
+        "url": "https://omegaup.com/arena/problem/paredes/",
+        "descripcion": "Tras haber formado el nombre del dios OMInca, fue tal tu emoció al ver el tesoro entre tus manos que lo tomaste y saliste corriendo sin observar hacia dónde te dirigías, con lo que equivocaste el camino y en vez de regresar por donde habías llegado, entraste a un lugar completamente obscuro. Justo al entrar, la puerta detrás de ti se cerró de un golpe, en ese momento te das cuenta que te encuentras dentro de un laberinto. Mientras haces esfuerzos por hallar la salida, sin querer presionas una de las piedras preciosas que se encuentran en la figura de oro que traes cargando y escuchas ruido de que algunas paredes dentro del laberinto se mueven, abriéndose y cerrándose. Desesperado comienzas a apretar las piedras una tras otra tratando de descubrir cuál es el acertijo, ya que cada que presionas una se vuelven a escuchar a tu alrededor paredes abriendo y cerrando. Después de un buen rato de estar presionando piedras y sin entender qué es lo que pasa a tu alrededor, te das cuenta de que en la parte de abajo de la figura se encuentran grabados unos números y un mapa de lo que seguramente es tu laberinto. Al analizarlos te das cuenta de que explican qué es lo que sucede cada que aprietas una de las piedras preciosas. Según parece, esta figurilla es una especie de \"control remoto\" utilizado por los OMIncas, ya que para cada piedra una o varias de las paredes del laberinto se mueven, si la pared estaba abierta se cierra y si estaba cerrada se abre. En la figurilla existen varias piedras, cada una mueve un grupo distinto de paredes en el laberinto, en la inscripción se indica qué paredes se mueven al apretarse cada piedra. En el mapa se muestran las paredes y se indica que al entrar ahí cualquier profanador, todas las paredes se cerrarán. Con estos datos, tu podrías haber encontrado una manera de salir, sin embargo, tu problema ahora es que ya no sabes como quedaron las puertas después de apretar tantas piedras, por lo que primero debes entender qué paso con todas las paredes que te rodean, afortunadamente recuerdas cuáles fueron las piedras que presionaste y en que orden. Debes escribir un programa que conociendo el grupo de paredes que se mueven con cada piedra y cuales fueron las piedras que presionaste, encuentre cual es la configuración actual del laberinto, o sea que paredes se encuentran cerradas y cuáles abiertas. Partiendo de que todas las paredes se cerraron cuando entraste.",
+        "entrada": "Tu programa deberá leer los siguientes datos, en la primera línea el número 8 <= p <= 3000 de paredes que existen en el laberinto, en la segunda línea el número 2 <= n <= 16 e piedras en la figurilla. En la tercera línea el número 2 <= m <= p de paredes que se mueven al apretar cada piedra (todas las piedras mueven la misma cantidad de paredes). En cada una de las siguientes n líneas habrá m números separados por espacios, que indican las paredes que se mueven al presionar la piedra correspondiente, es decir, el primero de estos renglones se refiere a las puertas que mueve la piedra 1, el segundo a las de la piedra 2 y así sucesivamente. Tanto las piedras como las paredes se cuentan a partir de uno. A continuación, se encuentra el número 5 <= a <= 30000, que indica el número de \"botonazos\" que diste, finalmente en la última línea, hay a números, separados por un espacio que corresponden al número de la piedra que presionaste en cada \"botonazo\", listados en el orden en el que fueron efectuados.",
+        "salida": "Tu programa deberá escribir el número de paredes que quedaron abiertas al final y cuáles fueron. En la primera línea el número de paredes abiertas y en la siguiente línea separados por espacios y en orden ascendente, los números correspondientes a cada una de ellas.",
+        "nivel": "()",
+        "categorias": [
+            "Matrices",
+            "Vectores",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<vector<int>>",
+            "long long",
+            "vector<int>",
+            "auto"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<vector<int>> sub(17, vector<int>(3001, 0));\n    long long a, b, c, d, e, f, h = 0;\n    vector<int> num(3001, 0);\n    cin >> a >> b >> c;\n    for (auto i = 1; i <= b; i++)\n    {\n        for (auto j = 1; j <= c; j++)\n        {\n            cin >> sub[i][j];\n        }\n    }\n    cin >> d;\n    while (d--)\n    {\n        cin >> e;\n        for (auto i = 1; i <= c; i++)\n        {\n            f = sub[e][i];\n            if (!num[f])\n            {\n                num[f] = 1;\n                h++;\n            }\n            else\n            {\n                num[f] = 0;\n                h--;\n            }\n        }\n    }\n    cout << h << \"\\n\";\n    for (auto i = 1; i <= a; i++)\n    {\n        if (num[i] == 1)\n        {\n            cout << i << \" \";\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1623. Trampas",
+        "url": "https://omegaup.com/arena/problem/trampas/",
+        "descripcion": "El aventurero Ah Balam se perdió accidentalmente en un laberinto lleno de trampas. Por fortuna, en su intento por salir, Ah Balam encontró un mapa del laberinto. El mapa del laberinto consta de una cuadricula de N filas por M columnas. Las filas estan numeradas de 1 a N de arriba hacia abajo(norte a sur), las columnas estan numeradas de 1 a M de izquierda a derecha(oeste a este). Cada casilla de la cuadricula contiene solo uno de estos 4 caracteres: 'S', '.', 'x' y '#', que representan la salida, suelo sin trampa, suelo con trampa y pared. Ah Balam, como todo mortal, no puede caminar a través de las paredes, y solo puede moverse hacia 4 direcciones(norte, sur, este y oeste), NO se puede mover en diagonal. Por ejemplo, si en el siguiente laberinto Ah Balam se encuentra inicialmente en la fila 2 columna 6, tendría que pasar por al menos 2 trampas para llegar a la salida: ######## #.S.#..# #xxx#.## #...x.## #...#x## #...x.## ######## Ah Balam ha solicitado tu ayuda. Escribe un programa que dada la posición inicial de Ah Balam y el mapa del laberinto, determine cual es el minimo número de trampas por las que Ah Balam tiene que pasar para llegar a la salida.",
+        "entrada": "Línea 1: 2 enteros separados por un espacio que representan a N y M (0<=N, M<=300) respectivamente. Línea 2: La fila y la columna donde se encuentra inicialmente Ah Balam. Siguientes N líneas: M caracteres en cada una donde el j-ésimo caracter de la i+2-ésima línea representa la celda j de la fila i. Nota: Ah Balam nunca se encontrará inicialmente dentro de una pared.",
+        "salida": "Línea 1: Un solo entero: el mínimo de trampas por las que Ah Balam tiene que pasar para llegar a la salida.",
+        "nivel": "Avanzado (medio) - Programación competitiva",
+        "categorias": [
+            "Montículos",
+            "Búsqueda en amplitud",
+            "Caminos más cortos",
+            "Matrices",
+            "Colas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<vector<char>>",
+            "long long",
+            "queue<>",
+            "auto"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra\n{\n    int g, m, x;\n};\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<vector<char>> num(301, vector<char>(301, ''));\n    long long a, b, c -= 90000;\n    queue<sobra> falta;\n    queue<sobra> sub;\n    sobra z;\n    cin >> a >> b >> z.g >> z.m;\n    for (auto i = 1; i <= a; i++)\n    {\n        for (auto j = 1; j <= b; j++)\n        {\n            cin >> num[i][j];\n        }\n    }\n    if (num[z.g][z.m] == 'x')\n    {\n        z.x++;\n    }\n    falta.push(z);\n    num[z.g][z.m] = '#';\n    while (falta.size() || sub.size())\n    {\n        while (falta.size())\n        {\n            z = falta.front();\n            falta.pop();\n            if (num[z.g - 1][z.m] == 'S' || num[z.g + 1][z.m] == 'S' || num[z.g][z.m + 1] == 'S' || num[z.g][z.m - 1] == 'S')\n            {\n                if (z.x < c)\n                {\n                    c = z.x;\n                }\n            }\n            if (num[z.g - 1][z.m] == '.')\n            {\n                z.g--;\n                falta.push(z);\n                num[z.g][z.m] = '#';\n                z.g++;\n            }\n            if (num[z.g + 1][z.m] == '.')\n            {\n                z.g++;\n                falta.push(z);\n                num[z.g][z.m] = '#';\n                z.g--;\n            }\n            if (num[z.g][z.m - 1] == '.')\n            {\n                z.m--;\n                falta.push(z);\n                num[z.g][z.m] = '#';\n                z.m++;\n            }\n            if (num[z.g][z.m + 1] == '.')\n            {\n                z.m++;\n                falta.push(z);\n                num[z.g][z.m] = '#';\n                z.m--;\n            }\n            if (num[z.g - 1][z.m] == 'x')\n            {\n                z.g--;\n                z.x++;\n                sub.push(z);\n                num[z.g][z.m] = '#';\n                z.g++;\n                z.x--;\n            }\n            if (num[z.g + 1][z.m] == 'x')\n            {\n                z.g++;\n                z.x++;\n                sub.push(z);\n                num[z.g][z.m] = '#';\n                z.g--;\n                z.x--;\n            }\n            if (num[z.g][z.m - 1] == 'x')\n            {\n                z.m--;\n                z.x++;\n                sub.push(z);\n                num[z.g][z.m] = '#';\n                z.m++;\n                z.x--;\n            }\n            if (num[z.g][z.m + 1] == 'x')\n            {\n                z.m++;\n                z.x++;\n                sub.push(z);\n                num[z.g][z.m] = '#';\n                z.m--;\n                z.x--;\n            }\n        }\n        if (sub.size())\n        {\n            while (sub.size())\n            {\n                falta.push(sub.front());\n                sub.pop();\n            }\n        }\n    }\n    cout << c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1493. Herd Sums",
+        "url": "https://omegaup.com/arena/problem/herdsums/",
+        "descripcion": "Hay 4 formas de obtener 15 como suma de uno o mas enteros positivos consecutivos: 15, 7+8, 4+5+6, 1+2+3+4+5. Escribe un programa que dado un numero entero positivo N, encuentre el número de formas de obtener N como suma de uno o mas números enteros consecutivos.",
+        "entrada": "Línea 1: un solo número entero positivo N (0<=N<=10000000(diez millones))",
+        "salida": "Línea 1: un solo número entero positivo, el número de formas de obtener N como suma de uno o mas enteros positivos consecutivos.",
+        "nivel": "Intermedio (fácil) - Análisis y diseño de algoritmos",
+        "categorias": [
+            "Programación dinámica",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\ntypedef long long ll;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    ll n, m, a = 0, b, c;\n    cin >> n;\n    a++;\n    b = 1;\n    c = 1;\n    while (c < n)\n    {\n        if ((n - c) % (b + 1) == 0)\n        {\n            a++;\n        }\n        b++;\n        c += b;\n    }\n    cout << a;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "5595. Escasez de agua",
+        "url": "https://omegaup.com/arena/problem/Escasez-de-agua/",
+        "descripcion": "Debido a la reciente escasez de agua has pensado en construir N recipientes que son capaces de almacenar, purificar y mantener el agua limpia. Como eres un genio, los recipientes también son capaces de recolectar agua de lluvia y de convertir la humedad del ambiente en agua. Cada semana se verifica la capacidad (cuanta agua tienen) de cada recipiente y se mide en litros, de modo que obtienes una lista de enteros que denotan cuantos litros almacenó cada uno de los recipientes. Como además de genio, eres muy obsesivo, quieres comprar agua para rellenar los recipientes de modo que todos queden a la misma capacidad del recipiente que más agua recolectó. Dados el número de recipientes y cuantos litros recolectó cada uno, determina el mínimo número de litros de agua que tendrías que comprar para rellenar los recipientes, de modo que todos queden con el mismo número de litros que el recipiente que más agua recolectó.",
+        "entrada": "En la primera línea el entero N (1<=N<=1000) que denota el número de recipientes. En la segunda línea, N  enteros separados por espacios, cada entero denota los litros de agua que recolectó un recipiente.",
+        "salida": "El entero correspondiente al número de litros de agua que tendrás que comprar para lograr tu obsesiva tarea.",
+        "nivel": "(fácil)",
+        "categorias": [
+            "Ciclos",
+            "Vectores"
+        ],
+        "estructuras": [
+            " vector<int>",
+            "long long",
+            "auto"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<int> num(1000, 0);\n    long long a, b = 1, c = 0;\n    cin >> a;\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> num[i];\n        if (num[i] > b)\n        {\n            b = num[i];\n        }\n    }\n    for (auto i = 0; i < a; i++)\n    {\n        c += (b - num[i]);\n    }\n    cout << c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4185. Martontito lanza dardos",
+        "url": "https://omegaup.com/arena/problem/Martontito-lanza-dardos/",
+        "descripcion": "Martontito está jugando tiro al blanco con un tablero de N circulos concéntricos (imagina un tablero para lanzar dardos). Quiere saber que tanta punteria tiene, por lo que ha asignado un puntaje entre 1 y N a cada uno de los círculos del tablero empezando de afuera hacia adentro, es decir, el circulo más externo vale 1 punto y el central vale N puntos. Martontito lanzó M dardos y todos cayeron en alguno de los círculos del tablero. Como es un poco tonto, no puede calcular el puntaje que obtuvo. Escribe un programa que lea los enteros M y N, e imprima cuantos dardos cayeron en cada círculo y cuantos puntos logró Martontito.",
+        "entrada": "En la primera línea los enteros M (1<=M<=10000), N (1<=N<=100) separados por un espacio. En la segunda línea y separados por un espacio, M números, cada número representa en que círculo cayó ese dardo. por ejemplo si un número en la lista de los M números es 3, significa que el dardo se clavó en el círculo marcado con valor 3, que sería el tercer círculo de afuera hacia adentro.",
+        "salida": "En la primera línea el puntaje total que logró Martontito. en cada una de las siguientes N líneas, el valor del círculo (de 1 a N) y la cantidad de dardos que Martontito clavó en ese círculo.",
+        "nivel": "...",
+        "categorias": [
+            "Vectores",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<int>",
+            "auto"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d = 0;\n    vector<int> num(101, 0);\n    cin >> a >> b;\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> c;\n        d += c;\n        num[c]++;\n    }\n    cout << d << \"\\n\";\n    for (auto i = 1; i <= b; i++)\n    {\n        cout << i << \" \" << num[i] << \"\\n\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1291. Consecutivos",
+        "url": "https://omegaup.com/arena/problem/Consecutivos/",
+        "descripcion": "Dado un conjunto de 1<=N<=1000 elementos enteros, determina si después de ordenarse forman un conjunto de números consecutivos. Imprime SI cuando se trate de un conjunto de números consecutivos, NO en caso contrario.",
+        "entrada": "En la primera línea el entero N. En la segunda línea y separados por un espacio, los N datos enteros.",
+        "salida": "Imprime SI, si el conjunto está formado por números consecutivos, NO en caso contrario.",
+        "nivel": "Intermedio (fácil) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Ciclos",
+            "Ordenamiento",
+            "Vectores"
+        ],
+        "estructuras": [
+            "vector<int>",
+            "long long",
+            "auto"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<int> num(1000, 0);\n    long long a;\n    cin >> a;\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> num[i];\n    }\n    sort(num.begin(), num.end());\n    for (auto i = 1; i < a; i++)\n    {\n        if (num[i] == num[i - 1])\n        {\n            a = 0;\n            break;\n        }\n    }\n    if (!a)\n    {\n        cout << \"NO\";\n    }\n    else\n    {\n        cout << \"SI\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1871. Los árboles del Bosque de los Cedros",
+        "url": "https://omegaup.com/arena/problem/arboles/",
+        "descripcion": "Los árboles del bosque de los cedros dan frutos de una forma peculiar. El primer fruto que nace en el árbol se coloca en la parte central del árbol. Los frutos que nacen después van descendiendo en relación a los ya existentes dependiendo de su peso: si el peso del fruto nuevo es menor al peso del fruto central del árbol entonces éste descenderá del lado izquierdo, de lo contrario descenderá del lado derecho; en caso de que el espacio ya esté ocupado por otro fruto, se comparará nuevamente hasta determinar en dónde nacerá el nuevo fruto. Dado el orden de nacimiento y los pesos de los F frutos del árbol, determine la cantidad de frutos después de los cuales ya no descendió ningún otro fruto.",
+        "entrada": "Un entero F que determina el número de frutos que nacerán del árbol. La siguiente línea contendrá F enteros separados por un espacio que denotan los pesos p_i de los frutos del 1 al F. Puede suponer que 1<=F, p_i<=10000.",
+        "salida": "Un entero H que representa el número de frutos en las hojas del árbol, seguido de una línea con H enteros, es decir, los pesos de dichos frutos en orden ascendente.",
+        "nivel": "Intermedio (medio) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Recorridos en árboles",
+            "Árboles de búsqueda binaria",
+            "Ciclos",
+            "Vectores",
+            "Ordenamiento"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<int>",
+            "vector<>",
+            "int"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra\n{\n    int aa, bb, cc;\n};\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c;\n    vector<int> num(10000, 0);\n    vector<sobra> sub(10000);\n    cin >> a >> sub[0].aa;\n    sub[0].bb = -1;\n    sub[0].cc = -1;\n    for (auto i = 1; i < a; i++)\n    {\n        cin >> sub[i].aa;\n        sub[i].bb = sub[i].cc = -1;\n        b = 0;\n        c = sub[i].aa;\n        while (a)\n        {\n            if (c < sub[b].aa && sub[b].bb == -1)\n        "
+    },
+    {
+        "titulo": "5546. Logias",
+        "url": "https://omegaup.com/arena/problem/OMI-2017-Logias/",
+        "descripcion": "Hace mucho tiempo, N olímpicos de la OMI fueron de visita a la escuela de Matemágicos. Charly, el director de dicha escuela, decidió separar a los N olímpicos en M grupos, de tal manera que en cada grupo hubiera al menos una persona. Al hacer esto algo muy curioso sucedió: después de la visita a la escuela de Matemágicos, cada pareja de olímpicos que estuvo en el mismo grupo se volvieron amigos. Dados N y M , el número de participantes y el número de grupos respectivamente, escribe un programa que encuentre el mínimo y el máximo número de parejas de amigos que se pudieron haber formado después de la visita a la escuela de Matemágicos.",
+        "entrada": "La primera y única línea de entrada consta de dos enteros N (1<=N) y M (M<=10^9) representando el número de olímpicos y el número de equipos respectivamente. Para un 60% de los casos N, M<=2^15",
+        "salida": "La única línea de salida debe contener dos enteros k_min y k_max:  el mínimo número posible de parejas de amigos, y el máximo número posible de parejas de amigos respectivamente.",
+        "nivel": "Básico (medio) - Introducción a la programación",
+        "categorias": [
+            "Cálculos aritméticos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, g;\n    cin >> a >> b;\n    if (b == 1)\n    {\n        a--;\n        c = (a * (a + 1)) / 2;\n        cout << c << \" \" << c;\n    }\n    else\n    {\n        if (a % b == 0)\n        {\n            d = a / b;\n            d--;\n            c = (d * (d + 1)) / 2;\n            c *= b;\n            cout << c << \" \";\n            d = a - b;\n            c = (d * (d + 1)) / 2;\n            cout << c;\n        }\n        else\n        {\n            d = a / b;\n            e = a % b;\n            d = (d * (d + 1)) / 2;\n            d *= e;\n            f = b - e;\n            g = a / b;\n            g--;\n            g = (g * (g + 1)) / 2;\n            g *= f;\n            d += g;\n            cout << d << \" \";\n            d = a - b;\n            c = (d * (d + 1)) / 2;\n            cout << c;\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1979. Noticias",
+        "url": "https://omegaup.com/arena/problem/Noticias/",
+        "descripcion": "Siempre que se quiere dar a conocer una noticia se busca que esta información llegue a la mayor cantidad de personas posible, pero no siempre se pude saber que tanto se dispersara la noticia. Una empresa de publicidad tiene identificada a N personas importantes y ha registrado las amistades entre ellas, con esta información se puede saber que tanto se puede dispersar una noticia. Si la persona a conoce a la persona b y a sabe la noticia x entonces b eventualmente conocerá la noticia x , igualmente si b también conoce a la persona c, c eventualmente conocerá la noticia. Como transcurre el tiempo se van creando nuevas amistades y suponemos que las amistades entre personas importantes perduran para siempre. Tu tarea consiste en crear un programa que pueda responder a cuantas personas puede alcanzar una noticia si se envía a la persona p.",
+        "entrada": "La primera linea contiene dos entero: N (1<=N<=1000000) que es el numero de personas, seguido por I (1<=I<=1000000) que es el numero de instrucciones que recibiras. Las siguientes I lineas pueden contener la letra A seguido de dos enteros x y y (donde 1<=x<=N y 1<=y<=N), que indica que la persona x se convirtió en amigo de la persona y. O puede contener la letra E, seguido por un entero p (donde 1<=p<=N), en este caso tienes que responder a cuantas personas le puede llegar la noticia si se lo cuentan a la persona p. Para un total del 40% de los puntos solo existirá una consulta del tipo E al final.",
+        "salida": "Tu programa deberá imprimir los respuesta a las consultas que se le hagan.",
+        "nivel": "(medio)",
+        "categorias": [
+            "Ciclos",
+            "Vectores"
+        ],
+        "estructuras": [
+            "int",
+            "long long",
+            "char",
+            "auto",
+            "vector<>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra\n{\n    int aa, bb;\n};\nvector<sobra> num(1000001);\n\nint falta(int z)\n{\n    int hh;\n    if (num[z].aa != z)\n    {\n        hh = falta(num[z].aa);\n        num[z].aa = hh;\n    }\n    return num[z].aa;\n}\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f;\n    char n;\n    cin >> a >> b;\n    for (auto i = 1; i <= a; i++)\n    {\n        num[i].aa = i;\n        num[i].bb = 1;\n    }\n    while (b--)\n    {\n        cin >> n;\n        if (n == 'A')\n        {\n            cin >> c >> d;\n            e = falta(c);\n            f = falta(d);\n            if (e != f)\n            {\n                if (num[e].bb > num[f].bb)\n                {\n                    num[e].bb += num[f].bb;\n                    num[f].aa = e;\n                }\n                else\n                {\n                    num[f].bb += num[e].bb;\n                    num[e].aa = f;\n                }\n            }\n        }\n        else\n        {\n            cin >> c;\n            d = falta(c);\n            cout << num[d].bb << \"\\n\";\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "192. L-OMI98-Submarino",
+        "url": "https://omegaup.com/arena/problem/OIEG2013SSB/",
+        "descripcion": "Un submarino tiene N  secciones numeradas del 1 al N De estas secciones, algunas se encuentran interconectadas entre sí. Además se sabe que hay un total de E interconexiones y que la sección N es la salida de emergencia. Si hubiera un marinero en cada sección, excepto la de salida, y si éste tardara una unidad de tiempo en llegar a una sección adyacente, determina cuántos marineros llegarían a la salida de emergencia en menos de T unidades de tiempo.",
+        "entrada": "En la primera linea los enteros N (2<=E<=100), E y T (1<=T<=100). Las siguientes E líneas contienen, cada una, los números de dos secciones interconectadas entre sí.",
+        "salida": "En la primera línea el número de marineros que pueden llegar a la salida de emergencia en menos de T unidades de tiempo.",
+        "nivel": "()",
+        "categorias": [
+            "Colas",
+            "Tablas de dispersión",
+            "Ciclos",
+            "Vectores"
+        ],
+        "estructuras": [
+            "queue<pair<int, int>>",
+            "pair<int, int>",
+            "vector<pair<int, int>>",
+            "long long",
+            "set<int>",
+            "auto"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nqueue<pair<int, int>> falta;\npair<int, int> zz;\n\nbool sub(int z, int x)\n{\n    while (z--)\n    {\n        zz = falta.front();\n        falta.pop();\n        falta.push(zz);\n        if (zz.first == x)\n        {\n            return true;\n        }\n    }\n    return false;\n}\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<pair<int, int>> num(100001, {0, 0});\n    long long a, b, c, d = 0, e, f, g;\n    queue<pair<int, int>> faltas;\n    set<int> sobra;\n    cin >> a >> b >> c;\n    c -= 2;\n    sobra.insert(a);\n    e = b - 1;\n    for (auto i = 0; i < b; i++)\n    {\n        cin >> num[i].first >> num[i].second;\n        if (num[i].second == a)\n        {\n            f = sobra.size();\n            sobra.insert(num[i].first);\n            if (f != sobra.size())\n            {\n                falta.push(num[i]);\n            }\n            num[i].second = num[i].first = -1;\n            if (i == d)\n            {\n                d++;\n            }\n            if (i == e)\n            {\n                while (num[e].second == -1)\n                {\n                    e--;\n                }\n                break;\n            }\n        }\n        else if (num[i].first == a)\n        {\n            f = sobra.size();\n            sobra.insert(num[i].second);\n            if (f != sobra.size())\n            {\n                swap(num[i].first, num[i].second);\n                falta.push(num[i]);\n            }\n            num[i].second = num[i].first = -1;\n            if (i == d)\n            {\n                d++;\n            }\n            if (i == e)\n            {\n                while (num[e].second == -1)\n                {\n                    e--;\n                }\n                break;\n            }\n        }\n    }\n    if (c == -1)\n    {\n        cout << 0;\n    }\n    else\n    {\n        while (c--)\n        {\n            for (auto i = d; i <= e; i++)\n            {\n                f = sub(falta.size(), num[i].second);\n                if (f == 1)\n                {\n                    g = sobra.size();\n                    sobra.insert(num[i].first);\n                    if (f != sobra.size())\n                    {\n                        faltas.push(num[i]);\n                    }\n                    num[i].second = num[i].first = -1;\n                    while (num[d].second == -1)\n                    {\n                        d++;\n                    }\n                    if (i == e)\n                    {\n                        while (num[e].second == -1)\n                        {\n                            e--;\n                        }\n                        break;\n                    }\n                }\n                f = sub(falta.size(), num[i].first);\n                if (f == 1)\n                {\n                    g = sobra.size();\n                    swap(num[i].first, num[i].second);\n                    sobra.insert(num[i].first);\n                    if (f != sobra.size())\n                    {\n                        faltas.push(num[i]);\n                    }\n                    num[i].second = num[i].first = -1;\n                    while (num[d].second == -1)\n                    {\n                        d++;\n                    }\n                    if (i == e)\n                    {\n                        while (num[e].second == -1)\n                        {\n                            e--;\n                        }\n                        break;\n                    }\n                }\n            }\n            while (falta.size())\n            {\n                falta.pop();\n            }\n            while (faltas.size())\n            {\n                falta.push(faltas.front());\n                faltas.pop();\n            }\n            if (!falta.size())\n            {\n                break;\n            }\n        }\n        cout << sobra.size() - 1;\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1040. Sumas de números consecutivos",
+        "url": "https://omegaup.com/arena/problem/snc/",
+        "descripcion": "Escribe un programa que determine la cantidad f de formas en las que se puede escribir un número entero positivo n como suma de uno o más números enteros positivos consecutivos. Tu programa también debe determinar el número más pequeño p que forma parte de alguna de estas sumas. Por ejemplo, si n = 33, entonces f = 4 y p = 3 ya que 3 + 4 + 5 + 6 + 7 + 8 = 10 + 11 + 12 = 16 + 17 = 33.",
+        "entrada": "Un número entero n en el intervalo de 1 a 1,000,000 (incluyendolos).",
+        "salida": "Dos números enteros f y p.",
+        "nivel": "Básico () - Introducción a la programación",
+        "categorias": [
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b = 1, c = 2, d = 0, e = 1;\n    cin >> a;\n    while (a > 0)\n    {\n        a -= b;\n        if (a < 1)\n        {\n            break;\n        }\n        if (a % c == 0)\n        {\n            d = a / c;\n            e++;\n        }\n        b++;\n        c++;\n    }\n    cout << e << \" \" << d;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "3078. occ04pnsf25",
+        "url": "https://omegaup.com/arena/problem/Suma-de-numeros-consecutivos/",
+        "descripcion": "Hay que encontrar la suma de los números entre dos números enteros n y m dados (n <= m)",
+        "entrada": "n y m",
+        "salida": "n + n + 1 + n + 2 +....+ m",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Cálculos aritméticos",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c = 0;\n    cin >> a >> b;\n    while (b >= a)\n    {\n        c += b;\n        b--;\n    }\n    cout << c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "6148. Traductor",
+        "url": "https://omegaup.com/arena/problem/COMI-Traductor/",
+        "descripcion": "En un lejano planeta coexisten dos culturas ancestrales, la Numírica y la Enteral. Pese a sus similitudes culturales, se comunican en lenguajes totalmente diferentes. Por ejemplo, en numírico podrías decir \"hola\" con \"53134\" mientras que en enteral sería \"46952\". Tu tarea será realizar traducciones entre ambos idiomas. Escribe un programa que pueda traducir entre los dos lenguajes, dada la lista de palabras de un diccionario.",
+        "entrada": "a primer linea tendrá dos enteros: d y w (0<=d,w<=1000). Las siguientes d lineas representan las traducciones del diccionario, cada una con un par de enteros: n_i y e_i (0<=n_i,e_i<=10000), separados por un espacio. n_i representa una palabra en numírico y e_i su traducción a enteral. Puedes estar seguro de que las palabras no se repetirán en el diccionario. Las siguientes w líneas contienen un entero, representando la palabra en numírico que tendrás que traducir.",
+        "salida": "Por cada palabra a traducir, deberás imprimir una línea que contenga su respectiva traducción en enteral. Si una palabra no tiene traducción debes imprimir C? en esa línea.",
+        "nivel": "Intermedio (fácil) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Ciclos",
+            "Dispersión",
+            "Árboles de búsqueda binaria",
+            "Matrices"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<vector<long long>>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f;\n    cin >> a >> b;\n    vector<vector<long long>> num(2, vector<long long>(a, 0));\n    for (long long i = 0; i < a; i++)\n    {\n        cin >> num[0][i] >> num[1][i];\n    }\n    for (long long i = 0; i < a; i++)\n    {\n        c = 0;\n        for (long long j = 0; j < (a - i) - 1; j++)\n        {\n            if (num[0][j + 1] < num[0][j])\n            {\n                swap(num[0][j], num[0][j + 1]);\n                swap(num[1][j], num[1][j + 1]);\n                c = 1;\n            }\n        }\n        if (!c)\n        {\n            break;\n        }\n    }\n    while (b--)\n    {\n        cin >> c;\n        d = 0;\n        e = a - 1;\n        while (d <= e)\n        {\n            f = (d + e) / 2;\n            if (num[0][f] == c)\n            {\n                cout << num[1][f] << \"\\n\";\n                break;\n            }\n            else if (num[0][f] > c)\n            {\n                e = f - 1;\n            }\n            else\n            {\n                d = f + 1;\n            }\n        }\n        if (d > e)\n        {\n            cout << \"C?\\n\";\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "6113. Paseo por el Bosque",
+        "url": "https://omegaup.com/arena/problem/COMI-Paseo-por-el-Bosque/",
+        "descripcion": "Troyo ha estado paseando por el bosque, y está harto de no encontrar patrones en un árbol magistral. Ayúdale a encontrar algún patrón. Pero tú que eres un gran programador, decidiste darle la orden de recorrer el árbol en pre-orden, in-orden y post-orden. Dado un arreglo de tamaño N, deberás insertar cada uno de ellos en un árbol binario de búsqueda según vienen en la entrada, e imprimir los recorridos del árbol en pre-orden, in-orden y post-orden respectivamente. El primer elemento que leas será la raíz del árbol.",
+        "entrada": "En la primera línea un entero, N (1<=N<=10^5) que indica el tamaño del arreglo, en la siguiente línea están los N elementos del arreglo.",
+        "salida": "En la primera línea deberás imprimir el recorrido en pre-orden, en la segunda deberás imprimir el recorrido en inorden, y en la tercera y última el post-orden.",
+        "nivel": "Intermedio (medio) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Entrada y salida",
+            "Recorridos en árboles",
+            "Ciclos",
+            "Vectores"
+        ],
+        "estructuras": [
+            "int",
+            "long long",
+            "vector<>",
+            "auto"
+        ],
+        "codigo": "..."
+    },
+    {
+        "titulo": "5010. Las pistas de azul",
+        "url": "https://omegaup.com/arena/problem/Las-pistas-de-azul/",
+        "descripcion": "Seguramente has escuchado hablar del programa \"las pistas de Blue\", donde un perro dejaba huellas para que su amo Steve encontrara ciertos objetos. \"Azul\" es el primo de \"Blue\" que vive en México y él utiliza números para que su amo Esteban encuentre objetos. El mundo está dividido en un conjunto de casillas donde en cada una se encuentra un PAR de números (fila, columna) que indica la posición donde está la siguiente pista. Esteban al encontrar el objeto que buscaba, notó que su casa estaba llena de pistas y por lo tanto, su casa estaba muy sucia por el andar de Azul, así que él quisiera saber en qué partes de la casa pudo haber estado Azul para poder limpiar. Dada un conjunto de pistas y las ubicaciones de estas, deberás decirle a Esteban el número de casillas desde las cuales, empezando en cada una de ellas y siguiendo las pistas, se puede llegar a la casilla donde está el objeto. Al menos te tienes que mover a una casilla para que puedas contarla, es decir, empezar en la casilla del objeto no deberá contarse. Las casillas que están marcadas con -1,-1 indica que no hay pista que te lleve a otra casilla. Subtarea 1 Para un conjunto de 60% de los casos no se creará un ciclo dentro del mundo(Un ciclo es una secuencia de pistas que eventualmente te llevan a repetir una casilla). Subtarea 2 Para el 100% de los casos, puede o no haber un ciclo en el mundo",
+        "entrada": "En la primera línea, un entero 1<=N<=50 que denota las dimensiones de la casa (Siempre será de N filas por N columnas). En la segunda línea dos enteros 0 <= F, C<= N-1 separados por espacios que denotan las coordenadas de la casilla donde está el objeto. En cada una de las siguientes N líneas, 2*N números, donde cada par indica la coordenada de la siguiente pista en cada casilla.",
+        "salida": "Un entero que indica el número de casillas desde las cuales, se puede llegar a la casilla donde está el objeto.",
+        "nivel": "()",
+        "categorias": [
+            "Matrices",
+            "Colas",
+            "Tablas de dispersión",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<vector<pair<int, int>>>",
+            "long long",
+            "queue<pair<int, int>>",
+            "pair<int, int>",
+            "auto"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<vector<pair<int, int>>> num(51, vector<pair<int, int>>(51, {0, 0}));\n    long long a, b, c, d, e, f = 0;\n    queue<pair<int, int>> falta;\n    queue<pair<int, int>> sub;\n    pair<int, int> z;\n    cin >> a >> b >> c;\n    z.first = b;\n    z.second = c;\n    falta.push(z);\n    for (auto i = 0; i < a; i++)\n    {\n        for (auto j = 0; j < a; j++)\n        {\n            cin >> num[i][j].first >> num[i][j].second;\n            if (i == b && j == c)\n            {\n                num[i][j].first = num[i][j].second = -1;\n            }\n        }\n    }\n    while (falta.size())\n    {\n        d = falta.size();\n        for (auto i = 0; i < a; i++)\n        {\n            for (auto j = 0; j < a; j++)\n            {\n                if (num[i][j].first != -1)\n                {\n                    e = d;\n                    while (e--)\n                    {\n                        z = falta.front();\n                        falta.pop();\n                        falta.push(z);\n                        if (z.first == num[i][j].first && z.second == num[i][j].second)\n                        {\n                            z.first = i;\n                            z.second = j;\n                            sub.push(z);\n                            num[i][j].first = num[i][j].second = -1;\n                            f++;\n                            break;\n                        }\n                    }\n                }\n            }\n        }\n        while (falta.size())\n        {\n            falta.pop();\n        }\n        while (sub.size())\n        {\n            falta.push(sub.front());\n            sub.pop();\n        }\n    }\n    cout << f;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "6134. Round Robin",
+        "url": "https://omegaup.com/arena/problem/COMI-Round-Robin/",
+        "descripcion": "Cierta computadora tiene un procesador que puede atender un proceso a la vez por unidades de tiempo. Si el proceso necesita más de K unidades para terminar, el procesador lo atiende exactamente K unidades y deja pendientes las unidades excedentes. Cuando un proceso es atendido y no finaliza, se forma al final de la lista de procesos pendientes. Escribe un programa que lea el número de procesos, K, los IDs y el tiempo de ejecución de cada uno de los N procesos y determine el orden en que los procesos finalizarán.",
+        "entrada": "En la primera línea dos enteros, N (1<=N<=1000) y K (1<=K<=100). En cada una de las siguientes N líneas, dos enteros X, Y, separados por un espacio. Que denotan el ID del proceso y el tiempo de ejecución que necesita para concluir. Considera que 1<=t_i<=1000",
+        "salida": "N  líneas con los ID de los procesos en el orden que concluyeron. Considera que los procesos de la entrada ya se encuentran en la lista de espera.",
+        "nivel": "Intermedio (fácil) - Análisis y diseño de algoritmos",
+        "categorias": [
+            "Entrada y salida",
+            "Colas",
+            "Vectores",
+            "Tablas de dispersión",
+            "Ciclos",
+            "Ordenamiento"
+        ],
+        "estructuras": [
+            "vector<pair<int, int>>",
+            "long long",
+            "auto"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<pair<int, int>> num(1000, {0, 0});\n    long long a, b, c = 0;\n    cin >> a >> b;\n    for (auto i = 0; i < a; i++)\n    {\n        cin >> num[i].second >> c;\n        if (c % b == 0)\n        {\n            c /= b;\n        }\n        else\n        {\n            c /= b;\n            c++;\n        }\n        num[i].first = c;\n    }\n    sort(num.begin(), num.end());\n    for (auto i = 0; i < a; i++)\n    {\n        cout << num[i].second << \" \";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "6131. Derrame de Petróleo",
+        "url": "https://omegaup.com/arena/problem/COMI-Derrame-de-Petroleo/",
+        "descripcion": "Ha habido un derrame de petroleo en el golfo y una organización ecologista internacional te ha contratado para escribir un programa que los ayude a calcular la gravedad del impacto ambiental. Te van a dar una cuadrícula de R filas y C columnas, que representan el entorno que rodea la plataforma petrolera. El derrame se originó en la plataforma, que se marcará en su mapa con un '$'. Las casillas de tierra se marcarán con un '#' y las casillas del mar se marcarán con un '.'. Cada día que pasa después de la explosión inicial, cada cuadrado de mar adyacente (norte, este, sur u oeste) a la plataforma petrolera o a una plaza marítima, previamente cubierta de petróleo, queda cubierto por el petróleo. Las plazas terrestres nunca son cubiertas por petróleo. Tu programa debe simular la propagación del derrame de petróleo durante K días, luego imprime un mapa del entorno circundante con cuadrados marinos cubiertos de petróleo representados por '*'.",
+        "entrada": "Tu programa debe leer de teclado tres enteros separados por un espacio R, C (1<=R,C<=2000, donde R y C son el número de filas y columnas de la cuadrícula, respectivamente.) y K (0<=K<=10000000, donde K es el número de días para los cuales debe simular el derrame de petróleo.). Las siguientes R líneas contendrán cada una C caracteres, cada uno de los cuales será '#' o '.' representando cuadrados terrestres y marítimos, respectivamente. Exactamente sólo habrá un sólo '$', que representa la plataforma petrolera en el mar. Considera que para el 75% de los casos, 1<=R,C<=50.",
+        "salida": "Tu programa debe mostrar R líneas, cada una con C caracteres. Cada carácter en esta cuadrícula debe ser el mismo que el carácter correspondiente en la cuadrícula de entrada, a excepción de las casillas marinas que han sido cubiertas por petróleo después de K días. Estos deberían estar representados por caracteres '*'.",
+        "nivel": "Intermedio (medio) - Análisis y diseño de algoritmos",
+        "categorias": [
+            "Búsqueda en profundidad",
+            "Búsqueda en amplitud",
+            "Matrices",
+            "Colas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<vector<char>>",
+            "long long",
+            "queue<>",
+            "auto"
+        ],
+        "codigo": "..."
+    },
+    {
         "titulo": "...",
         "url": "...",
         "descripcion": "...",
