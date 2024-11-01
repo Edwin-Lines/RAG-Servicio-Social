@@ -6183,6 +6183,7 @@
             "vector<vector<pair<int,int>>>"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<vector<pair<int, int>>> num(101, vector<pair<int, int>>(101, {0, 0}));\n    int a, b, c=0;\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<=i; j++){\n            cin>>num[i][j].first;\n        }\n    }\n    num[0][0].second=num[0][0].first;\n    for(auto i=0; i<a-1; i++){\n        for(auto j=0; j<=i; j++){\n            b=num[i][j].second+num[i+1][j].first;\n            num[i+1][j].second=max(num[i+1][j].second, b);\n            b=num[i][j].second+num[i+1][j+1].first;\n            num[i+1][j+1].second=max(num[i+1][j+1].second, b);\n        }\n    }\n    for(auto i=0; i<a; i++){\n        c=max(num[a-1][i].second, c);\n    }\n    cout<<c;\n    \n    return 0;\n}"
+
     },
     {
         "titulo": "3079. Amigos Misteriosos",
@@ -7711,6 +7712,7 @@
         ],
         "codigo": "..."
     },
+  
     "Problemas totales: 402",
     "Avanzado (difícil) - Programación competitiva: 4",
     "Avanzado (medio) - Temas especializados: 1",
