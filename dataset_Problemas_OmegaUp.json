@@ -5911,7 +5911,7 @@
             "int",
             "string",
             "unsigned long long",
-            "vector<>",
+            "vector<struct>",
             "getline()"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra{\n    long double aa;\n    int bb;\n    string cc;\n};\n\nbool operator<(sobra x, sobra y){\n    if(x.aa<y.aa)return true;\n    if(y.aa<x.aa)return false;\n    if(x.bb<y.bb)return true;\n    if(y.bb<x.bb)return false;\n    if(x.cc<y.cc)return true;\n    return false;\n}\n\nint main() {\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    unsigned long long a, b;\n    vector<sobra>falta;\n    vector<sobra>faltas;\n    sobra z;\n    string zz;\n    cin>>a;\n    while(a--){\n        cin>>z.bb;\n        getline(cin,zz);\n        getline(cin,z.cc);\n        cin>>z.aa;\n        cin>>b;\n        if(b==1){\n            falta.push_back(z);\n        }\n        else{\n            faltas.push_back(z);\n        }\n    }\n    sort(falta.begin(),falta.end());\n    sort(faltas.begin(),faltas.end());\n    if(falta.size()>=1){\n        cout<<falta[0].bb<<\" \"<<falta[0].cc<<\"\\n\";\n    }\n    if(falta.size()>=2){\n        cout<<falta[1].bb<<\" \"<<falta[1].cc<<\"\\n\";\n    }\n    if(falta.size()>=3){\n        cout<<falta[2].bb<<\" \"<<falta[2].cc<<\"\\n\";\n    }\n    if(faltas.size()>=1){\n        cout<<faltas[0].bb<<\" \"<<faltas[0].cc<<\"\\n\";\n    }\n    if(faltas.size()>=2){\n        cout<<faltas[1].bb<<\" \"<<faltas[1].cc<<\"\\n\";\n    }\n    if(faltas.size()>=3){\n        cout<<faltas[2].bb<<\" \"<<faltas[2].cc<<\"\\n\";\n    }\n\n    return 0;\n}"
@@ -6871,7 +6871,7 @@
         "descripcion": "La UP (Unidad de Programadores) esta analizando un texto que les acaba de llegar, al parecer tiene un mensaje oculto, pero tu no debes preocuparte por eso, tu trabajo es escribir un programa que ejecute un cierto número de operaciones, cada una de ellas puede ser de este tipo: 0: Voltea el texto al revés. 1: Cambia mayúsculas por minúsculas.",
         "entrada": "La primera línea contendrá un número n (1<=n<=1000000), indicando el número de operaciones a realizar. La segunda será el texto a manipular, la longitud del texto no sobrepasará los 1000 caracteres, y sólo contendra letras. Le siguen n números indicando el tipo de operación a ejecutar.",
         "salida": "El texto resultante.",
-        "nivel": "(fácil)",
+        "nivel": "Básico (fácil) - Introducción a la programación",
         "categorias": [
             "Caracteres y cadenas",
             "Ciclos"
@@ -6921,7 +6921,7 @@
         "descripcion": "Dadas dos palabras hay que formar una tercera intercalando letras de la primera y de la segunda hasta agotar las letras de una de ellas o de ambas. Si solo se agota una de las palabras, la palabra a formar se completa con las letras sobrantes de la palabra no agotada.",
         "entrada": "Dos palabras a formar.",
         "salida": "Una tercera palabra formada de acuerdo a las reglas dadas.",
-        "nivel": "(medio)",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
             "Caracteres y cadenas",
             "Ciclos"
@@ -6937,7 +6937,7 @@
         "descripcion": "Seguir leyendo bajo tu propio riesgo, no me hago responsable de convulsiones cerebrales, muertes o invocaciones repentinas a satanas. Santiago ha visto que tienes las hallagas de leer su ultimo problema de este examen (si llegaste aquí después de resolver los anteriores muy bien, si dejaste los demás incompletos y vienes a probar suerte pues... estas como el 96% de los participantes) Santiago no se le ocurría un problema para que Roberto no saque todos los puntos, así que hizo empezó un ritual satánico para pedirle ayuda al diablo. Después de una larga charla el diablo le dio el problema a resolver pero con la condición de que si alguien lo resuelve durante el examen tiene que dar chocolates a todos la siguiente clase. El diablo le dijo \"Para entender el problema debes hipotecar tu casa y comprar una nueva\". La casa nueva es un rectángulo de N x M dimensiones y los cuartos fueron hechos de la siguiente forma: 1-Te vas a la esquina superior izquierda de la parte de la casa aun no construida y formas el cuadro más grande que puedas. 2-Repites el primer paso hasta llenar toda la casa. Y tu debes averiguar cuantos cuartos hay. Dada las dimensiones de las casa decir cuantos cuartos tiene la casa.",
         "entrada": "N y M que representan las dimensiones de la casa. Para un conjunto de casos con 60 puntos 1<N,M,10^6. Para un conjunto de casos con 40 puntos 10^6<N,M,10^8.",
         "salida": "Número de cuartos de la casa.",
-        "nivel": "(fácil)",
+        "nivel": "Básico (fácil) - Introducción a la programación",
         "categorias": [
             "Ciclos"
         ],
@@ -6987,7 +6987,7 @@
         "descripcion": "La bitácora de la Organización de Misiles Idénticos (OMI) cuenta con un listado de los misiles que han sido lanzados hasta la fecha. Cada misil tiene un número de identificación (ID). Tu trabajo es, dada la bitácora de la OMI y una lista de IDs, decir cuales de esos misiles ya han sido lanzados.",
         "entrada": "Un entero N de misiles que han sido lanzados. Una lista de N enteros N_i, cada uno el ID de un misil en la bitácora. Un entero Q de misiles por los que se preguntará si ya han sido lanzados. Una lista de Q enteros Q_i, los IDs de los misiles por los que se pregunta. Limitaciones: 0<=N,Q<=10^6. 0<=N_i,Q_i<=10^6.",
         "salida": "Por cada misil preguntado. Una linea: '1' si ya se ha lanzado '0' si aún no se ha lanzado.",
-        "nivel": "",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
             "Vectores",
             "Ciclos"
@@ -7004,7 +7004,7 @@
         "descripcion": "En la antigüedad existía un pueblo llamado Mate-Itza donde vivan grandes mentes matemáticas, el 50% de las personas poseían habilidades matemáticas fuera de su época, era un bello lugar, sin presidentes con copete como cerebro, toda melodía que sonaba al reguetón era extermina de forma inmediata, las personas pensaban en formulas matemáticas, áreas de volúmenes, teorías del universo. La desventaja es que era un pueblo que sufría de hambre y personas morían a causa de esto varias veces. Un día llego una persona de otra parte del mundo con muchos panes y le dio a elegir a cada persona \"puedo darte A+B panes ahorita o puedo darte A panes hoy y los días siguientes te voy a dar 1 más que el anterior, así hasta llegar al B; pero esta segunda solo se cumplirá si me dices cuantos panes habrás recibido al final\". Todas las personas hasta los matemáticos desesperados sin saber como sumar tantos números eligieron la primera opción; excepto por una persona llamada \"Chavelo\" respondió en menos de 1 segundo, nadie sabia como lo había hecho, hasta el extranjero quedo sorprendido. Resulta que Chavelo había creado un sistema computacional capaz de sacar el total de panes que tendría. Descifra el programa que hizo chavelo y recréalo. Se te darán dos enteros A y B deberás sacar A+(A+1)+...+B.",
         "entrada": "Se te darán los dos enteros A y B. Límites: 0<A<B<(5*10^10). Para el 40% de los casos: (B-A)<10^6. Para el 60% de los casos: (B-A)<10^8.",
         "salida": "El resultado de la suma A+(A+1)+(A+2)+...+B.",
-        "nivel": "(fácil)",
+        "nivel": "Básico (fácil) - Introducción a la programación",
         "categorias": [
             "Caracteres y cadenas"
         ],
@@ -7019,7 +7019,7 @@
         "descripcion": "Dados números cualquiera entre 1 y 1000 a la entrada del programa debe imprimir el número dado , pero si el número es múltiplo de 3 imprimirá la palabra \"Fuzz\", en el caso que sea múltiplo de 5 deberá imprimir \"Buzz\", y en caso de ser múltiplo de ambos (3 y 5) imprimirá \"FuzzBuzz\".",
         "entrada": "Números entre 1 y 1000.",
         "salida": "Por cada número en la entrada, imprimir la salida descrita en el enunciado (uno por línea).",
-        "nivel": "(fácil)",
+        "nivel": "Básico (fácil) - Introducción a la programación",
         "categorias": [
             "Ciclos"
         ],
@@ -7054,7 +7054,7 @@
         "descripcion": "Mario y Ugo, dos osos polares del zoológico de San Petersburgo y Horacio, un elefante del zoológico de Kiev, tienen 6 palitos para jugar y evaluar la creatividad de los animales. Mario, Ugo y Horacio han decidido hacer, o un elefante o un oso con esos palitos. Ellos pueden formar un animal con los palitos de la siguiente manera: 1.- Cuatro palitos representan las patas del animal, estos deben de tener la misma longitud. 2.- Los dos palitos restantes representan la cabeza y el cuerpo del animal. La cabeza del oso debe de ser más corta que el palito del cuerpo. El elefante, además, tiene un tronco largo, como su palito de la cabeza debe de ser tan largo como el del cuerpo. Note que aquí no hay límites en relación entre los palitos que forman las patas y los que forman la cabeza y el cuerpo. Tu tarea es encontrar que animal puede formarse dado el conjunto de palitos. El cuidador del zoológico quiere de regreso los palitos, así que no deben de ser quebrados; esto lo entiende hasta un oso.",
         "entrada": "La única línea de la entrada contiene seis enteros separados por un espacio l_i(1<=l_i<=9), la longitud de los seis palitos. Se garantiza que la entrada no permite hacer dos animales a la vez.",
         "salida": "Si se puede hacer un oso con todos los palitos, muestre la cadena \"Bear\" (sin las comillas). Si se puede hacer un elefante, despliegue la cadena \"Elephant\" (sin las comillas). Si no se puede hacer ni un oso o elefante, muestre la cadena \"Alien\" (sin las comillas).",
-        "nivel": "(medio)",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
             "Vectores",
             "Ordenamiento"
@@ -7070,10 +7070,8 @@
         "descripcion": "Desarrolla un DFD que lea el peso y la estatura de una persona, calcula e imprime su imc y determina si es normal o tiene sobrepeso. Una persona se considera con sobrepeso si su imc es mayor o igual a 25.",
         "entrada": "En la primera línea el valor correspondiente al peso. En la segunda línea el valor correspondiente a la estatura en metros. Nota: el imc se calcula dividiendo el peso entre el cuadrado de la estatura. imc=peso/estatura^2.",
         "salida": "En la primera línea el valor del IMC. En la segunda línea el mensaje NORMAL o SOBREPESO, según sea el caso.",
-        "nivel": "",
-        "categorias": [
-            ""
-        ],
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [],
         "estructuras": [
             "pow()",
             "long double"
@@ -7086,7 +7084,7 @@
         "descripcion": "Desarrolla un DFD que lea la estatura de N personas e imprima cuantas miden más de 1.70.",
         "entrada": "En la primera línea el enetero N. En cada una de las siguientes N líneas, una estatura.",
         "salida": "Un valor entero correpondiente al número de personas que miden más de 1.70.",
-        "nivel": "",
+        "nivel": "Básico (fácil) - Introducción a la programación",
         "categorias": [
             "Ciclos"
         ],
@@ -7117,10 +7115,8 @@
         "descripcion": "Dado un numero entero N, quieres saber si la cantidad de divisores de N es par o impar. Por ejemplo, si N=12, tiene de divisores a 1, 2, 3, 4, 6, 12. Por lo tanto tiene 6 divisores y 6 es par.",
         "entrada": "Un numero N.",
         "salida": "\"PAR\", si la cantidad de divisores de N es par, de lo contrario \"IMPAR\".",
-        "nivel": "",
-        "categorias": [
-            ""
-        ],
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [],
         "estructuras": [
             "sqrt()"
         ],
@@ -7132,7 +7128,7 @@
         "descripcion": "Los alumnos de Naty son muy necios acerca de sus compañeros de comida. Ellos se han organizado en dos grupos alimenticios(convenientemente numerados 1 y 2) que insisten en comer juntos, con el grupo 1 al inicio de la fila y el grupo 2 al final de la misma. El problema comienza cuando ellas se forman para entrar al área de alimentación. Cada alumnos i lleva con el una pequeña tarjeta en la cual está grabado D_i(1<=D_i<=2) indicando su pertenencia a un grupo alimenticio. Todo el conjunto de N(1<=N<=30,000) alumnos se ha alineado para la comida pero es fácil para cualquiera ver, que ellos no están agrupadas según sus tarjetas de grupo alimenticio. El trabajo de la mestra Naty no es tan difícil. Ella simplemente recorre la línea de alumnos cambiando su asignación de grupo alimenticio tachando el número antiguo y escribiendo uno nuevo. Haciendo eso, ella crea grupos de alumnos como 1112222 o 1111122 en los que los grupos alimenticios de los alumnos están ordenados ascendentemente. En pocas ocasiones, ella podría cambiar las tarjetas de tal manera que solamente quede un grupo de alumnos (por ejemplo, 1111111 o 2222222). Naty esta cansada y es curiosa: ¿cuál el número mínimo absoluto de tarjetas que ella debe cambiar para crear un grupo apropiado de socios alimentarios? El únicamente debe cambiar los números de las tarjetas y no debe reorganizar a los alumnos en la fila",
         "entrada": "Línea 1: Un solo entero: N. Líneas 2..N+1: La línea i+1 describe la preferencia alimentaria del alumno i con un solo entero: D_i.",
         "salida": "Línea 1: Un solo entero que es el número mínimo de tarjetas que la maestra Naty debe cambiar para asignar los alumnos a los grupos alimentarios como se ha descrito.",
-        "nivel": "(fácil)",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
             "Vectores",
             "Ciclos"
@@ -7194,7 +7190,7 @@
         "descripcion": "¿Recuerdas la vez que Andrea rompió el jarrón de su mamá? Si no lo recuerdas te platicare un poco acerca de aquella ocasión, ella rompió el jarrón de su mamá mientras ella estaba de vacaciones, accidentalmente alzó su brazo y tiró el jarrón. Debido a ello tuvo que conseguir un trabajo en el Oxxo, a ella le tocaba atender una caja registradora que contaba con N pesos. Durante una jornada laboral hubieron M personas (Entre ellas incluidas clientes y gerentes) que retiraron o abonaron P_M pesos. Tu tarea será crear un programa en el cual según los datos ingresados digas con cuánto dinero quedó al final, en caso de que trates de retirar una cantidad mayor a la que tienes en caja da un aviso de que no hay suficiente dinero para retirar. Consideraciones: Los clientes abonan, los gerentes retiran. En caso de que se trate de retirar una cantidad que no se posee, el programa debe terminar y decir: \"No hay suficiente dinero\". Los clientes siempre pagaran sus productos exactamente. Se debe preceder el signo de peso ($) antes de escribir el total que quedó en la caja. En caso de tratar de retirar una cantidad que no se tiene, será el último gerente que tratará de retirarlo.",
         "entrada": "En la primera linea un número N que indica cuánto dinero posee la caja al inicio del día. En la segunda linea, un número M indicando la cantidad de personas que atendió Andrea en el Oxxo. En las siguientes M lineas, un caracter sea G o C, representando a Gerentes o Clientes que visitaron la caja de Andrea seguido de un espacio, seguido de los P pesos que llevaron consigo.",
         "salida": "La cantidad de pesos con la que quedó la caja registradora al final del día precedida de un signo de peso ($), en caso de que se haya tratado de retirar una cantidad de pesos que no se tiene imprimir \"No hay suficiente dinero\".",
-        "nivel": "",
+        "nivel": "Básico (fácil) - Introducción a la programación",
         "categorias": [
             "Caracteres y cadenas",
             "Ciclos"
@@ -7211,10 +7207,8 @@
         "descripcion": "La Navidad ya esta a la vuelta de la esquina y como sabes que te portaste bien todo el año, Santa te traerá aquel regalo que tanto quieres y mueres por tener. Llega el día 24 y te quedas muy despierto a un lado de tu arbolito de Navidad con chocolate caliente esperando su llegada, de pronto escuchas que abren la puerta y gritan tu nombre, ¡es Santa! quien en vez de darte tu regalo, pide tu ayuda para salvar la Navidad. Resulta que por la tormenta de nieve que tuvo que atravesar, la computadora que controla el trineo se averió y necesita reprogramarse. La computadora necesita una ecuación de calibración que hace que el trineo pueda navegar por sí solo. Como Santa sabe que eres buen programador, logró llegar hasta tu casa para que lo ayudes a reprogramarla y salvar la Navidad. La computadora del trineo de santa funciona con la siguiente ecuación: (Velocidad/PesoTrineo)*Distancia. Tu tarea consiste en generar un programa que reciba dichas variables descritas por la ecuación, la resuelva y devuelva el resultado. Ya que el trineo de Santa viaja a muchos destinos la computadora tiene que recalcular los datos dependiendo como vayan cambiando las variables, así que recibirás muchos casos para probar que en verdad funcione correctamente.",
         "entrada": "Recibirás una linea que contiene las variables enteras V[metros*seg], P[gramos] y D[metros], cada uno representa la velocidad, peso del trineo y distancia, respectivamente. 0<V<2^31. 1<P<=100. 0<D<2^31.",
         "salida": "La computadora del trineo de Santa no soporta decimales por lo que solo deberás imprimir un sólo número entero sin decimales indicando el resultado de la ecuación de calibración del trineo, si hay numeros decimales en el resultado, debes truncar este resultado.",
-        "nivel": "",
-        "categorias": [
-            ""
-        ],
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [],
         "estructuras": [
             "fixed",
             "setprecision",
@@ -7271,6 +7265,7 @@
         ],
         "estructuras": [
             "long double",
+            "fixed",
             "setprecision",
             "vector<int>"
         ],
@@ -7282,7 +7277,7 @@
         "descripcion": "Hace algún tiempo conociste a un hippie que se dedica a hacer collares con cuentas (bolitas) de vidrio, como anda muy escaso de dinero tu amigo tiene únicamente un hilo en donde guarda todas las cuentas que utiliza. Hace poco tu amigo recibió un pedido de un collar que debe llevar únicamente C cuentas negras. En su hilo tu amigo puede tener cuentas de diversos colores, y cada vez que hace un collar saca todas las cuentas, escoge las que necesita y vuelve a meter las que le sobraron. Como éste método le resulta muy tedioso, te ha pedido que le ayudes a encontrar una forma de optimizarlo. Cuando abres el hilo, puedes obtener una a una cuentas de cualquiera de los lados del hilo que abriste, si la cuenta que obtienes es negra, la puedes utilizar en el collar, si es de otro color deberás \"desperdiciar\" esa cuenta. Debes escribir un programa que determine donde abrir el hilo para que puedas obtener las C cuentas negras desperdiciando el menor número de cuentas posibles de otro color.",
         "entrada": "Tu programa deberá leer del teclado de la PC los siguientes datos: En la primera línea el número 0<C<=3,000 de cuentas negras que necesitas. En la segunda línea el número C<N<=30,000 que indica la cantidad de cuentas en el hilo. En la tercera línea habrá N números enteros separados cada uno por un espacio que indican el color de las cuentas del hilo, si el número es un 0 indica que la cuenta en esa posición es negra, si el número es 1 indica que la cuenta es de un color distinto. NOTA: El número de cuentas negras en el hilo siempre será mayor o igual al número de cuentas que necesitas.",
         "salida": "Tu programa deberá escribir en la pantalla de la PC un número entero que indique el mínimo número de cuentas que debes \"desperdiciar\" para poder obtener todas las cuentas negras que necesitas.",
-        "nivel": "(medio)",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
             "Vectores",
             "Ciclos"
@@ -7296,7 +7291,7 @@
     {
         "titulo": "842. Agencia matrimonial",
         "url": "https://omegaup.com/arena/problem/agencia_matrimonial/",
-        "descripcion": "Una agencia matrimonial tiene n clientes de ambos sexos. Se conoce la edad de todos los clientes (expresada en la misma unidad para todos, la cual no tiene porqué ser años; podrían ser meses, días, etcétera). Los dos encargados de la agencia tienen opiniones diferentes acerca de cómo deberían emparejarse los clientes. Uno piensa que debería minimizarse la suma de las diferencias de edades de cada pareja formada. El otro opina justamente lo contrario, es decir, que debería maximizarse esa suma de diferencias. Escribe un programa que calcule la mínima suma posible de diferencias y la máxima suma posible de diferencias. Por ejemplo, si n=2, los hombres tienen edades 25 y 40, y las mujeres tienen edades 20 y 50, entonces sólo hay dos posibilidades: 25 - 20, 40  50 (con suma total 15) y 40  20, 25  50 (con suma total 45).",
+        "descripcion": "Una agencia matrimonial tiene n clientes de ambos sexos. Se conoce la edad de todos los clientes (expresada en la misma unidad para todos, la cual no tiene porqué ser años; podrían ser meses, días, etcétera). Los dos encargados de la agencia tienen opiniones diferentes acerca de cómo deberían emparejarse los clientes. Uno piensa que debería minimizarse la suma de las diferencias de edades de cada pareja formada. El otro opina justamente lo contrario, es decir, que debería maximizarse esa suma de diferencias. Escribe un programa que calcule la mínima suma posible de diferencias y la máxima suma posible de diferencias. Por ejemplo, si n=2, los hombres tienen edades 25 y 40, y las mujeres tienen edades 20 y 50, entonces sólo hay dos posibilidades: 25 - 20, 40 - 50 (con suma total 15) y 40 - 20, 25 - 50 (con suma total 45).",
         "entrada": "La entrada consiste en 1<=n<=50000, seguido de n números en una línea con las edades de los hombres, seguido de n números en otra línea con las edades de las mujeres.",
         "salida": "Escribe una línea con dos números separados por un espacio: La mínima suma posible de las diferencias de edades, y la máxima suma posible de las diferencias de edades.",
         "nivel": "Intermedio (fácil) - Estructuras de datos y Algoritmos",
@@ -7376,7 +7371,7 @@
         "descripcion": "Tras haber formado el nombre del dios OMInca, fue tal tu emoció al ver el tesoro entre tus manos que lo tomaste y saliste corriendo sin observar hacia dónde te dirigías, con lo que equivocaste el camino y en vez de regresar por donde habías llegado, entraste a un lugar completamente obscuro. Justo al entrar, la puerta detrás de ti se cerró de un golpe, en ese momento te das cuenta que te encuentras dentro de un laberinto. Mientras haces esfuerzos por hallar la salida, sin querer presionas una de las piedras preciosas que se encuentran en la figura de oro que traes cargando y escuchas ruido de que algunas paredes dentro del laberinto se mueven, abriéndose y cerrándose. Desesperado comienzas a apretar las piedras una tras otra tratando de descubrir cuál es el acertijo, ya que cada que presionas una se vuelven a escuchar a tu alrededor paredes abriendo y cerrando. Después de un buen rato de estar presionando piedras y sin entender qué es lo que pasa a tu alrededor, te das cuenta de que en la parte de abajo de la figura se encuentran grabados unos números y un mapa de lo que seguramente es tu laberinto. Al analizarlos te das cuenta de que explican qué es lo que sucede cada que aprietas una de las piedras preciosas. Según parece, esta figurilla es una especie de \"control remoto\" utilizado por los OMIncas, ya que para cada piedra una o varias de las paredes del laberinto se mueven, si la pared estaba abierta se cierra y si estaba cerrada se abre. En la figurilla existen varias piedras, cada una mueve un grupo distinto de paredes en el laberinto, en la inscripción se indica qué paredes se mueven al apretarse cada piedra. En el mapa se muestran las paredes y se indica que al entrar ahí cualquier profanador, todas las paredes se cerrarán. Con estos datos, tu podrías haber encontrado una manera de salir, sin embargo, tu problema ahora es que ya no sabes como quedaron las puertas después de apretar tantas piedras, por lo que primero debes entender qué paso con todas las paredes que te rodean, afortunadamente recuerdas cuáles fueron las piedras que presionaste y en que orden. Debes escribir un programa que conociendo el grupo de paredes que se mueven con cada piedra y cuales fueron las piedras que presionaste, encuentre cual es la configuración actual del laberinto, o sea que paredes se encuentran cerradas y cuáles abiertas. Partiendo de que todas las paredes se cerraron cuando entraste.",
         "entrada": "Tu programa deberá leer los siguientes datos, en la primera línea el número 8 <= p <= 3000 de paredes que existen en el laberinto, en la segunda línea el número 2 <= n <= 16 e piedras en la figurilla. En la tercera línea el número 2 <= m <= p de paredes que se mueven al apretar cada piedra (todas las piedras mueven la misma cantidad de paredes). En cada una de las siguientes n líneas habrá m números separados por espacios, que indican las paredes que se mueven al presionar la piedra correspondiente, es decir, el primero de estos renglones se refiere a las puertas que mueve la piedra 1, el segundo a las de la piedra 2 y así sucesivamente. Tanto las piedras como las paredes se cuentan a partir de uno. A continuación, se encuentra el número 5 <= a <= 30000, que indica el número de \"botonazos\" que diste, finalmente en la última línea, hay a números, separados por un espacio que corresponden al número de la piedra que presionaste en cada \"botonazo\", listados en el orden en el que fueron efectuados.",
         "salida": "Tu programa deberá escribir el número de paredes que quedaron abiertas al final y cuáles fueron. En la primera línea el número de paredes abiertas y en la siguiente línea separados por espacios y en orden ascendente, los números correspondientes a cada una de ellas.",
-        "nivel": "()",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
             "Matrices",
             "Vectores",
@@ -7408,7 +7403,7 @@
         "estructuras": [
             "vector<vector<char>>",
             "long long",
-            "queue<>",
+            "queue<struct>",
             "auto"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra\n{\n    int g, m, x;\n};\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<vector<char>> num(301, vector<char>(301, ''));\n    long long a, b, c -= 90000;\n    queue<sobra> falta;\n    queue<sobra> sub;\n    sobra z;\n    cin >> a >> b >> z.g >> z.m;\n    for (auto i = 1; i <= a; i++)\n    {\n        for (auto j = 1; j <= b; j++)\n        {\n            cin >> num[i][j];\n        }\n    }\n    if (num[z.g][z.m] == 'x')\n    {\n        z.x++;\n    }\n    falta.push(z);\n    num[z.g][z.m] = '#';\n    while (falta.size() || sub.size())\n    {\n        while (falta.size())\n        {\n            z = falta.front();\n            falta.pop();\n            if (num[z.g - 1][z.m] == 'S' || num[z.g + 1][z.m] == 'S' || num[z.g][z.m + 1] == 'S' || num[z.g][z.m - 1] == 'S')\n            {\n                if (z.x < c)\n                {\n                    c = z.x;\n                }\n            }\n            if (num[z.g - 1][z.m] == '.')\n            {\n                z.g--;\n                falta.push(z);\n                num[z.g][z.m] = '#';\n                z.g++;\n            }\n            if (num[z.g + 1][z.m] == '.')\n            {\n                z.g++;\n                falta.push(z);\n                num[z.g][z.m] = '#';\n                z.g--;\n            }\n            if (num[z.g][z.m - 1] == '.')\n            {\n                z.m--;\n                falta.push(z);\n                num[z.g][z.m] = '#';\n                z.m++;\n            }\n            if (num[z.g][z.m + 1] == '.')\n            {\n                z.m++;\n                falta.push(z);\n                num[z.g][z.m] = '#';\n                z.m--;\n            }\n            if (num[z.g - 1][z.m] == 'x')\n            {\n                z.g--;\n                z.x++;\n                sub.push(z);\n                num[z.g][z.m] = '#';\n                z.g++;\n                z.x--;\n            }\n            if (num[z.g + 1][z.m] == 'x')\n            {\n                z.g++;\n                z.x++;\n                sub.push(z);\n                num[z.g][z.m] = '#';\n                z.g--;\n                z.x--;\n            }\n            if (num[z.g][z.m - 1] == 'x')\n            {\n                z.m--;\n                z.x++;\n                sub.push(z);\n                num[z.g][z.m] = '#';\n                z.m++;\n                z.x--;\n            }\n            if (num[z.g][z.m + 1] == 'x')\n            {\n                z.m++;\n                z.x++;\n                sub.push(z);\n                num[z.g][z.m] = '#';\n                z.m--;\n                z.x--;\n            }\n        }\n        if (sub.size())\n        {\n            while (sub.size())\n            {\n                falta.push(sub.front());\n                sub.pop();\n            }\n        }\n    }\n    cout << c;\n\n    return 0;\n}"
@@ -7435,13 +7430,13 @@
         "descripcion": "Debido a la reciente escasez de agua has pensado en construir N recipientes que son capaces de almacenar, purificar y mantener el agua limpia. Como eres un genio, los recipientes también son capaces de recolectar agua de lluvia y de convertir la humedad del ambiente en agua. Cada semana se verifica la capacidad (cuanta agua tienen) de cada recipiente y se mide en litros, de modo que obtienes una lista de enteros que denotan cuantos litros almacenó cada uno de los recipientes. Como además de genio, eres muy obsesivo, quieres comprar agua para rellenar los recipientes de modo que todos queden a la misma capacidad del recipiente que más agua recolectó. Dados el número de recipientes y cuantos litros recolectó cada uno, determina el mínimo número de litros de agua que tendrías que comprar para rellenar los recipientes, de modo que todos queden con el mismo número de litros que el recipiente que más agua recolectó.",
         "entrada": "En la primera línea el entero N (1<=N<=1000) que denota el número de recipientes. En la segunda línea, N  enteros separados por espacios, cada entero denota los litros de agua que recolectó un recipiente.",
         "salida": "El entero correspondiente al número de litros de agua que tendrás que comprar para lograr tu obsesiva tarea.",
-        "nivel": "(fácil)",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
             "Ciclos",
             "Vectores"
         ],
         "estructuras": [
-            " vector<int>",
+            "vector<int>",
             "long long",
             "auto"
         ],
@@ -7453,7 +7448,7 @@
         "descripcion": "Martontito está jugando tiro al blanco con un tablero de N circulos concéntricos (imagina un tablero para lanzar dardos). Quiere saber que tanta punteria tiene, por lo que ha asignado un puntaje entre 1 y N a cada uno de los círculos del tablero empezando de afuera hacia adentro, es decir, el circulo más externo vale 1 punto y el central vale N puntos. Martontito lanzó M dardos y todos cayeron en alguno de los círculos del tablero. Como es un poco tonto, no puede calcular el puntaje que obtuvo. Escribe un programa que lea los enteros M y N, e imprima cuantos dardos cayeron en cada círculo y cuantos puntos logró Martontito.",
         "entrada": "En la primera línea los enteros M (1<=M<=10000), N (1<=N<=100) separados por un espacio. En la segunda línea y separados por un espacio, M números, cada número representa en que círculo cayó ese dardo. por ejemplo si un número en la lista de los M números es 3, significa que el dardo se clavó en el círculo marcado con valor 3, que sería el tercer círculo de afuera hacia adentro.",
         "salida": "En la primera línea el puntaje total que logró Martontito. en cada una de las siguientes N líneas, el valor del círculo (de 1 a N) y la cantidad de dardos que Martontito clavó en ese círculo.",
-        "nivel": "...",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
             "Vectores",
             "Ciclos"
@@ -7501,7 +7496,7 @@
         "estructuras": [
             "long long",
             "vector<int>",
-            "vector<>",
+            "vector<struct>",
             "int"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra\n{\n    int aa, bb, cc;\n};\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c;\n    vector<int> num(10000, 0);\n    vector<sobra> sub(10000);\n    cin >> a >> sub[0].aa;\n    sub[0].bb = -1;\n    sub[0].cc = -1;\n    for (auto i = 1; i < a; i++)\n    {\n        cin >> sub[i].aa;\n        sub[i].bb = sub[i].cc = -1;\n        b = 0;\n        c = sub[i].aa;\n        while (a)\n        {\n            if (c < sub[b].aa && sub[b].bb == -1)\n        "
@@ -7527,7 +7522,7 @@
         "descripcion": "Siempre que se quiere dar a conocer una noticia se busca que esta información llegue a la mayor cantidad de personas posible, pero no siempre se pude saber que tanto se dispersara la noticia. Una empresa de publicidad tiene identificada a N personas importantes y ha registrado las amistades entre ellas, con esta información se puede saber que tanto se puede dispersar una noticia. Si la persona a conoce a la persona b y a sabe la noticia x entonces b eventualmente conocerá la noticia x , igualmente si b también conoce a la persona c, c eventualmente conocerá la noticia. Como transcurre el tiempo se van creando nuevas amistades y suponemos que las amistades entre personas importantes perduran para siempre. Tu tarea consiste en crear un programa que pueda responder a cuantas personas puede alcanzar una noticia si se envía a la persona p.",
         "entrada": "La primera linea contiene dos entero: N (1<=N<=1000000) que es el numero de personas, seguido por I (1<=I<=1000000) que es el numero de instrucciones que recibiras. Las siguientes I lineas pueden contener la letra A seguido de dos enteros x y y (donde 1<=x<=N y 1<=y<=N), que indica que la persona x se convirtió en amigo de la persona y. O puede contener la letra E, seguido por un entero p (donde 1<=p<=N), en este caso tienes que responder a cuantas personas le puede llegar la noticia si se lo cuentan a la persona p. Para un total del 40% de los puntos solo existirá una consulta del tipo E al final.",
         "salida": "Tu programa deberá imprimir los respuesta a las consultas que se le hagan.",
-        "nivel": "(medio)",
+        "nivel": "Básico (medio) - Introducción a la programación",
         "categorias": [
             "Ciclos",
             "Vectores"
@@ -7537,7 +7532,7 @@
             "long long",
             "char",
             "auto",
-            "vector<>"
+            "vector<struct>"
         ],
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra\n{\n    int aa, bb;\n};\nvector<sobra> num(1000001);\n\nint falta(int z)\n{\n    int hh;\n    if (num[z].aa != z)\n    {\n        hh = falta(num[z].aa);\n        num[z].aa = hh;\n    }\n    return num[z].aa;\n}\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f;\n    char n;\n    cin >> a >> b;\n    for (auto i = 1; i <= a; i++)\n    {\n        num[i].aa = i;\n        num[i].bb = 1;\n    }\n    while (b--)\n    {\n        cin >> n;\n        if (n == 'A')\n        {\n            cin >> c >> d;\n            e = falta(c);\n            f = falta(d);\n            if (e != f)\n            {\n                if (num[e].bb > num[f].bb)\n                {\n                    num[e].bb += num[f].bb;\n                    num[f].aa = e;\n                }\n                else\n                {\n                    num[f].bb += num[e].bb;\n                    num[e].aa = f;\n                }\n            }\n        }\n        else\n        {\n            cin >> c;\n            d = falta(c);\n            cout << num[d].bb << \"\\n\";\n        }\n    }\n\n    return 0;\n}"
     },
@@ -7547,12 +7542,12 @@
         "descripcion": "Un submarino tiene N  secciones numeradas del 1 al N De estas secciones, algunas se encuentran interconectadas entre sí. Además se sabe que hay un total de E interconexiones y que la sección N es la salida de emergencia. Si hubiera un marinero en cada sección, excepto la de salida, y si éste tardara una unidad de tiempo en llegar a una sección adyacente, determina cuántos marineros llegarían a la salida de emergencia en menos de T unidades de tiempo.",
         "entrada": "En la primera linea los enteros N (2<=E<=100), E y T (1<=T<=100). Las siguientes E líneas contienen, cada una, los números de dos secciones interconectadas entre sí.",
         "salida": "En la primera línea el número de marineros que pueden llegar a la salida de emergencia en menos de T unidades de tiempo.",
-        "nivel": "()",
+        "nivel": "Intermedio (medio) - Estructuras de datos y Algoritmos",
         "categorias": [
-            "Colas",
             "Tablas de dispersión",
-            "Ciclos",
-            "Vectores"
+            "Vectores",
+            "Colas",
+            "Ciclos"
         ],
         "estructuras": [
             "queue<pair<int, int>>",
@@ -7570,7 +7565,7 @@
         "descripcion": "Escribe un programa que determine la cantidad f de formas en las que se puede escribir un número entero positivo n como suma de uno o más números enteros positivos consecutivos. Tu programa también debe determinar el número más pequeño p que forma parte de alguna de estas sumas. Por ejemplo, si n = 33, entonces f = 4 y p = 3 ya que 3 + 4 + 5 + 6 + 7 + 8 = 10 + 11 + 12 = 16 + 17 = 33.",
         "entrada": "Un número entero n en el intervalo de 1 a 1,000,000 (incluyendolos).",
         "salida": "Dos números enteros f y p.",
-        "nivel": "Básico () - Introducción a la programación",
+        "nivel": "Básico (fácil) - Introducción a la programación",
         "categorias": [
             "Ciclos"
         ],
@@ -7622,18 +7617,18 @@
         "salida": "En la primera línea deberás imprimir el recorrido en pre-orden, en la segunda deberás imprimir el recorrido en inorden, y en la tercera y última el post-orden.",
         "nivel": "Intermedio (medio) - Estructuras de datos y Algoritmos",
         "categorias": [
-            "Entrada y salida",
             "Recorridos en árboles",
             "Ciclos",
-            "Vectores"
+            "Vectores",
+            "Recursión"
         ],
         "estructuras": [
             "int",
             "long long",
-            "vector<>",
+            "vector<struct>",
             "auto"
         ],
-        "codigo": "..."
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra{\n    int aa, bb, cc;\n};\n\nlong long a, b=1, c, d, e, f, g, h;\nvector<sobra> num(100000);\n\nvoid falta(int z){\n    cout<<num[z].aa<<\" \";\n    if(num[z].bb!=-1){\n        falta(num[z].bb);\n    }\n    if(num[z].cc!=-1){\n        falta(num[z].cc);\n    }\n    return;\n}\n\nvoid sub(int x){\n    if(num[x].bb!=-1){\n        sub(num[x].bb);\n    }\n    if(num[x].cc!=-1){\n        sub(num[x].cc);\n    }\n    cout<<num[x].aa<<\" \";\n    return;\n}\n\nvoid sums(int y){\n    if(num[y].bb!=-1){\n        sums(num[y].bb);\n    }\n    cout<<num[y].aa<<\" \";\n    if(num[y].cc!=-1){\n        sums(num[y].cc);\n    }\n    return;\n}\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>a>>num[0].aa;\n    num[0].bb=num[0].cc=-1;\n    for(auto i=1; i<a; i++){\n        cin>>num[i].aa;\n        num[i].bb=num[i].cc=-1;\n        b=0;\n        while(a){\n            if(num[i].aa<num[b].aa && num[b].bb==-1){\n                num[b].bb=i;break;\n            }\n            else if(num[i].aa>num[b].aa && num[b].cc==-1){\n                num[b].cc=i;break;\n            }\n            else if(num[i].aa<num[b].aa){\n                b=num[b].bb;\n            }\n            else{\n                b=num[b].cc;\n            }\n        }\n    }\n    falta(0);\n    cout<<\"\\n\";\n    sums(0);\n    cout<<\"\\n\";\n    sub(0);\n    cout<<\"\\n\";\n    \n    return 0;\n}"
     },
     {
         "titulo": "5010. Las pistas de azul",
@@ -7641,11 +7636,11 @@
         "descripcion": "Seguramente has escuchado hablar del programa \"las pistas de Blue\", donde un perro dejaba huellas para que su amo Steve encontrara ciertos objetos. \"Azul\" es el primo de \"Blue\" que vive en México y él utiliza números para que su amo Esteban encuentre objetos. El mundo está dividido en un conjunto de casillas donde en cada una se encuentra un PAR de números (fila, columna) que indica la posición donde está la siguiente pista. Esteban al encontrar el objeto que buscaba, notó que su casa estaba llena de pistas y por lo tanto, su casa estaba muy sucia por el andar de Azul, así que él quisiera saber en qué partes de la casa pudo haber estado Azul para poder limpiar. Dada un conjunto de pistas y las ubicaciones de estas, deberás decirle a Esteban el número de casillas desde las cuales, empezando en cada una de ellas y siguiendo las pistas, se puede llegar a la casilla donde está el objeto. Al menos te tienes que mover a una casilla para que puedas contarla, es decir, empezar en la casilla del objeto no deberá contarse. Las casillas que están marcadas con -1,-1 indica que no hay pista que te lleve a otra casilla. Subtarea 1 Para un conjunto de 60% de los casos no se creará un ciclo dentro del mundo(Un ciclo es una secuencia de pistas que eventualmente te llevan a repetir una casilla). Subtarea 2 Para el 100% de los casos, puede o no haber un ciclo en el mundo",
         "entrada": "En la primera línea, un entero 1<=N<=50 que denota las dimensiones de la casa (Siempre será de N filas por N columnas). En la segunda línea dos enteros 0 <= F, C<= N-1 separados por espacios que denotan las coordenadas de la casilla donde está el objeto. En cada una de las siguientes N líneas, 2*N números, donde cada par indica la coordenada de la siguiente pista en cada casilla.",
         "salida": "Un entero que indica el número de casillas desde las cuales, se puede llegar a la casilla donde está el objeto.",
-        "nivel": "()",
+        "nivel": "Intermedio (medio) - Análisis y diseño de algoritmos",
         "categorias": [
+            "Tablas de dispersión",
             "Matrices",
             "Colas",
-            "Tablas de dispersión",
             "Ciclos"
         ],
         "estructuras": [
@@ -7665,7 +7660,6 @@
         "salida": "N  líneas con los ID de los procesos en el orden que concluyeron. Considera que los procesos de la entrada ya se encuentran en la lista de espera.",
         "nivel": "Intermedio (fácil) - Análisis y diseño de algoritmos",
         "categorias": [
-            "Entrada y salida",
             "Colas",
             "Vectores",
             "Tablas de dispersión",
@@ -7696,10 +7690,10 @@
         "estructuras": [
             "vector<vector<char>>",
             "long long",
-            "queue<>",
+            "queue<struct>",
             "auto"
         ],
-        "codigo": "..."
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nstruct sobra{\n    int aa, bb, cc;\n};\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<vector<char>> num(2000, vector<char> (2000, ''));\n    long long a, b, c;\n    queue<sobra> falta;\n    sobra z;\n    cin>>a>>b>>c;\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<b; j++){\n            cin>>num[i][j];\n            if(num[i][j]=='$'){\n                z.aa=i;\n                z.bb=j;\n                z.cc=0;\n                falta.push(z);\n            }\n        }\n    }\n    while(falta.size()){\n        z=falta.front();\n        falta.pop();\n        z.cc++;\n        if(z.cc>c){\n            break;\n        }\n        if(z.aa-1>-1 && num[z.aa-1][z.bb]=='.'){\n            num[z.aa-1][z.bb]='*';\n            z.aa--;\n            falta.push(z);\n            z.aa++;\n        }\n        if(z.bb-1>-1 && num[z.aa][z.bb-1]=='.'){\n            num[z.aa][z.bb-1]='*';\n            z.bb--;\n            falta.push(z);\n            z.bb++;\n        }\n        if(z.aa+1<a && num[z.aa+1][z.bb]=='.'){\n            num[z.aa+1][z.bb]='*';\n            z.aa++;\n            falta.push(z);\n            z.aa--;\n        }\n        if(z.bb+1<b && num[z.aa][z.bb+1]=='.'){\n            num[z.aa][z.bb+1]='*';\n            z.bb++;\n            falta.push(z);\n            z.bb--;\n        }\n    }\n    for(auto i=0; i<a; i++){\n        for(auto j=0; j<b; j++){\n            cout<<num[i][j];\n        }\n        cout<<\"\\n\";\n    }\n    \n    return 0;\n}"
     },
     {
         "titulo": "...",
