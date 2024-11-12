@@ -8529,6 +8529,81 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std\n\n    int\n    main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    string g;\n    cin >> g;\n    for (auto i = 1; i < g.size(); i++)\n    {\n        cout << g[i];\n    }\n\n    return 0;\n}"
     },
     {
+        "titulo": "1453. Cráteres",
+        "url": "https://omegaup.com/arena/problem/crateres/#problems",
+        "descripcion": "En un intento por hacer que el hombre vuelva a la luna, el COMI (Comité Mexicano Interespacial) ha decidido instalar un centro de investigación en ella. Para esto envió a Nanobot, un pequeño robot explorador, a determinar cuál es el mejor lugar para construirlo. El objetivo del COMI es instalar el centro en el fondo de un cráter para analizar sus rocas y, por supuesto, quiere instalarlo en el cráter en donde haya más rocas. Desafortunadamente, durante el regreso de Nanobot a la Tierra, algunos datos se han perdido debido a causas desconocidas, sin embargo en la memoria del pequeño robot se conservan los mapas que este trazó en su recorrido por la superficie lunar. Los mapas lunares se encuentran representados en matrices de F x C kilómetros, en donde cada celda representa un kilómetro cuadrado. En estos mapas los cráteres se muestran como números enteros indicando la cantidad de rocas que Nanobot encontró en ese kilómetro cuadrado. El resto de la superficie (es decir, el espacio sin cráteres) ha sido rellenado con 0. El pequeño robot ha numerado los cráteres de 1 a N, siguiendo un estricto orden de izquierda a derecha y de arriba abajo, esto es, los cráteres que estén más a la izquierda serán los primeros en ser numerados. Si dos cráteres comienzan en la misma columna, el que esté más arriba en esa columna tendrá prioridad. Dentro de los datos que se han perdido se encuentra la ubicación donde Nanobot decidió sería conveniente instalar el centro. Tu tarea consiste en recuperar estos datos a partir de los mapas y decirle al COMI en qué cráter debería ser construida la base, así como el número de rocas que se han encontrado en él.",
+        "entrada": "Línea 1: Contiene dos enteros separados por un espacio que representan F y C, las dimensiones del mapa lunar. Siguientes F líneas: Cada línea contiene C enteros separados por un espacio que indican la cantidad de rocas para cada kilómetro cuadrado del mapa. 1<=F,C<=500.",
+        "salida": "Línea 1: Dos enteros separados por un espacio representando el número del cráter en que se deberá instalar el centro de investigación y el número de rocas que se encontraron en él. Si el mapa no contiene ningún cráter, deberás escribir 0 en ambos valores. Nota: En caso de haber más de un cráter con el número máximo de rocas deberás escribir el de menor numeración (N).",
+        "nivel": "Intermedio (medio) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Ordenamiento",
+            "Colas",
+            "Matrices",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "int",
+            "vector<vector<int>>",
+            "long long",
+            "queue<class>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nclass sobra{\n    public:\n        int g, m;\n        sobra(int p, int q){\n            g=p;\n            m=q;\n        }\n};\n\nvector<vector<int>> num(501, vector<int> (501, 0));\nlong long a, b, c, d=0, e=4, f=0, h;\nqueue<sobra> falta;\nsobra z(a, b);\n\nint suma(int x, int xx, int xxx){\n    while(falta.size()){\n        z=falta.front();\n        falta.pop();\n        if(z.g+1<=xx && num[z.g+1][z.m]!=0){\n            x+=num[z.g+1][z.m];\n            num[z.g+1][z.m]=0;\n            z.g++;\n            falta.push(z);\n            z.g--;\n        }\n        if(z.m+1<=xxx && num[z.g][z.m+1]!=0){\n            x+=num[z.g][z.m+1];\n            num[z.g][z.m+1]=0;\n            z.m++;\n            falta.push(z);\n            z.m--;\n        }\n        if(z.g-1>0 && num[z.g-1][z.m]!=0){\n            x+=num[z.g-1][z.m];\n            num[z.g-1][z.m]=0;\n            z.g--;\n            falta.push(z);\n            z.g++;\n        }\n        if(z.m-1>0 && num[z.g][z.m-1]!=0){\n            x+=num[z.g][z.m-1];\n            num[z.g][z.m-1]=0;\n            z.m--;\n            falta.push(z);\n            z.m++;\n        }\n    }\n    return x;\n}\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    cin>>a>>b;\n    for(auto i=1; i<=a; i++){\n        for(auto j=1; j<=b; j++){\n            cin>>num[i][j];\n        }\n    }\n    for(auto i=1; i<=b; i++){\n        for(auto j=1; j<=a; j++){\n            if(num[j][i]){\n                d++;\n                c=num[j][i];\n                num[j][i]=0;\n                z.g=j;\n                z.m=i;\n                falta.push(z);\n                h=suma(0, a, b);\n                c+=h;\n                if(c>f){\n                    f=c;\n                    e=d;\n                }\n            }\n        }\n    }\n    cout<<e<<\" \"<<f;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "2083. Ruleta Cuadrada",
+        "url": "https://omegaup.com/arena/problem/Ruleta-Cuadrada/",
+        "descripcion": "Maggy, la novia de Atsa disfruta de ir a la feria de León cada año, y gusta de un juego de ruleta cuadrada. El juego de la ruleta cuadrada consiste en una cuadrícula de N filas por M columnas, donde cada una de celda tiene un número. Para apostar, cada participante pide al encargado que coloque su ficha de apuesta en la celda que el participante indique. Para asignar los números en las celdas, se comienza numerando en 1, empezando por la celda de la fila superior izquierda y luego, de izquierda a derecha y de arriba a abajo, se van asignando los números. Maggy siempre siempre para participar usando su número de la suerte, tu tarea es ayudar a Maggy a saber en que celda (fila, columna) pondrá el encargado su ficha.",
+        "entrada": "En la primera línea encontrarás dos numeros N y M separados por un espacio que representan el número de filas y columnas de la ruleta cuadrada en la que está jugando Maggy. En la segunda línea hay un número S que representa el número de la suerte Maggy. 0<N,M<=10^5. 0<S<=NxM.",
+        "salida": "Imprime dos números separados por espacio que represente la fila y columan de la celda donde quedó la ficha de Maggy.",
+        "nivel": "",
+        "categorias": [
+            ""
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c;\n    cin>>a>>b>>c;\n    c--;\n    cout<<c/b;\n    c%=b;\n    cout<<\" \"<<c;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "778. Orden de las hojas",
+        "url": "https://omegaup.com/arena/problem/Orden-de-las-hojas/",
+        "descripcion": "Un amigo tuyo apellidado Roble es aficionado a los árboles binarios y ha inventado un juego MUY divertido que consta de 4 sencillos pasos: 1. Inicialmente Roble dibuja un árbol binario de búsqueda con n vértices numerados de 1 a n. Dado que es un árbol binario de búsqueda, para cada vértice v, el hijo derecho de v (si existe) es mayor que v, y el hijo izquierdo de v (si existe) es menor que v. 2. Luego, Roble escribe en un papel, los números de todas las hojas del árbol en orden descendente. 3. Posteriormente Roble borra las hojas del árbol que dibujó(quedando un nuevo árbol dibujado). 4. Si no ha borrado todos los vértices, regresa al paso 2. Debes escribir un programa que dado el órden en que Roble escribió los números que identifican a cada vértice, encuentre el recorrido en pre-órden del árbol binario de búsqueda que Roble dibujó.",
+        "entrada": "Línea 1: Solamente el número entero n. Línea 2: n números enteros separados por espacios, donde el i-ésimo número de esta línea representa el i-ésimo número que Roble escribió. Puedes asumir que 1<=n<=1000, además, para un conjunto de casos con un valor del 50% del puntaje, n<=11.",
+        "salida": "Línea 1: n números representando el recorrido en preorden del árbol binario. Donde el i-ésimo número deberá representar el i-ésimo vértice que se visita durante el recorrido.",
+        "nivel": "Intermedio (medio) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Recorrido en árboles",
+            "Árboles",
+            "Vectores",
+            "Ciclos",
+            "Pilas"
+        ],
+        "estructuras": [
+            "vector<int>",
+            "long long",
+            "stack<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<int> arbol(1000, 0);\n    vector<int> num(1000, 0);\n    vector<int> sub(1000, 0);\n    long long a, b, c=1, d;\n    stack<int> estrella;\n    cin>>a;\n    b=a-1;\n    for(auto i=0; i<a; i++){\n        cin>>arbol[i];\n        if(!i){\n            num[i]=a-1;\n        }\n        else{\n            num[i]=i-1;\n        }\n        if(i==a-1){\n            sub[i]=0;\n        }\n        else{\n            sub[i]=i+1;\n        }\n    }\n    estrella.push(a+1);\n    while(b!=-1){\n        d=b;\n        while(c!=estrella.top()){\n            if(sub[b]==b){\n                break;\n            }\n            if(arbol[d]<estrella.top() && d==b){\n                estrella.push(arbol[b]);\n                cout<<arbol[b]<<\" \";\n                sub[num[b]]=sub[b];\n                num[sub[b]]=num[b];\n                b=num[b];\n                d=b;\n            }\n            else if(arbol[d]<estrella.top()){\n                estrella.push(arbol[d]);\n                cout<<arbol[d]<<\" \";\n                sub[num[d]]=sub[d];\n                num[sub[d]]=num[d];\n                d=num[d];\n            }\n            else{\n                d=num[d];\n            }\n        }\n        if(sub[b]==b){\n            break;\n        }\n        while(estrella.top()==c){\n            c++;\n            estrella.pop();\n        }\n        if(c==a){\n            break;\n        }\n    }\n    cout<<arbol[b];\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "7768. Suma de Divisores",
+        "url": "https://omegaup.com/arena/problem/Suma-de-Divisores/",
+        "descripcion": "Calcula la suma de los múltiplos de A y B menores que N. Dado un número N la misión es encontrar la suma de todos los múltiplos de A y B que están antes de N.",
+        "entrada": "Tres números enteros separados por espacios en el siguiente orden: N A B.",
+        "salida": "Un número entero M con el resultado de la suma.",
+        "nivel": "Intermedio (medio) - Matemáticas en la programación",
+        "categorias": [
+            "Cálculos aritméticos",
+            "Múltiplos y divisores comunes",
+            "Aritmética modular",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f;\n    cin>>a>>b>>c;\n    a--;\n    d=a/b;\n    d=(d*(d+1))/2;\n    d*=b;\n    e=a/c;\n    e=(e*(e+1))/2;\n    e*=c;\n    d+=e;\n    e=b;\n    f=c;\n    while(e!=f){\n        if(e<f){\n            e+=b;\n        }\n        else{\n            f+=c;\n        }\n    }\n    e=a/e;\n    e=(e*(e+1))/2;\n    e*=f;\n    d-=e;\n    cout<<d;\n\n    return 0;\n}"
+    },
+    {
         "titulo": "...",
         "url": "...",
         "descripcion": "...",
