@@ -8781,6 +8781,190 @@
         "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main()\n{\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b;\n    cin >> a;\n    if (a == 100000000)\n    {\n        cout << \"788888898\";\n    }\n    else if (a > 99999999)\n    {\n        b = 788888889;\n        a -= 99999999;\n        b += (a * 9);\n        cout << b;\n    }\n    else if (a > 9999999)\n    {\n        b = 68888889;\n        a -= 9999999;\n        b += (a * 8);\n        cout << b;\n    }\n    else if (a > 999999)\n    {\n        b = 5888889;\n        a -= 999999;\n        b += (a * 7);\n        cout << b;\n    }\n    else if (a > 99999)\n    {\n        b = 488889;\n        a -= 99999;\n        b += (a * 6);\n        cout << b;\n    }\n    else if (a > 9999)\n    {\n        b = 38889;\n        a -= 9999;\n        b += (a * 5);\n        cout << b;\n    }\n    else if (a > 999)\n    {\n        b = 2889;\n        a -= 999;\n        b += (a * 4);\n        cout << b;\n    }\n    else if (a > 99)\n    {\n        b = 189;\n        a -= 99;\n        b += (a * 3);\n        cout << b;\n    }\n    else if (a > 9)\n    {\n        b = 9;\n        a -= 9;\n        b += (a * 2);\n        cout << b;\n    }\n    else\n    {\n        cout << a;\n    }\n\n    return 0;\n}"
     },
     {
+        "titulo": "4013. Bonitos Números",
+        "url": "https://omegaup.com/arena/problem/Bonitos-Numeros/",
+        "descripcion": "A Freddy le encantan los números, y en sus clases de matemáticas se dedica a contar los dígitos de un número, pero cuando un número N tiene una cantidad par de dígitos, Freddy lo llama \"número bonito\". Como a Miguel le gusta molestarlo, ha decidido ponerle un reto para lograr que deje de buscar números con estas características. Miguel le da una lista de K números con muchos dígitos a Freddy, y para cada uno de estos números Freddy debe contestar si es un \"número bonito\" o no.",
+        "entrada": "En la primera línea K, la cantidad de números que encontraste. Después leerás K líneas, cada una contiene un número N (sin ceros a la izquierda). Para cada número N se cumple que 1<=N<=10^1000. Te conviene leerlos como strings.",
+        "salida": "Para cada número N debes imprimir \"SI\" si es un número bonito, \"NO\" en caso contrario.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Implementación",
+            "Caracteres y cadenas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    string g;\n    cin>>a;\n    while(a--){\n        cin>>g;\n        if(g.size()%2==0){\n            cout<<\"SI\\n\";\n        }\n        else{\n            cout<<\"NO\\n\";\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "6652. Videogames",
+        "url": "https://omegaup.com/arena/problem/Videogames/",
+        "descripcion": "Pancho salio de viaje con su familia y aprovechando decidio comprar videojuegos ya que en su ciudad son demasiado caros, pancho visito diferentes tiendas,cuando encontro una que tenia la mayoria de los videojuegos que el queria decidio entrar, cada videojuego tiene un \"id\" y estan ordenados de forma ascendente. En la tienda hay juegos que pancho quiere asi como algunos que no,ya que a pancho solo le gustan los juegos de armas.",
+        "entrada": "En la primer linea: dos numeros N y K, la cantidad de juegos que hay en la tienda y los juegos que pancho esta buscando. En la segunda linea: los id de los juegos que estan en la tienda en ese momento. Tercer linea: los id de los juegos que pancho desea conocer su posocion en la tienda.",
+        "salida": "La posicion de los juegos que pancho compro. si el juego que pancho buscaba no esta imprime -1.",
+        "nivel": "Intermedio (fácil) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Búsqueda binaria",
+            "Vectores",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c;\n    cin>>a>>b;\n    vector<int> num(a, 0);\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n    }\n    while(b){\n        b--;\n        cin>>c;\n        for(auto i=0; i<a; i++){\n            if(c==num[i]){\n                cout<<i<<\" \";\n                c=-1;break;\n            }\n        }\n        if(c!=-1){\n            cout<<\"-1 \";\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4605. UP Flip Game",
+        "url": "https://omegaup.com/arena/problem/UP-Flip-Game/",
+        "descripcion": "Flip game es un juego en el que se tiene un tablero de 4 x 4 con fichas en cada una de las casillas del tablero. Las fichas tienen 2 caras, una blanca “w” y otra negra “b”. En cada turno se voltea una ficha, ocasionando a su vez que las fichas de alrededor (arriba, abajo, izquierda y derecha) también sean volteadas. Escribe un programa que dado un tablero y una serie de turnos, imprima el tablero resultante. Considere el siguiente ejemplo: wbww bbww wwwb bbwb. Si volteamos la casilla (0,2) (primer renglón, tercera columna) el tablero resultante es: wwbb bbbw wwwb bbwb.",
+        "entrada": "La primeras 4 líneas definen el tablero del “Flip Game”, el cual está compuesto sólo por letras “w” y “b”, indicando si la ficha está del lado blanco o negro respectivamente. Le sigue un entero n (0<n<101), indicando la cantidad de turnos a jugar. Cada turno consiste de 2 números, indicando el renglón y la columna de la ficha que se voltea.",
+        "salida": "El tablero resultante al terminar el juego.",
+        "nivel": "",
+        "categorias": [
+            "Matrices",
+            "Ciclos",
+            "Caracteres y cadenas"
+        ],
+        "estructuras": [
+            "long long",
+            "vector<vector<char>>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c;\n    vector<vector<char>> num(4, vector<char> (4, ''));\n    for(auto i=0; i<4; i++){\n        for(auto j=0; j<4; j++){\n            cin>>num[i][j];\n        }\n    }\n    cin>>a;\n    while(a--){\n        cin>>b>>c;\n        if(num[b][c]=='w'){\n            num[b][c]='b';\n        }\n        else{\n            num[b][c]='w';\n        }\n        if(b-1>-1){\n            if(num[b-1][c]=='w'){\n                num[b-1][c]='b';\n            }\n            else{\n                num[b-1][c]='w';\n            }\n        }\n        if(c-1>-1){\n            if(num[b][c-1]=='w'){\n                num[b][c-1]='b';\n            }\n            else{\n                num[b][c-1]='w';\n            }\n        }\n        if(b+1<4){\n            if(num[b+1][c]=='w'){\n                num[b+1][c]='b';\n            }\n            else{\n                num[b+1][c]='w';\n            }\n        }\n        if(c+1<4){\n            if(num[b][c+1]=='w'){\n                num[b][c+1]='b';\n            }\n            else{\n                num[b][c+1]='w';\n            }\n        }\n    }\n    for(auto i=0; i<4; i++){\n        for(auto j=0; j<4; j++){\n            cout<<num[i][j];\n        }\n        cout<<\"\\n\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1839. Los soldados reclutados por Gilgamesh",
+        "url": "https://omegaup.com/arena/problem/soldados/",
+        "descripcion": "En un intento por derrotar al toro celeste de la diosa Ishtar, Gilgamesh comenzó a reclutar soldados para enviarlos a combatir contra el toro. Mientras los hombres de Uruk son reclutados uno por uno, Gilgamesh decide en qué momento mandar a un soldado pelear contra el toro. Cada soldado será enviado en el orden en que fue reclutado. Ayude a Gilgamesh a determinar quién es el siguiente soldado que irá peleando contra el poderoso toro.",
+        "entrada": "La entrada estará conformada por un número arbitrario de líneas. Cada línea corresponderá a una de dos acciones: reclutar un hombre, que será denotado con la palabra \"LLAMA\" y el nombre del soldado, o mandar pelear a un hombre, que será denotado con la palabra \"MANDA\". Puede suponer que cada nombre estará conformado por a lo mucho 10 letras mayúsculas.",
+        "salida": "Por cada acción imprima el nombre del soldado involucrado. En caso de que no haya soldados para enviar deberá escribir la palabra \"IMPOSIBLE\".",
+        "nivel": "Intermedio (fácil) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Colas",
+            "Caracteres y cadenas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "queue<string>",
+            "string"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    queue<string> falta;\n    string g;\n    while(cin>>g){\n        if(g==\"LLAMA\"){\n            cin>>g;\n            falta.push(g);\n            cout<<g<<\"\\n\";\n        }\n        else if(g==\"MANDA\"){\n            if(!falta.size()){\n                cout<<\"IMPOSIBLE\\n\";\n            }\n            else{\n                cout<<falta.front()<<\"\\n\";\n                falta.pop();\n            }\n        }\n        else{\n            break;\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1838. Los grupos reclutados por Gilgamesh",
+        "url": "https://omegaup.com/arena/problem/grupos/",
+        "descripcion": "En un intento por derrotar al toro celeste de la diosa Ishtar, Gilgamesh comenzó a formar grupos de soldados para enviarlos a combatir contra el toro. Mientras los hombres de Uruk son reclutados uno por uno, Gilgamesh decide en qué momento mandar a un grupo de S soldados a pelear contra el toro. Cada grupo de soldados estará conformado por los hombres que tengan más tiempo de haber sido reclutados y que aún no han sido enviados a pelear. Ayude a Gilgamesh a conformar a los grupos de soldados que irán peleando contra el poderoso toro.",
+        "entrada": "La entrada estará conformada por un número arbitrario de líneas. Cada línea corresponderá a una de dos acciones: reclutar un hombre, que será denotado con la letra 'R' y el nombre del soldado, o mandar a un grupo de S soldados a pelear, que será denotado con la letra 'P' y un entero S. Puede suponer que 1<=S<=10,000 y que cada nombre estará conformado por a lo mucho 10 letras mayúsculas.",
+        "salida": "Por cada acción 'P' capturada en la entrada, deberá escribir una línea con el nombre de los S soldados que deben ir a pelear contra el toro en el orden en que fueron reclutados y separados por un espacio, o bien la palabra \"IMPOSIBLE\" en caso de que no queden suficientes soldados.",
+        "nivel": "Intermedio (medio) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Caracteres y cadenas",
+            "Colas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "string",
+            "long long",
+            "char",
+            "queue<string>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    string g=\"0\";\n    long long a;\n    char n=49;\n    queue<string> falta;\n    while(cin>>n){\n        if(n=='R'){\n            cin>>g;\n            falta.push(g);\n        }\n        else{\n            cin>>a;\n            if(a<=falta.size()){\n                while(a--){\n                    cout<<falta.front()<<\" \";\n                    falta.pop();\n                }\n                cout<<\"\\n\";\n            }\n            else{\n                cout<<\"IMPOSIBLE\\n\";\n            }\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1870. Las montañas destruidas por Gilgamesh",
+        "url": "https://omegaup.com/arena/problem/montanas/",
+        "descripcion": "Después de la muerte de Endiku, Gilgamesh va a buscar la vida eterna y en su camino se encuentra varias montañas, entre ellas los picos de Mashú. Él sigue dolido de la muerte de Enkidu y se imagina a sí mismo destruyendo todas las montañas. Él las ve de frente, de manera que las más altas tapan a las de atrás que son más bajas. Gilgamesh piensa destruir primero a la montaña más alta que vea, lo que posiblemente vuelva visibles a algunas montañas de atrás, y así sucesivamente hasta destruir todo. Dadas las alturas y los nombres de las montañas, determine el orden en que serán destruídas.",
+        "entrada": "Un entero N, que determina el número de montañas que Gilgamesh debe destruir, seguido de N líneas. Cada línea estará formada de una pareja h_i,s_i, donde h_i representa la altura de la montaña i-ésima y s_i el nombre de dicha montaña. La primera línea representa a la montaña que se encuentra más al frente y la última línea a la que se encuentra al final. Puede suponer que 1<=N<=1000, que 1<=h_i<=100 y que el nombre de cada montaña no es más largo que 10 letras mayúsculas del alfabeto inglés.",
+        "salida": "Deberá imprimir N líneas con los nombres de las montañas en el orden en que fueron destruídas.",
+        "nivel": "Intermedio (medio) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Ordenamiento",
+            "Caracteres y cadenas",
+            "Ciclos",
+            "Vectores"
+        ],
+        "estructuras": [
+            "vector<string>",
+            "vector<int>",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<string> sub(1000, \"\");\n    vector<int> num(1000, 0);\n    long long a, b;\n    cin>>a;\n    for(auto i=0; i<a; i++){\n        cin>>num[i]>>sub[i];\n    }\n    for(auto i=0; i<a-1; i++){\n        b=0;\n        for(auto j=0; j<((a-1)-i); j++){\n            if(num[j]<num[j+1]){\n                swap(num[j], num[j+1]);\n                swap(sub[j], sub[j+1]);\n                b=1;\n            }\n        }\n        if(!b){\n            break;\n        }\n        b=0;\n    }\n    for(auto i=0; i<a; i++){\n        cout<<sub[i]<<\"\\n\";\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1837. Las hachas de Gilgamesh y Enkidu",
+        "url": "https://omegaup.com/arena/problem/Las-hachas-de-Gilgamesh-y-Enkidu/",
+        "descripcion": "Gilgamesh decide dirigirse al bosque de cedros, el lugar donde vive el feroz Humbaba. Su amigo Enkidu le recuerda que Humbaba está protegido por Adad, el dios de la tempestad. A lo que le responde Gilgamesh que no tenga miedo, pues irán armados. Así, fueron a la forja y pidieron a los fundidores que les hicieran N hachas de H talentos y M espadas de E talentos. ¿Cuántos talentos T pesarán en total las armas de Gilgamesh y Enkidu?",
+        "entrada": "Cuatro enteros N, H, M y E. Puedes suponer que 1<=N,H,M,E<=1000.",
+        "salida": "Un entero T.",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Cálculos aritméticos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e;\n    cin>>a>>b>>c>>d;\n    e=(a*b)+(c*d);\n    cout<<e;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "1957. La construcción de los remos de Gilgamesh",
+        "url": "https://omegaup.com/arena/problem/conremos/",
+        "descripcion": "Después de que el barquero Urshanabí le pidió a Gilgamesh cortar algunos troncos para construir los remos que les faltaban, Gilgamesh comenzó a armar los remos. Gilgamesh cortó N troncos en total. Luego, comenzó a construir los remos simplemente uniendo los troncos que corto. Algunos troncos se pueden utilizar independientemente para construir remos. Cada tronco está enumerado del al 1 al N. Por ejemplo, suponga que Gilgamesh cortó N=10 troncos y que realizó 5 uniones de troncos: 1 con 7, 2 con 5, 7 con 3, 4 con 8 y finalmente 3 con 8, esto quiere decir que Gilgamesh construyó 5 remos, un remo con (1,3,4,7,8), otro con (2,5) y tres más utilizando los troncos 6, 9 y 10. Ayude a Gilgamesh a determinar la cantidad de remos armó en total dados los troncos que fue uniendo.",
+        "entrada": "Dos enteros N,M que representan el número de troncos que Gilgamesh cortó y el número de uniones que realizó. Seguidos de M lineas que describen las M parejas de enteros que denotan los troncos que Gilgamesh combinó. Puede suponer que 0<=M<N<=10,000.",
+        "salida": "Un entero R que representa el número de remos que Gilgamesh construyó.",
+        "nivel": "Intermedio (medio) - Estructuras de datos y Algoritmos",
+        "categorias": [
+            "Representación de grafos",
+            "Búsqueda en profundidad",
+            "Conjuntos distintos",
+            "Tablas de dispersión",
+            "Ciclos",
+            "Colas"
+        ],
+        "estructuras": [
+            "long long",
+            "pair<int, int>",
+            "queue<int>",
+            "set<int>"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a, b, c, d, e, f, h=0;\n    pair<int, int>num[10000];\n    queue<int> falta;\n    set<int> sobra;\n    cin>>a>>b;\n    for(auto i=0; i<b; i++){\n        cin>>num[i].first>>num[i].second;\n    }\n    c=0; b--;\n    while(c<=b){\n        falta.push(num[c].first);\n        falta.push(num[c].second);\n        sobra.insert(num[c].first);\n        sobra.insert(num[c].second);\n        num[c].first=0;\n        num[c].second=0;\n        c++;\n        while(!num[c].first){\n            c++;\n            if(c>b){\n                h++;\n                break;\n            }\n        }\n        if(c>b){\n            break;\n        }\n        while(falta.size()){\n            d=falta.front();\n            falta.pop();\n            if(falta.size()){\n                e=falta.front();\n                falta.pop();\n            }\n            else{\n                e=-1;\n            }\n            for(auto i=c; i<=b; i++){\n                if(num[i].first==d || num[i].first==e || num[i].second==d || num[i].second==e){\n                    f=sobra.size();\n                    sobra.insert(num[i].first);\n                    if(f!=sobra.size()){\n                        falta.push(num[i].first);\n                    }\n                    f=sobra.size();\n                    sobra.insert(num[i].second);\n                    if(f!=sobra.size()){\n                        falta.push(num[i].second);\n                    }\n                    num[i].first=0;\n                    num[i].second=0;\n                    if(i==c){\n                        while(!num[c].first){\n                            c++;\n                            if(c>b){\n                                break;\n                            }\n                        }\n                        if(c>b){\n                            break;\n                        }\n                        i=c-1;\n                    }\n                    if(i==b){\n                        while(!num[b].first){\n                            b--;\n                            if(b<c){\n                                break;\n                            }\n                        }\n                        break;\n                    }\n                }\n            }\n            if(c>b){\n                break;\n            }\n        }\n        h++;\n    }\n    h+=(a-sobra.size());\n    cout<<h;\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "4678. Jaida Game",
+        "url": "https://omegaup.com/arena/problem/Jaida-Game/",
+        "descripcion": "La pequeña Jaida se encuentra jugando con sus amigos el juego “The Bomb”. Inicialmente, una persona, la cual no participa en el juego, tiene una bomba de chocolate que explotará en T segundos. Esta persona debe caminar sin detenerse a través del edificio en el cual se encuentran todos. Ellos se encuentran en un edificio que consta de n cuartos, numerados de 1 a n, cada persona se encuentra en un cuarto, de cada cuarto existe un único camino a otro cuarto (incluso al mismo cuarto). Un camino solo puede usarse en una dirección, es decir, si hay un camino del cuarto u al cuarto v, no se puede usar ese camino para ir de v a u. Recorrer un camino toma exactamente 1 segundo. Dada la configuración inicial del edificio, determina si la bomba explotará en el cuarto en el cual se encuentra Jaida, el cual es el cuarto 1. La persona que tiene la bomba también inicia sus movimientos en el cuarto 1.",
+        "entrada": "En la primera línea hay dos números enteros n y T respectivamente. En la segunda linea n numeros, numerados de 1 a n (a_1,...,a_n-1,a_n) que indica que existe un camino del cuarto i al cuarto a_i, 1<=a_i<=n.",
+        "salida": "Si la bomba explotara en el cuarto de Jaida deberá imprimir: \"SI\", de lo contrario imprima : \"NO\", sin las comillas.",
+        "nivel": "",
+        "categorias": [
+            "Vectores",
+            "Colas",
+            "Ciclos"
+        ],
+        "estructuras": [
+            "vector<long long>",
+            "queue<long long>",
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    vector<long long> num(1000000, 0);\n    queue<long long> falta;\n    long long a, b;\n    cin>>a>>b;\n    for(auto i=0; i<a; i++){\n        cin>>num[i];\n    }\n    a=1;\n    while(b--){\n        a=num[a-1];\n        falta.push(a);\n        if(a==1){\n            break;\n        }\n    }\n    if(!b){\n        if(a==1){\n            cout<<\"SI\";\n        }\n        else{\n            cout<<\"NO\";\n        }\n    }\n    else{\n        b%=falta.size();\n        if(!b){\n            cout<<\"SI\";\n        }\n        else{\n            cout<<\"NO\";\n        }\n    }\n\n    return 0;\n}"
+    },
+    {
+        "titulo": "2568. suma simple",
+        "url": "https://omegaup.com/arena/problem/suma-simple/",
+        "descripcion": "Debes sumarle 1 a la cantidad leida.",
+        "entrada": "",
+        "salida": "",
+        "nivel": "Básico (fácil) - Introducción a la programación",
+        "categorias": [
+            "Cálculos aritméticos"
+        ],
+        "estructuras": [
+            "long long"
+        ],
+        "codigo": "#include <bits/stdc++.h>\n\nusing namespace std;\n\nint main(){\n    cin.tie(0);\n    ios_base::sync_with_stdio(0);\n    cout.tie(0);\n    long long a;\n    cin>>a;\n    cout<<a+1;\n\n    return 0;\n}"
+    },
+    {
         "titulo": "...",
         "url": "...",
         "descripcion": "...",
