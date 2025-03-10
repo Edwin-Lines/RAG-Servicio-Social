@@ -1,0 +1,34 @@
+[
+    {
+        "titulo": "...",
+        "url": "...",
+        "descripcion": "...",
+        "entrada": "...",
+        "salida": "...",
+        "nivel": "...",
+        "categorias": [
+            "...",
+            "..."
+        ],
+        "estructuras": [
+            "..."
+        ],
+        "codigo": "..."
+    },
+    "Problemas totales: 0",
+    "Avanzado (difícil) - Programación competitiva: 0",
+    "Avanzado (medio) - Temas especializados: 0",
+    "Avanzado (medio) - Programación competitiva: 0",
+    "Avanzado (fácil) - Programación competitiva: 0",
+    "Intermedio (difícil) - Estructuras de datos y Algoritmos: 0",
+    "Intermedio (difícil) - Análisis y diseño de algoritmos: 0",
+    "Intermedio (difícil) - Matemáticas en la programación: 0",
+    "Intermedio (medio) - Estructuras de datos y Algoritmos: 0",
+    "Intermedio (medio) - Análisis y diseño de algoritmos: 0",
+    "Intermedio (medio) - Matemáticas en la programación: 0",
+    "Intermedio (fácil) - Estructuras de datos y Algoritmos: 0",
+    "Intermedio (fácil) - Análisis y diseño de algoritmos: 0",
+    "Básico (difícil) - Introducción a la programación: 0",
+    "Básico (medio) - Introducción a la programación: 0",
+    "Básico (fácil) - Introducción a la programación: 0"
+]
