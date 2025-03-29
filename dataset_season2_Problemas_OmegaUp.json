@@ -15,6 +15,22 @@
         ],
         "codigo": "..."
     },
+    {
+        "titulo": "...",
+        "url": "...",
+        "descripcion": "...",
+        "entrada": "...",
+        "salida": "...",
+        "nivel": "...",
+        "categorias": [
+            "...",
+            "..."
+        ],
+        "estructuras": [
+            "..."
+        ],
+        "codigo": "..."
+    },
     "Problemas totales: 0",
     "Avanzado (difícil) - Programación competitiva: 0",
     "Avanzado (medio) - Temas especializados: 0",
